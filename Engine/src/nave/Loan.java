@@ -1,21 +1,20 @@
 package nave;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Loan {
+    //NIKOL: you may want to create more classes in order to separate this one.
     private LoanStatus status;//++++++++++++++
     private int loanID;//shem mezha
     private String borrowerName;// mi shlekah et haalvaa
     private List<String> lendersList = new ArrayList<>();//
-    private loanCategory loanCategory;//
+    private LoanCategory loanCategory;//
     private int originalInterest;//ribit mekorit
     private Timeline originalLoanTimeFrame;// misgeret zman halvaa
     private Timeline startLoanYaz;
     private Timeline paymentFrequency;
-    private int  interestPercentagePerTimeUnit;//
+    private int interestPercentagePerTimeUnit;//
     private int payedInterest;//ribit shulma
     private int payedFund;//keren shulma
     private int currInterestDepth;//schum ribit nochechit
@@ -27,21 +26,19 @@ public class Loan {
     @Override
     public String toString()
     {
-        System.out.println("Loan ID: " + loanID);
-        System.out.println("borrower's Name :" + borrowerName);
-        System.out.println("loan Category: " +loanCategory );
+        String str = "Loan ID: " + loanID + System.lineSeparator();
+        str += "borrower's Name :" + borrowerName + System.lineSeparator();
+        str += "loan Category: " +loanCategory + System.lineSeparator();
 
-        System.out.println("Requested loan: " + loanOriginalDepth );
-        System.out.println("Requested Time Frame For Loan: " + originalLoanTimeFrame);
+        str += "Requested loan: " + loanOriginalDepth + System.lineSeparator();
+        str += "Requested Time Frame For Loan: " + originalLoanTimeFrame + System.lineSeparator();
 
-        System.out.println("Loan interest: " + interestPercentagePerTimeUnit );
-        System.out.println("Frequency of loan repayment requested: " + paymentFrequency);
+        str += "Loan interest: " + interestPercentagePerTimeUnit + System.lineSeparator();
+        str += "Frequency of loan repayment requested: " + paymentFrequency + System.lineSeparator();
 
-        System.out.println("Loan status: " + status);
+        str += "Loan status: " + status + System.lineSeparator();
 
-
-
-        return null;
+        return str;
     }
 
     public LoanStatus getStatus() {

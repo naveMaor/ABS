@@ -1,7 +1,7 @@
 package nave;
 
 public class Client {
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private Account myAccount;
 }

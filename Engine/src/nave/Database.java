@@ -13,8 +13,8 @@ public class Database {
         return loanList;
     }
 
-    public static void setLoanList(List<Loan> loanListttt) {
-        loanList = loanListttt;
+    public static void setLoanList(List<Loan> loanList) {
+        Database.loanList = loanList;
     }
 
 
