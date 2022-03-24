@@ -1,5 +1,11 @@
 package Shai;
 
+import nave.Database;
+import nave.Loan;
+import nave.LoanStatus;
+
+import java.lang.reflect.Method;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -7,10 +13,17 @@ import java.util.Scanner;
 public class User_interface {
 
 
-    public static void choosenum (){
-        Scanner sc = new Scanner(System.in);
-        System.out.println("choose num");
-        int a = sc.nextInt();
+    public void func2 (){
+
+        for(Loan itr:Database.getLoanList())
+        {
+            itr.toString();
+
+            if(itr.getStatus() == LoanStatus.PENDING)
+            {
+
+            }
+        }
 
     }
 
@@ -19,7 +32,7 @@ public class User_interface {
 
 
     public static void main(String[] args)  {
-        User_interface.choosenum();
+
     }
 
 

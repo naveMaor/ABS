@@ -1,5 +1,7 @@
 package nave;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,4 +24,31 @@ public class Loan {
     private int totalRemainingPayment;//fund+interest
 
 
+    @Override
+    public String toString()
+    {
+        System.out.println("Loan ID: " + loanID);
+        System.out.println("borrower's Name :" + borrowerName);
+        System.out.println("loan Category: " +loanCategory );
+
+        System.out.println("Requested loan: " + loanOriginalDepth );
+        System.out.println("Requested Time Frame For Loan: " + originalLoanTimeFrame);
+
+        System.out.println("Loan interest: " + interestPercentagePerTimeUnit );
+        System.out.println("Frequency of loan repayment requested: " + paymentFrequency);
+
+        System.out.println("Loan status: " + status);
+
+
+
+        return null;
+    }
+
+    public LoanStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(LoanStatus status) {
+        this.status = status;
+    }
 }
