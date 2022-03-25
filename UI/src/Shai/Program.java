@@ -8,7 +8,7 @@ public class Program {
         Loan test1 = new Loan();
         test1.setLoanCategory(LoanCategory.DEFICIT);
         test1.setStatus(LoanStatus.ACTIVE);
-        test1.set
+
 
     }
 }

@@ -26,28 +26,116 @@ public class Loan {
     private int originalInterest;//ribit mekorit
     private int loanOriginalDepth;//Schum halvaa mekori
 
+    public void generateLoanID() {
+         this.loanID = Objects.hash(loanCategory, originalLoanTimeFrame, startLoanYaz);
+    }
+
     public int getLoanID() {
         return loanID;
     }
 
-    public void setLoanID(int loanID) {
-        this.loanID = loanID;
+    public String getBorrowerName() {
+        return borrowerName;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Loan loan = (Loan) o;
-        return loanID == loan.loanID && loanCategory == loan.loanCategory && originalLoanTimeFrame.equals(loan.originalLoanTimeFrame) && startLoanYaz.equals(loan.startLoanYaz);
+    public void setBorrowerName(String borrowerName) {
+        this.borrowerName = borrowerName;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(loanCategory, originalLoanTimeFrame, startLoanYaz);
+    public List<Payment> getPaymentsList() {
+        return paymentsList;
     }
 
-    public Loan() {
+    public void setPaymentsList(List<Payment> paymentsList) {
+        this.paymentsList = paymentsList;
+    }
+
+    public Timeline getOriginalLoanTimeFrame() {
+        return originalLoanTimeFrame;
+    }
+
+    public void setOriginalLoanTimeFrame(Timeline originalLoanTimeFrame) {
+        this.originalLoanTimeFrame = originalLoanTimeFrame;
+    }
+
+    public Timeline getPaymentFrequency() {
+        return paymentFrequency;
+    }
+
+    public void setPaymentFrequency(Timeline paymentFrequency) {
+        this.paymentFrequency = paymentFrequency;
+    }
+
+    public Timeline getEndLoanyaz() {
+        return endLoanyaz;
+    }
+
+    public void setEndLoanyaz(Timeline endLoanyaz) {
+        this.endLoanyaz = endLoanyaz;
+    }
+
+    public int getInterestPercentagePerTimeUnit() {
+        return interestPercentagePerTimeUnit;
+    }
+
+    public void setInterestPercentagePerTimeUnit(int interestPercentagePerTimeUnit) {
+        this.interestPercentagePerTimeUnit = interestPercentagePerTimeUnit;
+    }
+
+    public int getOriginalInterest() {
+        return originalInterest;
+    }
+
+    public void setOriginalInterest(int originalInterest) {
+        this.originalInterest = originalInterest;
+    }
+
+    public int getLoanOriginalDepth() {
+        return loanOriginalDepth;
+    }
+
+    public void setLoanOriginalDepth(int loanOriginalDepth) {
+        this.loanOriginalDepth = loanOriginalDepth;
+    }
+
+    public int getPayedInterest() {
+        return payedInterest;
+    }
+
+    public void setPayedInterest(int payedInterest) {
+        this.payedInterest = payedInterest;
+    }
+
+    public int getPayedFund() {
+        return payedFund;
+    }
+
+    public void setPayedFund(int payedFund) {
+        this.payedFund = payedFund;
+    }
+
+    public int getCurrInterestDepth() {
+        return currInterestDepth;
+    }
+
+    public void setCurrInterestDepth(int currInterestDepth) {
+        this.currInterestDepth = currInterestDepth;
+    }
+
+    public int getCurrFundDepth() {
+        return currFundDepth;
+    }
+
+    public void setCurrFundDepth(int currFundDepth) {
+        this.currFundDepth = currFundDepth;
+    }
+
+    public int getTotalRemainingLoan() {
+        return totalRemainingLoan;
+    }
+
+    public void setTotalRemainingLoan(int totalRemainingLoan) {
+        this.totalRemainingLoan = totalRemainingLoan;
     }
 
     //Dynamic data members:
