@@ -173,7 +173,7 @@ public class Loan {
         System.out.println("Loan ID: " + loanID);
         System.out.println("borrower's Name :" + borrowerName);
         System.out.println("loan Category: " +loanCategory );
-
+currFun
         System.out.println("Requested loan: " + loanOriginalDepth );
         System.out.println("Requested Time Frame For Loan: " + originalLoanTimeFrame);
 
@@ -244,39 +244,9 @@ public class Loan {
         System.out.println("remaining fund: " + currFundDepth);
         System.out.println("remaining interest: " + currInterestDepth);
     }
-    public final void printLenderList()
-    {
-        for (Lenders lender:lendersList)
-        {
-            System.out.println(lender);
-        }
-    }
+    public int nextYazToPay() {return(Timeline.getCurrTime() - startLoanYaz.getTime()) % paymentFrequency.getTime();}
 
-    public final void printRISKstatus(){
-        printACTIVEstatus();
-        int sumNotPayed = 0;
-        int numNotPayed=0;
-        for(Payment pays:paymentsList)
-        {
-            if(pays.isPayed() == false)
-            {
-                sumNotPayed+=pays.getFundPlusInterest();
-                ++numNotPayed;
-            }
 
-        }
-        System.out.println("num of delayed payments: " + numNotPayed);
-        System.out.println("sum of delayed: " + sumNotPayed);
-    }
 
-    public final void printFINISHEDstatus(){
-        printLenderList();
-        System.out.println("start loan yaz: "+startLoanYaz);
-        System.out.println("end loan yaz" + endLoanYaz);
-        for(Payment pay:paymentsList)
-        {
-            System.out.println(pay.toString());
-        }
-    }
 
 }

@@ -10,20 +10,17 @@ public class User_interface {
 
     public void func2 (){
         List<Lenders> lendersList;
-        for(Loan itr:Database.getLoanList()) {
-            System.out.println(itr.toString());
-            lendersList = itr.getLendersList();
-            for (Lenders lender:lendersList)
-            {
-                System.out.println(lender);
-            }
+        for(Loan itr:Database.getLoanList())
+        {
+            System.out.println(itr.toString());//showing loan
+            PrintFuncs.printLenderList(itr.getLendersList());//showing lenders list
+
 
             switch (itr.getStatus())
             {
-                case ACTIVE:
-                {
-
-                }
+                case ACTIVE: {PrintFuncs.printACTIVEstatus(itr);}break;
+                case RISK: {PrintFuncs.printRISKstatus(itr);}break;
+                case FINISHED:{}break;
             }
        }
 
