@@ -4,6 +4,7 @@ import nave.*;
 
 import java.util.List;
 
+import static nave.BackroundFunc.calculateDeposit;
 import static nave.Database.getLoanList;
 
 public class PrintFuncs {
@@ -30,7 +31,39 @@ public class PrintFuncs {
     public final static void printConnectedLoans(Client client)
     {
         String name = client.getFullName();
+        List<Loan> l = client.getCleintAsLenderLoanList();
+        if(!l.isEmpty())
+        {
+            System.out.println("this is the Loans that " + name + "is a lender:");
+            for (Loan loan:l)
+            {
+                System.out.println("Loan Id: " + loan.getLoanID());
+                System.out.println("Loan category: " + loan.getLoanCategory());
+                System.out.println("loan original fund: " + loan.getLoanOriginalDepth());
+                System.out.println("loan payment Frequency: " + loan.getPaymentFrequency());
+                System.out.println("loan interest: " + loan.getOriginalInterest());
+                System.out.println("total Loan Cost, Interest Plus Original Depth: " loan.getTotalLoanCostInterestPlusOriginalDepth());
+                System.out.println("loan status: " + loan.getStatus());
+
+            }
+        }
 
     }
 
+    public final static void PrintStatusConnectedLoans(Loan loan)
+    {
+        LoanStatus status=loan.getStatus();
+        switch (status)
+        {
+            case PENDING:
+            {
+                double missingMoney = loan.getLoanOriginalDepth() - calculateDeposit(loan.getLendersList());
+                System.out.println(missingMoney + "is missing in order to turn this loan active");
+            }
+            case ACTIVE:
+            {
+
+            }
+        }
+    }
 }

@@ -1,25 +1,18 @@
 package nave;
 
+import java.util.List;
+
 public class BackroundFunc {
 /*
-This func reads XML files into the system(Database class)
+This func gets lenders list and return thus sum of their deposit
  */
-    public void func1()
+    public  final static double calculateDeposit(List<Lenders> lendersList)
     {
-
-    }
-
-    /*
-    this func get all the current loans from the database class and
-     */
-
-    public void func2()
-    {
-        /*
-        for..
+        double sum=0;
+        for (Lenders lenders:lendersList)
         {
-        loan.print
+            sum+=lenders.getDeposit();
         }
-         */
+        return sum;
     }
 }
