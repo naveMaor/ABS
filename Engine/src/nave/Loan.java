@@ -1,28 +1,40 @@
 package nave;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Loan {
-    private LoanStatus status;//++++++++++++++
+    //Identification data members:
+    private loanCategory loanCategory;//
+    private LoanStatus status;//
     private int loanID;//shem mezha
     private String borrowerName;// mi shlekah et haalvaa
-    private List<String> lendersList = new ArrayList<>();//
-    private loanCategory loanCategory;//
-    private int originalInterest;//ribit mekorit
+
+    //List data members
+    private List<Lenders> lendersList = new ArrayList<>();//
+    private List<Payment> paymentsList = new ArrayList<>();//
+
+    //Time settings data members:
     private Timeline originalLoanTimeFrame;// misgeret zman halvaa
     private Timeline startLoanYaz;
     private Timeline paymentFrequency;
     private int  interestPercentagePerTimeUnit;//
+
+    //Original Loan info:
+    private int originalInterest;//ribit mekorit
+    private int loanOriginalDepth;//Schum halvaa mekori
+
+    //Dynamic data members:
     private int payedInterest;//ribit shulma
     private int payedFund;//keren shulma
-    private int currInterestDepth;//schum ribit nochechit
-    private int loanOriginalDepth;//Schum halvaa mekori
-    private int currFundDepth;//schum keren nochchit
-    private int totalRemainingPayment;//fund+interest
 
+    //remaining Loan data:
+    private int currInterestDepth = originalInterest - payedInterest;//schum ribit nochechit
+    private int currFundDepth = loanOriginalDepth - payedFund;//schum keren nochchit
+    private int totalRemainingLoan = currInterestDepth + currFundDepth;//fund+interest
+
+
+/*
 
     @Override
     public String toString()
@@ -38,10 +50,22 @@ public class Loan {
         System.out.println("Frequency of loan repayment requested: " + paymentFrequency);
 
         System.out.println("Loan status: " + status);
-
-
-
         return null;
+    }
+*/
+
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "status=" + status +
+                ", Loan ID:" + loanID +
+                ", borrower's Name :" + borrowerName + '\'' +
+                ", loan Category: " + loanCategory +
+                ", Requested Time Frame For Loan: " + originalLoanTimeFrame +
+                ", Frequency of loan repayment requested: " + paymentFrequency +
+                ", Loan interest: " + interestPercentagePerTimeUnit +
+                ", Requested loan: " + loanOriginalDepth +
+                '}';
     }
 
     public LoanStatus getStatus() {
@@ -51,4 +75,43 @@ public class Loan {
     public void setStatus(LoanStatus status) {
         this.status = status;
     }
+
+    public List<Lenders> getLendersList() {
+        return lendersList;
+    }
+
+    public Timeline getStartLoanYaz() {
+        return startLoanYaz;
+    }
+
+    public void setStartLoanYaz(Timeline startLoanYaz) {
+        this.startLoanYaz = startLoanYaz;
+    }
+    public void setLendersList(List<Lenders> lendersList) {
+        this.lendersList = lendersList;
+    }
+
+    public final void printACTIVEstatus()
+    {
+        System.out.println("Loan start time" + startLoanYaz + "Yazes");
+        int T = (Timeline.getCurrTime() - startLoanYaz.getTime()) % paymentFrequency.getTime();
+        System.out.println("next payment: " + T);
+        for(Payment pay:paymentsList)
+        {
+            System.out.println(pay.toString());
+        }
+        System.out.println("total payed fund: " + payedFund);
+        System.out.println("total payed interest: " + payedInterest);
+        System.out.println("remaining fund: " + currFundDepth);
+        System.out.println("remaining interest: " + currInterestDepth);
+
+    }
+    public final void printLenderList()
+    {
+        for (Lenders lender:lendersList)
+        {
+            System.out.println(lender);
+        }
+    }
+
 }

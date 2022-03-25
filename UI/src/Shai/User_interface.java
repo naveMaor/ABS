@@ -1,13 +1,6 @@
 package Shai;
 
-import nave.Database;
-import nave.Loan;
-import nave.LoanStatus;
-
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.Scanner;
-
+import nave.*;
 
 
 public class User_interface {
@@ -19,10 +12,13 @@ public class User_interface {
         {
             itr.toString();
 
-            if(itr.getStatus() == LoanStatus.PENDING)
-            {
+            itr.printLenderList();
 
+            if(itr.getStatus() == LoanStatus.ACTIVE)
+            {
+                itr.printACTIVEstatus();
             }
+            //else if()
         }
 
     }
