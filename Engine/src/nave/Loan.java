@@ -2,6 +2,7 @@ package nave;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Loan {
     //Identification data members:
@@ -24,6 +25,30 @@ public class Loan {
     //Original Loan info:
     private int originalInterest;//ribit mekorit
     private int loanOriginalDepth;//Schum halvaa mekori
+
+    public int getLoanID() {
+        return loanID;
+    }
+
+    public void setLoanID(int loanID) {
+        this.loanID = loanID;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Loan loan = (Loan) o;
+        return loanID == loan.loanID && loanCategory == loan.loanCategory && originalLoanTimeFrame.equals(loan.originalLoanTimeFrame) && startLoanYaz.equals(loan.startLoanYaz);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(loanCategory, originalLoanTimeFrame, startLoanYaz);
+    }
+
+    public Loan() {
+    }
 
     //Dynamic data members:
     private int payedInterest;//ribit shulma
@@ -54,6 +79,14 @@ public class Loan {
         return null;
     }
 */
+
+    public LoanCategory getLoanCategory() {
+        return loanCategory;
+    }
+
+    public void setLoanCategory(LoanCategory loanCategory) {
+        this.loanCategory = loanCategory;
+    }
 
     @Override
     public String toString() {
