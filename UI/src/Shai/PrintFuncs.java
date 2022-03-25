@@ -1,13 +1,13 @@
 package Shai;
 
-import nave.Account;
-import nave.Client;
-import nave.Tnua;
+import nave.*;
 
 import java.util.List;
 
+import static nave.Database.getLoanList;
+
 public class PrintFuncs {
-    public final void printAccountInfo(Account account)
+    public final static void printAccountInfo(Account account)
     {
         List<Tnua> tnuaList = account.getTnuaList();
         int beforeBalance=account.getCurrBalance();
@@ -27,8 +27,9 @@ public class PrintFuncs {
             beforeBalance=afterBalance;
         }
     }
-    public final void printConnectedLoans()
+    public final static void printConnectedLoans(Client client)
     {
+        String name = client.getFullName();
 
     }
 
