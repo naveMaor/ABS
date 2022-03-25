@@ -9,14 +9,14 @@ import static nave.Database.getLoanList;
 
 public class PrintFuncs {
 
-    public static final void printLenderList(List<Lenders> lendersList)
+    public static void printLenderList(List<Lenders> lendersList)
     {
         for (Lenders lender:lendersList)
         {
             System.out.println(lender);
         }
     }
-    public static final void printACTIVEstatus(Loan currLoan)
+    public static void printACTIVEstatus(Loan currLoan)
     {
         Timeline startLoanYaz = currLoan.getStartLoanYaz();
         Timeline paymentFrequency = currLoan.getPaymentFrequency();
@@ -37,7 +37,7 @@ public class PrintFuncs {
         System.out.println("remaining fund: " + currFundDepth);
         System.out.println("remaining interest: " + currInterestDepth);
     }
-    public static final void printRISKstatus(Loan currLoan){
+    public static void printRISKstatus(Loan currLoan){
         printACTIVEstatus(currLoan);
         List<Payment> paymentsList = currLoan.getPaymentsList();
         int sumNotPayed = 0;
@@ -54,8 +54,11 @@ public class PrintFuncs {
         System.out.println("num of delayed payments: " + numNotPayed);
         System.out.println("sum of delayed: " + sumNotPayed);
     }
-    public final void printFINISHEDstatus(Loan currLoan){
-        printLenderList();
+    public static void printFINISHEDstatus(Loan currLoan){
+        Timeline startLoanYaz = currLoan.getStartLoanYaz();
+        Timeline endLoanYaz = currLoan.getEndLoanYaz();
+        List<Payment> paymentsList = currLoan.getPaymentsList();
+
         System.out.println("start loan yaz: "+startLoanYaz);
         System.out.println("end loan yaz" + endLoanYaz);
         for(Payment pay:paymentsList)
@@ -101,7 +104,7 @@ public class PrintFuncs {
                 System.out.println("loan original fund: " + loan.getLoanOriginalDepth());
                 System.out.println("loan payment Frequency: " + loan.getPaymentFrequency());
                 System.out.println("loan interest: " + loan.getOriginalInterest());
-                System.out.println("total Loan Cost, Interest Plus Original Depth: " loan.getTotalLoanCostInterestPlusOriginalDepth());
+                System.out.println("total Loan Cost, Interest Plus Original Depth: " + loan.getTotalLoanCostInterestPlusOriginalDepth());
                 System.out.println("loan status: " + loan.getStatus());
 
             }

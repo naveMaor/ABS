@@ -13,14 +13,14 @@ public class User_interface {
         for(Loan itr:Database.getLoanList())
         {
             System.out.println(itr.toString());//showing loan
-            PrintFuncs.printLenderList(itr.getLendersList());//showing lenders list
+            PrintFuncs.printLenderList(itr.getLendersList());//showing lenders list PENDING
 
 
             switch (itr.getStatus())
             {
                 case ACTIVE: {PrintFuncs.printACTIVEstatus(itr);}break;
                 case RISK: {PrintFuncs.printRISKstatus(itr);}break;
-                case FINISHED:{}break;
+                case FINISHED:{PrintFuncs.printFINISHEDstatus(itr);}break;
             }
        }
 

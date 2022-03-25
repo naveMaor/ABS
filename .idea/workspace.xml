@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ed3ddab-6732-4805-8164-cff014149d4e" name="Changes" comment="made 2 test obj for load , getters &amp; setters for classes">
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/BackroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/BackroundFunc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Loan.java" afterDir="false" />
+    <list default="true" id="6ed3ddab-6732-4805-8164-cff014149d4e" name="Changes" comment="changed print funcs from engine to UI">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/manoa.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1648059493739</updated>
       <workItem from="1648059494921" duration="9970000" />
-      <workItem from="1648196846907" duration="12641000" />
+      <workItem from="1648196846907" duration="13240000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -104,7 +101,21 @@
       <option name="project" value="LOCAL" />
       <updated>1648205775404</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="made 2 test obj for load , getters &amp; setters for classes">
+      <created>1648219723328</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1648219723328</updated>
+    </task>
+    <task id="LOCAL-00006" summary="changed print funcs from engine to UI">
+      <created>1648219853358</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1648219853358</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,7 +137,8 @@
     <MESSAGE value="get set update" />
     <MESSAGE value="getters and setters" />
     <MESSAGE value="made 2 test obj for load , getters &amp; setters for classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="made 2 test obj for load , getters &amp; setters for classes" />
+    <MESSAGE value="changed print funcs from engine to UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed print funcs from engine to UI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -143,7 +155,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java</url>
-          <line>68</line>
+          <line>72</line>
           <properties class="Shai.PrintFuncs" method="printAccountInfo">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
