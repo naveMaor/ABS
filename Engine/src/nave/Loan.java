@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Loan {
     //Identification data members:
-    private loanCategory loanCategory;//
+    private LoanCategory loanCategory;//
     private LoanStatus status;//
     private int loanID;//shem mezha
     private String borrowerName;// mi shlekah et haalvaa
@@ -18,6 +18,7 @@ public class Loan {
     private Timeline originalLoanTimeFrame;// misgeret zman halvaa
     private Timeline startLoanYaz;
     private Timeline paymentFrequency;
+    private Timeline endLoanyaz;
     private int  interestPercentagePerTimeUnit;//
 
     //Original Loan info:
@@ -104,13 +105,39 @@ public class Loan {
         System.out.println("total payed interest: " + payedInterest);
         System.out.println("remaining fund: " + currFundDepth);
         System.out.println("remaining interest: " + currInterestDepth);
-
     }
     public final void printLenderList()
     {
         for (Lenders lender:lendersList)
         {
             System.out.println(lender);
+        }
+    }
+
+    public final void printRISKstatus(){
+        printACTIVEstatus();
+        int sumNotPayed = 0;
+        int numNotPayed=0;
+        for(Payment pays:paymentsList)
+        {
+            if(pays.isPayed() == false)
+            {
+                sumNotPayed+=pays.getFundPlusInterest();
+                ++numNotPayed;
+            }
+
+        }
+        System.out.println("num of delayed payments: " + numNotPayed);
+        System.out.println("sum of delayed: " + sumNotPayed);
+    }
+
+    public final void printFINISHEDstatus(){
+        printLenderList();
+        System.out.println("start loan yaz: "+startLoanYaz);
+        System.out.println("end loan yaz" + endLoanyaz);
+        for(Payment pay:paymentsList)
+        {
+            System.out.println(pay.toString());
         }
     }
 
