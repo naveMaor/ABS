@@ -1,8 +1,19 @@
 package nave;
 
 public class Tnua {
-    //NIKOL: if you need to explain iin the comments
-    //what is the meaning of the member/ method than the name os not good enough
     private Timeline timeOfMovement;// time of the movemonet was occured
     private int sum;// schum tnua
+
+    public Timeline getTimeOfMovement() {
+        return timeOfMovement;
+    }
+    public void setTimeOfMovement(Timeline timeOfMovement) {
+        this.timeOfMovement = timeOfMovement;
+    }
+    public int getSum() {
+        return sum;
+    }
+    public void setSum(int sum) {
+        this.sum = sum;
+    }
 }

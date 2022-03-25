@@ -2,14 +2,34 @@ package Shai;
 
 import nave.*;
 
+import java.util.List;
+
 
 public class User_interface {
 
 
     public void func2 (){
-
+        List<Lenders> lendersList;
         for(Loan itr:Database.getLoanList()) {
-            itr.toString();
+            System.out.println(itr.toString());
+            lendersList = itr.getLendersList();
+            for (Lenders lender:lendersList)
+            {
+                System.out.println(lender);
+            }
+
+            switch (itr.getStatus())
+            {
+                case ACTIVE:
+                {
+
+                }
+            }
+       }
+
+
+            /*
+                        itr.toString();
             itr.printLenderList();
 
             if (itr.getStatus() == LoanStatus.ACTIVE) {
@@ -24,12 +44,12 @@ public class User_interface {
                 itr.printFINISHEDstatus();
             }
 
-
-
+             */
         }
 
-    }
+    public void func3(){
 
+    }
 
 
 
