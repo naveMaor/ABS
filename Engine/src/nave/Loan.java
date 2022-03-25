@@ -25,6 +25,7 @@ public class Loan {
     //Original Loan info:
     private double originalInterest;//ribit mekorit
     private int loanOriginalDepth;//Schum halvaa mekori
+    private double totalLoanCostInterestPlusOriginalDepth = originalInterest + loanOriginalDepth;
 
     //Dynamic data members:
     private int payedInterest;//ribit shulma
@@ -35,6 +36,8 @@ public class Loan {
     private double currFundDepth;//schum keren nochchit
     private double totalRemainingLoan;//fund+interest
 
+
+    //constractor
     public Loan(LoanCategory loanCategory, LoanStatus status, String borrowerName, Timeline originalLoanTimeFrame, Timeline startLoanYaz, Timeline paymentFrequency, int interestPercentagePerTimeUnit, int loanOriginalDepth) {
         this.loanCategory = loanCategory;
         this.status = status;
@@ -50,119 +53,98 @@ public class Loan {
         calculateInterest();
     }
 
+
+    //getter and setters:
     public void generateLoanID() {
          this.loanID = Objects.hash(loanCategory, originalLoanTimeFrame, startLoanYaz);
     }
-
     public int getLoanID() {
         return loanID;
     }
-
     public String getBorrowerName() {
         return borrowerName;
     }
-
     public void setBorrowerName(String borrowerName) {
         this.borrowerName = borrowerName;
     }
-
     public List<Payment> getPaymentsList() {
         return paymentsList;
     }
-
     public void setPaymentsList(List<Payment> paymentsList) {
         this.paymentsList = paymentsList;
     }
-
     public Timeline getOriginalLoanTimeFrame() {
         return originalLoanTimeFrame;
     }
-
     public void setOriginalLoanTimeFrame(Timeline originalLoanTimeFrame) {
         this.originalLoanTimeFrame = originalLoanTimeFrame;
     }
-
     public Timeline getPaymentFrequency() {
         return paymentFrequency;
     }
-
     public void setPaymentFrequency(Timeline paymentFrequency) {
         this.paymentFrequency = paymentFrequency;
     }
-
     public Timeline getEndLoanYaz() {
         return endLoanYaz;
     }
-
     public void setEndLoanYaz(Timeline endLoanYaz) {
         this.endLoanYaz = endLoanYaz;
     }
-
     public int getInterestPercentagePerTimeUnit() {
         return interestPercentagePerTimeUnit;
     }
-
     public void setInterestPercentagePerTimeUnit(int interestPercentagePerTimeUnit) {
         this.interestPercentagePerTimeUnit = interestPercentagePerTimeUnit;
     }
-
     public double getOriginalInterest() {
         return originalInterest;
     }
-
     public void calculateInterest() {
         this.originalInterest = this.loanOriginalDepth * (this.interestPercentagePerTimeUnit/100.0);
     }
-
     public int getLoanOriginalDepth() {
         return loanOriginalDepth;
     }
-
     public void setLoanOriginalDepth(int loanOriginalDepth) {
         this.loanOriginalDepth = loanOriginalDepth;
     }
-
     public int getPayedInterest() {
         return payedInterest;
     }
-
     public void setPayedInterest(int payedInterest) {
         this.payedInterest = payedInterest;
     }
-
     public int getPayedFund() {
         return payedFund;
     }
-
     public void setPayedFund(int payedFund) {
         this.payedFund = payedFund;
     }
-
     public double getCurrInterestDepth() {
         return currInterestDepth;
     }
-
     public void setCurrInterestDepth(int currInterestDepth) {
         this.currInterestDepth = currInterestDepth;
     }
-
     public double getCurrFundDepth() {
         return currFundDepth;
     }
-
     public void setCurrFundDepth(int currFundDepth) {
         this.currFundDepth = currFundDepth;
     }
-
     public double getTotalRemainingLoan() {
         return totalRemainingLoan;
     }
-
     public void setTotalRemainingLoan(int totalRemainingLoan) {
         this.totalRemainingLoan = totalRemainingLoan;
     }
-
-
+    public double getTotalLoanCostInterestPlusOriginalDepth() {
+        return totalLoanCostInterestPlusOriginalDepth;
+    }
+    public void setTotalLoanCostInterestPlusOriginalDepth(double totalLoanCostInterestPlusOriginalDepth) {
+        this.totalLoanCostInterestPlusOriginalDepth = totalLoanCostInterestPlusOriginalDepth;
+    }
 
 
 /*
