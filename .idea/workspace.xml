@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="changed print funcs from engine to UI">
+    <list default="true" id="6ed3ddab-6732-4805-8164-cff014149d4e" name="Changes" comment="changed print funcs from engine to UI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/nave/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/nave/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Payment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/nave/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/BackroundFunc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/nave/BackroundFunc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/nave/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/nave/Database.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/nave/Loan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/LoanStatus.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/nave/LoanStatus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Payment.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/nave/Payment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Tnua.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/nave/Tnua.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +56,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager">
     <configuration name="Program" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -149,13 +163,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/UI/src/Shai/Program.java</url>
-          <line>60</line>
+          <line>66</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/UI/src/Shai/Program.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java</url>
+          <line>11</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

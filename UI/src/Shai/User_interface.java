@@ -8,7 +8,7 @@ import java.util.List;
 public class User_interface {
 
 
-    public void func2 (){
+    public static void func2 (){
        for(Loan itr:Database.getLoanList())
         {
             System.out.println(itr.toString());//showing loan
@@ -49,15 +49,9 @@ public class User_interface {
             PrintFuncs.printConnectedLoans(client);
         }
     }
+}
 
 
 
 
-    public static void main(String[] args)  {
 
-    }
-
-
-
-
-    }

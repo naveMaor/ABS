@@ -26,5 +26,7 @@ public class Database {
         Database.loanList = loanList;
     }
 
-
+public static void addLoanToLoanList(Loan newLoanNode){
+        loanList.add(newLoanNode);
+}
 }
