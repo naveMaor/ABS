@@ -28,7 +28,7 @@ public class Lenders {
     public void setDeposit(int deposit) {
         this.deposit = deposit;
     }
-
+//say hey hey shin chain
     @Override
     public String toString() {
         return "Lenders{" +
