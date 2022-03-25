@@ -19,12 +19,36 @@ public class Loan {
     private Timeline originalLoanTimeFrame;// misgeret zman halvaa
     private Timeline startLoanYaz;
     private Timeline paymentFrequency;
-    private Timeline endLoanyaz;
+    private Timeline endLoanYaz;
     private int  interestPercentagePerTimeUnit;//
 
     //Original Loan info:
-    private int originalInterest;//ribit mekorit
+    private double originalInterest;//ribit mekorit
     private int loanOriginalDepth;//Schum halvaa mekori
+
+    //Dynamic data members:
+    private int payedInterest;//ribit shulma
+    private int payedFund;//keren shulma
+
+    //remaining Loan data:
+    private double currInterestDepth;//schum ribit nochechit
+    private double currFundDepth;//schum keren nochchit
+    private double totalRemainingLoan;//fund+interest
+
+    public Loan(LoanCategory loanCategory, LoanStatus status, String borrowerName, Timeline originalLoanTimeFrame, Timeline startLoanYaz, Timeline paymentFrequency, int interestPercentagePerTimeUnit, int loanOriginalDepth) {
+        this.loanCategory = loanCategory;
+        this.status = status;
+        this.borrowerName = borrowerName;
+        this.originalLoanTimeFrame = originalLoanTimeFrame;
+        this.startLoanYaz = startLoanYaz;
+        this.paymentFrequency = paymentFrequency;
+        this.interestPercentagePerTimeUnit = interestPercentagePerTimeUnit;
+        this.loanOriginalDepth = loanOriginalDepth;
+        this.currInterestDepth = originalInterest - payedInterest;//schum ribit nochechit
+        this.currFundDepth = loanOriginalDepth - payedFund;//schum keren nochchit
+        this.totalRemainingLoan = currInterestDepth + currFundDepth;//fund+interest
+        calculateInterest();
+    }
 
     public void generateLoanID() {
          this.loanID = Objects.hash(loanCategory, originalLoanTimeFrame, startLoanYaz);
@@ -66,12 +90,12 @@ public class Loan {
         this.paymentFrequency = paymentFrequency;
     }
 
-    public Timeline getEndLoanyaz() {
-        return endLoanyaz;
+    public Timeline getEndLoanYaz() {
+        return endLoanYaz;
     }
 
-    public void setEndLoanyaz(Timeline endLoanyaz) {
-        this.endLoanyaz = endLoanyaz;
+    public void setEndLoanYaz(Timeline endLoanYaz) {
+        this.endLoanYaz = endLoanYaz;
     }
 
     public int getInterestPercentagePerTimeUnit() {
@@ -82,12 +106,12 @@ public class Loan {
         this.interestPercentagePerTimeUnit = interestPercentagePerTimeUnit;
     }
 
-    public int getOriginalInterest() {
+    public double getOriginalInterest() {
         return originalInterest;
     }
 
-    public void setOriginalInterest(int originalInterest) {
-        this.originalInterest = originalInterest;
+    public void calculateInterest() {
+        this.originalInterest = this.loanOriginalDepth * (this.interestPercentagePerTimeUnit/100.0);
     }
 
     public int getLoanOriginalDepth() {
@@ -114,7 +138,7 @@ public class Loan {
         this.payedFund = payedFund;
     }
 
-    public int getCurrInterestDepth() {
+    public double getCurrInterestDepth() {
         return currInterestDepth;
     }
 
@@ -122,7 +146,7 @@ public class Loan {
         this.currInterestDepth = currInterestDepth;
     }
 
-    public int getCurrFundDepth() {
+    public double getCurrFundDepth() {
         return currFundDepth;
     }
 
@@ -130,7 +154,7 @@ public class Loan {
         this.currFundDepth = currFundDepth;
     }
 
-    public int getTotalRemainingLoan() {
+    public double getTotalRemainingLoan() {
         return totalRemainingLoan;
     }
 
@@ -138,14 +162,7 @@ public class Loan {
         this.totalRemainingLoan = totalRemainingLoan;
     }
 
-    //Dynamic data members:
-    private int payedInterest;//ribit shulma
-    private int payedFund;//keren shulma
 
-    //remaining Loan data:
-    private int currInterestDepth = originalInterest - payedInterest;//schum ribit nochechit
-    private int currFundDepth = loanOriginalDepth - payedFund;//schum keren nochchit
-    private int totalRemainingLoan = currInterestDepth + currFundDepth;//fund+interest
 
 
 /*
@@ -255,7 +272,7 @@ public class Loan {
     public final void printFINISHEDstatus(){
         printLenderList();
         System.out.println("start loan yaz: "+startLoanYaz);
-        System.out.println("end loan yaz" + endLoanyaz);
+        System.out.println("end loan yaz" + endLoanYaz);
         for(Payment pay:paymentsList)
         {
             System.out.println(pay.toString());
