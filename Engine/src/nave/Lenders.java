@@ -1,40 +1,37 @@
 package nave;
 
 public class Lenders {
-    private String first_name;
-    private String last_name;
+    private String fullName;
     private int deposit;
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
-    }
-
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public int getDeposit() {
         return deposit;
     }
 
+    public Lenders(String fullName, int deposit) {
+        this.fullName = fullName;
+        this.deposit = deposit;
+    }
+
     public void setDeposit(int deposit) {
         this.deposit = deposit;
     }
 //say hey hey shin chain
+
     @Override
     public String toString() {
         return "Lenders{" +
-                "first name :" + first_name + '\'' +
-                ", last name :" + last_name + '\'' +
-                ", deposit :" + deposit +
+                "fullName: " + fullName + '\'' +
+                ", deposit: " + deposit +
                 '}';
     }
 }
+

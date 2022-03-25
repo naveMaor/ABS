@@ -27,6 +27,17 @@ public class Payment {
         return fundPortion;
     }
 
+    public Payment() {
+    }
+
+    public Payment(int fundPortion, int interestPortion, Timeline paymentYaz, int fundPlusInterest, boolean isPayed) {
+        this.fundPortion = fundPortion;
+        this.interestPortion = interestPortion;
+        this.paymentYaz = paymentYaz;
+        this.fundPlusInterest = fundPlusInterest;
+        this.isPayed = isPayed;
+    }
+
     public void setFundPortion(int fundPortion) {
         this.fundPortion = fundPortion;
     }

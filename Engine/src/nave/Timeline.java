@@ -9,6 +9,10 @@ public class Timeline {
         return String.valueOf(time);
     }
 
+    public Timeline(int time) {
+        this.time = time;
+    }
+
     public int getTime() {
         return time;
     }
