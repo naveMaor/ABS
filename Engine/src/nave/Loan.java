@@ -145,34 +145,29 @@ public class Loan {
     public void setTotalLoanCostInterestPlusOriginalDepth(double totalLoanCostInterestPlusOriginalDepth) {
         this.totalLoanCostInterestPlusOriginalDepth = totalLoanCostInterestPlusOriginalDepth;
     }
-
-
-/*
-
-    @Override
-    public String toString()
-    {
-        System.out.println("Loan ID: " + loanID);
-        System.out.println("borrower's Name :" + borrowerName);
-        System.out.println("loan Category: " +loanCategory );
-currFun
-        System.out.println("Requested loan: " + loanOriginalDepth );
-        System.out.println("Requested Time Frame For Loan: " + originalLoanTimeFrame);
-
-        System.out.println("Loan interest: " + interestPercentagePerTimeUnit );
-        System.out.println("Frequency of loan repayment requested: " + paymentFrequency);
-
-        System.out.println("Loan status: " + status);
-        return null;
-    }
-*/
-
     public LoanCategory getLoanCategory() {
         return loanCategory;
     }
-
     public void setLoanCategory(LoanCategory loanCategory) {
         this.loanCategory = loanCategory;
+    }
+    public LoanStatus getStatus() {
+        return status;
+    }
+    public void setStatus(LoanStatus status) {
+        this.status = status;
+    }
+    public List<Lenders> getLendersList() {
+        return lendersList;
+    }
+    public Timeline getStartLoanYaz() {
+        return startLoanYaz;
+    }
+    public void setStartLoanYaz(Timeline startLoanYaz) {
+        this.startLoanYaz = startLoanYaz;
+    }
+    public void setLendersList(List<Lenders> lendersList) {
+        this.lendersList = lendersList;
     }
 
     @Override
@@ -189,30 +184,8 @@ currFun
                 '}';
     }
 
-    public LoanStatus getStatus() {
-        return status;
-    }
 
-    public void setStatus(LoanStatus status) {
-        this.status = status;
-    }
-
-    public List<Lenders> getLendersList() {
-        return lendersList;
-    }
-
-    public Timeline getStartLoanYaz() {
-        return startLoanYaz;
-    }
-
-    public void setStartLoanYaz(Timeline startLoanYaz) {
-        this.startLoanYaz = startLoanYaz;
-    }
-    public void setLendersList(List<Lenders> lendersList) {
-        this.lendersList = lendersList;
-    }
-
-    public final void printACTIVEstatus()
+/*    public final void printACTIVEstatus()
     {
         System.out.println("Loan start time" + startLoanYaz + "Yazes");
         int T = (Timeline.getCurrTime() - startLoanYaz.getTime()) % paymentFrequency.getTime();
@@ -225,9 +198,11 @@ currFun
         System.out.println("total payed interest: " + payedInterest);
         System.out.println("remaining fund: " + currFundDepth);
         System.out.println("remaining interest: " + currInterestDepth);
-    }
-    public int nextYazToPay() {return(Timeline.getCurrTime() - startLoanYaz.getTime()) % paymentFrequency.getTime();}
+    }*/
 
+    public int nextYazToPay() {return(Timeline.getCurrTime() - startLoanYaz.getTime()) % paymentFrequency.getTime();}
+    public double nextExpectedPayment(){ return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTime());
+    }
 
 
 

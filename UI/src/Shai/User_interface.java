@@ -9,18 +9,17 @@ public class User_interface {
 
 
     public void func2 (){
-        List<Lenders> lendersList;
-        for(Loan itr:Database.getLoanList())
+       for(Loan itr:Database.getLoanList())
         {
             System.out.println(itr.toString());//showing loan
             PrintFuncs.printLenderList(itr.getLendersList());//showing lenders list PENDING
-
-
             switch (itr.getStatus())
             {
                 case ACTIVE: {PrintFuncs.printACTIVEstatus(itr);}break;
-                case RISK: {PrintFuncs.printRISKstatus(itr);}break;
+                case RISK: {PrintFuncs.printACTIVEstatus(itr);PrintFuncs.printRISKstatus(itr);}break;
                 case FINISHED:{PrintFuncs.printFINISHEDstatus(itr);}break;
+                default:
+                    break;
             }
        }
 
@@ -45,7 +44,10 @@ public class User_interface {
         }
 
     public void func3(){
-
+        for(Client client:Database.getClientMap().values()){
+            PrintFuncs.printAccountInfo(client.getMyAccount());
+            PrintFuncs.printConnectedLoans(client);
+        }
     }
 
 

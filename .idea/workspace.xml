@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6ed3ddab-6732-4805-8164-cff014149d4e" name="Changes" comment="changed print funcs from engine to UI">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="changed print funcs from engine to UI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Loan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
     </list>
@@ -33,6 +36,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="26nVmCFpoqxMJx0QxkZ8Sa64cWa" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -152,15 +156,6 @@
           <url>file://$PROJECT_DIR$/UI/src/Shai/Program.java</url>
           <line>53</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java</url>
-          <line>72</line>
-          <properties class="Shai.PrintFuncs" method="printAccountInfo">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

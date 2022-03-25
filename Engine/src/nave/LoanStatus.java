@@ -1,5 +1,5 @@
 package nave;
 
 public enum LoanStatus {
-    PENDING , ACTIVE,RISK,FINISHED
+    PENDING , ACTIVE,RISK,FINISHED,NEW
 }

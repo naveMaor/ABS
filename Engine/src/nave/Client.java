@@ -6,38 +6,32 @@ import java.util.List;
 public class Client {
     private String fullName;
     private Account myAccount;
-    private List<Loan> cleintAsLenderLoanList = new ArrayList<>();//
-    private List<Loan> cleintAsBorrowLoanList = new ArrayList<>();//
+    private List<Loan> clientAsLenderLoanList = new ArrayList<>();//
+    private List<Loan> clientAsBorrowLoanList = new ArrayList<>();//
 
-    public List<Loan> getCleintAsLenderLoanList() {
-        return cleintAsLenderLoanList;
+
+
+    public List<Loan> getClientAsLenderLoanList() {
+        return clientAsLenderLoanList;
     }
-
-    public void setCleintAsLenderLoanList(List<Loan> cleintAsLenderLoanList) {
-        this.cleintAsLenderLoanList = cleintAsLenderLoanList;
+    public void setClientAsLenderLoanList(List<Loan> clientAsLenderLoanList) {
+        this.clientAsLenderLoanList = clientAsLenderLoanList;
     }
-
-    public List<Loan> getCleintAsBorrowLoanList() {
-        return cleintAsBorrowLoanList;
+    public List<Loan> getClientAsBorrowLoanList() {
+        return clientAsBorrowLoanList;
     }
-
-    public void setCleintAsBorrowLoanList(List<Loan> cleintAsBorrowLoanList) {
-        this.cleintAsBorrowLoanList = cleintAsBorrowLoanList;
+    public void setClientAsBorrowLoanList(List<Loan> clientAsBorrowLoanList) {
+        this.clientAsBorrowLoanList = clientAsBorrowLoanList;
     }
-
     public String getFullName() {
         return fullName;
     }
-
-
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-
     public Account getMyAccount() {
         return myAccount;
     }
-
     public void setMyAccount(Account myAccount) {
         this.myAccount = myAccount;
     }

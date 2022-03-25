@@ -9,14 +9,14 @@ public class Database {
 
 
     private static List<Loan> loanList = new ArrayList<>();
-    private Map<String, Client> clientMap =new HashMap<>();
+    private static Map<String, Client> clientMap =new HashMap<>();
 
-    public Map<String, Client> getClientMap() {
+    public static Map<String, Client> getClientMap() {
         return clientMap;
     }
 
-    public void setClientMap(Map<String, Client> clientMap) {
-        this.clientMap = clientMap;
+    public static void setClientMap(Map<String, Client> clientMap) {
+        Database.clientMap = clientMap;
     }
 
     public static List<Loan> getLoanList() {

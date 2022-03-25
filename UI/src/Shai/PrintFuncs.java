@@ -5,19 +5,16 @@ import nave.*;
 import java.util.List;
 
 import static nave.BackroundFunc.calculateDeposit;
-import static nave.Database.getLoanList;
 
 public class PrintFuncs {
 
-    public static void printLenderList(List<Lenders> lendersList)
-    {
+    public static void printLenderList(List<Lenders> lendersList) {
         for (Lenders lender:lendersList)
         {
             System.out.println(lender);
         }
     }
-    public static void printACTIVEstatus(Loan currLoan)
-    {
+    public static void printACTIVEstatus(Loan currLoan) {
         Timeline startLoanYaz = currLoan.getStartLoanYaz();
         Timeline paymentFrequency = currLoan.getPaymentFrequency();
         List<Payment> paymentsList = currLoan.getPaymentsList();
@@ -38,7 +35,7 @@ public class PrintFuncs {
         System.out.println("remaining interest: " + currInterestDepth);
     }
     public static void printRISKstatus(Loan currLoan){
-        printACTIVEstatus(currLoan);
+
         List<Payment> paymentsList = currLoan.getPaymentsList();
         int sumNotPayed = 0;
         int numNotPayed=0;
@@ -70,8 +67,7 @@ public class PrintFuncs {
 
 
 
-    public final static void printAccountInfo(Account account)
-    {
+    public final static void printAccountInfo(Account account) {
         List<Tnua> tnuaList = account.getTnuaList();
         int beforeBalance=account.getCurrBalance();
         int afterBalance=account.getCurrBalance();;
@@ -90,30 +86,33 @@ public class PrintFuncs {
             beforeBalance=afterBalance;
         }
     }
-    public final static void printConnectedLoans(Client client)
-    {
+    public final static void printConnectedLoans(Client client) {
         String name = client.getFullName();
-        List<Loan> l = client.getCleintAsLenderLoanList();
-        if(!l.isEmpty())
-        {
-            System.out.println("this is the Loans that " + name + "is a lender:");
-            for (Loan loan:l)
-            {
-                System.out.println("Loan Id: " + loan.getLoanID());
-                System.out.println("Loan category: " + loan.getLoanCategory());
-                System.out.println("loan original fund: " + loan.getLoanOriginalDepth());
-                System.out.println("loan payment Frequency: " + loan.getPaymentFrequency());
-                System.out.println("loan interest: " + loan.getOriginalInterest());
-                System.out.println("total Loan Cost, Interest Plus Original Depth: " + loan.getTotalLoanCostInterestPlusOriginalDepth());
-                System.out.println("loan status: " + loan.getStatus());
+        List<Loan> lenderLoanList = client.getClientAsLenderLoanList();
+        List<Loan> borrowLoanList = client.getClientAsBorrowLoanList();
 
+        if(!lenderLoanList.isEmpty()) {
+            System.out.println("this are the Loans that " + name + "is a lender:");
+            for (Loan loan:lenderLoanList)
+            {
+                printLoanInfo(loan);
             }
         }
-
+        else{
+            System.out.println("there are no Loans that" + name + "is a lender");
+        }
+        if(!borrowLoanList.isEmpty()) {
+            System.out.println("this are the Loans that " + name + "is a borrower:");
+            for (Loan loan:borrowLoanList)
+            {
+                printLoanInfo(loan);
+            }
+        }
+        else{
+            System.out.println("there are no Loans that" + name + "is a borrower");
+        }
     }
-
-    public final static void PrintStatusConnectedLoans(Loan loan)
-    {
+    public final static void PrintStatusConnectedLoans(Loan loan) {
         LoanStatus status=loan.getStatus();
         switch (status)
         {
@@ -121,11 +120,37 @@ public class PrintFuncs {
             {
                 double missingMoney = loan.getLoanOriginalDepth() - calculateDeposit(loan.getLendersList());
                 System.out.println(missingMoney + "is missing in order to turn this loan active");
+                break;
             }
             case ACTIVE:
             {
-
+                System.out.println("next payment is in " + loan.nextYazToPay() + "yazes");
+                System.out.println("borrower will pay in the next payment: " + loan.nextExpectedPayment());
+                break;
             }
+            case RISK:
+            {
+                printRISKstatus(loan);
+                break;
+            }
+            case FINISHED:
+            {
+                System.out.println("start loan yaz: "+loan.getStartLoanYaz());
+                System.out.println("end loan yaz" + loan.getEndLoanYaz());
+                break;
+            }
+            default:
+                break;
         }
+    }
+    public final static void printLoanInfo(Loan loan){
+        System.out.println("Loan Id: " + loan.getLoanID());
+        System.out.println("Loan category: " + loan.getLoanCategory());
+        System.out.println("loan original fund: " + loan.getLoanOriginalDepth());
+        System.out.println("loan payment Frequency: " + loan.getPaymentFrequency());
+        System.out.println("loan interest: " + loan.getOriginalInterest());
+        System.out.println("total Loan Cost, Interest Plus Original Depth: " + loan.getTotalLoanCostInterestPlusOriginalDepth());
+        System.out.println("loan status: " + loan.getStatus());
+        PrintStatusConnectedLoans(loan);
     }
 }
