@@ -60,7 +60,7 @@ public class Payment {
 
     @Override
     public String toString() {
-        String payed = isPayed ? "" : "Not Payed!";
+        String payed = isPayed ? "" : ", Not Payed!";
         return "{" +
                 "Fund Portion: " + fundPortion +
                 ", interest Portion: " + interestPortion +

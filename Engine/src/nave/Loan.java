@@ -172,16 +172,15 @@ public class Loan {
 
     @Override
     public String toString() {
-        return "Loan{" +
-                "status=" + status +
+        return "Loan: " +
+                "status; " + status +
                 ", Loan ID:" + loanID +
-                ", borrower's Name :" + borrowerName + '\'' +
+                ", borrower's Name: " + borrowerName + '\'' +
                 ", loan Category: " + loanCategory +
                 ", Requested Time Frame For Loan: " + originalLoanTimeFrame +
                 ", Frequency of loan repayment requested: " + paymentFrequency +
                 ", Loan interest: " + interestPercentagePerTimeUnit +
-                ", Requested loan: " + loanOriginalDepth +
-                '}';
+                ", Requested loan: " + loanOriginalDepth;
     }
 
 
