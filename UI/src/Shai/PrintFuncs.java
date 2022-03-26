@@ -188,6 +188,7 @@ public class PrintFuncs {
      * @param client
      * @return ArrayList <Loan>
      */
+    //TODO ADD OPTION FOR CHOOSING NO CATEGORY AT ALL!!!!
     public static ArrayList<Loan> loanToInvest (Client client) {
         ArrayList<Loan> result = new ArrayList<>();
         ArrayList<LoanCategory> loanCategoryUserList = new ArrayList<>();
@@ -232,9 +233,9 @@ public class PrintFuncs {
         int amount = 0, balance = client.getMyAccount().getCurrBalance(),index = 1;;
         System.out.println("Please enter the amount you would like the client to invest in this current yaz, a number between 1 and " + balance);
         amount = readIntFromUser(1, balance);
-
+        ArrayList<Integer> chosenLoansNumb = new ArrayList<>();
         ArrayList<Loan> Loanslist = loanToInvest(client);
-        ArrayList<Loan> result = new ArrayList<>();
+        ArrayList<Loan> result ;
         for (Loan loan : Loanslist) {
             System.out.println(index + ". " + loan);
             ++index;
@@ -243,7 +244,6 @@ public class PrintFuncs {
         do {
             System.out.println("please choose loans that the client would like to invest in: \n+" +
                     "\"(Your answer must be returned in the above format: \"Desired loan number\", \"Desired loan number\", etc.)\"");
-            ArrayList<Integer> chosenLoansNumb = new ArrayList<>();
             Scanner br = new Scanner(System.in);
             String lines = br.nextLine();
             String[] userInputs = lines.trim().split(",");
@@ -252,16 +252,28 @@ public class PrintFuncs {
                     chosenLoansNumb.add(Integer.parseInt(userInput));
                 } catch (NumberFormatException exception) {
                     System.out.println("Please enter only vaild inputs: (inputs must be numbers only!)");
+                    chosenLoansNumb.clear();
                     valid=false;
                 }
             }
         }while(!valid);
-
+        result = getResultedArray(Loanslist,chosenLoansNumb);
         return result;
     }
-
-
-
+    /**
+     * THIS FUNCTION BUILD NEW LOAN ARRAY FROM THE INDEXES IN THE NUMBERS ARRAY
+     * @param loanArrayList
+     * @param numbersArrayList
+     * @return
+     */
+    public static ArrayList<Loan> getResultedArray(ArrayList<Loan> loanArrayList, ArrayList<Integer> numbersArrayList){
+        ArrayList<Loan> result = new ArrayList<>();
+        for (Integer integer:numbersArrayList)
+        {
+            result.add(loanArrayList.get(integer));
+        }
+        return result;
+    }
     public static ArrayList<Integer> getLoanFilters (int balance){
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> result = new ArrayList<>();
@@ -295,6 +307,7 @@ public class PrintFuncs {
                     userSelectedCategories.add(LoanCategory.values()[Integer.parseInt(userInput) - 1]);
                 } catch (NumberFormatException exception) {
                     System.out.println("Please enter only vaild inputs: (inputs must be numbers only!)");
+                    userSelectedCategories.clear();
                     valid = false;
                 }
             }

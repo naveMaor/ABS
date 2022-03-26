@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="FUNC 3 FINISHED AND WAITING FOR TESTING">
-      <change afterPath="$PROJECT_DIR$/Engine/src/nave/LoanFilters.java" afterDir="false" />
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="FUNC 6 almost finished">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Loan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +117,13 @@
       <option name="project" value="LOCAL" />
       <updated>1648219853358</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎00007" summary="FUNC 6 almost finished">
+      <created>1648307957812</created>
+      <option name="number" value="LOCAL‎00007" />
+      <option name="presentableId" value="LOCAL‎00007" />
+      <updated>1648307957812</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,7 +146,8 @@
     <MESSAGE value="getters and setters" />
     <MESSAGE value="made 2 test obj for load , getters &amp; setters for classes" />
     <MESSAGE value="changed print funcs from engine to UI" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed print funcs from engine to UI" />
+    <MESSAGE value="FUNC 6 almost finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="FUNC 6 almost finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
