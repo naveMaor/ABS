@@ -203,7 +203,9 @@ public class Loan {
     public int nextYazToPay() {return(Timeline.getCurrTime() - startLoanYaz.getTime()) % paymentFrequency.getTime();}
     public double nextExpectedPayment(){ return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTime());
     }
-
+    public double InterestperYaz()    {
+        return (originalInterest/originalInterest);
+    }
 
 
 }

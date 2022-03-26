@@ -8,6 +8,8 @@ import static nave.BackroundFunc.calculateDeposit;
 
 public class PrintFuncs {
 
+
+    // func2 helpers:
     public static void printLenderList(List<Lenders> lendersList) {
         for (Lenders lender:lendersList)
         {
@@ -63,10 +65,7 @@ public class PrintFuncs {
             System.out.println(pay.toString());
         }
     }
-
-
-
-
+    //func3 helpers
     public final static void printAccountInfo(Account account) {
         List<Tnua> tnuaList = account.getTnuaList();
         int beforeBalance=account.getCurrBalance();
@@ -153,4 +152,6 @@ public class PrintFuncs {
         System.out.println("loan status: " + loan.getStatus());
         PrintStatusConnectedLoans(loan);
     }
+
+    //func6 helpers
 }
