@@ -2,7 +2,9 @@ package Shai;
 
 import nave.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static nave.BackroundFunc.calculateDeposit;
 
@@ -66,7 +68,7 @@ public class PrintFuncs {
         }
     }
     //func3 helpers
-    public final static void printAccountInfo(Account account) {
+    public static void printAccountInfo(Account account) {
         List<Tnua> tnuaList = account.getTnuaList();
         int beforeBalance=account.getCurrBalance();
         int afterBalance=account.getCurrBalance();;
@@ -85,7 +87,7 @@ public class PrintFuncs {
             beforeBalance=afterBalance;
         }
     }
-    public final static void printConnectedLoans(Client client) {
+    public static void printConnectedLoans(Client client) {
         String name = client.getFullName();
         List<Loan> lenderLoanList = client.getClientAsLenderLoanList();
         List<Loan> borrowLoanList = client.getClientAsBorrowLoanList();
@@ -111,7 +113,7 @@ public class PrintFuncs {
             System.out.println("there are no Loans that" + name + "is a borrower");
         }
     }
-    public final static void PrintStatusConnectedLoans(Loan loan) {
+    public static void PrintStatusConnectedLoans(Loan loan) {
         LoanStatus status=loan.getStatus();
         switch (status)
         {
@@ -142,7 +144,7 @@ public class PrintFuncs {
                 break;
         }
     }
-    public final static void printLoanInfo(Loan loan){
+    public static void printLoanInfo(Loan loan){
         System.out.println("Loan Id: " + loan.getLoanID());
         System.out.println("Loan category: " + loan.getLoanCategory());
         System.out.println("loan original fund: " + loan.getLoanOriginalDepth());
@@ -154,4 +156,192 @@ public class PrintFuncs {
     }
 
     //func6 helpers
+
+    /**
+     * THIS FUNC PRINTS ALL THE CLIENTS IN THE SYSTEM AND ASK THE USER TO CHOOSE ONE, IT RETURNS THE CLIENT USER CHOSE
+     * @return
+     */
+    public static Client printAndChooseClientsInTheSystem(){
+        ArrayList<Client> v = new ArrayList<>();
+        int i=1;
+        for(Client client:Database.getClientMap().values()) {
+            System.out.println(i + ". " + client.getFullName());
+            System.out.println("current balance: " + client.getMyAccount().getCurrBalance());
+            v.add(client);
+        }
+        i =readIntFromUser(1,Database.getClientMap().size());
+        return v.get(i-1);//todo might be i instead of i-1 becasue array starts from 0?
+    }
+
+    /**
+     * THIS FUNC INITIALLIZE THE CLIENT MENU
+     * @return
+     */
+    public static Client customersMenu(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("please choose a customer to invest with");
+        return printAndChooseClientsInTheSystem();
+    }
+
+    /**
+     * THIS FUNC GETS A CLIENT AND THEN ASK THE USER WHAT LOANS DO THEY WANT THE CLIENT TO PARTICIPATE ACCORDING TO PARAMETERS
+     * @param client
+     * @return ArrayList <Loan>
+     */
+    public static ArrayList<Loan> loanToInvest (Client client) {
+        ArrayList<Loan> result = new ArrayList<>();
+        ArrayList<LoanCategory> loanCategoryUserList = new ArrayList<>();
+        int balance = client.getMyAccount().getCurrBalance(), minYazTimeFrame = 0;
+        ArrayList<Integer> loanFilters;
+        Double minInterestPerYaz = Double.valueOf(0);
+        //part 2 in word document
+
+        loanFilters = getLoanFilters(balance);
+        if (loanFilters.get(LoanFilters.LOANCATEGORY.ordinal()) == 1) {
+            loanCategoryUserList = chooseCategoryToInvest();
+        }
+        if (loanFilters.get(LoanFilters.MINIMUMINTERESTPERYAZ.ordinal()) == 1) {
+            System.out.println("Please choose the minimum interest per yaz ");
+            minInterestPerYaz = readDoubleFromUser(0, Double.MAX_VALUE);
+        }
+        if (loanFilters.get(LoanFilters.MINIMUMYAZTIMEFRAME.ordinal()) == 1) {
+            System.out.println("Please choose the minimum yaz time frame ");
+            minYazTimeFrame = readIntFromUser(0, Integer.MAX_VALUE);
+        }
+        //part 3 in word document:
+        for (Loan loan : Database.getLoanList()) {
+            if (loan.getStatus() == LoanStatus.NEW || loan.getStatus() == LoanStatus.PENDING)//if the loan is new or pending
+                if (client.getFullName() != loan.getBorrowerName())//If the client's name is not the borrower
+                        if (minInterestPerYaz <= loan.getInterestPercentagePerTimeUnit())
+                            if (minYazTimeFrame <= loan.getOriginalLoanTimeFrame().getTime())
+                                if (checkCategoryList(loanCategoryUserList, loan.getLoanCategory()))
+                                    result.add(loan);
+
+
+
+
+        }
+        return result;
+    }
+
+    /**
+     * this func gets client and ASK THE USER WHAT LOANS IT WILL BE PARTICIPATE IN
+     * @param client
+     */
+    public static ArrayList<Loan> ChooseLoans(Client client) {
+        int amount = 0, balance = client.getMyAccount().getCurrBalance(),index = 1;;
+        System.out.println("Please enter the amount you would like the client to invest in this current yaz, a number between 1 and " + balance);
+        amount = readIntFromUser(1, balance);
+
+        ArrayList<Loan> Loanslist = loanToInvest(client);
+        ArrayList<Loan> result = new ArrayList<>();
+        for (Loan loan : Loanslist) {
+            System.out.println(index + ". " + loan);
+            ++index;
+        }
+        boolean valid =true;
+        do {
+            System.out.println("please choose loans that the client would like to invest in: \n+" +
+                    "\"(Your answer must be returned in the above format: \"Desired loan number\", \"Desired loan number\", etc.)\"");
+            ArrayList<Integer> chosenLoansNumb = new ArrayList<>();
+            Scanner br = new Scanner(System.in);
+            String lines = br.nextLine();
+            String[] userInputs = lines.trim().split(",");
+            for (String userInput : userInputs) {
+                try {
+                    chosenLoansNumb.add(Integer.parseInt(userInput));
+                } catch (NumberFormatException exception) {
+                    System.out.println("Please enter only vaild inputs: (inputs must be numbers only!)");
+                    valid=false;
+                }
+            }
+        }while(!valid);
+
+        return result;
+    }
+
+
+
+    public static ArrayList<Integer> getLoanFilters (int balance){
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Integer> result = new ArrayList<>();
+        System.out.println("Would you like to filter by Loan category? press 0 or 1");
+        result.add(readIntFromUser(0,1));
+        System.out.println("Thank you, would you like to filter by minimum interest per yaz? press 0 or 1");
+        result.add(readIntFromUser(0,1));
+        System.out.println("Thank you, would you like to filter by minimum yaz time frame? press 0 or 1");
+        result.add(readIntFromUser(0,1));
+        System.out.println("Thank you");
+        return result;
+    }
+    public static ArrayList<LoanCategory> chooseCategoryToInvest() {
+        boolean valid = true;
+        ArrayList<LoanCategory> userSelectedCategories = new ArrayList<>();
+        do {
+            System.out.println("Please select from the following list of options, the desired categories for investment:\n" +
+                    "(Your answer must be returned in the above format: \"Desired category number\", \"Desired category number\", etc.)");
+            int index=1;
+            for (LoanCategory category : LoanCategory.values()) {
+                System.out.println(index+". "+category);
+                ++index;
+            }
+            Scanner br = new Scanner(System.in);
+            String lines = br.nextLine();
+            String[] userInputs = lines.trim().split(",");
+
+
+            for (String userInput : userInputs) {
+                try {
+                    userSelectedCategories.add(LoanCategory.values()[Integer.parseInt(userInput) - 1]);
+                } catch (NumberFormatException exception) {
+                    System.out.println("Please enter only vaild inputs: (inputs must be numbers only!)");
+                    valid = false;
+                }
+            }
+        }while(!valid);
+
+        return userSelectedCategories;
+
+    }
+    public static boolean checkCategoryList(ArrayList<LoanCategory> loanCategoryArrayList,LoanCategory category) {
+        for(LoanCategory loanCategory:loanCategoryArrayList)
+        {
+            if(loanCategory==category){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    //general
+    public static int readIntFromUser(int min, int max){
+        Scanner sc = new Scanner(System.in);
+        int number;
+        do {
+            System.out.println("Please enter a number between" + min + "and " + max);
+            while (!sc.hasNextInt()) {
+                System.out.println("pleae enter a number!");
+                sc.next(); // this is important!
+            }
+            number = sc.nextInt();
+        } while (number < min || number > max);
+        return number;
+    }
+    public static double readDoubleFromUser(double min, double max){
+        Scanner sc = new Scanner(System.in);
+        Double number;
+        do {
+            System.out.println("Please enter a number between" + min + "and " + max);
+            while (!sc.hasNextInt()) {
+                System.out.println("pleae enter a number!");
+                sc.next(); // this is important!
+            }
+            number = sc.nextDouble();
+        } while (number < min || number > max);
+        return number;
+    }
+
+
+
 }

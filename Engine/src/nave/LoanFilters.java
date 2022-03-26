@@ -1,0 +1,5 @@
+package nave;
+
+public enum LoanFilters {
+    LOANCATEGORY,MINIMUMINTERESTPERYAZ,MINIMUMYAZTIMEFRAME
+}

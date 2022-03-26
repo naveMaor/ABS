@@ -184,27 +184,38 @@ public class Loan {
     }
 
 
-/*    public final void printACTIVEstatus()
-    {
-        System.out.println("Loan start time" + startLoanYaz + "Yazes");
-        int T = (Timeline.getCurrTime() - startLoanYaz.getTime()) % paymentFrequency.getTime();
-        System.out.println("next payment: " + T);
-        for(Payment pay:paymentsList)
-        {
-            System.out.println(pay.toString());
-        }
-        System.out.println("total payed fund: " + payedFund);
-        System.out.println("total payed interest: " + payedInterest);
-        System.out.println("remaining fund: " + currFundDepth);
-        System.out.println("remaining interest: " + currInterestDepth);
-    }*/
-
+    /**
+     * this func caculates how much yaz needs to pass for the next payment to be payed
+     * @return
+     */
     public int nextYazToPay() {return(Timeline.getCurrTime() - startLoanYaz.getTime()) % paymentFrequency.getTime();}
+    /**
+     * this func returns the amount of money that is expected to be payed in the next yaz
+     * @return
+     */
     public double nextExpectedPayment(){ return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTime());
     }
     public double InterestperYaz()    {
-        return (originalInterest/originalInterest);
+        return (originalInterest/originalLoanTimeFrame.getTime());
     }
-
+    /**
+     * this func sums up the total amount of money that all the lenders invested
+     * @return
+     */
+    public double calculateLendersTotalAmount(){
+        double result=0;
+        for(Lenders lenders:lendersList)
+        {
+            result+=lenders.getDeposit();
+        }
+        return result;
+    }
+    /**
+     * this func calculate the Amount that Left For Loan to change from being Pending or New
+     * @return
+     */
+    public double calculateLoanAmountLeftForPendingAndNew(){
+        return (loanOriginalDepth - calculateLendersTotalAmount());
+    }
 
 }
