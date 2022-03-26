@@ -5,9 +5,9 @@ import java.util.List;
 
 public class Account {
     private int ID;
-    private int currBalance;
+    private double currBalance;
     private List<Tnua> tnuaList = new ArrayList<>();
-
+    //TODO:: CHANGE CURRBALNCE TO DOUBLE
 
 
 
@@ -18,18 +18,18 @@ public class Account {
     public void setID(int ID) {
         this.ID = ID;
     }
-    public int getCurrBalance() {
+    public double getCurrBalance() {
         return currBalance;
     }
-    public void setCurrBalance(int currBalance) {
+    public void setCurrBalance(double currBalance) {
         this.currBalance = currBalance;
     }
     public List<Tnua> getTnuaList() {
         return tnuaList;
     }
-    public void setTnuaList(List<Tnua> argsList) {
+/*    public void setTnuaList(List<Tnua> argsList) {
         this.tnuaList = argsList;
-    }
+    }*/
 
 
 }

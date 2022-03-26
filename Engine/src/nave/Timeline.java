@@ -2,29 +2,25 @@ package nave;
 
 public class Timeline {
     private static int currTime = 0;
-    private int time;
+    private int timeStamp;
 
     @Override
     public String toString() {
-        return String.valueOf(time);
+        return String.valueOf(timeStamp);
     }
 
-    public Timeline(int time) {
-        this.time = time;
+    public Timeline(int timeStamp) {
+        this.timeStamp = timeStamp;
     }
-
-    public int getTime() {
-        return time;
+    public int getTimeStamp() {
+        return timeStamp;
     }
-
-    public void setTime(int time) {
-        this.time = time;
+    public void setTimeStamp(int timeStamp) {
+        this.timeStamp = timeStamp;
     }
-
     public static int getCurrTime() {
         return currTime;
     }
-
     public static void setCurrTime(int currTime) {
         Timeline.currTime = currTime;
     }

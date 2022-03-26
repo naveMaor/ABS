@@ -30,6 +30,7 @@ public class Loan {
     //Dynamic data members:
     private int payedInterest;//ribit shulma
     private int payedFund;//keren shulma
+    private Account loanAccount;
 
     //remaining Loan data:
     private double currInterestDepth;//schum ribit nochechit
@@ -169,6 +170,12 @@ public class Loan {
     public void setLendersList(List<Lenders> lendersList) {
         this.lendersList = lendersList;
     }
+    public Account getLoanAccount() {
+        return loanAccount;
+    }
+    public void setLoanAccount(Account loanAccount) {
+        this.loanAccount = loanAccount;
+    }
 
     @Override
     public String toString() {
@@ -188,15 +195,15 @@ public class Loan {
      * this func caculates how much yaz needs to pass for the next payment to be payed
      * @return
      */
-    public int nextYazToPay() {return(Timeline.getCurrTime() - startLoanYaz.getTime()) % paymentFrequency.getTime();}
+    public int nextYazToPay() {return(Timeline.getCurrTime() - startLoanYaz.getTimeStamp()) % paymentFrequency.getTimeStamp();}
     /**
      * this func returns the amount of money that is expected to be payed in the next yaz
      * @return
      */
-    public double nextExpectedPayment(){ return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTime());
+    public double nextExpectedPayment(){ return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTimeStamp());
     }
     public double InterestperYaz()    {
-        return (originalInterest/originalLoanTimeFrame.getTime());
+        return (originalInterest/originalLoanTimeFrame.getTimeStamp());
     }
     /**
      * this func sums up the total amount of money that all the lenders invested

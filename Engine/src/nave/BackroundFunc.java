@@ -15,4 +15,21 @@ This func gets lenders list and return thus sum of their deposit
         }
         return sum;
     }
+
+
+    //TODO: CHECK IF NEEDED BY REFERENCE!!!!!!!!!!!
+    public static void TransferMoneyBetweenAccounts(Account accSource,double money,Account accDest)
+    {
+        //create a timestamp
+        Timeline timeStamp = new Timeline(Timeline.getCurrTime());
+        //update source account
+        accSource.setCurrBalance(accSource.getCurrBalance()-money);
+        Tnua tnoaMinus = new Tnua(timeStamp,(-money));
+        accSource.getTnuaList().add(tnoaMinus);
+        //update dest account
+        Tnua tnoaPlus = new Tnua(timeStamp,money);
+        accSource.getTnuaList().add(tnoaPlus);
+        accDest.setCurrBalance(accDest.getCurrBalance()+money);
+
+    }
 }

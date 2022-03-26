@@ -27,7 +27,7 @@ public class PrintFuncs {
         double currFundDepth = currLoan.getPayedFund();
         double currInterestDepth =currLoan.getCurrInterestDepth();
         System.out.println("Loan start time: " + startLoanYaz + " Yaz");
-        int T = (Timeline.getCurrTime() - startLoanYaz.getTime()) % paymentFrequency.getTime();
+        int T = (Timeline.getCurrTime() - startLoanYaz.getTimeStamp()) % paymentFrequency.getTimeStamp();
         System.out.println("next payment: " + T);
         for(Payment pay:paymentsList)
         {
@@ -70,8 +70,8 @@ public class PrintFuncs {
     //func3 helpers
     public static void printAccountInfo(Account account) {
         List<Tnua> tnuaList = account.getTnuaList();
-        int beforeBalance=account.getCurrBalance();
-        int afterBalance=account.getCurrBalance();;
+        double beforeBalance=account.getCurrBalance();
+        double afterBalance=account.getCurrBalance();;
         for (Tnua tnua:tnuaList) {
             System.out.println("yaz of tnua: " + tnua.getTimeOfMovement() + "yazes");
             if (tnua.getSum() > 0) {
@@ -188,11 +188,11 @@ public class PrintFuncs {
      * @param client
      * @return ArrayList <Loan>
      */
-    //TODO ADD OPTION FOR CHOOSING NO CATEGORY AT ALL!!!!
+    //TODO ADD OPTION FOR CHOOSING NO CATEGORY AT ALL in loanToInvest!!!!
     public static ArrayList<Loan> loanToInvest (Client client) {
         ArrayList<Loan> result = new ArrayList<>();
         ArrayList<LoanCategory> loanCategoryUserList = new ArrayList<>();
-        int balance = client.getMyAccount().getCurrBalance(), minYazTimeFrame = 0;
+        double balance = client.getMyAccount().getCurrBalance(), minYazTimeFrame = 0;
         ArrayList<Integer> loanFilters;
         Double minInterestPerYaz = Double.valueOf(0);
         //part 2 in word document
@@ -214,7 +214,7 @@ public class PrintFuncs {
             if (loan.getStatus() == LoanStatus.NEW || loan.getStatus() == LoanStatus.PENDING)//if the loan is new or pending
                 if (client.getFullName() != loan.getBorrowerName())//If the client's name is not the borrower
                         if (minInterestPerYaz <= loan.getInterestPercentagePerTimeUnit())
-                            if (minYazTimeFrame <= loan.getOriginalLoanTimeFrame().getTime())
+                            if (minYazTimeFrame <= loan.getOriginalLoanTimeFrame().getTimeStamp())
                                 if (checkCategoryList(loanCategoryUserList, loan.getLoanCategory()))
                                     result.add(loan);
 
@@ -224,15 +224,12 @@ public class PrintFuncs {
         }
         return result;
     }
-
     /**
      * this func gets client and ASK THE USER WHAT LOANS IT WILL BE PARTICIPATE IN
      * @param client
      */
     public static ArrayList<Loan> ChooseLoans(Client client) {
-        int amount = 0, balance = client.getMyAccount().getCurrBalance(),index = 1;;
-        System.out.println("Please enter the amount you would like the client to invest in this current yaz, a number between 1 and " + balance);
-        amount = readIntFromUser(1, balance);
+        int  index = 1;;
         ArrayList<Integer> chosenLoansNumb = new ArrayList<>();
         ArrayList<Loan> Loanslist = loanToInvest(client);
         ArrayList<Loan> result ;
@@ -274,7 +271,7 @@ public class PrintFuncs {
         }
         return result;
     }
-    public static ArrayList<Integer> getLoanFilters (int balance){
+    public static ArrayList<Integer> getLoanFilters (double balance){
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> result = new ArrayList<>();
         System.out.println("Would you like to filter by Loan category? press 0 or 1");
@@ -325,6 +322,32 @@ public class PrintFuncs {
         }
         return false;
     }
+
+    /**
+     * this function gets a loan and a client AS LENDER and connects the loan to the client
+     * @param loan
+     * @param client
+     */
+    public static void ClientToLoan(Loan loan,Client client, int amountOfLoansToInvest){
+        double amountOfMoney = 0, balance = client.getMyAccount().getCurrBalance(),amountOfMoneyPerLoan;
+        System.out.println("Please enter the amount you would like the client to invest in this current yaz, a number between 1 and " + balance);
+        amountOfMoney = readDoubleFromUser(1, balance);
+        amountOfMoneyPerLoan = amountOfMoneyPerLoan(amountOfLoansToInvest,amountOfMoney);
+        //TransferInvestmentToLoanAccount(loan,amountOfMoneyPerLoan);//todo change this func to the func from backround:"TransferMoneyBetweenAccounts"
+
+
+    }
+
+    /**
+     *  func's gets amountofmoney to invest and wanted loans to invest in , and return the amount of money to invest in each loan so the money will be splitted equaliy
+     * @param amountOfLoansToInvest
+     * @param amountOfMoney
+     * @return
+     */
+    public static double amountOfMoneyPerLoan(int amountOfLoansToInvest,double amountOfMoney) {
+        return (amountOfMoney/amountOfLoansToInvest);
+    }
+
 
 
     //general
