@@ -11,6 +11,8 @@ import static nave.BackroundFunc.calculateDeposit;
 public class PrintFuncs {
 
 
+    //NIKOL: WTF????
+
     // func2 helpers:
     public static void printLenderList(List<Lenders> lendersList) {
         for (Lenders lender:lendersList)
@@ -114,7 +116,7 @@ public class PrintFuncs {
         }
     }
     public static void PrintStatusConnectedLoans(Loan loan) {
-        LoanStatus status=loan.getStatus();
+        eLoanStatus status=loan.getStatus();
         switch (status)
         {
             case PENDING:
@@ -191,27 +193,27 @@ public class PrintFuncs {
     //TODO ADD OPTION FOR CHOOSING NO CATEGORY AT ALL in loanToInvest!!!!
     public static ArrayList<Loan> loanToInvest (Client client) {
         ArrayList<Loan> result = new ArrayList<>();
-        ArrayList<LoanCategory> loanCategoryUserList = new ArrayList<>();
+        ArrayList<eLoanCategory> loanCategoryUserList = new ArrayList<>();
         double balance = client.getMyAccount().getCurrBalance(), minYazTimeFrame = 0;
         ArrayList<Integer> loanFilters;
         Double minInterestPerYaz = Double.valueOf(0);
         //part 2 in word document
 
         loanFilters = getLoanFilters(balance);
-        if (loanFilters.get(LoanFilters.LOANCATEGORY.ordinal()) == 1) {
+        if (loanFilters.get(eLoanFilters.LOAN_CATEGORY.ordinal()) == 1) {
             loanCategoryUserList = chooseCategoryToInvest();
         }
-        if (loanFilters.get(LoanFilters.MINIMUMINTERESTPERYAZ.ordinal()) == 1) {
+        if (loanFilters.get(eLoanFilters.MINIMUM_INTEREST_PER_YAZ.ordinal()) == 1) {
             System.out.println("Please choose the minimum interest per yaz ");
             minInterestPerYaz = readDoubleFromUser(0, Double.MAX_VALUE);
         }
-        if (loanFilters.get(LoanFilters.MINIMUMYAZTIMEFRAME.ordinal()) == 1) {
+        if (loanFilters.get(eLoanFilters.MINIMUM_YAZ_TIME_FRAME.ordinal()) == 1) {
             System.out.println("Please choose the minimum yaz time frame ");
             minYazTimeFrame = readIntFromUser(0, Integer.MAX_VALUE);
         }
         //part 3 in word document:
         for (Loan loan : Database.getLoanList()) {
-            if (loan.getStatus() == LoanStatus.NEW || loan.getStatus() == LoanStatus.PENDING)//if the loan is new or pending
+            if (loan.getStatus() == eLoanStatus.NEW || loan.getStatus() == eLoanStatus.PENDING)//if the loan is new or pending
                 if (client.getFullName() != loan.getBorrowerName())//If the client's name is not the borrower
                         if (minInterestPerYaz <= loan.getInterestPercentagePerTimeUnit())
                             if (minYazTimeFrame <= loan.getOriginalLoanTimeFrame().getTimeStamp())
@@ -283,14 +285,14 @@ public class PrintFuncs {
         System.out.println("Thank you");
         return result;
     }
-    public static ArrayList<LoanCategory> chooseCategoryToInvest() {
+    public static ArrayList<eLoanCategory> chooseCategoryToInvest() {
         boolean valid = true;
-        ArrayList<LoanCategory> userSelectedCategories = new ArrayList<>();
+        ArrayList<eLoanCategory> userSelectedCategories = new ArrayList<>();
         do {
             System.out.println("Please select from the following list of options, the desired categories for investment:\n" +
                     "(Your answer must be returned in the above format: \"Desired category number\", \"Desired category number\", etc.)");
             int index=1;
-            for (LoanCategory category : LoanCategory.values()) {
+            for (eLoanCategory category : eLoanCategory.values()) {
                 System.out.println(index+". "+category);
                 ++index;
             }
@@ -301,7 +303,7 @@ public class PrintFuncs {
 
             for (String userInput : userInputs) {
                 try {
-                    userSelectedCategories.add(LoanCategory.values()[Integer.parseInt(userInput) - 1]);
+                    userSelectedCategories.add(eLoanCategory.values()[Integer.parseInt(userInput) - 1]);
                 } catch (NumberFormatException exception) {
                     System.out.println("Please enter only vaild inputs: (inputs must be numbers only!)");
                     userSelectedCategories.clear();
@@ -313,8 +315,8 @@ public class PrintFuncs {
         return userSelectedCategories;
 
     }
-    public static boolean checkCategoryList(ArrayList<LoanCategory> loanCategoryArrayList,LoanCategory category) {
-        for(LoanCategory loanCategory:loanCategoryArrayList)
+    public static boolean checkCategoryList(ArrayList<eLoanCategory> loanCategoryArrayList, eLoanCategory category) {
+        for(eLoanCategory loanCategory:loanCategoryArrayList)
         {
             if(loanCategory==category){
                 return true;

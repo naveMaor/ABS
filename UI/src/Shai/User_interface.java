@@ -2,29 +2,34 @@ package Shai;
 
 import nave.*;
 
-import java.util.List;
-
 
 public class User_interface {
 
 
-    public static void func2 (){
-       for(Loan itr:Database.getLoanList())
-        {
-            System.out.println(itr.toString());//showing loan
-            PrintFuncs.printLenderList(itr.getLendersList());//showing lenders list PENDING
-            switch (itr.getStatus())
-            {
-                case ACTIVE: {PrintFuncs.printACTIVEstatus(itr);}break;
-                case RISK: {PrintFuncs.printACTIVEstatus(itr);PrintFuncs.printRISKstatus(itr);}break;
-                case FINISHED:{PrintFuncs.printFINISHEDstatus(itr);}break;
+    public static void allLoansData() {
+        //NIKOL: is there an option to print the loan without lenders list? or without status? if not, why not do this logic as part of Loan.toString?
+        for (Loan loan : Database.getLoanList()) {
+            System.out.println(loan.toString());//showing loan
+            PrintFuncs.printLenderList(loan.getLendersList());//showing lenders list PENDING
+            switch (loan.getStatus()) {
+                case ACTIVE: {
+                    PrintFuncs.printACTIVEstatus(loan);
+                }
+                break;
+                case RISK: {
+                    PrintFuncs.printACTIVEstatus(loan);
+                    PrintFuncs.printRISKstatus(loan);
+                }
+                break;
+                case FINISHED: {
+                    PrintFuncs.printFINISHEDstatus(loan);
+                }
+                break;
                 default:
                     break;
             }
-       }
-
-
-            /*
+        }
+        /*
                         itr.toString();
             itr.printLenderList();
 
@@ -41,10 +46,10 @@ public class User_interface {
             }
 
              */
-        }
+    }
 
     public void func3(){
-        for(Client client:Database.getClientMap().values()){
+        for(Client client:Database.getClientsList()){
             PrintFuncs.printAccountInfo(client.getMyAccount());
             PrintFuncs.printConnectedLoans(client);
         }

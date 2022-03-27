@@ -5,9 +5,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class Loan {
+    //NIKOL: must be seperated to objects
     //Identification data members:
-    private LoanCategory loanCategory;//
-    private LoanStatus status;//
+    private eLoanCategory loanCategory;//
+    private eLoanStatus status;//
     private int loanID;//shem mezha
     private String borrowerName;// mi shlekah et haalvaa
 
@@ -20,7 +21,7 @@ public class Loan {
     private Timeline startLoanYaz;
     private Timeline paymentFrequency;
     private Timeline endLoanYaz;
-    private int  interestPercentagePerTimeUnit;//
+    private int interestPercentagePerTimeUnit;//
 
     //Original Loan info:
     private double originalInterest;//ribit mekorit
@@ -38,8 +39,8 @@ public class Loan {
     private double totalRemainingLoan;//fund+interest
 
 
-    //constractor
-    public Loan(LoanCategory loanCategory, LoanStatus status, String borrowerName, Timeline originalLoanTimeFrame, Timeline startLoanYaz, Timeline paymentFrequency, int interestPercentagePerTimeUnit, int loanOriginalDepth) {
+    //constructor
+    public Loan(eLoanCategory loanCategory, eLoanStatus status, String borrowerName, Timeline originalLoanTimeFrame, Timeline startLoanYaz, Timeline paymentFrequency, int interestPercentagePerTimeUnit, int loanOriginalDepth) {
         this.loanCategory = loanCategory;
         this.status = status;
         this.borrowerName = borrowerName;
@@ -57,122 +58,161 @@ public class Loan {
 
     //getter and setters:
     public void generateLoanID() {
-         this.loanID = Objects.hash(loanCategory, originalLoanTimeFrame, startLoanYaz);
+        this.loanID = Objects.hash(loanCategory, originalLoanTimeFrame, startLoanYaz);
     }
+
     public int getLoanID() {
         return loanID;
     }
+
     public String getBorrowerName() {
         return borrowerName;
     }
+
     public void setBorrowerName(String borrowerName) {
         this.borrowerName = borrowerName;
     }
+
     public List<Payment> getPaymentsList() {
         return paymentsList;
     }
+
     public void setPaymentsList(List<Payment> paymentsList) {
         this.paymentsList = paymentsList;
     }
+
     public Timeline getOriginalLoanTimeFrame() {
         return originalLoanTimeFrame;
     }
+
     public void setOriginalLoanTimeFrame(Timeline originalLoanTimeFrame) {
         this.originalLoanTimeFrame = originalLoanTimeFrame;
     }
+
     public Timeline getPaymentFrequency() {
         return paymentFrequency;
     }
+
     public void setPaymentFrequency(Timeline paymentFrequency) {
         this.paymentFrequency = paymentFrequency;
     }
+
     public Timeline getEndLoanYaz() {
         return endLoanYaz;
     }
+
     public void setEndLoanYaz(Timeline endLoanYaz) {
         this.endLoanYaz = endLoanYaz;
     }
+
     public int getInterestPercentagePerTimeUnit() {
         return interestPercentagePerTimeUnit;
     }
+
     public void setInterestPercentagePerTimeUnit(int interestPercentagePerTimeUnit) {
         this.interestPercentagePerTimeUnit = interestPercentagePerTimeUnit;
     }
+
     public double getOriginalInterest() {
         return originalInterest;
     }
+
     public void calculateInterest() {
-        this.originalInterest = this.loanOriginalDepth * (this.interestPercentagePerTimeUnit/100.0);
+        this.originalInterest = this.loanOriginalDepth * (this.interestPercentagePerTimeUnit / 100.0);
     }
+
     public int getLoanOriginalDepth() {
         return loanOriginalDepth;
     }
+
     public void setLoanOriginalDepth(int loanOriginalDepth) {
         this.loanOriginalDepth = loanOriginalDepth;
     }
+
     public int getPayedInterest() {
         return payedInterest;
     }
+
     public void setPayedInterest(int payedInterest) {
         this.payedInterest = payedInterest;
     }
+
     public int getPayedFund() {
         return payedFund;
     }
+
     public void setPayedFund(int payedFund) {
         this.payedFund = payedFund;
     }
+
     public double getCurrInterestDepth() {
         return currInterestDepth;
     }
+
     public void setCurrInterestDepth(int currInterestDepth) {
         this.currInterestDepth = currInterestDepth;
     }
+
     public double getCurrFundDepth() {
         return currFundDepth;
     }
+
     public void setCurrFundDepth(int currFundDepth) {
         this.currFundDepth = currFundDepth;
     }
+
     public double getTotalRemainingLoan() {
         return totalRemainingLoan;
     }
+
     public void setTotalRemainingLoan(int totalRemainingLoan) {
         this.totalRemainingLoan = totalRemainingLoan;
     }
+
     public double getTotalLoanCostInterestPlusOriginalDepth() {
         return totalLoanCostInterestPlusOriginalDepth;
     }
+
     public void setTotalLoanCostInterestPlusOriginalDepth(double totalLoanCostInterestPlusOriginalDepth) {
         this.totalLoanCostInterestPlusOriginalDepth = totalLoanCostInterestPlusOriginalDepth;
     }
-    public LoanCategory getLoanCategory() {
+
+    public eLoanCategory getLoanCategory() {
         return loanCategory;
     }
-    public void setLoanCategory(LoanCategory loanCategory) {
+
+    public void setLoanCategory(eLoanCategory loanCategory) {
         this.loanCategory = loanCategory;
     }
-    public LoanStatus getStatus() {
+
+    public eLoanStatus getStatus() {
         return status;
     }
-    public void setStatus(LoanStatus status) {
+
+    public void setStatus(eLoanStatus status) {
         this.status = status;
     }
+
     public List<Lenders> getLendersList() {
         return lendersList;
     }
+
     public Timeline getStartLoanYaz() {
         return startLoanYaz;
     }
+
     public void setStartLoanYaz(Timeline startLoanYaz) {
         this.startLoanYaz = startLoanYaz;
     }
+
     public void setLendersList(List<Lenders> lendersList) {
         this.lendersList = lendersList;
     }
+
     public Account getLoanAccount() {
         return loanAccount;
     }
+
     public void setLoanAccount(Account loanAccount) {
         this.loanAccount = loanAccount;
     }
@@ -190,38 +230,47 @@ public class Loan {
                 ", Requested loan: " + loanOriginalDepth;
     }
 
+    /**
+     * this func calculates how much yaz needs to pass for the next payment to be paid
+     *
+     * @return
+     */
+    public int nextYazToPay() {
+        return (Timeline.getCurrTime() - startLoanYaz.getTimeStamp()) % paymentFrequency.getTimeStamp();
+    }
 
     /**
-     * this func caculates how much yaz needs to pass for the next payment to be payed
+     * this func returns the amount of money that is expected to be paid in the next yaz
+     *
      * @return
      */
-    public int nextYazToPay() {return(Timeline.getCurrTime() - startLoanYaz.getTimeStamp()) % paymentFrequency.getTimeStamp();}
-    /**
-     * this func returns the amount of money that is expected to be payed in the next yaz
-     * @return
-     */
-    public double nextExpectedPayment(){ return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTimeStamp());
+    public double nextExpectedPayment() {
+        return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTimeStamp());
     }
-    public double InterestperYaz()    {
-        return (originalInterest/originalLoanTimeFrame.getTimeStamp());
+
+    public double InterestPerYaz() {
+        return (originalInterest / originalLoanTimeFrame.getTimeStamp());
     }
+
     /**
      * this func sums up the total amount of money that all the lenders invested
+     *
      * @return
      */
-    public double calculateLendersTotalAmount(){
-        double result=0;
-        for(Lenders lenders:lendersList)
-        {
-            result+=lenders.getDeposit();
+    public double calculateLendersTotalAmount() {
+        double result = 0;
+        for (Lenders lenders : lendersList) {
+            result += lenders.getDeposit();
         }
         return result;
     }
+
     /**
      * this func calculate the Amount that Left For Loan to change from being Pending or New
+     *
      * @return
      */
-    public double calculateLoanAmountLeftForPendingAndNew(){
+    public double calculateLoanAmountLeftForPendingAndNew() {
         return (loanOriginalDepth - calculateLendersTotalAmount());
     }
 

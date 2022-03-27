@@ -6,13 +6,13 @@ public class BackroundFunc {
 /*
 This func gets lenders list and return thus sum of their deposit
  */
+    //NIKOL: what is the purpose of this class?
     public  final static double calculateDeposit(List<Lenders> lendersList)
     {
         double sum=0;
         for (Lenders lenders:lendersList)
-        {
             sum+=lenders.getDeposit();
-        }
+
         return sum;
     }
 
@@ -24,11 +24,11 @@ This func gets lenders list and return thus sum of their deposit
         Timeline timeStamp = new Timeline(Timeline.getCurrTime());
         //update source account
         accSource.setCurrBalance(accSource.getCurrBalance()-money);
-        Tnua tnoaMinus = new Tnua(timeStamp,(-money));
-        accSource.getTnuaList().add(tnoaMinus);
+        Tnua tnuaMinus = new Tnua(timeStamp,(-money));
+        accSource.getTnuaList().add(tnuaMinus);
         //update dest account
-        Tnua tnoaPlus = new Tnua(timeStamp,money);
-        accSource.getTnuaList().add(tnoaPlus);
+        Tnua tnuaPlus = new Tnua(timeStamp,money);
+        accSource.getTnuaList().add(tnuaPlus);
         accDest.setCurrBalance(accDest.getCurrBalance()+money);
 
     }

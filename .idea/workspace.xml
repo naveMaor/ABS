@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="backround func TransferMoneyBetweenAccounts was created and account data member was added to Loan&#10;shai lost to azlanut">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="changed print funcs from engine to UI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/BackroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/BackroundFunc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/nave/Lenders.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Lenders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/LoanCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/eLoanCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/LoanFilters.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/eLoanFilters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/LoanStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/eLoanStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Timeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Tnua.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Tnua.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +169,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="shin chain" />
@@ -173,12 +187,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/UI/src/Shai/Program.java</url>
-          <line>66</line>
+          <line>64</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/UI/src/Shai/Program.java</url>
-          <line>55</line>
+          <line>53</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>

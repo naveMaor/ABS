@@ -1,6 +1,6 @@
 package nave;
 
-public enum LoanCategory {
+public enum eLoanCategory {
     EVENT,DEFICIT
     ,OPEN_BUSINESS,RENOVATION
     }

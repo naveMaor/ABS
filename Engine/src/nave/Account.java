@@ -7,23 +7,24 @@ public class Account {
     private int ID;
     private double currBalance;
     private List<Tnua> tnuaList = new ArrayList<>();
-    //TODO:: CHANGE CURRBALNCE TO DOUBLE
-
-
 
     //getters and setters:
     public int getID() {
         return ID;
     }
+
     public void setID(int ID) {
         this.ID = ID;
     }
+
     public double getCurrBalance() {
         return currBalance;
     }
+
     public void setCurrBalance(double currBalance) {
         this.currBalance = currBalance;
     }
+
     public List<Tnua> getTnuaList() {
         return tnuaList;
     }
@@ -31,5 +32,10 @@ public class Account {
         this.tnuaList = argsList;
     }*/
 
+    public void addTnuaToAccount(Tnua tnua) {
+
+        //TODO: check if needed to be added in specific location
+        this.tnuaList.add(tnua);
+    }
 
 }

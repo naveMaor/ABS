@@ -4,26 +4,26 @@ import java.util.*;
 
 public class Database {
 
-
-    private static List<Loan> loanList = new ArrayList<>();
+    private static Map<Integer, Loan> loanMap = new HashMap<>();
     private static Map<String, Client> clientMap =new HashMap<>();
 
     public static Map<String, Client> getClientMap() {
         return clientMap;
     }
 
-    public static void setClientMap(Map<String, Client> clientMap) {
-        Database.clientMap = clientMap;
-    }
-
     public static List<Loan> getLoanList() {
-        return loanList;
-    }
-    public static void setLoanList(List<Loan> loanList) {
-        Database.loanList = loanList;
+        return new ArrayList<>(loanMap.values());
     }
 
-public static void addLoanToLoanList(Loan newLoanNode){
-        loanList.add(newLoanNode);
-}
+    public static void addLoanToLoanList(Loan newLoanNode){
+            loanMap.put(newLoanNode.getLoanID(), newLoanNode);
+    }
+
+    public static void addNewClient(Client client) {
+        clientMap.put(client.getFullName(), client);
+    }
+
+    public static List<Client> getClientsList() {
+        return new ArrayList<>(clientMap.values());
+    }
 }

@@ -1,6 +1,7 @@
 package nave;
 
 public class Payment {
+
     private int fundPortion;
     private int interestPortion;
     private Timeline paymentYaz;

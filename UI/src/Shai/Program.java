@@ -1,16 +1,14 @@
 package Shai;
 import nave.*;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Program {
     public static void main (String[] args){
 
         //1ST TEST OBJ
-        Loan test1 = new Loan(LoanCategory.DEFICIT,LoanStatus.ACTIVE,"Shai Shillo",new Timeline(10),new Timeline(1),new Timeline(1),10,100000);
+        Loan test1 = new Loan(eLoanCategory.DEFICIT, eLoanStatus.ACTIVE,"Shai Shillo",new Timeline(10),new Timeline(1),new Timeline(1),10,100000);
         test1.generateLoanID();
 
        //creates&sets lenders list:
@@ -37,7 +35,7 @@ public class Program {
 
 
         //2ST TEST OBJ
-        Loan test2 = new Loan(LoanCategory.EVENT,LoanStatus.RISK,"Oded Menashe",new Timeline(5),new Timeline(1),new Timeline(1),5,200000);
+        Loan test2 = new Loan(eLoanCategory.EVENT, eLoanStatus.RISK,"Oded Menashe",new Timeline(5),new Timeline(1),new Timeline(1),5,200000);
         test1.generateLoanID();
 
         //creates&sets lenders list:
@@ -63,7 +61,7 @@ public class Program {
         Database.addLoanToLoanList(test1);
         Database.addLoanToLoanList(test2);
 
-        User_interface.func2();
+        User_interface.allLoansData();
         //set remaining Loan fields:
 
 
