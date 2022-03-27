@@ -7,24 +7,19 @@ public class Lenders {
     public String getFullName() {
         return fullName;
     }
-
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-
     public int getDeposit() {
         return deposit;
     }
-
     public Lenders(String fullName, int deposit) {
         this.fullName = fullName;
         this.deposit = deposit;
     }
-
     public void setDeposit(int deposit) {
         this.deposit = deposit;
     }
-//say hey hey shin chain
 
     @Override
     public String toString() {

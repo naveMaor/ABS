@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="FUNC 6 almost finished 2">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="backround func TransferMoneyBetweenAccounts was created and account data member was added to Loan&#10;shai lost to azlanut">
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/BackroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/BackroundFunc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Timeline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Tnua.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Tnua.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Lenders.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/nave/Lenders.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +44,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.10471207" />
   </component>
   <component name="RunManager">
     <configuration name="Program" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -72,13 +71,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="6ed3ddab-6732-4805-8164-cff014149d4e" name="Changes" comment="" />
+      <changelist id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="backround func TransferMoneyBetweenAccounts was created and account data member was added to Loan&#10;shai lost to azlanut" />
       <created>1648059493739</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1648059493739</updated>
       <workItem from="1648059494921" duration="9970000" />
       <workItem from="1648196846907" duration="13240000" />
+      <workItem from="1648380886603" duration="739000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -134,7 +134,13 @@
       <option name="presentableId" value="LOCAL‎00008" />
       <updated>1648309743758</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL‎00009" summary="backround func TransferMoneyBetweenAccounts was created and account data member was added to Loan&#10;shai lost to azlanut">
+      <created>1648314117728</created>
+      <option name="number" value="LOCAL‎00009" />
+      <option name="presentableId" value="LOCAL‎00009" />
+      <updated>1648314117728</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,7 +165,8 @@
     <MESSAGE value="changed print funcs from engine to UI" />
     <MESSAGE value="FUNC 6 almost finished" />
     <MESSAGE value="FUNC 6 almost finished 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="FUNC 6 almost finished 2" />
+    <MESSAGE value="backround func TransferMoneyBetweenAccounts was created and account data member was added to Loan&#10;shai lost to azlanut" />
+    <option name="LAST_COMMIT_MESSAGE" value="backround func TransferMoneyBetweenAccounts was created and account data member was added to Loan&#10;shai lost to azlanut" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
