@@ -1,4 +1,6 @@
-package nave;
+package customes;
+
+import loan.Loan;
 
 import java.util.ArrayList;
 import java.util.List;

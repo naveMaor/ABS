@@ -1,4 +1,4 @@
-package nave;
+package loan.enums;
 
 public enum eLoanCategory {
     EVENT,DEFICIT

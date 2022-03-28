@@ -1,11 +1,13 @@
-package nave;
+package operations;
 
-public class Tnua {
+import time.Timeline;
+
+public class Transaction {
 
     private Timeline timeOfMovement;// time of the movemonet was occured
     private double sum;// schum tnua
 
-    public Tnua(Timeline timeOfMovement, double sum) {
+    public Transaction(Timeline timeOfMovement, double sum) {
         this.timeOfMovement = timeOfMovement;
         this.sum = sum;
     }

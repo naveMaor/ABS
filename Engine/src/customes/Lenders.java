@@ -1,4 +1,4 @@
-package nave;
+package customes;
 
 public class Lenders {
 

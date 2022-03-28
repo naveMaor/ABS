@@ -1,5 +1,11 @@
 package Shai;
-import nave.*;
+import customes.Lenders;
+import data.Database;
+import loan.Loan;
+import loan.enums.eLoanCategory;
+import loan.enums.eLoanStatus;
+import operations.Payment;
+import time.Timeline;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +18,7 @@ public class Program {
         test1.generateLoanID();
 
        //creates&sets lenders list:
-        Lenders lender1=new Lenders("nave",20000);
+        Lenders lender1=new Lenders("utills",20000);
         Lenders lender2=new Lenders("nikol", 40000);
         Lenders lender3=new Lenders("david",40000);
         List<Lenders> lendersList1 = new ArrayList<>(3);

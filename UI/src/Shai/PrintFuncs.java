@@ -1,12 +1,22 @@
 package Shai;
 
-import nave.*;
+import customes.Account;
+import customes.Client;
+import customes.Lenders;
+import data.Database;
+import loan.Loan;
+import loan.enums.eLoanCategory;
+import loan.enums.eLoanFilters;
+import loan.enums.eLoanStatus;
+import operations.Payment;
+import operations.Transaction;
+import time.Timeline;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static nave.BackroundFunc.calculateDeposit;
+import static utills.BackgroundFunc.*;
 
 public class PrintFuncs {
 
@@ -71,19 +81,19 @@ public class PrintFuncs {
     }
     //func3 helpers
     public static void printAccountInfo(Account account) {
-        List<Tnua> tnuaList = account.getTnuaList();
+        List<Transaction> transactionList = account.getTnuaList();
         double beforeBalance=account.getCurrBalance();
         double afterBalance=account.getCurrBalance();;
-        for (Tnua tnua:tnuaList) {
-            System.out.println("yaz of tnua: " + tnua.getTimeOfMovement() + "yazes");
-            if (tnua.getSum() > 0) {
-                System.out.println("schum tnua: +" + tnua.getTimeOfMovement());
+        for (Transaction transaction : transactionList) {
+            System.out.println("yaz of tnua: " + transaction.getTimeOfMovement() + "yazes");
+            if (transaction.getSum() > 0) {
+                System.out.println("schum tnua: +" + transaction.getTimeOfMovement());
             }
             else {
-                System.out.println("schum tnua: " + tnua.getTimeOfMovement());
+                System.out.println("schum tnua: " + transaction.getTimeOfMovement());
             }
 
-            afterBalance +=tnua.getSum();
+            afterBalance += transaction.getSum();
             System.out.println("balance before the tnua: " + beforeBalance);
             System.out.println("balance after the tnua: " + afterBalance);
             beforeBalance=afterBalance;
@@ -166,7 +176,7 @@ public class PrintFuncs {
     public static Client printAndChooseClientsInTheSystem(){
         ArrayList<Client> v = new ArrayList<>();
         int i=1;
-        for(Client client:Database.getClientMap().values()) {
+        for(Client client: Database.getClientMap().values()) {
             System.out.println(i + ". " + client.getFullName());
             System.out.println("current balance: " + client.getMyAccount().getCurrBalance());
             v.add(client);
@@ -256,23 +266,10 @@ public class PrintFuncs {
                 }
             }
         }while(!valid);
-        result = getResultedArray(Loanslist,chosenLoansNumb);
+        result = getResultedArray(Loanslist,chosenLoansNumb);// RETURNS new array that is the user's chosen loans.
         return result;
     }
-    /**
-     * THIS FUNCTION BUILD NEW LOAN ARRAY FROM THE INDEXES IN THE NUMBERS ARRAY
-     * @param loanArrayList
-     * @param numbersArrayList
-     * @return
-     */
-    public static ArrayList<Loan> getResultedArray(ArrayList<Loan> loanArrayList, ArrayList<Integer> numbersArrayList){
-        ArrayList<Loan> result = new ArrayList<>();
-        for (Integer integer:numbersArrayList)
-        {
-            result.add(loanArrayList.get(integer));
-        }
-        return result;
-    }
+
     public static ArrayList<Integer> getLoanFilters (double balance){
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> result = new ArrayList<>();
@@ -314,15 +311,6 @@ public class PrintFuncs {
 
         return userSelectedCategories;
 
-    }
-    public static boolean checkCategoryList(ArrayList<eLoanCategory> loanCategoryArrayList, eLoanCategory category) {
-        for(eLoanCategory loanCategory:loanCategoryArrayList)
-        {
-            if(loanCategory==category){
-                return true;
-            }
-        }
-        return false;
     }
 
     /**

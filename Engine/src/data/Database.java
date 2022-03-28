@@ -1,4 +1,7 @@
-package nave;
+package data;
+
+import loan.Loan;
+import customes.Client;
 
 import java.util.*;
 

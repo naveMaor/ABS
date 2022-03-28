@@ -1,4 +1,11 @@
-package nave;
+package loan;
+
+import customes.Account;
+import customes.Lenders;
+import loan.enums.eLoanCategory;
+import loan.enums.eLoanStatus;
+import operations.Payment;
+import time.Timeline;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +36,9 @@ public class Loan {
     private double totalLoanCostInterestPlusOriginalDepth = originalInterest + loanOriginalDepth;
 
     //Dynamic data members:
-    private int payedInterest;//ribit shulma
-    private int payedFund;//keren shulma
+    private double payedInterest;//ribit shulma
+    private double payedFund;//keren shulma
+
     private Account loanAccount;
 
     //remaining Loan data:
@@ -129,19 +137,19 @@ public class Loan {
         this.loanOriginalDepth = loanOriginalDepth;
     }
 
-    public int getPayedInterest() {
+    public double getPayedInterest() {
         return payedInterest;
     }
 
-    public void setPayedInterest(int payedInterest) {
+    public void setPayedInterest(double payedInterest) {
         this.payedInterest = payedInterest;
     }
 
-    public int getPayedFund() {
+    public double getPayedFund() {
         return payedFund;
     }
 
-    public void setPayedFund(int payedFund) {
+    public void setPayedFund(double payedFund) {
         this.payedFund = payedFund;
     }
 

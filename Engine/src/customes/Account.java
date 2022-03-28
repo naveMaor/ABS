@@ -1,4 +1,6 @@
-package nave;
+package customes;
+
+import operations.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.List;
 public class Account {
     private int ID;
     private double currBalance;
-    private List<Tnua> tnuaList = new ArrayList<>();
+    private List<Transaction> transactionList = new ArrayList<>();
 
     //getters and setters:
     public int getID() {
@@ -25,17 +27,17 @@ public class Account {
         this.currBalance = currBalance;
     }
 
-    public List<Tnua> getTnuaList() {
-        return tnuaList;
+    public List<Transaction> getTnuaList() {
+        return transactionList;
     }
 /*    public void setTnuaList(List<Tnua> argsList) {
         this.tnuaList = argsList;
     }*/
 
-    public void addTnuaToAccount(Tnua tnua) {
+    public void addTnuaToAccount(Transaction transaction) {
 
         //TODO: check if needed to be added in specific location
-        this.tnuaList.add(tnua);
+        this.transactionList.add(transaction);
     }
 
 }

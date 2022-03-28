@@ -1,6 +1,8 @@
 package Shai;
 
-import nave.*;
+import customes.Client;
+import data.Database;
+import loan.Loan;
 
 
 public class User_interface {
