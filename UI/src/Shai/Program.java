@@ -9,6 +9,7 @@ import time.Timeline;
 import utills.BackgroundFunc;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Program {
@@ -70,7 +71,6 @@ public class Program {
 
         User_interface.allLoansData();
         //set remaining Loan fields:*/
-
 
     }
 }
