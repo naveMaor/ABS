@@ -2,23 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="backround func TransferMoneyBetweenAccounts was created and account data member was added to Loan&#10;shai lost to azlanut">
-      <change afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/BackroundFunc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Lenders.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Lenders.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/operations/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/time/Timeline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/Tnua.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/operations/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/eLoanCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/enums/eLoanCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/eLoanFilters.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/enums/eLoanFilters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/nave/eLoanStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/enums/eLoanStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/BackroundFunc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Database.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Lenders.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Loan.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/LoanCategory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/LoanStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Payment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Timeline.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Tnua.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +56,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -170,6 +171,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="shin chain" />
@@ -187,8 +189,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/UI/src/Shai/Program.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="7" />
+          <line>71</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

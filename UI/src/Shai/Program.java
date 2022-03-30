@@ -8,6 +8,7 @@ import operations.Payment;
 import time.Timeline;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Program {
@@ -69,7 +70,6 @@ public class Program {
 
         User_interface.allLoansData();
         //set remaining Loan fields:
-
 
     }
 }
