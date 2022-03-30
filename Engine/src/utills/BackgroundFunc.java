@@ -10,6 +10,7 @@ import operations.Transaction;
 import time.Timeline;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BackgroundFunc {
@@ -18,6 +19,7 @@ This func gets lenders list and return thus sum of their deposit
  */
     //NIKOL: what is the purpose of this class?
     //Answer: this class is the engine class where all the background functions are.
+    //NIKOL: than why is it called BackgroundFunc? The name of the class should be a noun
     public  final static double calculateDeposit(List<Lenders> lendersList)
     {
         double sum=0;
@@ -28,6 +30,7 @@ This func gets lenders list and return thus sum of their deposit
     }
 
 
+    //NIKOL: everything is references in java"!!!!!!!!!!!"
     public static void TransferMoneyBetweenAccounts(Account accSource, double money, Account accDest)
     {
         //create a timestamp
@@ -57,7 +60,13 @@ This func gets lenders list and return thus sum of their deposit
         }
         return result;
     }
+
+    //NIKOL: this should probably be part of one of the classes.
+    //NIKOL: what are you doing here? why do you need a list where all the values are the same?
     public static boolean checkCategoryList(ArrayList<eLoanCategory> loanCategoryArrayList, eLoanCategory category) {
+        //NIKOL: try using this instead
+        //loanCategoryArrayList.removeAll(Collections.singleton(category));
+        //return loanCategoryArrayList.size() == 0;
         for(eLoanCategory loanCategory:loanCategoryArrayList)
         {
             if(loanCategory==category){
