@@ -229,15 +229,11 @@ public class PrintFuncs {
                             if (minYazTimeFrame <= loan.getOriginalLoanTimeFrame().getTimeStamp())
                                 if (checkCategoryList(loanCategoryUserList, loan.getLoanCategory()))
                                     result.add(loan);
-
-
-
-
         }
         return result;
     }
     /**
-     * this func gets client and ASK THE USER WHAT LOANS IT WILL BE PARTICIPATE IN
+     * this func gets client and ASK THE USER WHAT LOANS IT WILL BE PARTICIPATE and returns list of the filtered loans that the user chose
      * @param client
      */
     public static ArrayList<Loan> ChooseLoans(Client client) {
@@ -318,13 +314,14 @@ public class PrintFuncs {
      * @param loan
      * @param client
      */
-    public static void ClientToLoan(Loan loan,Client client, int amountOfLoansToInvest){
+    public static void ClientToLoan(Loan loan,Client client, int numberOfLoansToInvest){
         double amountOfMoney = 0, balance = client.getMyAccount().getCurrBalance(),amountOfMoneyPerLoan;
         System.out.println("Please enter the amount you would like the client to invest in this current yaz, a number between 1 and " + balance);
         amountOfMoney = readDoubleFromUser(1, balance);
-        amountOfMoneyPerLoan = amountOfMoneyPerLoan(amountOfLoansToInvest,amountOfMoney);
-        //TransferInvestmentToLoanAccount(loan,amountOfMoneyPerLoan);//todo change this func to the func from backround:"TransferMoneyBetweenAccounts"
-
+        amountOfMoneyPerLoan = amountOfMoneyPerLoan(numberOfLoansToInvest,amountOfMoney);
+        TransferMoneyBetweenAccounts(client.getMyAccount(),amountOfMoney,loan.getLoanAccount());
+        addLenderTLoanList(client,loan,amountOfMoneyPerLoan);
+        loan.UpdateLoanStatusIfNeeded();
 
     }
 
