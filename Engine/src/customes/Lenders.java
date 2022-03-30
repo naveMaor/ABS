@@ -3,7 +3,7 @@ package customes;
 public class Lenders {
 
     private String fullName;
-    private int deposit;
+    private double deposit;
 
     public String getFullName() {
         return fullName;
@@ -13,11 +13,11 @@ public class Lenders {
         this.fullName = fullName;
     }
 
-    public int getDeposit() {
+    public double getDeposit() {
         return deposit;
     }
 
-    public Lenders(String fullName, int deposit) {
+    public Lenders(String fullName, double deposit) {
         this.fullName = fullName;
         this.deposit = deposit;
     }
@@ -33,5 +33,6 @@ public class Lenders {
                 ", deposit: " + deposit +
                 '}';
     }
+
 }
 

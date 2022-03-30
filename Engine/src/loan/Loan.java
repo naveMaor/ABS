@@ -1,11 +1,13 @@
 package loan;
 
 import customes.Account;
+import customes.Client;
 import customes.Lenders;
 import loan.enums.eLoanCategory;
 import loan.enums.eLoanStatus;
 import operations.Payment;
 import time.Timeline;
+import utills.BackgroundFunc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,7 @@ public class Loan {
 
     //List data members
     private List<Lenders> lendersList = new ArrayList<>();//
-    private List<Payment> paymentsList = new ArrayList<>();//
+    private List<Payment> paymentsList = new ArrayList<>();// borrower paying every yaz list
 
     //Time settings data members:
     private Timeline originalLoanTimeFrame;// misgeret zman halvaa
@@ -32,7 +34,7 @@ public class Loan {
 
     //Original Loan info:
     private double originalInterest;//ribit mekorit
-    private int loanOriginalDepth;//Schum halvaa mekori
+    private double loanOriginalDepth;//Schum halvaa mekori
     private double totalLoanCostInterestPlusOriginalDepth = originalInterest + loanOriginalDepth;
 
     //Dynamic data members:
@@ -48,7 +50,7 @@ public class Loan {
 
 
     //constructor
-    public Loan(eLoanCategory loanCategory, eLoanStatus status, String borrowerName, Timeline originalLoanTimeFrame, Timeline startLoanYaz, Timeline paymentFrequency, int interestPercentagePerTimeUnit, int loanOriginalDepth) {
+    public Loan(eLoanCategory loanCategory, eLoanStatus status, String borrowerName, Timeline originalLoanTimeFrame, Timeline startLoanYaz, Timeline paymentFrequency, int interestPercentagePerTimeUnit, double loanOriginalDepth) {
         this.loanCategory = loanCategory;
         this.status = status;
         this.borrowerName = borrowerName;
@@ -129,11 +131,11 @@ public class Loan {
         this.originalInterest = this.loanOriginalDepth * (this.interestPercentagePerTimeUnit / 100.0);
     }
 
-    public int getLoanOriginalDepth() {
+    public double getLoanOriginalDepth() {
         return loanOriginalDepth;
     }
 
-    public void setLoanOriginalDepth(int loanOriginalDepth) {
+    public void setLoanOriginalDepth(double loanOriginalDepth) {
         this.loanOriginalDepth = loanOriginalDepth;
     }
 
@@ -281,5 +283,31 @@ public class Loan {
     public double calculateLoanAmountLeftForPendingAndNew() {
         return (loanOriginalDepth - calculateLendersTotalAmount());
     }
+
+    /**
+     * update the status of the loan from new or from pending or from activate. if changed to activate it starts up the loan
+     * todo:add option for changing in risk and finished status
+     */
+    public void UpdateLoanStatusIfNeeded() {
+        if ((!getLendersList().isEmpty()) && (status == eLoanStatus.NEW)) {
+            setStatus(eLoanStatus.PENDING);
+        }
+        if(getLoanAccount().getCurrBalance()==getLoanOriginalDepth()) {
+            setStatus(eLoanStatus.ACTIVE);
+            activateLoan();
+        }
+    }
+
+    /**
+     * starts up the loan to activate
+     */
+    public void activateLoan() {
+
+        Client borrower = BackgroundFunc.returnClientByName(getBorrowerName());
+        BackgroundFunc.TransferMoneyBetweenAccounts(getLoanAccount(),getLoanOriginalDepth(),borrower.getMyAccount());
+        Timeline startingLoanTimeStamp = new Timeline (Timeline.getCurrTime());
+        setStartLoanYaz(startingLoanTimeStamp);
+    }
+
 
 }

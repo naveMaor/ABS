@@ -1,7 +1,9 @@
 package utills;
 
 import customes.Account;
+import customes.Client;
 import customes.Lenders;
+import data.Database;
 import loan.Loan;
 import loan.enums.eLoanCategory;
 import operations.Transaction;
@@ -28,7 +30,6 @@ This func gets lenders list and return thus sum of their deposit
     }
 
 
-    //TODO: CHECK IF NEEDED BY REFERENCE!!!!!!!!!!!
     //NIKOL: everything is references in java"!!!!!!!!!!!"
     public static void TransferMoneyBetweenAccounts(Account accSource, double money, Account accDest)
     {
@@ -73,5 +74,22 @@ This func gets lenders list and return thus sum of their deposit
             }
         }
         return false;
+    }
+    public static void addLenderTLoanList(Client client,Loan loan,double amountOfMoney) {
+        Lenders lender = new Lenders(client.getFullName(),amountOfMoney);
+        loan.getLendersList().add(lender);
+
+    }
+    public static Client returnClientByName(String name) throws IllegalArgumentException{
+        Client client= Database.getClientMap().get(name);
+        if (client == null)
+        {
+            throw new IllegalArgumentException();
+        }
+        else
+        {
+            return  client;
+        }
+
     }
 }

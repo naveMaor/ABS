@@ -6,6 +6,7 @@ import loan.enums.eLoanCategory;
 import loan.enums.eLoanStatus;
 import operations.Payment;
 import time.Timeline;
+import utills.BackgroundFunc;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,7 +15,7 @@ import java.util.List;
 public class Program {
     public static void main (String[] args){
 
-        //1ST TEST OBJ
+       /* //1ST TEST OBJ
         Loan test1 = new Loan(eLoanCategory.DEFICIT, eLoanStatus.ACTIVE,"Shai Shillo",new Timeline(10),new Timeline(1),new Timeline(1),10,100000);
         test1.generateLoanID();
 
@@ -69,7 +70,7 @@ public class Program {
         Database.addLoanToLoanList(test2);
 
         User_interface.allLoansData();
-        //set remaining Loan fields:
+        //set remaining Loan fields:*/
 
     }
 }
