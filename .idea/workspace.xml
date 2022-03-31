@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="FUNC 3 FINISHED AND WAITING FOR TESTING" />
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="func6 finished with some restrictions 1">
+      <change afterPath="$PROJECT_DIR$/UI/src/Shai/TempPrintFunc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/data/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/operations/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/operations/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/time/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/time/Timeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,6 +93,7 @@
       <workItem from="1648623404231" duration="457000" />
       <workItem from="1648645933569" duration="12640000" />
       <workItem from="1648712141667" duration="1890000" />
+      <workItem from="1648730789737" duration="10692000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -149,7 +161,13 @@
       <option name="presentableId" value="LOCAL‎00010" />
       <updated>1648492672455</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL‎00011" summary="func6 finished with some restrictions 1">
+      <created>1648717717347</created>
+      <option name="number" value="LOCAL‎00011" />
+      <option name="presentableId" value="LOCAL‎00011" />
+      <updated>1648717717347</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +194,8 @@
     <MESSAGE value="FUNC 6 almost finished 2" />
     <MESSAGE value="backround func TransferMoneyBetweenAccounts was created and account data member was added to Loan&#10;shai lost to azlanut" />
     <MESSAGE value="package orginazing" />
-    <option name="LAST_COMMIT_MESSAGE" value="package orginazing" />
+    <MESSAGE value="func6 finished with some restrictions 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="func6 finished with some restrictions 1" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

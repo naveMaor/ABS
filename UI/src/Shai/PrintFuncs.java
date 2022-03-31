@@ -138,7 +138,7 @@ public class PrintFuncs {
             case ACTIVE:
             {
                 System.out.println("next payment is in " + loan.nextYazToPay() + "yazes");
-                System.out.println("borrower will pay in the next payment: " + loan.nextExpectedPayment());
+                System.out.println("borrower will pay in the next payment: " + loan.nextExpectedPaymentAmount());
                 break;
             }
             case RISK:
@@ -168,7 +168,6 @@ public class PrintFuncs {
     }
 
     //func6 helpers
-
     /**
      * THIS FUNC PRINTS ALL THE CLIENTS IN THE SYSTEM AND ASK THE USER TO CHOOSE ONE, IT RETURNS THE CLIENT USER CHOSE
      * @return
@@ -184,7 +183,6 @@ public class PrintFuncs {
         i =readIntFromUser(1,Database.getClientMap().size());
         return v.get(i-1);//todo might be i instead of i-1 becasue array starts from 0?
     }
-
     /**
      * THIS FUNC INITIALLIZE THE CLIENT MENU
      * @return
@@ -194,7 +192,6 @@ public class PrintFuncs {
         System.out.println("please choose a customer to invest with");
         return printAndChooseClientsInTheSystem();
     }
-
     /**
      * THIS FUNC GETS A CLIENT AND THEN ASK THE USER WHAT LOANS DO THEY WANT THE CLIENT TO PARTICIPATE ACCORDING TO PARAMETERS
      * @param client
@@ -265,7 +262,6 @@ public class PrintFuncs {
         result = getResultedArray(Loanslist,chosenLoansNumb);// RETURNS new array that is the user's chosen loans.
         return result;
     }
-
     public static ArrayList<Integer> getLoanFilters (double balance){
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> result = new ArrayList<>();
@@ -308,7 +304,6 @@ public class PrintFuncs {
         return userSelectedCategories;
 
     }
-
     /**
      * this function gets a loan and a client AS LENDER and connects the loan to the client
      * @param loan
@@ -324,7 +319,6 @@ public class PrintFuncs {
         loan.UpdateLoanStatusIfNeeded();
 
     }
-
     /**
      *  func's gets amountofmoney to invest and wanted loans to invest in , and return the amount of money to invest in each loan so the money will be splitted equaliy
      * @param amountOfLoansToInvest
@@ -334,6 +328,8 @@ public class PrintFuncs {
     public static double amountOfMoneyPerLoan(int amountOfLoansToInvest,double amountOfMoney) {
         return (amountOfMoney/amountOfLoansToInvest);
     }
+
+
 
 
 

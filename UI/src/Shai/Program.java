@@ -33,9 +33,9 @@ public class Program {
         test1.setLendersList(lendersList1);
 
         //creates&sets payment list:
-        Payment payment1 = new Payment(10000,1000,new Timeline(2),11000,true);
-        Payment payment2 = new Payment(10000,1000,new Timeline(2),11000,true);
-        Payment payment3 = new Payment(10000,1000,new Timeline(2),11000,false);
+        Payment payment1 = new Payment(new Timeline(2),11000,true);
+        Payment payment2 = new Payment(new Timeline(2),11000,true);
+        Payment payment3 = new Payment(new Timeline(2),11000,false);
         List<Payment> paymentsList1 = new ArrayList<>(3);
         paymentsList1.add(payment1);
         paymentsList1.add(payment2);
@@ -60,9 +60,9 @@ public class Program {
         test2.setLendersList(lendersList2);
 
         //creates&sets payment list:
-        Payment payment4 = new Payment(10000,1000,new Timeline(2),11000,true);
-        Payment payment5 = new Payment(10000,1000,new Timeline(2),11000,true);
-        Payment payment6 = new Payment(10000,1000,new Timeline(2),11000,false);
+        Payment payment4 = new Payment(new Timeline(2),11000,true);
+        Payment payment5 = new Payment(new Timeline(2),11000,true);
+        Payment payment6 = new Payment(new Timeline(2),11000,false);
         List<Payment> paymentsList2 = new ArrayList<>(3);
         paymentsList2.add(payment4);
         paymentsList2.add(payment5);
