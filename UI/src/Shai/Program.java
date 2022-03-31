@@ -1,4 +1,6 @@
 package Shai;
+import customes.Account;
+import customes.Client;
 import customes.Lenders;
 import data.Database;
 import loan.Loan;
@@ -11,11 +13,12 @@ import utills.BackgroundFunc;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class Program {
     public static void main (String[] args){
 
-       /* //1ST TEST OBJ
+        //1ST TEST OBJ
         Loan test1 = new Loan(eLoanCategory.DEFICIT, eLoanStatus.ACTIVE,"Shai Shillo",new Timeline(10),new Timeline(1),new Timeline(1),10,100000);
         test1.generateLoanID();
 
@@ -69,8 +72,38 @@ public class Program {
         Database.addLoanToLoanList(test1);
         Database.addLoanToLoanList(test2);
 
-        User_interface.allLoansData();
-        //set remaining Loan fields:*/
+        //User_interface.allLoansData();
+        //set remaining Loan fields:
+
+        //creating clients for test
+        Client idan = new Client("Idan",new Account(204684914, 5000));
+        Client shai = new Client("Shai",new Account(204684914, 5000));
+        Client nave = new Client("Nave",new Account(204684914, 5000));
+        // adding new test clients to map
+        Database.addClientToClientList(idan);
+        Database.addClientToClientList(shai);
+        Database.addClientToClientList(nave);
+        //creating index i , and printing all existing clients in database
+        int i=1;
+        for(Client client: Database.getClientMap().values()) {
+            System.out.println(i + ". " + client.getFullName());
+            i++;
+            }
+        //asking user to choose a client from database ,and getting input value of wanted client index
+        System.out.println("Please choose a client (by index a integer number between: 1 to"+Database.getClientMap().size()+")");
+        Scanner input = new Scanner(System.in);
+        String userClientIndexChoice = input.nextLine();
+        //getting client
+        Client wantedClient = Database.getClientMap().get(userClientIndexChoice);
+        //asking user and getting wanted deposit amount
+        System.out.println("How much would you like to to deposit into chosen client:"+wantedClient.getFullName()+" account's ?");
+        System.out.println("(please enter a positive integer number)");
+        int deposit = input.nextInt();
+        //making the wire
+        BackgroundFunc.DepositMoneyToAccount(deposit,wantedClient.getMyAccount());
+        System.out.println(wantedClient.getMyAccount().toString());
+
+
 
     }
 }

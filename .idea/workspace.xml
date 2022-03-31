@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="FUNC 3 FINISHED AND WAITING FOR TESTING">
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/customes/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/customes/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/data/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +90,8 @@
       <workItem from="1648569644882" duration="72000" />
       <workItem from="1648620777100" duration="597000" />
       <workItem from="1648623404231" duration="457000" />
-      <workItem from="1648645933569" duration="15434000" />
+      <workItem from="1648645933569" duration="12640000" />
+      <workItem from="1648712141667" duration="1890000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -154,19 +159,7 @@
       <option name="presentableId" value="LOCAL‎00010" />
       <updated>1648492672455</updated>
     </task>
-    <task id="LOCAL‎00011" summary="func6 finished with some restrictions">
-      <created>1648660138335</created>
-      <option name="number" value="LOCAL‎00011" />
-      <option name="presentableId" value="LOCAL‎00011" />
-      <updated>1648660138335</updated>
-    </task>
-    <task id="LOCAL‎00012" summary="func6 finished with some restrictions">
-      <created>1648663283562</created>
-      <option name="number" value="LOCAL‎00012" />
-      <option name="presentableId" value="LOCAL‎00012" />
-      <updated>1648663283562</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,10 +186,18 @@
     <MESSAGE value="FUNC 6 almost finished 2" />
     <MESSAGE value="backround func TransferMoneyBetweenAccounts was created and account data member was added to Loan&#10;shai lost to azlanut" />
     <MESSAGE value="package orginazing" />
-    <MESSAGE value="func6 finished with some restrictions" />
-    <option name="LAST_COMMIT_MESSAGE" value="func6 finished with some restrictions" />
+    <option name="LAST_COMMIT_MESSAGE" value="package orginazing" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/UI/src/Shai/Program.java</url>
+          <line>80</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="nave.Loan" memberName="paymentsList" />
