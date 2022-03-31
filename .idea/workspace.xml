@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="func6 finished with some restrictions">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Account.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/BackroundFunc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Client.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Database.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Lenders.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Loan.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/LoanCategory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/LoanStatus.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Payment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Timeline.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/nave/Tnua.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +86,7 @@
       <workItem from="1648569644882" duration="72000" />
       <workItem from="1648620777100" duration="597000" />
       <workItem from="1648623404231" duration="457000" />
-      <workItem from="1648645933569" duration="13512000" />
+      <workItem from="1648645933569" duration="15434000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -169,7 +160,13 @@
       <option name="presentableId" value="LOCAL‎00011" />
       <updated>1648660138335</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL‎00012" summary="func6 finished with some restrictions">
+      <created>1648663283562</created>
+      <option name="number" value="LOCAL‎00012" />
+      <option name="presentableId" value="LOCAL‎00012" />
+      <updated>1648663283562</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
