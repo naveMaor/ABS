@@ -6,10 +6,13 @@ import customes.Lenders;
 import data.Database;
 import loan.Loan;
 import loan.enums.eLoanCategory;
+import loan.enums.eLoanStatus;
 import operations.Transaction;
 import time.Timeline;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class BackgroundFunc {
@@ -42,7 +45,7 @@ This func gets lenders list and return thus sum of their deposit
         accDest.getTnuaList().add(transaction);
         accDest.setCurrBalance(accDest.getCurrBalance()+money);
     }
-    //NIKOL: everything is references in java"!!!!!!!!!!!"
+
     public static void TransferMoneyBetweenAccounts(Account accSource, double money, Account accDest)
     {
         //create a timestamp
@@ -104,4 +107,41 @@ This func gets lenders list and return thus sum of their deposit
         }
 
     }
+
+    /**
+     * this fun get loan list and order it by two parameters:
+     * getStartLoanYaz and then nextExpectedPaymentAmount
+     * @param LoanList
+     */
+    public static void orderLoanList(List<Loan> LoanList) {
+
+        Collections.sort(LoanList, new Comparator() {
+
+            public int compare(Object o1, Object o2) {
+
+                Integer x1 = ((Loan) o1).getStartLoanYaz().getTimeStamp();
+                Integer x2 = ((Loan) o2).getStartLoanYaz().getTimeStamp();
+                int sComp = x1.compareTo(x2);
+
+                if (sComp != 0) {
+                    return sComp;
+                }
+
+                 Double x3 = ((Loan) o1).nextExpectedPaymentAmount();
+                 Double x4 = ((Loan) o2).nextExpectedPaymentAmount();
+                return x3.compareTo(x4);
+            }});
+}
+
+    public static void filterAndHandleLoansListAfterPromote(){
+        List<Loan> sortedLoanList = Database.getSortedLoanList();
+        for (Loan loan:sortedLoanList){
+            if((Timeline.getCurrTime()%loan.nextYazToPay() == 0)&&(loan.getStatus()== eLoanStatus.ACTIVE)){
+                loan.handleLoanAfterPromote();
+            }
+
+        }
+    }
+
+
 }

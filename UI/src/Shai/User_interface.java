@@ -16,7 +16,6 @@ public class User_interface {
 
 
     public static void allLoansData() {
-        //NIKOL: is there an option to print the loan without lenders list? or without status? if not, why not do this logic as part of Loan.toString?
         for (Loan loan : Database.getLoanList()) {
             System.out.println(loan.toString());//showing loan
             PrintFuncs.printLenderList(loan.getLendersList());//showing lenders list PENDING
