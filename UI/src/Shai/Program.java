@@ -9,7 +9,7 @@ import loan.enums.eLoanStatus;
 import operations.Payment;
 import time.Timeline;
 import utills.BackgroundFunc;
-
+import Shai.User_interface;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -83,27 +83,8 @@ public class Program {
         Database.addClientToClientList(idan);
         Database.addClientToClientList(shai);
         Database.addClientToClientList(nave);
-        //creating index i , and printing all existing clients in database
-        int i=1;
-        for(Client client: Database.getClientMap().values()) {
-            System.out.println(i + ". " + client.getFullName());
-            i++;
-            }
-        //asking user to choose a client from database ,and getting input value of wanted client index
-        System.out.println("Please choose a client (by index a integer number between: 1 to"+Database.getClientMap().size()+")");
-        Scanner input = new Scanner(System.in);
-        String userClientIndexChoice = input.nextLine();
-        //getting client
-        Client wantedClient = Database.getClientMap().get(userClientIndexChoice);
-        //asking user and getting wanted deposit amount
-        System.out.println("How much would you like to to deposit into chosen client:"+wantedClient.getFullName()+" account's ?");
-        System.out.println("(please enter a positive integer number)");
-        int deposit = input.nextInt();
-        //making the wire
-        BackgroundFunc.DepositMoneyToAccount(deposit,wantedClient.getMyAccount());
-        System.out.println(wantedClient.getMyAccount().toString());
-
-
+        //User_interface.func4();
+        //User_interface.func5();
 
     }
 }

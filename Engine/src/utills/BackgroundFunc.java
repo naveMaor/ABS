@@ -10,7 +10,6 @@ import operations.Transaction;
 import time.Timeline;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class BackgroundFunc {
@@ -29,13 +28,18 @@ This func gets lenders list and return thus sum of their deposit
         return sum;
     }
 
-    public static void DepositMoneyToAccount(double money, Account accDest)
+    /**
+     * func creates a transaction as needed (withdraw/deposit) , updates account's balance & transactions list
+     * @param money
+     * @param accDest
+     */
+    public static void AccountTransaction(double money, Account accDest)
     {
         //create a timestamp
         Timeline timeStamp = new Timeline(Timeline.getCurrTime());
         //update dest account
-        Transaction transactionPlus = new Transaction(timeStamp,money);
-        accDest.getTnuaList().add(transactionPlus);
+        Transaction transaction = new Transaction(timeStamp,money);
+        accDest.getTnuaList().add(transaction);
         accDest.setCurrBalance(accDest.getCurrBalance()+money);
     }
     //NIKOL: everything is references in java"!!!!!!!!!!!"
@@ -49,7 +53,7 @@ This func gets lenders list and return thus sum of their deposit
         accSource.getTnuaList().add(transactionMinus);
         //update dest account
         Transaction transactionPlus = new Transaction(timeStamp,money);
-        accSource.getTnuaList().add(transactionPlus);//TO DO: CHECK IF SUPPOSE TO BE AccDest ??
+        accDest.getTnuaList().add(transactionPlus);//SHAI: CHECK IF SUPPOSE TO BE AccDest ??
         accDest.setCurrBalance(accDest.getCurrBalance()+money);
 
     }
@@ -83,7 +87,7 @@ This func gets lenders list and return thus sum of their deposit
         }
         return false;
     }
-    public static void addLenderTLoanList(Client client,Loan loan,double amountOfMoney) {
+    public static void addLenderToLoanList(Client client, Loan loan, double amountOfMoney) {
         Lenders lender = new Lenders(client.getFullName(),amountOfMoney);
         loan.getLendersList().add(lender);
 

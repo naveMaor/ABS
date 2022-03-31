@@ -15,6 +15,15 @@ public class Account {
         this.currBalance = currBalance;
     }
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "ID=" + ID +
+                ", currBalance=" + currBalance +
+                ", transactionList=" + transactionList +
+                '}';
+    }
+
     //getters and setters:
     public int getID() {
         return ID;

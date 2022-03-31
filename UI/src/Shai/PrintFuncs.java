@@ -23,6 +23,7 @@ public class PrintFuncs {
 
     //NIKOL: WTF????
 
+
     // func2 helpers:
     public static void printLenderList(List<Lenders> lendersList) {
         for (Lenders lender:lendersList)
@@ -320,7 +321,7 @@ public class PrintFuncs {
         amountOfMoney = readDoubleFromUser(1, balance);
         amountOfMoneyPerLoan = amountOfMoneyPerLoan(numberOfLoansToInvest,amountOfMoney);
         TransferMoneyBetweenAccounts(client.getMyAccount(),amountOfMoney,loan.getLoanAccount());
-        addLenderTLoanList(client,loan,amountOfMoneyPerLoan);
+        addLenderToLoanList(client,loan,amountOfMoneyPerLoan);
         loan.UpdateLoanStatusIfNeeded();
 
     }
@@ -342,9 +343,10 @@ public class PrintFuncs {
         Scanner sc = new Scanner(System.in);
         int number;
         do {
-            System.out.println("Please enter a number between" + min + "and " + max);
+            System.out.println("Please enter a number between: " + min + " - " + max);
+
             while (!sc.hasNextInt()) {
-                System.out.println("pleae enter a number!");
+                System.out.println("input is not valid, please enter a valid number!");
                 sc.next(); // this is important!
             }
             number = sc.nextInt();
