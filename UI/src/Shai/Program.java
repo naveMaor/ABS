@@ -83,8 +83,8 @@ public class Program {
         Database.addClientToClientList(idan);
         Database.addClientToClientList(shai);
         Database.addClientToClientList(nave);
-        //User_interface.func4();
-        //User_interface.func5();
+        // User_interface.func4();
+        // User_interface.func5();
 
     }
 }

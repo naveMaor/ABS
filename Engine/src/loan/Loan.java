@@ -11,6 +11,8 @@ import operations.Transaction;
 import time.Timeline;
 import utills.BackgroundFunc;
 
+import javax.xml.crypto.Data;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -327,5 +329,27 @@ public class Loan {
         //todo: need to complete it and pay for all the lenders from the loan savings account
     };
 
+    /**
+     * function in charge of paying each lender is partial share of his investment in the loan.
+     * @param loan
+     */
+    public void payLoanDividendsToLenders(Loan loan){
+        double amountToPayLender;
+        //need to docu this variable
+        double CoefficientOfMultiplicationInterest = loan.interestPercentagePerTimeUnit/100;
+        for(Lenders itr: loan.lendersList){
 
+            amountToPayLender = itr.getDeposit() + itr.getDeposit()*CoefficientOfMultiplicationInterest;
+            //getting curr lender to pay name
+        String lendersNameToPay = itr.getFullName();
+        //getting clients account
+        Account accToPay = Database.getClientMap().get(lendersNameToPay).getMyAccount();
+        //getting current timeStamp for transaction.
+        Timeline currTimeStamp = new Timeline(Timeline.getCurrTime());
+        //creating a transaction
+        Transaction LenderPaymentTransAction = new Transaction(currTimeStamp,amountToPayLender);
+        //updating lenders balance
+            accToPay.setCurrBalance(accToPay.getCurrBalance()+amountToPayLender);
+    }
+}
 }

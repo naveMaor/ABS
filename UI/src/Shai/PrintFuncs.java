@@ -189,15 +189,15 @@ public class PrintFuncs {
 
         System.out.println("How much would you like to to deposit into"+full_name+"'s account ?");
         System.out.println("(please enter a positive integer number)");
-        int deposit = readIntFromUser(0,Integer.MAX_VALUE);
+        int deposit = readIntFromUser(1,Integer.MAX_VALUE);
         return deposit;
     }
     public static Client ChooseClientFromDatabase () {
         //asking user to choose a client from database ,and getting input value of wanted client index
         List<Client> clientsList = Database.getClientsList();
         int clientListSize =clientsList.size();
-        System.out.println("Please enter wanted client index for deposit\n(index must be an integer number between 0 - "+clientListSize+" )");
-        int userClientIndexChoice = PrintFuncs.readIntFromUser(0,clientListSize);
+        System.out.println("Please enter wanted client index for deposit\n(index must be an integer number between 1 - "+clientListSize+" )");
+        int userClientIndexChoice = PrintFuncs.readIntFromUser(1,clientListSize);
         //getting client
         Client wantedClient =clientsList.get(userClientIndexChoice-1);
         return wantedClient;
@@ -393,7 +393,7 @@ public class PrintFuncs {
             System.out.println("Please enter a number between: " + min + " - " + max);
 
             while (!sc.hasNextInt()) {
-                System.out.println("input is not valid, please enter a valid number!");
+                System.out.println("Input is not valid, please enter a valid number!");
                 sc.next(); // this is important!
             }
             number = sc.nextInt();
@@ -406,7 +406,7 @@ public class PrintFuncs {
         do {
             System.out.println("Please enter a number between" + min + "and " + max);
             while (!sc.hasNextInt()) {
-                System.out.println("pleae enter a number!");
+                System.out.println("Please enter a number!");
                 sc.next(); // this is important!
             }
             number = sc.nextDouble();
