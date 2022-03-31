@@ -15,6 +15,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import static loan.enums.eLoanStatus.ACTIVE;
+import static loan.enums.eLoanStatus.RISK;
+
 public class BackgroundFunc {
 /*
 This func gets lenders list and return thus sum of their deposit
@@ -136,10 +139,9 @@ This func gets lenders list and return thus sum of their deposit
     public static void filterAndHandleLoansListAfterPromote(){
         List<Loan> sortedLoanList = Database.getSortedLoanList();
         for (Loan loan:sortedLoanList){
-            if((Timeline.getCurrTime()%loan.nextYazToPay() == 0)&&(loan.getStatus()== eLoanStatus.ACTIVE)){
-                loan.handleLoanAfterPromote();
+            if((Timeline.getCurrTime()%loan.nextYazToPay() == 0)&&((loan.getStatus()== ACTIVE)|| (loan.getStatus()== RISK))){
+                loan.handleLoanAfterTimePromote();
             }
-
         }
     }
 

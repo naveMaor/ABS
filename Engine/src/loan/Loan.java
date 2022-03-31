@@ -277,11 +277,20 @@ public class Loan {
         setStartLoanYaz(startingLoanTimeStamp);
     }
 
+    public void updateDynamicDataMembersAfterYazPromotion(){
+        totalRemainingLoan -=nextExpectedPaymentAmount();
+        //todo: complete do dynamic data members and remaining loan data update
 
-    public void handleLoanAfterPromote(){
+    }
+
+    /**
+     * this func checks if the borrower can pay the next Expected Payment Amount and update the loan accordinly
+     */
+    public void handleLoanAfterTimePromote(){
         Client borrowerAsClient = Database.getClientMap().get(borrowerName);
         Account borrowerAccount = borrowerAsClient.getMyAccount();
         Timeline currTimeStamp = new Timeline(Timeline.getCurrTime());
+        //if the borrower have the money for paying this loan at the time of the yaz
         if(borrowerAccount.getCurrBalance()>=nextExpectedPaymentAmount()){
                 //add new payment to the loan payment list
                 Payment BorrowPayment = new Payment(currTimeStamp,nextExpectedPaymentAmount(),true);
@@ -289,8 +298,9 @@ public class Loan {
                 //add the transaction stamp to the borrower transaction list
                 Transaction transaction = new Transaction(currTimeStamp,nextExpectedPaymentAmount());
                 borrowerAccount.addTnuaToAccount(transaction);
-                //todo: do dynamic data members and remaining loan data update
-                totalRemainingLoan -=nextExpectedPaymentAmount();
+                //update loan money info
+                updateDynamicDataMembersAfterYazPromotion();
+                //update loan status
                 if(totalRemainingLoan == 0) {
                     status=eLoanStatus.FINISHED;
                     handleFinishedLoan();
@@ -299,13 +309,22 @@ public class Loan {
                     status=eLoanStatus.ACTIVE;
                 }
         }
+        //if the borrower does not have the money for paying this loan at the time of the yaz
         else {
-
+            status = eLoanStatus.RISK;
+            //add new payment to the loan payment list with false
+            Payment BorrowPayment = new Payment(currTimeStamp,nextExpectedPaymentAmount(),false);
+            paymentsList.add(BorrowPayment);
+            //enlarge the deviation
+            deviation +=nextExpectedPaymentAmount();
         }
     }
 
+    /**
+     * this func assumes that the loan it works on is a finished loan pays the money from the loan savings account to the loaners
+     */
     public void handleFinishedLoan(){
-        //todo: need to complite it and pay for all the lenders from the loan savings account
+        //todo: need to complete it and pay for all the lenders from the loan savings account
     };
 
 

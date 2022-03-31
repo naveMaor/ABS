@@ -168,6 +168,51 @@ public class PrintFuncs {
         PrintStatusConnectedLoans(loan);
     }
 
+    //func4 helpers
+    /**
+     * prints all clients in database to UI with index attached
+     */
+    public static void printAllClientsFromDatabase() {
+        //creating index i , and printing all existing clients in database
+        int i = 1;
+        for (Client client : Database.getClientMap().values()) {
+            System.out.println(i + ". " + client.getFullName());
+            i++;
+        }
+    }
+    /**
+     * asking user and getting wanted deposit amount
+     * @param full_name
+     * @return
+     */
+    public  static int getDepositAmount(String full_name){
+
+        System.out.println("How much would you like to to deposit into"+full_name+"'s account ?");
+        System.out.println("(please enter a positive integer number)");
+        int deposit = readIntFromUser(0,Integer.MAX_VALUE);
+        return deposit;
+    }
+    public static Client ChooseClientFromDatabase () {
+        //asking user to choose a client from database ,and getting input value of wanted client index
+        List<Client> clientsList = Database.getClientsList();
+        int clientListSize =clientsList.size();
+        System.out.println("Please enter wanted client index for deposit\n(index must be an integer number between 0 - "+clientListSize+" )");
+        int userClientIndexChoice = PrintFuncs.readIntFromUser(0,clientListSize);
+        //getting client
+        Client wantedClient =clientsList.get(userClientIndexChoice-1);
+        return wantedClient;
+    }
+
+    //func5 helpers
+    public  static int getWithdrawalAmount(String full_name){
+        //asking user and getting wanted deposit amount // S
+        System.out.println("How much would you like to withdraw from "+full_name+"'s account ?");
+        System.out.println("(please enter a positive integer number)");
+        int withdraw = -(readIntFromUser(0,(int)Database.getClientMap().get(full_name).getMyAccount().getCurrBalance()));
+        return withdraw;
+    }
+
+
     //func6 helpers
     /**
      * THIS FUNC PRINTS ALL THE CLIENTS IN THE SYSTEM AND ASK THE USER TO CHOOSE ONE, IT RETURNS THE CLIENT USER CHOSE
@@ -330,7 +375,13 @@ public class PrintFuncs {
         return (amountOfMoney/amountOfLoansToInvest);
     }
 
-
+    //func7 helpers
+    public static void printYazAfterPromote(){
+        System.out.println("Yaz was: " );
+        Timeline.printPreviousCurrTime();
+        System.out.println("Yaz now: " );
+        Timeline.printStaticCurrTime();
+    }
 
 
 
