@@ -29,7 +29,15 @@ This func gets lenders list and return thus sum of their deposit
         return sum;
     }
 
-
+    public static void DepositMoneyToAccount(double money, Account accDest)
+    {
+        //create a timestamp
+        Timeline timeStamp = new Timeline(Timeline.getCurrTime());
+        //update dest account
+        Transaction transactionPlus = new Transaction(timeStamp,money);
+        accDest.getTnuaList().add(transactionPlus);
+        accDest.setCurrBalance(accDest.getCurrBalance()+money);
+    }
     //NIKOL: everything is references in java"!!!!!!!!!!!"
     public static void TransferMoneyBetweenAccounts(Account accSource, double money, Account accDest)
     {
@@ -41,7 +49,7 @@ This func gets lenders list and return thus sum of their deposit
         accSource.getTnuaList().add(transactionMinus);
         //update dest account
         Transaction transactionPlus = new Transaction(timeStamp,money);
-        accSource.getTnuaList().add(transactionPlus);
+        accSource.getTnuaList().add(transactionPlus);//TO DO: CHECK IF SUPPOSE TO BE AccDest ??
         accDest.setCurrBalance(accDest.getCurrBalance()+money);
 
     }

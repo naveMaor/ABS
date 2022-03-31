@@ -9,6 +9,11 @@ public class Account {
     private int ID;
     private double currBalance;
     private List<Transaction> transactionList = new ArrayList<>();
+//ctor
+    public Account(int ID, double currBalance) {
+        this.ID = ID;
+        this.currBalance = currBalance;
+    }
 
     //getters and setters:
     public int getID() {

@@ -19,26 +19,31 @@ public class Client {
     public void setClientAsLenderLoanList(List<Loan> clientAsLenderLoanList) {
         this.clientAsLenderLoanList = clientAsLenderLoanList;
     }
-
-    public List<Loan> getClientAsBorrowLoanList() {
-        return clientAsBorrowLoanList;
+// ctor
+    public Client(String fullName, Account myAccount) {
+        this.fullName = fullName;
+        this.myAccount = myAccount;
     }
 
-    public void setClientAsBorrowLoanList(List<Loan> clientAsBorrowLoanList) {
-        this.clientAsBorrowLoanList = clientAsBorrowLoanList;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
+   // setters
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-
+    public void setClientAsBorrowLoanList(List<Loan> clientAsBorrowLoanList) {
+        this.clientAsBorrowLoanList = clientAsBorrowLoanList;
+    }
+//getters
+    public String getFullName() {
+        return fullName;
+    }
+    public List<Loan> getClientAsBorrowLoanList() {
+        return clientAsBorrowLoanList;
+    }
     public Account getMyAccount() {
         return myAccount;
     }
+
+
 
     public void setMyAccount(Account myAccount) {
         this.myAccount = myAccount;
