@@ -34,7 +34,7 @@ public class Loan {
     private Timeline startLoanYaz;
     private Timeline paymentFrequency;
     private Timeline endLoanYaz;
-    private int interestPercentagePerTimeUnit;//
+    private double interestPercentagePerTimeUnit;//
 
     //Original Loan info:
     private double originalInterest;//ribit mekorit
@@ -106,7 +106,7 @@ public class Loan {
     public void setEndLoanYaz(Timeline endLoanYaz) {
         this.endLoanYaz = endLoanYaz;
     }
-    public int getInterestPercentagePerTimeUnit() {
+    public double getInterestPercentagePerTimeUnit() {
         return interestPercentagePerTimeUnit;
     }
     public void setInterestPercentagePerTimeUnit(int interestPercentagePerTimeUnit) {
@@ -331,15 +331,16 @@ public class Loan {
 
     /**
      * function in charge of paying each lender is partial share of his investment in the loan.
-     * @param loan
+     * DONT FORGET TO CHECK IF LOAN IS IN FINISHED STATUS BEFORE ENTERING FUNC
      */
-    public void payLoanDividendsToLenders(Loan loan){
+    public void payLoanDividendsToLenders(){
         double amountToPayLender;
-        //need to docu this variable
-        double CoefficientOfMultiplicationInterest = loan.interestPercentagePerTimeUnit/100;
-        for(Lenders itr: loan.lendersList){
-
-            amountToPayLender = itr.getDeposit() + itr.getDeposit()*CoefficientOfMultiplicationInterest;
+        //need to docu this variable -//DOCU calc the multiplier for getting the  amount of interest Slender should be payed
+        double coefficientOfMultiplicationInterest = this.interestPercentagePerTimeUnit/100;
+        System.out.println(coefficientOfMultiplicationInterest);
+        for(Lenders itr: this.lendersList){
+            //calc amount of money specific lender suppose to get after loan is in "FINISHED" status
+            amountToPayLender = itr.getDeposit() + itr.getDeposit()*coefficientOfMultiplicationInterest;
             //getting curr lender to pay name
         String lendersNameToPay = itr.getFullName();
         //getting clients account
@@ -347,9 +348,13 @@ public class Loan {
         //getting current timeStamp for transaction.
         Timeline currTimeStamp = new Timeline(Timeline.getCurrTime());
         //creating a transaction
-        Transaction LenderPaymentTransAction = new Transaction(currTimeStamp,amountToPayLender);
+        Transaction lenderPaymentTransAction = new Transaction(currTimeStamp,amountToPayLender);
+        //adding transaction to lenders account transactioList
+            accToPay.getTnuaList().add(lenderPaymentTransAction);
         //updating lenders balance
-            accToPay.setCurrBalance(accToPay.getCurrBalance()+amountToPayLender);
+            double updatedLenderBalance = accToPay.getCurrBalance()+amountToPayLender;
+            accToPay.setCurrBalance(updatedLenderBalance);
+
     }
 }
 }

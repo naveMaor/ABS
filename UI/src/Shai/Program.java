@@ -23,9 +23,9 @@ public class Program {
         test1.generateLoanID();
 
        //creates&sets lenders list:
-        Lenders lender1=new Lenders("utills",20000);
-        Lenders lender2=new Lenders("nikol", 40000);
-        Lenders lender3=new Lenders("david",40000);
+        Lenders lender1=new Lenders("Idan",20000);
+        Lenders lender2=new Lenders("Shai", 40000);
+        Lenders lender3=new Lenders("Nave",40000);
         List<Lenders> lendersList1 = new ArrayList<>(3);
         lendersList1.add(lender1);
         lendersList1.add(lender2);
@@ -85,6 +85,8 @@ public class Program {
         Database.addClientToClientList(nave);
         // User_interface.func4();
         // User_interface.func5();
-
+    //testing func payLoanDividendsToLenders
+        test1.payLoanDividendsToLenders();
+        System.out.println(idan.getMyAccount().toString()+"\n"+shai.getMyAccount().toString()+"\n"+nave.getMyAccount().toString());
     }
 }
