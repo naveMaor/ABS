@@ -290,7 +290,7 @@ public class PrintFuncs {
         }
         boolean valid =true;
         do {
-            System.out.println("please choose loans that the client would like to invest in: \n+" +
+            System.out.println("please choose loans that the client would like to invest in: \n" +
                     "\"(Your answer must be returned in the above format: \"Desired loan number\", \"Desired loan number\", etc.)\"");
             Scanner br = new Scanner(System.in);
             String lines = br.nextLine();

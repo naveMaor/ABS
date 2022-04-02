@@ -88,6 +88,7 @@ public class Program {
     //testing func payLoanDividendsToLenders
         test1.payLoanDividendsToLenders();
         System.out.println(idan.getMyAccount().toString()+"\n"+shai.getMyAccount().toString()+"\n"+nave.getMyAccount().toString());
+        User_interface.func6();
     }
 
 }

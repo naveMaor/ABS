@@ -337,7 +337,6 @@ public class Loan {
         double amountToPayLender;
         //need to docu this variable -//DOCU calc the multiplier for getting the  amount of interest Slender should be payed
         double coefficientOfMultiplicationInterest = this.interestPercentagePerTimeUnit/100;
-        System.out.println(coefficientOfMultiplicationInterest);
         for(Lenders itr: this.lendersList){
             //calc amount of money specific lender suppose to get after loan is in "FINISHED" status
             amountToPayLender = itr.getDeposit() + itr.getDeposit()*coefficientOfMultiplicationInterest;

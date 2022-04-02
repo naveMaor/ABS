@@ -98,7 +98,7 @@ public class User_interface {
         System.out.println(wantedClient.getMyAccount().getTnuaList().toString()+wantedClient.getMyAccount().getCurrBalance());
     }
 
-    public void func6() {
+    public static void func6() {
         double amountOfMoneyPerLoan;
         double minNeededInvestment;
         double investment;
@@ -138,7 +138,6 @@ public class User_interface {
         } while (wantedInvestment != 0 || loanListSize != 0);
         if (loanListSize==0)
             printEmptyListNotification(wantedInvestment);
-
     }
 
     static void printEmptyListNotification(double remainingInvestment){
