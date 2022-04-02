@@ -89,4 +89,5 @@ public class Program {
         test1.payLoanDividendsToLenders();
         System.out.println(idan.getMyAccount().toString()+"\n"+shai.getMyAccount().toString()+"\n"+nave.getMyAccount().toString());
     }
+
 }

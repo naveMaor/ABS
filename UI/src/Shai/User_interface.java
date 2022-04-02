@@ -3,12 +3,16 @@ package Shai;
 import customes.Client;
 import data.Database;
 import loan.Loan;
+import loan.enums.eLoanStatus;
 import time.Timeline;
 import utills.BackgroundFunc;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 import static Shai.PrintFuncs.*;
+import static utills.BackgroundFunc.TransferMoneyBetweenAccounts;
+import static utills.BackgroundFunc.addLenderToLoanList;
 
 
 public class User_interface {
@@ -95,11 +99,70 @@ public class User_interface {
     }
 
     public void func6() {
+        double amountOfMoneyPerLoan;
+        double minNeededInvestment;
+        double investment;
+        int loanListSize;
+        //getting wanted investor
         Client client = customersMenu();
+        //creating wanted loans to invest list by investor wanted parameters
         ArrayList<Loan> loanslistToInvest = ChooseLoans(client);
-        for (Loan loan : loanslistToInvest) {
-            ClientToLoan(loan, client, loanslistToInvest.size());
-        }
+
+        //getting wanted overall investment for current yaz from client
+        double wantedInvestment = getWantedInvestment(client);
+       // investing according to agreed risk management methodology
+        do {
+
+            //getting updated list size
+            loanListSize = loanslistToInvest.size();
+            //getting the amount of money wanted to invest equally for each loan from loan list
+            amountOfMoneyPerLoan = amountOfMoneyPerLoan(loanListSize, wantedInvestment);
+            //getting minimal investment needed
+            minNeededInvestment = getMinInvestment(loanslistToInvest);
+            //chosen way of payment
+            investment = Math.min(amountOfMoneyPerLoan, minNeededInvestment);
+            //reducing upcoming investments from wantedInvestment
+            wantedInvestment -= investment * loanListSize;
+            //TO DO: MAYBE TAKE LINES 111-119 TO A FUNC
+            //initializing index for removal
+            int index=0;
+            for (Loan loan : loanslistToInvest) {
+
+                ClientToLoan(loan, client, investment);
+                if(loan.getStatus() == eLoanStatus.ACTIVE)
+                    loanslistToInvest.remove(index);
+            ++index;
+            }
+
+            // as long as there is money left to invest , or list of optional investments is not empty
+        } while (wantedInvestment != 0 || loanListSize != 0);
+        if (loanListSize==0)
+            printEmptyListNotification(wantedInvestment);
+
+    }
+
+    static void printEmptyListNotification(double remainingInvestment){
+        System.out.println("Invested in all chosen loans the maximum optional investment.\n there are no loans left to invest from selected loans");
+        System.out.println("remaining money left from original sum of investment is: "+remainingInvestment);
+        System.out.println("you can choose to re-filter to continue investing");
+    }
+    static double getMinInvestment(ArrayList<Loan> loanslistToInvest){
+       //initialize  minimal with first loan details
+        double minimalInvest = loanslistToInvest.get(0).getLoanOriginalDepth()- loanslistToInvest.get(0).getLoanAccount().getCurrBalance(); ; double leftForInvestment;
+       for (Loan loan : loanslistToInvest) {
+           //checks how much money is needed for loan to become active
+           leftForInvestment = loan.getLoanOriginalDepth() - loan.getLoanAccount().getCurrBalance();
+            //getting minimal
+           if (leftForInvestment < minimalInvest)
+               minimalInvest = leftForInvestment;
+       }
+        return minimalInvest;
+    }
+    static double getWantedInvestment(Client client) {
+        double amountOfMoney = 0, balance = client.getMyAccount().getCurrBalance(),amountOfMoneyPerLoan;
+        System.out.println("Please enter the amount you would like the client to invest,\n (must a number between 1 and " + balance+")");
+        amountOfMoney = readDoubleFromUser(1, balance);
+        return amountOfMoney;
     }
 
     public void func7(){

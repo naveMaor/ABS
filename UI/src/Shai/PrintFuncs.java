@@ -355,15 +355,10 @@ public class PrintFuncs {
      * @param loan
      * @param client
      */
-    public static void ClientToLoan(Loan loan,Client client, int numberOfLoansToInvest){
-        double amountOfMoney = 0, balance = client.getMyAccount().getCurrBalance(),amountOfMoneyPerLoan;
-        System.out.println("Please enter the amount you would like the client to invest in this current yaz, a number between 1 and " + balance);
-        amountOfMoney = readDoubleFromUser(1, balance);
-        amountOfMoneyPerLoan = amountOfMoneyPerLoan(numberOfLoansToInvest,amountOfMoney);
-        TransferMoneyBetweenAccounts(client.getMyAccount(),amountOfMoney,loan.getLoanAccount());
-        addLenderToLoanList(client,loan,amountOfMoneyPerLoan);
+    public static void ClientToLoan(Loan loan,Client client,double investment){
+        TransferMoneyBetweenAccounts(client.getMyAccount(),investment,loan.getLoanAccount());
+        addLenderToLoanList(client,loan,investment);
         loan.UpdateLoanStatusIfNeeded();
-
     }
     /**
      *  func's gets amountofmoney to invest and wanted loans to invest in , and return the amount of money to invest in each loan so the money will be splitted equaliy
