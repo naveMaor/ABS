@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="updated func 6 (changed almost all of it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)&#10;created new helper for func 6 : getMinInvestment, printEmptyListNotification and getWantedInvestment&#10;&#10;IMPORTANT: major changes in func6 &amp; ClientToLoan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
@@ -91,7 +90,7 @@
       <workItem from="1648645933569" duration="12640000" />
       <workItem from="1648712141667" duration="2052000" />
       <workItem from="1648729535306" duration="11879000" />
-      <workItem from="1648829358603" duration="16179000" />
+      <workItem from="1648829358603" duration="18309000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -187,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1648899142729</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="updated func 6 (changed almost all of it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)&#10;created new helper for func 6 : getMinInvestment, printEmptyListNotification and getWantedInvestment&#10;&#10;IMPORTANT: major changes in func6 &amp; ClientToLoan">
+      <created>1648902326677</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1648902326677</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,25 +231,20 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Engine/src/data/Database.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
-          <line>136</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java</url>
-          <line>247</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="16" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
+          <line>121</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
+          <line>111</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -258,7 +259,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ABS$Program.ic" NAME="Program Coverage Results" MODIFIED="1648887012688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/ABS$Program.ic" NAME="Program Coverage Results" MODIFIED="1648902625476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Shai.*</FILTER>
     </SUITE>
   </component>

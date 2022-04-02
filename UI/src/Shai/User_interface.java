@@ -135,7 +135,7 @@ public class User_interface {
             }
 
             // as long as there is money left to invest , or list of optional investments is not empty
-        } while (wantedInvestment != 0 || loanListSize != 0);
+        } while (wantedInvestment != 0 && loanListSize != 0);
         if (loanListSize==0)
             printEmptyListNotification(wantedInvestment);
     }
@@ -147,7 +147,8 @@ public class User_interface {
     }
     static double getMinInvestment(ArrayList<Loan> loanslistToInvest){
        //initialize  minimal with first loan details
-        double minimalInvest = loanslistToInvest.get(0).getLoanOriginalDepth()- loanslistToInvest.get(0).getLoanAccount().getCurrBalance(); ; double leftForInvestment;
+        double minimalInvest = (loanslistToInvest.get(0).getLoanOriginalDepth()-loanslistToInvest.get(0).getLoanAccount().getCurrBalance());
+        double leftForInvestment;
        for (Loan loan : loanslistToInvest) {
            //checks how much money is needed for loan to become active
            leftForInvestment = loan.getLoanOriginalDepth() - loan.getLoanAccount().getCurrBalance();

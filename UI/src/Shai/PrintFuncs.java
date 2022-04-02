@@ -285,7 +285,7 @@ public class PrintFuncs {
         ArrayList<Loan> Loanslist = loanToInvest(client);
         ArrayList<Loan> result ;
         for (Loan loan : Loanslist) {
-            System.out.println(index + ". " + loan);
+            System.out.println(index + ". " + loan.toString());
             ++index;
         }
         boolean valid =true;
@@ -297,7 +297,7 @@ public class PrintFuncs {
             String[] userInputs = lines.trim().split(",");
             for (String userInput : userInputs) {
                 try {
-                    chosenLoansNumb.add(Integer.parseInt(userInput));
+                    chosenLoansNumb.add(Integer.parseInt(userInput)-1);
                 } catch (NumberFormatException exception) {
                     System.out.println("Please enter only vaild inputs: (inputs must be numbers only!)");
                     chosenLoansNumb.clear();
