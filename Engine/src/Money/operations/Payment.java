@@ -1,11 +1,11 @@
-package operations;
+package Money.operations;
 
 import time.Timeline;
 
 public class Payment {
 
-/*    private int fundPortion;
-    private int interestPortion;*/
+    private double fundPortion;
+    private double interestPortion;
     private Timeline paymentYaz;
     private double fundPlusInterest;
     private boolean isPayed;
@@ -29,11 +29,11 @@ public class Payment {
     public Payment() {
     }
 
-    public Payment(Timeline paymentYaz, double fundPlusInterest, boolean isPayed) {
-/*        this.fundPortion = fundPortion;
-        this.interestPortion = interestPortion;*/
+    public Payment(Timeline paymentYaz, boolean isPayed,double fundPortion,double interestPortion) {
+        this.fundPortion = fundPortion;
+        this.interestPortion = interestPortion;
         this.paymentYaz = paymentYaz;
-        this.fundPlusInterest = fundPlusInterest;
+        this.fundPlusInterest = fundPortion+interestPortion;
         this.isPayed = isPayed;
     }
 
@@ -60,8 +60,8 @@ public class Payment {
     public String toString() {
         String payed = isPayed ? "" : ", Not Payed!";
         return "{" +
-/*                "Fund Portion: " + fundPortion +
-                ", interest Portion: " + interestPortion +*/
+                "Fund Portion: " + fundPortion +
+                ", interest Portion: " + interestPortion +
                 ", payment Yaz: " + paymentYaz +
                 ", total payment: " + fundPlusInterest +
                  payed +

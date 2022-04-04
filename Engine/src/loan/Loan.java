@@ -6,13 +6,12 @@ import customes.Lenders;
 import data.Database;
 import loan.enums.eLoanCategory;
 import loan.enums.eLoanStatus;
-import operations.Payment;
-import operations.Transaction;
+import Money.operations.Payment;
+import Money.operations.Transaction;
 import time.Timeline;
 import utills.BackgroundFunc;
+import Money.*;
 
-import javax.xml.crypto.Data;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -42,13 +41,11 @@ public class Loan {
     private double totalLoanCostInterestPlusOriginalDepth = originalInterest + loanOriginalDepth;
 
     //Dynamic growing data members:
-    private double payedInterest;//ribit shulma
-    private double payedFund;//keren shulma
-    private double deviation=0;
+    private double payedInterest=0;//ribit shulma
+    private double payedFund=0;//keren shulma
+    private Deviation deviation;
 
     //remaining Loan data:
-    private double currInterestDepth;//schum ribit nochechit
-    private double currFundDepth;//schum keren nochchit
     private double totalRemainingLoan = totalLoanCostInterestPlusOriginalDepth;//fund+interest
 
     private Account loanAccount;
@@ -62,10 +59,19 @@ public class Loan {
         this.paymentFrequency = paymentFrequency;
         this.interestPercentagePerTimeUnit = interestPercentagePerTimeUnit;
         this.loanOriginalDepth = loanOriginalDepth;
-        this.currInterestDepth = originalInterest - payedInterest;//schum ribit nochechit
-        this.currFundDepth = loanOriginalDepth - payedFund;//schum keren nochchit
-        this.totalRemainingLoan = currInterestDepth + currFundDepth;//fund+interest
+        //this.currInterestDepth = originalInterest - payedInterest;//schum ribit nochechit
+        //this.currFundDepth = loanOriginalDepth - payedFund;//schum keren nochchit
+        //this.totalRemainingLoan = currInterestDepth + currFundDepth;//fund+interest
         calculateInterest();
+    }
+
+
+
+    public final double calculateCurrInterestDepth(){
+        return originalInterest-payedInterest;
+    }
+    public final double calculateFundDepth(){
+        return loanOriginalDepth-payedFund;
     }
 
 
@@ -91,26 +97,14 @@ public class Loan {
     public Timeline getOriginalLoanTimeFrame() {
         return originalLoanTimeFrame;
     }
-    public void setOriginalLoanTimeFrame(Timeline originalLoanTimeFrame) {
-        this.originalLoanTimeFrame = originalLoanTimeFrame;
-    }
     public Timeline getPaymentFrequency() {
         return paymentFrequency;
-    }
-    public void setPaymentFrequency(Timeline paymentFrequency) {
-        this.paymentFrequency = paymentFrequency;
     }
     public Timeline getEndLoanYaz() {
         return endLoanYaz;
     }
-    public void setEndLoanYaz(Timeline endLoanYaz) {
-        this.endLoanYaz = endLoanYaz;
-    }
     public double getInterestPercentagePerTimeUnit() {
         return interestPercentagePerTimeUnit;
-    }
-    public void setInterestPercentagePerTimeUnit(int interestPercentagePerTimeUnit) {
-        this.interestPercentagePerTimeUnit = interestPercentagePerTimeUnit;
     }
     public double getOriginalInterest() {
         return originalInterest;
@@ -121,50 +115,17 @@ public class Loan {
     public double getLoanOriginalDepth() {
         return loanOriginalDepth;
     }
-    public void setLoanOriginalDepth(double loanOriginalDepth) {
-        this.loanOriginalDepth = loanOriginalDepth;
-    }
     public double getPayedInterest() {
         return payedInterest;
-    }
-    public void setPayedInterest(double payedInterest) {
-        this.payedInterest = payedInterest;
     }
     public double getPayedFund() {
         return payedFund;
     }
-    public void setPayedFund(double payedFund) {
-        this.payedFund = payedFund;
-    }
-    public double getCurrInterestDepth() {
-        return currInterestDepth;
-    }
-    public void setCurrInterestDepth(int currInterestDepth) {
-        this.currInterestDepth = currInterestDepth;
-    }
-    public double getCurrFundDepth() {
-        return currFundDepth;
-    }
-    public void setCurrFundDepth(int currFundDepth) {
-        this.currFundDepth = currFundDepth;
-    }
-    public double getTotalRemainingLoan() {
-        return totalRemainingLoan;
-    }
-    public void setTotalRemainingLoan(int totalRemainingLoan) {
-        this.totalRemainingLoan = totalRemainingLoan;
-    }
     public double getTotalLoanCostInterestPlusOriginalDepth() {
         return totalLoanCostInterestPlusOriginalDepth;
     }
-    public void setTotalLoanCostInterestPlusOriginalDepth(double totalLoanCostInterestPlusOriginalDepth) {
-        this.totalLoanCostInterestPlusOriginalDepth = totalLoanCostInterestPlusOriginalDepth;
-    }
     public eLoanCategory getLoanCategory() {
         return loanCategory;
-    }
-    public void setLoanCategory(eLoanCategory loanCategory) {
-        this.loanCategory = loanCategory;
     }
     public eLoanStatus getStatus() {
         return status;
@@ -186,9 +147,6 @@ public class Loan {
     }
     public Account getLoanAccount() {
         return loanAccount;
-    }
-    public void setLoanAccount(Account loanAccount) {
-        this.loanAccount = loanAccount;
     }
 
     @Override
@@ -219,9 +177,9 @@ public class Loan {
      * @return
      */
     public double nextExpectedPaymentAmount() {
-        if(deviation>0)
+        if(deviation.getSumOfDeviation()>0)
         {
-            return deviation;
+            return deviation.getSumOfDeviation();
         }
         else
             return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTimeStamp());
@@ -244,14 +202,17 @@ public class Loan {
         return result;
     }
 
-    /**
-     * this func calculate the Amount that Left For Loan to change from being Pending or New
-     *
-     * @return
-     */
-    public double calculateLoanAmountLeftForPendingAndNew() {
-        return (loanOriginalDepth - calculateLendersTotalAmount());
+    public double calculateCurrInterest(double nextExpectedPaymentAmount, int numberOfYazNotPayed){
+        double coefficientOfMultiplicationInterest = this.interestPercentagePerTimeUnit/100;
+        double interest = nextExpectedPaymentAmount*coefficientOfMultiplicationInterest;
+        return (interest + interest*numberOfYazNotPayed);
     }
+    public double calculateCurrFund(double nextExpectedPaymentAmount, int numberOfYazNotPayed,double interest){
+        double fund =nextExpectedPaymentAmount-interest;
+        return (fund+fund*numberOfYazNotPayed);
+    }
+
+
 
     /**
      * update the status of the loan from new or from pending or from activate. if changed to activate it starts up the loan
@@ -274,15 +235,16 @@ public class Loan {
     public void activateLoan() {
 
         Client borrower = BackgroundFunc.returnClientByName(getBorrowerName());
-        BackgroundFunc.TransferMoneyBetweenAccounts(getLoanAccount(),getLoanOriginalDepth(),borrower.getMyAccount());
+        BackgroundFunc.TransferMoneyBetweenAccounts(loanAccount,loanOriginalDepth,borrower.getMyAccount());
+        loanAccount.setCurrBalance(0);
         Timeline startingLoanTimeStamp = new Timeline (Timeline.getCurrTime());
         setStartLoanYaz(startingLoanTimeStamp);
     }
 
-    public void updateDynamicDataMembersAfterYazPromotion(){
-        totalRemainingLoan -=nextExpectedPaymentAmount();
-        //todo: complete do dynamic data members and remaining loan data update
-
+    public void updateDynamicDataMembersAfterYazPromotion(double interest, double fund){
+        totalRemainingLoan-= (interest+fund);
+        payedInterest += interest;
+        payedFund += fund;
     }
 
     /**
@@ -292,20 +254,28 @@ public class Loan {
         Client borrowerAsClient = Database.getClientMap().get(borrowerName);
         Account borrowerAccount = borrowerAsClient.getMyAccount();
         Timeline currTimeStamp = new Timeline(Timeline.getCurrTime());
+        Double nextExpectedPaymentAmount = nextExpectedPaymentAmount();
+        Double nextExpectedInterest = calculateCurrInterest(nextExpectedPaymentAmount,deviation.getNumberOfYazNotPayed());
+        Double nextExpectedFund = calculateCurrFund(nextExpectedPaymentAmount,deviation.getNumberOfYazNotPayed(),nextExpectedInterest);
+
         //if the borrower have the money for paying this loan at the time of the yaz
-        if(borrowerAccount.getCurrBalance()>=nextExpectedPaymentAmount()){
+        if(borrowerAccount.getCurrBalance()>=nextExpectedPaymentAmount){
                 //add new payment to the loan payment list
-                Payment BorrowPayment = new Payment(currTimeStamp,nextExpectedPaymentAmount(),true);
+                Payment BorrowPayment = new Payment(currTimeStamp,true,nextExpectedFund,nextExpectedInterest);
                 paymentsList.add(BorrowPayment);
                 //add the transaction stamp to the borrower transaction list
-                Transaction transaction = new Transaction(currTimeStamp,nextExpectedPaymentAmount());
+                Transaction transaction = new Transaction(currTimeStamp,nextExpectedPaymentAmount);
                 borrowerAccount.addTnuaToAccount(transaction);
                 //update loan money info
-                updateDynamicDataMembersAfterYazPromotion();
+                loanAccount.setCurrBalance(loanAccount.getCurrBalance()+nextExpectedPaymentAmount);
+                //todo
+                updateDynamicDataMembersAfterYazPromotion(nextExpectedInterest,nextExpectedFund);
+                deviation.resetDeviation();
                 //update loan status
                 if(totalRemainingLoan == 0) {
                     status=eLoanStatus.FINISHED;
-                    handleFinishedLoan();
+                    endLoanYaz = currTimeStamp;
+                    payLoanDividendsToLenders();
                 }
                 else if(status == eLoanStatus.RISK) {
                     status=eLoanStatus.ACTIVE;
@@ -315,19 +285,14 @@ public class Loan {
         else {
             status = eLoanStatus.RISK;
             //add new payment to the loan payment list with false
-            Payment BorrowPayment = new Payment(currTimeStamp,nextExpectedPaymentAmount(),false);
+            Payment BorrowPayment = new Payment(currTimeStamp,false,nextExpectedFund,nextExpectedInterest);
             paymentsList.add(BorrowPayment);
             //enlarge the deviation
-            deviation +=nextExpectedPaymentAmount();
+            deviation.increaseDeviationBy(nextExpectedInterest,nextExpectedFund);
         }
     }
 
-    /**
-     * this func assumes that the loan it works on is a finished loan pays the money from the loan savings account to the loaners
-     */
-    public void handleFinishedLoan(){
-        //todo: need to complete it and pay for all the lenders from the loan savings account
-    };
+
 
     /**
      * function in charge of paying each lender is partial share of his investment in the loan.

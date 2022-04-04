@@ -8,8 +8,8 @@ import loan.Loan;
 import loan.enums.eLoanCategory;
 import loan.enums.eLoanFilters;
 import loan.enums.eLoanStatus;
-import operations.Payment;
-import operations.Transaction;
+import Money.operations.Payment;
+import Money.operations.Transaction;
 import time.Timeline;
 
 import java.util.ArrayList;
@@ -37,8 +37,8 @@ public class PrintFuncs {
         List<Payment> paymentsList = currLoan.getPaymentsList();
         double payedFund =currLoan.getPayedFund();
         double payedInterest = currLoan.getPayedInterest();
-        double currFundDepth = currLoan.getPayedFund();
-        double currInterestDepth =currLoan.getCurrInterestDepth();
+        double currFundDepth = currLoan.calculateFundDepth();
+        double currInterestDepth =currLoan.calculateCurrInterestDepth();
         System.out.println("Loan start time: " + startLoanYaz + " Yaz");
         int T = (Timeline.getCurrTime() - startLoanYaz.getTimeStamp()) % paymentFrequency.getTimeStamp();
         System.out.println("next payment: " + T);
@@ -48,8 +48,8 @@ public class PrintFuncs {
         }
         System.out.println("total payed fund: " + payedFund);
         System.out.println("total payed interest: " + payedInterest);
-        System.out.println("remaining fund: " + currFundDepth);
-        System.out.println("remaining interest: " + currInterestDepth);
+        System.out.println("remaining fund: " + currFundDepth);//currFundDepth);
+        System.out.println("remaining interest: " + currInterestDepth);//currInterestDepth);
     }
     public static void printRISKstatus(Loan currLoan){
 

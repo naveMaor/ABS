@@ -6,8 +6,7 @@ import customes.Lenders;
 import data.Database;
 import loan.Loan;
 import loan.enums.eLoanCategory;
-import loan.enums.eLoanStatus;
-import operations.Transaction;
+import Money.operations.Transaction;
 import time.Timeline;
 
 import java.util.ArrayList;
