@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="updated func 6 (changed almost all of it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)&#10;created new helper for func 6 : getMinInvestment, printEmptyListNotification and getWantedInvestment&#10;&#10;IMPORTANT: major changes in func6 &amp; ClientToLoan">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="func7 in finished">
+      <change afterPath="$PROJECT_DIR$/Engine/src/Money/Deviation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engine/src/data/SchemaBasedJAXB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsCategories.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsCustomer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsCustomers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsDescriptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsLoan.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsLoans.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/ObjectFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/customes/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/data/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/operations/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/operations/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/operations/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/TempPrintFunc.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +66,12 @@
     <property name="project.structure.side.proportion" value="0.10471207" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Nave\Desktop\ABS\Engine\src\data\xml" />
+      <recent name="C:\Users\Nave\Desktop\ABS\Engine\src\xml" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Program" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Shai.Program" />
@@ -90,7 +109,8 @@
       <workItem from="1648645933569" duration="12640000" />
       <workItem from="1648712141667" duration="2052000" />
       <workItem from="1648729535306" duration="11879000" />
-      <workItem from="1648829358603" duration="18309000" />
+      <workItem from="1648829358603" duration="16179000" />
+      <workItem from="1649083815680" duration="8572000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -186,12 +206,11 @@
       <option name="project" value="LOCAL" />
       <updated>1648899142729</updated>
     </task>
-    <task id="LOCAL-00015" summary="updated func 6 (changed almost all of it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)&#10;created new helper for func 6 : getMinInvestment, printEmptyListNotification and getWantedInvestment&#10;&#10;IMPORTANT: major changes in func6 &amp; ClientToLoan">
-      <created>1648902326677</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1648902326677</updated>
+    <task id="LOCAL‎00015" summary="func7 in finished">
+      <created>1649096191175</created>
+      <option name="number" value="LOCAL‎00015" />
+      <option name="presentableId" value="LOCAL‎00015" />
+      <updated>1649096191175</updated>
     </task>
     <option name="localTasksCounter" value="16" />
     <servers />
@@ -204,7 +223,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -226,25 +257,21 @@
     <MESSAGE value="testing&amp;fixing issue's with payLoanDividendsToLenders - can see test in Program class in line 89-90" />
     <MESSAGE value="updated func 6 (changed almost allof it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)" />
     <MESSAGE value="updated func 6 (changed almost all of it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)&#10;created new helper for func 6 : getMinInvestment, printEmptyListNotification and getWantedInvestment&#10;&#10;IMPORTANT: major changes in func6 &amp; ClientToLoan" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated func 6 (changed almost all of it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)&#10;created new helper for func 6 : getMinInvestment, printEmptyListNotification and getWantedInvestment&#10;&#10;IMPORTANT: major changes in func6 &amp; ClientToLoan" />
+    <MESSAGE value="func7 in finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="func7 in finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
+          <line>136</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="16" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
-          <line>121</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
-          <line>111</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -259,7 +286,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ABS$Program.ic" NAME="Program Coverage Results" MODIFIED="1648902625476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/ABS$Program.ic" NAME="Program Coverage Results" MODIFIED="1648887012688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Shai.*</FILTER>
     </SUITE>
   </component>

@@ -1,6 +1,6 @@
 package customes;
 
-import operations.Transaction;
+import Money.operations.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
