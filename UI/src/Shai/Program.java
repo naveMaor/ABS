@@ -19,7 +19,7 @@ public class Program {
     public static void main (String[] args){
 
         //1ST TEST OBJ
-        Loan test1 = new Loan(eLoanCategory.DEFICIT, eLoanStatus.ACTIVE,"Shai Shillo",new Timeline(10),new Timeline(1),new Timeline(1),10,100000);
+        Loan test1 = new Loan(eLoanCategory.DEFICIT, eLoanStatus.PENDING,"Shai Shillo",new Timeline(10),new Timeline(1),new Timeline(1),10,100000);
         test1.generateLoanID();
 
        //creates&sets lenders list:
@@ -27,26 +27,26 @@ public class Program {
         Lenders lender2=new Lenders("Shai", 40000);
         Lenders lender3=new Lenders("Nave",40000);
         List<Lenders> lendersList1 = new ArrayList<>(3);
-        lendersList1.add(lender1);
-        lendersList1.add(lender2);
-        lendersList1.add(lender3);
-        test1.setLendersList(lendersList1);
+      //  lendersList1.add(lender1);
+       // lendersList1.add(lender2);
+       // lendersList1.add(lender3);
+       // test1.setLendersList(lendersList1);
 
         //creates&sets payment list:
         Payment payment1 = new Payment(new Timeline(2),11000,true);
         Payment payment2 = new Payment(new Timeline(2),11000,true);
         Payment payment3 = new Payment(new Timeline(2),11000,false);
         List<Payment> paymentsList1 = new ArrayList<>(3);
-        paymentsList1.add(payment1);
-        paymentsList1.add(payment2);
-        paymentsList1.add(payment3);
-        test1.setPaymentsList(paymentsList1);
+       // paymentsList1.add(payment1);
+      //  paymentsList1.add(payment2);
+       // paymentsList1.add(payment3);
+       // test1.setPaymentsList(paymentsList1);
 
         //set remaining Loan fields:
 
 
         //2ST TEST OBJ
-        Loan test2 = new Loan(eLoanCategory.EVENT, eLoanStatus.RISK,"Oded Menashe",new Timeline(5),new Timeline(1),new Timeline(1),5,200000);
+        Loan test2 = new Loan(eLoanCategory.EVENT, eLoanStatus.NEW,"Oded Menashe",new Timeline(5),new Timeline(1),new Timeline(1),5,200000);
         test1.generateLoanID();
 
         //creates&sets lenders list:
@@ -54,10 +54,10 @@ public class Program {
         Lenders lender5=new Lenders("eran", 40000);
         Lenders lender6=new Lenders("gadi",40000);
         List<Lenders> lendersList2 = new ArrayList<>(3);
-        lendersList2.add(lender4);
-        lendersList2.add(lender5);
-        lendersList2.add(lender6);
-        test2.setLendersList(lendersList2);
+        //lendersList2.add(lender4);
+        //lendersList2.add(lender5);
+        //lendersList2.add(lender6);
+        //test2.setLendersList(lendersList2);
 
         //creates&sets payment list:
         Payment payment4 = new Payment(new Timeline(2),11000,true);
@@ -88,6 +88,8 @@ public class Program {
     //testing func payLoanDividendsToLenders
         test1.payLoanDividendsToLenders();
         System.out.println(idan.getMyAccount().toString()+"\n"+shai.getMyAccount().toString()+"\n"+nave.getMyAccount().toString());
+     test1.setLoanAccount(new Account(204684914,0));
+     test2.setLoanAccount((new Account(204684915,0)));
         User_interface.func6();
     }
 
