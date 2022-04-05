@@ -149,6 +149,10 @@ public class Loan {
         return loanAccount;
     }
 
+    public void setLoanAccount(Account loanAccount) {
+        this.loanAccount = loanAccount;
+    }
+
     @Override
     public String toString() {
         return "Loan: " +
