@@ -21,46 +21,46 @@ public class Program {
         test1.generateLoanID();
 
        //creates&sets lenders list:
-        Lenders lender1=new Lenders("Idan",20);
-        Lenders lender2=new Lenders("Shai", 40);
-        Lenders lender3=new Lenders("Nave",40);
+        Lenders lender1=new Lenders("Idan",250);
+        Lenders lender2=new Lenders("Shai", 350);
+        Lenders lender3=new Lenders("Nave",400);
         List<Lenders> lendersList1 = new ArrayList<>(3);
-      //  lendersList1.add(lender1);
-       // lendersList1.add(lender2);
-       // lendersList1.add(lender3);
-       // test1.setLendersList(lendersList1);
+        lendersList1.add(lender1);
+        lendersList1.add(lender2);
+        lendersList1.add(lender3);
+        test1.setLendersList(lendersList1);
 
         //creates&sets payment list:
         Payment payment1 = new Payment(new Timeline(2),true,100,10);
         Payment payment2 = new Payment(new Timeline(2),true,100,10);
         Payment payment3 = new Payment(new Timeline(2),true,100,10);
         List<Payment> paymentsList1 = new ArrayList<>(3);
-       // paymentsList1.add(payment1);
-      //  paymentsList1.add(payment2);
-       // paymentsList1.add(payment3);
-       // test1.setPaymentsList(paymentsList1);
+        paymentsList1.add(payment1);
+        paymentsList1.add(payment2);
+        paymentsList1.add(payment3);
+        test1.setPaymentsList(paymentsList1);
 
         //set remaining Loan fields:
 
 
         //2ST TEST OBJ
-        Loan test2 = new Loan(eLoanCategory.EVENT, eLoanStatus.NEW,"Oded Menashe",new Timeline(5),new Timeline(1),new Timeline(1),5,200000);
+        Loan test2 = new Loan(eLoanCategory.EVENT, eLoanStatus.NEW,"Oded Menashe",new Timeline(10),new Timeline(1),new Timeline(2),7.5,1000);
         test1.generateLoanID();
 
         //creates&sets lenders list:
-        Lenders lender4=new Lenders("shlomi",200);
-        Lenders lender5=new Lenders("eran", 400);
-        Lenders lender6=new Lenders("gadi",400);
+        Lenders lender4=new Lenders("shlomi",250);
+        Lenders lender5=new Lenders("eran", 150);
+        Lenders lender6=new Lenders("gadi",600);
         List<Lenders> lendersList2 = new ArrayList<>(3);
-        //lendersList2.add(lender4);
-        //lendersList2.add(lender5);
-        //lendersList2.add(lender6);
-        //test2.setLendersList(lendersList2);
+        lendersList2.add(lender4);
+        lendersList2.add(lender5);
+        lendersList2.add(lender6);
+        test2.setLendersList(lendersList2);
 
         //creates&sets payment list:
-        //Payment payment4 = new Payment(new Timeline(2),11000,true);
-        //Payment payment5 = new Payment(new Timeline(2),11000,true);
-        //Payment payment6 = new Payment(new Timeline(2),11000,false);
+        Payment payment4 = new Payment(new Timeline(2),true,200,15);
+        Payment payment5 = new Payment(new Timeline(4),true,200,15);
+        Payment payment6 = new Payment(new Timeline(6),false,200,15);
         List<Payment> paymentsList2 = new ArrayList<>(3);
         paymentsList2.add(payment4);
         paymentsList2.add(payment5);
