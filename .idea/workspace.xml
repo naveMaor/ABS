@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="func7 in finished with nikol&#10;setloanAccount added">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="debuggeing func 6 , adding to client lender list is newly invested loan">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +260,8 @@
     <MESSAGE value="func7 in finished with nikol" />
     <MESSAGE value="func7 in finished with nikol&#10;setloanAccount" />
     <MESSAGE value="func7 in finished with nikol&#10;setloanAccount added" />
-    <option name="LAST_COMMIT_MESSAGE" value="func7 in finished with nikol&#10;setloanAccount added" />
+    <MESSAGE value="debuggeing func 6 , adding to client lender list is newly invested loan" />
+    <option name="LAST_COMMIT_MESSAGE" value="debuggeing func 6 , adding to client lender list is newly invested loan" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -269,8 +272,8 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
-          <line>108</line>
-          <option name="timeStamp" value="24" />
+          <line>128</line>
+          <option name="timeStamp" value="38" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -282,11 +285,13 @@
     <watches-manager>
       <configuration name="Application">
         <watch expression="this" language="JAVA" />
+        <watch expression="loan.loanAccount" />
+        <watch expression="this.lendersList.get(1)" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ABS$Program.ic" NAME="Program Coverage Results" MODIFIED="1648887012688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/ABS$Program.ic" NAME="Program Coverage Results" MODIFIED="1649234267226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Shai.*</FILTER>
     </SUITE>
   </component>

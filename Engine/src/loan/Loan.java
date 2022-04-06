@@ -223,10 +223,10 @@ public class Loan {
      * todo:add option for changing in risk and finished status
      */
     public void UpdateLoanStatusIfNeeded() {
-        if ((!getLendersList().isEmpty()) && (status == eLoanStatus.NEW)) {
+        if ((!lendersList.isEmpty()) && (status == eLoanStatus.NEW)) {
             setStatus(eLoanStatus.PENDING);
         }
-        else if(getLoanAccount().getCurrBalance()==getLoanOriginalDepth()) {
+        if(loanAccount.getCurrBalance()==getLoanOriginalDepth()) {
             setStatus(eLoanStatus.ACTIVE);
             activateLoan();
         }
@@ -238,11 +238,11 @@ public class Loan {
      */
     public void activateLoan() {
 
-        Client borrower = BackgroundFunc.returnClientByName(getBorrowerName());
+        Client borrower = BackgroundFunc.returnClientByName(this.getBorrowerName());
         BackgroundFunc.TransferMoneyBetweenAccounts(loanAccount,loanOriginalDepth,borrower.getMyAccount());
         loanAccount.setCurrBalance(0);
         Timeline startingLoanTimeStamp = new Timeline (Timeline.getCurrTime());
-        setStartLoanYaz(startingLoanTimeStamp);
+        startLoanYaz=startingLoanTimeStamp;
     }
 
     public void updateDynamicDataMembersAfterYazPromotion(double interest, double fund){

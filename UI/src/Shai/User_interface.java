@@ -125,15 +125,16 @@ public class User_interface {
             wantedInvestment -= investment * loanListSize;
             //TO DO: MAYBE TAKE LINES 111-119 TO A FUNC
             //initializing index for removal
-            int index=0;
-            for (Loan loan : loanslistToInvest) {
 
+            for (int index=0;index<loanslistToInvest.size();) {
+                Loan loan = loanslistToInvest.get(index);
                 ClientToLoan(loan, client, investment);
                 if(loan.getStatus() == eLoanStatus.ACTIVE)
                     loanslistToInvest.remove(index);
-            ++index;
+                else //should move foward nothing was removed
+                    ++index;
             }
-
+            loanListSize=loanslistToInvest.size();//NEWLY ADDED
             // as long as there is money left to invest , or list of optional investments is not empty
         } while (wantedInvestment != 0 && loanListSize != 0);
         if (loanListSize==0)

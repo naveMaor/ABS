@@ -225,8 +225,10 @@ public class PrintFuncs {
             System.out.println(i + ". " + client.getFullName());
             System.out.println("current balance: " + client.getMyAccount().getCurrBalance());
             v.add(client);
+            ++i;
         }
         i =readIntFromUser(1,Database.getClientMap().size());
+
         return v.get(i-1);//todo might be i instead of i-1 becasue array starts from 0?
     }
     /**
@@ -356,8 +358,13 @@ public class PrintFuncs {
      * @param client
      */
     public static void ClientToLoan(Loan loan,Client client,double investment){
+        //investing the money
         TransferMoneyBetweenAccounts(client.getMyAccount(),investment,loan.getLoanAccount());
+        //adding lender to loans lender list
         addLenderToLoanList(client,loan,investment);
+        //adding lender to his Client -> clientAsLenderLoanList data member.
+        client.getClientAsLenderLoanList().add(loan);
+        //checks if loands status needs an update
         loan.UpdateLoanStatusIfNeeded();
     }
     /**
@@ -385,7 +392,7 @@ public class PrintFuncs {
         Scanner sc = new Scanner(System.in);
         int number;
         do {
-            System.out.println("Please enter a number between: " + min + " - " + max);
+            System.out.println("Please enter an Integer number between: " + min + " - " + max);
 
             while (!sc.hasNextInt()) {
                 System.out.println("Input is not valid, please enter a valid number!");
