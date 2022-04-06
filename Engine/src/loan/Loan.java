@@ -272,7 +272,7 @@ public class Loan {
                 borrowerAccount.addTnuaToAccount(transaction);
                 //update loan money info
                 loanAccount.setCurrBalance(loanAccount.getCurrBalance()+nextExpectedPaymentAmount);
-                //todo
+                //
                 updateDynamicDataMembersAfterYazPromotion(nextExpectedInterest,nextExpectedFund);
                 deviation.resetDeviation();
                 //update loan status
