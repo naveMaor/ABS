@@ -50,7 +50,7 @@ public class Loan {
 
     private Account loanAccount;
     //constructor
-    public Loan(eLoanCategory loanCategory, eLoanStatus status, String borrowerName, Timeline originalLoanTimeFrame, Timeline startLoanYaz, Timeline paymentFrequency, int interestPercentagePerTimeUnit, double loanOriginalDepth) {
+    public Loan(eLoanCategory loanCategory, eLoanStatus status, String borrowerName, Timeline originalLoanTimeFrame, Timeline startLoanYaz, Timeline paymentFrequency, double interestPercentagePerTimeUnit, double loanOriginalDepth) {
         this.loanCategory = loanCategory;
         this.status = status;
         this.borrowerName = borrowerName;
@@ -147,6 +147,10 @@ public class Loan {
     }
     public Account getLoanAccount() {
         return loanAccount;
+    }
+
+    public void setLoanAccount(Account loanAccount) {
+        this.loanAccount = loanAccount;
     }
 
     @Override

@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="func7 in finished">
-      <change afterPath="$PROJECT_DIR$/Engine/src/Money/Deviation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engine/src/data/SchemaBasedJAXB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsCategories.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsCustomer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsCustomers.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsDescriptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsLoan.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/AbsLoans.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Engine/src/data/xml/ObjectFactory.java" afterDir="false" />
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="func7 in finished with nikol&#10;setloanAccount added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/customes/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/data/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/operations/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/operations/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/operations/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/Shai/TempPrintFunc.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +95,7 @@
       <workItem from="1648729535306" duration="11879000" />
       <workItem from="1648829358603" duration="16179000" />
       <workItem from="1649083815680" duration="8572000" />
+      <workItem from="1649232272968" duration="1433000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -212,7 +197,19 @@
       <option name="presentableId" value="LOCAL‎00015" />
       <updated>1649096191175</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL‎00016" summary="func7 in finished with nikol">
+      <created>1649097673795</created>
+      <option name="number" value="LOCAL‎00016" />
+      <option name="presentableId" value="LOCAL‎00016" />
+      <updated>1649097673795</updated>
+    </task>
+    <task id="LOCAL‎00017" summary="func7 in finished with nikol&#10;setloanAccount added">
+      <created>1649157918165</created>
+      <option name="number" value="LOCAL‎00017" />
+      <option name="presentableId" value="LOCAL‎00017" />
+      <updated>1649157918165</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,20 +255,23 @@
     <MESSAGE value="updated func 6 (changed almost allof it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)" />
     <MESSAGE value="updated func 6 (changed almost all of it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)&#10;created new helper for func 6 : getMinInvestment, printEmptyListNotification and getWantedInvestment&#10;&#10;IMPORTANT: major changes in func6 &amp; ClientToLoan" />
     <MESSAGE value="func7 in finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="func7 in finished" />
+    <MESSAGE value="func7 in finished with nikol" />
+    <MESSAGE value="func7 in finished with nikol&#10;setloanAccount" />
+    <MESSAGE value="func7 in finished with nikol&#10;setloanAccount added" />
+    <option name="LAST_COMMIT_MESSAGE" value="func7 in finished with nikol&#10;setloanAccount added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
-          <line>136</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="16" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
