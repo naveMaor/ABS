@@ -10,9 +10,9 @@ public class Program {
     public static void main (String[] args){
 
         //1ST TEST OBJ
-        Loan test1 = new Loan("DEFICIT", eLoanStatus.NEW,"Shai",new Timeline(10),new Timeline(1),new Timeline(1),10,1000);
+       // Loan test1 = new Loan("DEFICIT", eLoanStatus.NEW,"Shai",new Timeline(10),new Timeline(1),new Timeline(1),10,1000);
         //Loan test1 = new Loan(eLoanCategory.DEFICIT, eLoanStatus.PENDING,"Shai Shillo",new Timeline(10),new Timeline(1),new Timeline(1),10,100000);
-        test1.generateLoanID();
+       // test1.generateLoanID();
 
        //creates&sets lenders list:
      //   Lenders lender1=new Lenders("Idan",250);
@@ -38,8 +38,8 @@ public class Program {
 
 
         //2ST TEST OBJ
-        Loan test2 = new Loan("EVENT", eLoanStatus.NEW,"Idan",new Timeline(10),new Timeline(1),new Timeline(2),7.5,1000);
-        test1.generateLoanID();
+       // Loan test2 = new Loan("EVENT", eLoanStatus.NEW,"Idan",new Timeline(10),new Timeline(1),new Timeline(2),7.5,1000);
+       // test1.generateLoanID();
 
         //creates&sets lenders list:
        // Lenders lender4=new Lenders("shlomi",250);
@@ -61,8 +61,8 @@ public class Program {
        // paymentsList2.add(payment6);
        // test2.setPaymentsList(paymentsList2);
 
-        Database.addLoanToLoanMap(test1);
-        Database.addLoanToLoanMap(test2);
+      //  Database.addLoanToLoanMap(test1);
+      //  Database.addLoanToLoanMap(test2);
 
         //User_interface.allLoansData();
         //set remaining Loan fields:
@@ -72,16 +72,16 @@ public class Program {
         Client shai = new Client("Shai",new Account(204684914, 5000));
         Client nave = new Client("Nave",new Account(204684914, 5000));
         // adding new test clients to map
-        Database.addClientToClientList(idan);
-        Database.addClientToClientList(shai);
-        Database.addClientToClientList(nave);
+        Database.addClientToClientMap(idan);
+        Database.addClientToClientMap(shai);
+        Database.addClientToClientMap(nave);
         // User_interface.func4();
         // User_interface.func5();
     //testing func payLoanDividendsToLenders
         //test1.payLoanDividendsToLenders();
         //System.out.println(idan.getMyAccount().toString()+"\n"+shai.getMyAccount().toString()+"\n"+nave.getMyAccount().toString());
-        test1.setLoanAccount(new Account(204684914,0));
-        test2.setLoanAccount((new Account(204684915,0)));
+      //  test1.setLoanAccount(new Account(204684914,0));
+      //  test2.setLoanAccount((new Account(204684915,0)));
         User_interface.func6();
     }
 

@@ -4,6 +4,7 @@ import customes.Account;
 import customes.Client;
 import customes.Lenders;
 import data.Database;
+import data.xml.*;
 import loan.Loan;
 import Money.operations.Transaction;
 import time.Timeline;
@@ -135,5 +136,106 @@ This func gets lenders list and return thus sum of their deposit
         }
     }
 
+    /**
+     *     check if there is a loan category that does not exist
+     */
+    public static boolean checkValidCategories(AbsDescriptor descriptor){
+        List<String> absCategoriesList = descriptor.getAbsCategories().getAbsCategory();
+        List<AbsLoan> absLoanList = descriptor.getAbsLoans().getAbsLoan();
+        boolean isCategoryExist = false;
 
+        for (AbsLoan absLoan:absLoanList){
+            for(String s:absCategoriesList){
+                if(absLoan.getAbsCategory().equals(s)) {
+                    isCategoryExist=true;
+                }
+            }
+            if(!isCategoryExist)
+                return false;
+            isCategoryExist = false;
+        }
+        return true;
+    }
+
+    /**
+     *     check if there is a loan owner that does not exist
+     */
+    public static boolean checkValidLoanOwner(AbsDescriptor descriptor){
+        List<AbsCustomer> absCustomerList = descriptor.getAbsCustomers().getAbsCustomer();
+        List<AbsLoan> absLoanList = descriptor.getAbsLoans().getAbsLoan();
+        boolean isCustomerExist = false;
+
+        for (AbsLoan absLoan:absLoanList){
+            for(AbsCustomer absCustomer:absCustomerList){
+                String customerName = absCustomer.getName();
+                if(absLoan.getAbsOwner().equals(customerName))
+                {
+                    isCustomerExist=true;
+                }
+            }
+            if(!isCustomerExist)
+            {
+                return false;
+            }
+            isCustomerExist = false;
+        }
+        return true;
+    }
+
+    /**
+     * check if payment frequency is fully divided by the total time of the loan
+     * @param descriptor
+     * @return
+     */
+    public static boolean checkValidPaymentFrequency(AbsDescriptor descriptor){
+        List<AbsLoan> absLoanList = descriptor.getAbsLoans().getAbsLoan();
+        int absTotalYazTime;
+        int absPaysEveryYaz;
+
+        for (AbsLoan absLoan:absLoanList){
+            absTotalYazTime=absLoan.getAbsTotalYazTime();
+            absPaysEveryYaz = absLoan.getAbsTotalYazTime();
+            if(absTotalYazTime%absPaysEveryYaz !=0)
+                return false;
+        }
+        return true;
+    }
+
+    /**
+     *  check if there is two customers with the same name
+     * @param descriptor
+     * @return
+     */
+    public static boolean checkValidCustomersList(AbsDescriptor descriptor){
+        List<AbsCustomer> absCustomerList = descriptor.getAbsCustomers().getAbsCustomer();
+        for (AbsCustomer absCustomer:absCustomerList){
+            if(absCustomerList.contains(absCustomer.getName()) )
+                return false;
+        }
+        return true;
+    }
+
+    public static void buildDataFromDescriptor(AbsDescriptor descriptor){
+        buildCustomersData(descriptor.getAbsCustomers().getAbsCustomer());
+        buildCategoriesData(descriptor.getAbsCategories().getAbsCategory());
+        buildLoansData(descriptor.getAbsLoans().getAbsLoan());
+    }
+
+    public static void buildCustomersData(List<AbsCustomer> absCustomerList){
+        for (AbsCustomer absCustomer:absCustomerList){
+            Client newClient = new Client(absCustomer.getName(),absCustomer.getAbsBalance());
+            Database.addClientToClientMap(newClient);
+        }
+    }
+    public static void buildCategoriesData(List<String> absCategories){
+        for (String categoryName:absCategories){
+            Database.addCategory(categoryName);
+        }
+    }
+    public static void buildLoansData(List<AbsLoan> absLoanList){
+       for (AbsLoan absLoan:absLoanList){
+           Loan newLoan = new Loan(absLoan.getAbsOwner(),absLoan.getAbsCategory(),absLoan.getAbsCapital(),absLoan.getAbsTotalYazTime(),absLoan.getAbsPaysEveryYaz(),absLoan.getAbsIntristPerPayment());
+           Database.addLoanToLoanMap(newLoan);
+       }
+    }
 }

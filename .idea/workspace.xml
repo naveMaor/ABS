@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="deleted LoanCategory.&#10;created new kind of map of the loans that has a key for category and a list of Loans as a value.">
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/data/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/data/Database.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/customes/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/customes/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/data/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,7 @@
       <workItem from="1648829358603" duration="16179000" />
       <workItem from="1649083815680" duration="8572000" />
       <workItem from="1649232272968" duration="1433000" />
-      <workItem from="1649331662894" duration="12555000" />
+      <workItem from="1649331662894" duration="21790000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -228,7 +228,13 @@
       <option name="presentableId" value="LOCAL‎00019" />
       <updated>1649344609786</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL‎00020" summary="deleted LoanCategory.&#10;created new kind of map of the loans that has a key for category and a list of Loans as a value.">
+      <created>1649347166634</created>
+      <option name="number" value="LOCAL‎00020" />
+      <option name="presentableId" value="LOCAL‎00020" />
+      <updated>1649347166634</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

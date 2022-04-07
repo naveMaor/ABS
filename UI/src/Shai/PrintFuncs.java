@@ -4,6 +4,7 @@ import customes.Account;
 import customes.Client;
 import customes.Lenders;
 import data.Database;
+import data.xml.AbsDescriptor;
 import loan.Loan;
 import loan.enums.eLoanFilters;
 import loan.enums.eLoanStatus;
@@ -393,7 +394,35 @@ public class PrintFuncs {
         System.out.println("Yaz now: " );
         Timeline.printStaticCurrTime();
     }
+    //todo: add excepetion
+    //func1 helpers
+    public static boolean CheckAndprintInvalidFile(AbsDescriptor descriptor){
+        boolean isValid =true;
+        String s = null;
 
+        if(!checkValidCategories(descriptor)){
+            s+= "\nthere is loan category that does not exist";
+            isValid = false;
+        }
+        if(!checkValidCustomersList(descriptor)){
+            s+="\nthere is two customers with the same name";
+            isValid =false;
+        }
+        if(!checkValidLoanOwner(descriptor)){
+            s+="\nthere is a loan with a loan owner name that does not exist";
+            isValid = false;
+        }
+        if(!checkValidPaymentFrequency(descriptor)){
+            s+="\npayment frequency is not fully divided by the total time of the loan";
+            isValid = false;
+        }
+
+        if(!isValid){
+            s="File not valid!\n" +s;
+            System.out.println(s);
+        }
+        return isValid;
+    }
 
 
     //general

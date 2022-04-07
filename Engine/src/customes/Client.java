@@ -4,6 +4,7 @@ import loan.Loan;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Client {
     private String fullName;
@@ -19,10 +20,15 @@ public class Client {
     public void setClientAsLenderLoanList(List<Loan> clientAsLenderLoanList) {
         this.clientAsLenderLoanList = clientAsLenderLoanList;
     }
-// ctor
+// ctors
     public Client(String fullName, Account myAccount) {
         this.fullName = fullName;
         this.myAccount = myAccount;
+    }
+    public Client(String fullName, int balance){
+        this.fullName = fullName;
+        Account newAccount= new Account(Objects.hash(fullName),balance);
+        this.myAccount = newAccount;
     }
 
    // setters

@@ -34,6 +34,8 @@ public class Loan {
     private Timeline endLoanYaz;
     private double interestPercentagePerTimeUnit;//
 
+    private int intristPerPayment;
+
     //Original Loan info:
     private double originalInterest;//ribit mekorit
     private double loanOriginalDepth;//Schum halvaa mekori
@@ -48,7 +50,8 @@ public class Loan {
     private double totalRemainingLoan = totalLoanCostInterestPlusOriginalDepth;//fund+interest
 
     private Account loanAccount;
-    //constructor
+    //constructors
+/*
     public Loan(String loanCategory, eLoanStatus status, String borrowerName, Timeline originalLoanTimeFrame, Timeline startLoanYaz, Timeline paymentFrequency, double interestPercentagePerTimeUnit, double loanOriginalDepth) {
         this.loanCategory = loanCategory;
         this.status = status;
@@ -63,7 +66,25 @@ public class Loan {
         //this.totalRemainingLoan = currInterestDepth + currFundDepth;//fund+interest
         calculateInterest();
     }
+*/
 
+    public Loan(String borrowerName, String loanCategory,double loanOriginalDepth,int originalLoanTimeFrame,int paymentFrequency, int intristPerPayment){
+        this.borrowerName =borrowerName;
+        this.loanCategory =loanCategory;
+        this.loanOriginalDepth =loanOriginalDepth;
+        Timeline newOriginalLoanTimeFrame = new Timeline(originalLoanTimeFrame);
+        this.originalLoanTimeFrame =newOriginalLoanTimeFrame;
+        Timeline newPaymentFrequency = new Timeline(paymentFrequency);
+        this.paymentFrequency = newPaymentFrequency;
+        this.intristPerPayment = intristPerPayment;
+        this.status = eLoanStatus.NEW;
+        this.loanID = Objects.hash(this.loanCategory, this.originalLoanTimeFrame, startLoanYaz);
+        this.interestPercentagePerTimeUnit = (100*this.originalInterest)/this.loanOriginalDepth;
+        this.originalInterest = intristPerPayment*(this.originalLoanTimeFrame.getTimeStamp()/this.paymentFrequency.getTimeStamp());
+        this.totalLoanCostInterestPlusOriginalDepth = this.originalInterest + this.loanOriginalDepth;
+        this.totalRemainingLoan = this.totalLoanCostInterestPlusOriginalDepth;
+        this.loanAccount = new Account();
+    }
 
 
     public final double calculateCurrInterestDepth(){
@@ -147,7 +168,12 @@ public class Loan {
     public Account getLoanAccount() {
         return loanAccount;
     }
-
+    public int getIntristPerPayment() {
+        return intristPerPayment;
+    }
+    public void setIntristPerPayment(int intristPerPayment) {
+        this.intristPerPayment = intristPerPayment;
+    }
     public void setLoanAccount(Account loanAccount) {
         this.loanAccount = loanAccount;
     }

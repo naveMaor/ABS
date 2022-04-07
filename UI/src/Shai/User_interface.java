@@ -8,11 +8,8 @@ import time.Timeline;
 import utills.BackgroundFunc;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 import static Shai.PrintFuncs.*;
-import static utills.BackgroundFunc.TransferMoneyBetweenAccounts;
-import static utills.BackgroundFunc.addLenderToLoanList;
 
 
 public class User_interface {
@@ -172,7 +169,12 @@ public class User_interface {
         BackgroundFunc.filterAndHandleLoansListAfterPromote();
     }
 
+    public void func1(){
+        if(CheckAndprintInvalidFile(descriptor)){
+            Database.buildDataFromDescriptor(descriptor);
+        }
 
+    }
 
 }
 

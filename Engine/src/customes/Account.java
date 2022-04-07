@@ -4,16 +4,24 @@ import Money.operations.Transaction;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.Random;
 
 public class Account {
     private int ID;
     private double currBalance =0;
     private List<Transaction> transactionList = new ArrayList<>();
-//ctor
+//ctors
     public Account(int ID, double currBalance) {
         this.ID = ID;
         this.currBalance = currBalance;
     }
+    public Account(){
+        int ID = Objects.hash(new Random());
+        currBalance = 0;
+    }
+
+
 
     @Override
     public String toString() {
