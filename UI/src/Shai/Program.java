@@ -1,22 +1,16 @@
 package Shai;
 import customes.Account;
 import customes.Client;
-import customes.Lenders;
 import data.Database;
 import loan.Loan;
-import loan.enums.eLoanCategory;
 import loan.enums.eLoanStatus;
-import Money.operations.Payment;
 import time.Timeline;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Program {
     public static void main (String[] args){
 
         //1ST TEST OBJ
-        Loan test1 = new Loan(eLoanCategory.DEFICIT, eLoanStatus.NEW,"Shai",new Timeline(10),new Timeline(1),new Timeline(1),10,1000);
+        Loan test1 = new Loan("DEFICIT", eLoanStatus.NEW,"Shai",new Timeline(10),new Timeline(1),new Timeline(1),10,1000);
         //Loan test1 = new Loan(eLoanCategory.DEFICIT, eLoanStatus.PENDING,"Shai Shillo",new Timeline(10),new Timeline(1),new Timeline(1),10,100000);
         test1.generateLoanID();
 
@@ -44,7 +38,7 @@ public class Program {
 
 
         //2ST TEST OBJ
-        Loan test2 = new Loan(eLoanCategory.EVENT, eLoanStatus.NEW,"Idan",new Timeline(10),new Timeline(1),new Timeline(2),7.5,1000);
+        Loan test2 = new Loan("EVENT", eLoanStatus.NEW,"Idan",new Timeline(10),new Timeline(1),new Timeline(2),7.5,1000);
         test1.generateLoanID();
 
         //creates&sets lenders list:
@@ -67,8 +61,8 @@ public class Program {
        // paymentsList2.add(payment6);
        // test2.setPaymentsList(paymentsList2);
 
-        Database.addLoanToLoanList(test1);
-        Database.addLoanToLoanList(test2);
+        Database.addLoanToLoanMap(test1);
+        Database.addLoanToLoanMap(test2);
 
         //User_interface.allLoansData();
         //set remaining Loan fields:
@@ -84,10 +78,10 @@ public class Program {
         // User_interface.func4();
         // User_interface.func5();
     //testing func payLoanDividendsToLenders
-        test1.payLoanDividendsToLenders();
+        //test1.payLoanDividendsToLenders();
         //System.out.println(idan.getMyAccount().toString()+"\n"+shai.getMyAccount().toString()+"\n"+nave.getMyAccount().toString());
-     test1.setLoanAccount(new Account(204684914,0));
-     test2.setLoanAccount((new Account(204684915,0)));
+        test1.setLoanAccount(new Account(204684914,0));
+        test2.setLoanAccount((new Account(204684915,0)));
         User_interface.func6();
     }
 

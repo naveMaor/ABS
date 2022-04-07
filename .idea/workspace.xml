@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="func7 in finished with nikol&#10;setloanAccount added">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="trying testim">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/customes/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/data/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Program.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +100,7 @@
       <workItem from="1648829358603" duration="16179000" />
       <workItem from="1649083815680" duration="8572000" />
       <workItem from="1649232272968" duration="1433000" />
+      <workItem from="1649331662894" duration="11654000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -208,7 +214,13 @@
       <option name="presentableId" value="LOCAL‎00017" />
       <updated>1649157918165</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL‎00018" summary="trying testim">
+      <created>1649249143874</created>
+      <option name="number" value="LOCAL‎00018" />
+      <option name="presentableId" value="LOCAL‎00018" />
+      <updated>1649249143874</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,7 +270,8 @@
     <MESSAGE value="func7 in finished with nikol&#10;setloanAccount" />
     <MESSAGE value="func7 in finished with nikol&#10;setloanAccount added" />
     <MESSAGE value="debuggeing func 6 , adding to client lender list is newly invested loan" />
-    <option name="LAST_COMMIT_MESSAGE" value="debuggeing func 6 , adding to client lender list is newly invested loan" />
+    <MESSAGE value="trying testim" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying testim" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

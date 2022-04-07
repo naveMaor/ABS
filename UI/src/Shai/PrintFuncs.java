@@ -5,7 +5,6 @@ import customes.Client;
 import customes.Lenders;
 import data.Database;
 import loan.Loan;
-import loan.enums.eLoanCategory;
 import loan.enums.eLoanFilters;
 import loan.enums.eLoanStatus;
 import Money.operations.Payment;
@@ -248,13 +247,13 @@ public class PrintFuncs {
     //TODO ADD OPTION FOR CHOOSING NO CATEGORY AT ALL in loanToInvest!!!!
     public static ArrayList<Loan> loanToInvest (Client client) {
         ArrayList<Loan> result = new ArrayList<>();
-        ArrayList<eLoanCategory> loanCategoryUserList = new ArrayList<>();
+        ArrayList<String> loanCategoryUserList = new ArrayList<>();
         double balance = client.getMyAccount().getCurrBalance(), minYazTimeFrame = 0;
         ArrayList<Integer> loanFilters;
         Double minInterestPerYaz = Double.valueOf(0);
         //part 2 in word document
 
-        loanFilters = getLoanFilters(balance);
+        loanFilters = getLoanFilters();
         if (loanFilters.get(eLoanFilters.LOAN_CATEGORY.ordinal()) == 1) {
             loanCategoryUserList = chooseCategoryToInvest();
         }
@@ -310,7 +309,7 @@ public class PrintFuncs {
         result = getResultedArray(Loanslist,chosenLoansNumb);// RETURNS new array that is the user's chosen loans.
         return result;
     }
-    public static ArrayList<Integer> getLoanFilters (double balance){
+    public static ArrayList<Integer> getLoanFilters (){
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> result = new ArrayList<>();
         System.out.println("Would you like to filter by Loan category? press 0 or 1");
@@ -322,14 +321,16 @@ public class PrintFuncs {
         System.out.println("Thank you");
         return result;
     }
-    public static ArrayList<eLoanCategory> chooseCategoryToInvest() {
+    public static ArrayList<String> chooseCategoryToInvest() {
         boolean valid = true;
-        ArrayList<eLoanCategory> userSelectedCategories = new ArrayList<>();
+        ArrayList<String> userSelectedCategories = new ArrayList<>();
+        List <String> allCategoryList = Database.getAllCategories();
         do {
             System.out.println("Please select from the following list of options, the desired categories for investment:\n" +
-                    "(Your answer must be returned in the above format: \"Desired category number\", \"Desired category number\", etc.)");
+                    "(Your answer must be returned in the above format: \"Desired category number\", \"Desired category number\", etc.)\n" +
+                    "press 0 for choosing all categories");
             int index=1;
-            for (eLoanCategory category : eLoanCategory.values()) {
+            for (String category : allCategoryList) {
                 System.out.println(index+". "+category);
                 ++index;
             }
@@ -337,16 +338,24 @@ public class PrintFuncs {
             String lines = br.nextLine();
             String[] userInputs = lines.trim().split(",");
 
-
-            for (String userInput : userInputs) {
-                try {
-                    userSelectedCategories.add(eLoanCategory.values()[Integer.parseInt(userInput) - 1]);
-                } catch (NumberFormatException exception) {
-                    System.out.println("Please enter only vaild inputs: (inputs must be numbers only!)");
-                    userSelectedCategories.clear();
-                    valid = false;
+            if (lines.equals("0"))
+            {
+                valid =true;
+                userSelectedCategories.addAll(allCategoryList);
+            }
+            else{
+                for (String userInput : userInputs) {
+                    try {
+                        userSelectedCategories.add(allCategoryList.get(Integer.parseInt(userInput) - 1));
+                        //todo: valid ==== true
+                    } catch (NumberFormatException exception) {
+                        System.out.println("Please enter only valid inputs: (inputs must be numbers only!)");
+                        userSelectedCategories.clear();
+                        valid = false;
+                    }
                 }
             }
+
         }while(!valid);
 
         return userSelectedCategories;

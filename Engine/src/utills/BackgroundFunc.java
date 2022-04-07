@@ -5,7 +5,6 @@ import customes.Client;
 import customes.Lenders;
 import data.Database;
 import loan.Loan;
-import loan.enums.eLoanCategory;
 import Money.operations.Transaction;
 import time.Timeline;
 
@@ -81,17 +80,8 @@ This func gets lenders list and return thus sum of their deposit
     //NIKOL: this should probably be part of one of the classes.
     //NIKOL: what are you doing here? why do you need a list where all the values are the same?
     //SHAI: in what context this function is used? check if a certain category is in sent Arraylist ?
-    public static boolean checkCategoryList(ArrayList<eLoanCategory> loanCategoryArrayList, eLoanCategory category) {
-        //NIKOL: try using this instead
-        //loanCategoryArrayList.removeAll(Collections.singleton(category));
-        //return loanCategoryArrayList.size() == 0;
-        for(eLoanCategory loanCategory:loanCategoryArrayList)
-        {
-            if(loanCategory==category){
-                return true;
-            }
-        }
-        return false;
+    public static boolean checkCategoryList(ArrayList<String> loanCategoryArrayList, String category) {
+        return loanCategoryArrayList.contains(category);
     }
     public static void addLenderToLoanList(Client client, Loan loan, double amountOfMoney) {
         Lenders lender = new Lenders(client.getFullName(),amountOfMoney);

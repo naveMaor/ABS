@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Account {
     private int ID;
-    private double currBalance;
+    private double currBalance =0;
     private List<Transaction> transactionList = new ArrayList<>();
 //ctor
     public Account(int ID, double currBalance) {

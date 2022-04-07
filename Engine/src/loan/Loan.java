@@ -4,7 +4,6 @@ import customes.Account;
 import customes.Client;
 import customes.Lenders;
 import data.Database;
-import loan.enums.eLoanCategory;
 import loan.enums.eLoanStatus;
 import Money.operations.Payment;
 import Money.operations.Transaction;
@@ -19,7 +18,7 @@ import java.util.Objects;
 public class Loan {
 
     //Identification data members:
-    private eLoanCategory loanCategory;//
+    private String loanCategory;//
     private eLoanStatus status;//
     private int loanID;//shem mezha
     private String borrowerName;// mi shlekah et haalvaa
@@ -50,7 +49,7 @@ public class Loan {
 
     private Account loanAccount;
     //constructor
-    public Loan(eLoanCategory loanCategory, eLoanStatus status, String borrowerName, Timeline originalLoanTimeFrame, Timeline startLoanYaz, Timeline paymentFrequency, double interestPercentagePerTimeUnit, double loanOriginalDepth) {
+    public Loan(String loanCategory, eLoanStatus status, String borrowerName, Timeline originalLoanTimeFrame, Timeline startLoanYaz, Timeline paymentFrequency, double interestPercentagePerTimeUnit, double loanOriginalDepth) {
         this.loanCategory = loanCategory;
         this.status = status;
         this.borrowerName = borrowerName;
@@ -124,7 +123,7 @@ public class Loan {
     public double getTotalLoanCostInterestPlusOriginalDepth() {
         return totalLoanCostInterestPlusOriginalDepth;
     }
-    public eLoanCategory getLoanCategory() {
+    public String getLoanCategory() {
         return loanCategory;
     }
     public eLoanStatus getStatus() {
