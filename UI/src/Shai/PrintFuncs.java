@@ -42,7 +42,7 @@ public class PrintFuncs {
         double currInterestDepth =currLoan.calculateCurrInterestDepth();
         System.out.println("Loan start time: " + startLoanYaz + " Yaz");
         int T = (Timeline.getCurrTime() - startLoanYaz.getTimeStamp()) % paymentFrequency.getTimeStamp();
-        System.out.println("next payment: " + T);
+        System.out.println("next payment: " + currLoan.nextYazToPay());
         for(Payment pay:paymentsList)
         {
             System.out.println(pay.toString());

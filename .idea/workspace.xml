@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="trying to solve duplicating issues inside func 6">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment=" solved !!! duplicating issues inside func 6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/customes/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/customes/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/customes/Lenders.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Lenders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/time/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/time/Timeline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Lenders.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Lenders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/time/Timeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/time/Timeline.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649444147827</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary=" solved !!! duplicating issues inside func 6">
+      <created>1649457501130</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1649457501130</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -290,7 +294,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="get set update" />
     <MESSAGE value="getters and setters" />
     <MESSAGE value="made 2 test obj for load , getters &amp; setters for classes" />
     <MESSAGE value="changed print funcs from engine to UI" />
@@ -315,15 +318,21 @@
     <MESSAGE value="func 7 completed" />
     <MESSAGE value="uniforms and debugging to_from" />
     <MESSAGE value="trying to solve duplicating issues inside func 6" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to solve duplicating issues inside func 6" />
+    <MESSAGE value=" solved !!! duplicating issues inside func 6" />
+    <option name="LAST_COMMIT_MESSAGE" value=" solved !!! duplicating issues inside func 6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="60" />
+          <url>file://$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Engine/src/loan/Loan.java</url>
+          <line>199</line>
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

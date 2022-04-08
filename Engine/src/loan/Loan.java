@@ -197,7 +197,7 @@ public class Loan {
      * @return
      */
     public int nextYazToPay() {
-        return (Timeline.getCurrTime() - startLoanYaz.getTimeStamp()) % paymentFrequency.getTimeStamp();
+        return ((Timeline.getCurrTime() - startLoanYaz.getTimeStamp()) % paymentFrequency.getTimeStamp()+Timeline.getCurrTime()+paymentFrequency.getTimeStamp());
     }
 
     /**

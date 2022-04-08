@@ -20,6 +20,7 @@ public class User_interface {
 
     public static void func2AllLoansData() {
         for (Loan loan : Database.getLoanList()) {
+            System.out.println("\n------------------------\n");
             System.out.println(loan.toString());//showing loan
             PrintFuncs.printLenderList(loan.getLendersList());//showing lenders list PENDING
             switch (loan.getStatus()) {
@@ -38,6 +39,7 @@ public class User_interface {
                 break;
                 default:
                     break;
+
             }
         }
         /*
