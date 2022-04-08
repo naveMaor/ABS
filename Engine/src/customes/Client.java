@@ -58,6 +58,7 @@ public class Client {
         //TODO: check if needed to be added in specific location
         this.clientAsBorrowLoanList.add(loan);
     }
+    //MAYBE TO DELETE NOT YET
     public void uniformsClientAsLenderLoanListBlock(){
         int listSize=this.getClientAsLenderLoanList().size();
         //checks if their at least two blocks to compare in list

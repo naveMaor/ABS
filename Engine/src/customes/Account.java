@@ -16,10 +16,8 @@ public class Account {
         this.ID = ID;
         this.currBalance = currBalance;
     }
-    public Account(){
-        int ID = Objects.hash(new Random());
-        currBalance = 0;
-    }
+    //NEED TO SECURE ONLY ONE ID PER ACCOUNT IN PROGRAM
+
 
 
 

@@ -86,7 +86,7 @@ public class Loan {
         this.originalInterest = (interestPercentagePerTimeUnit/100)*loanOriginalDepth;//NEWLY EDITED
         this.totalLoanCostInterestPlusOriginalDepth = this.originalInterest + this.loanOriginalDepth;
         this.totalRemainingLoan = this.totalLoanCostInterestPlusOriginalDepth;
-        this.loanAccount = new Account();
+        this.loanAccount = new Account(Objects.hash(this.loanID) & 0xfffffff,0);
         this.deviation= new Deviation();
     }
 
@@ -208,7 +208,7 @@ public class Loan {
 
 
     public double nextExpectedPaymentAmount(eDeviationPortion DeviationPortion) {
-
+        double intristPerPayment = this.originalInterest/this.originalLoanTimeFrame.getTimeStamp();
         switch (DeviationPortion)
         {
             case INTEREST:{
@@ -281,14 +281,15 @@ public class Loan {
         Double nextExpectedPaymentAmount = nextExpectedPaymentAmount(eDeviationPortion.TOTAL);
         Double nextExpectedInterest = nextExpectedPaymentAmount(eDeviationPortion.INTEREST);
         Double nextExpectedFund = nextExpectedPaymentAmount(eDeviationPortion.FUND);
-
+        double intristPerPayment = this.originalInterest/this.originalLoanTimeFrame.getTimeStamp(); //TO ASK NAVE
         //if the borrower have the money for paying this loan at the time of the yaz
         if(borrowerAccount.getCurrBalance()>=nextExpectedPaymentAmount){
                 //add new payment to the loan payment list
                 Payment BorrowPayment = new Payment(currTimeStamp,true,nextExpectedFund,nextExpectedInterest);
                 paymentsList.add(BorrowPayment);
                 //add the transaction stamp to the borrower transaction list
-                Transaction transaction = new Transaction(currTimeStamp,nextExpectedPaymentAmount);
+            //TO DO: check if you made a diff from -/+ nextExpecetedPaymentAmount
+                Transaction transaction = new Transaction(currTimeStamp,nextExpectedPaymentAmount,String.valueOf(this.loanID));
                 borrowerAccount.addTnuaToAccount(transaction);
                 //update loan money info
                 loanAccount.setCurrBalance(loanAccount.getCurrBalance()+nextExpectedPaymentAmount);
@@ -336,7 +337,7 @@ public class Loan {
         //getting current timeStamp for transaction.
         Timeline currTimeStamp = new Timeline(Timeline.getCurrTime());
         //creating a transaction
-        Transaction lenderPaymentTransAction = new Transaction(currTimeStamp,amountToPayLender);
+        Transaction lenderPaymentTransAction = new Transaction(currTimeStamp,amountToPayLender,String.valueOf(this.loanID));
         //adding transaction to lenders account transactioList
             accToPay.getTnuaList().add(lenderPaymentTransAction);
         //updating lenders balance
@@ -344,7 +345,7 @@ public class Loan {
             accToPay.setCurrBalance(updatedLenderBalance);
 
     }
-}
+}//MAYBE TO DELETE NOT YET
     public void uniformsNeededBlocksInLenderList(){
         int listSize=this.lendersList.size();
         //checks if their at least two blocks to compare in list

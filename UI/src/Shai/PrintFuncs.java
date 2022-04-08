@@ -98,7 +98,7 @@ public class PrintFuncs {
             else {
                 System.out.println("schum tnua: " + transaction.getSum());
             }
-
+            System.out.println("Transaction to_from:"+transaction.getTo_from());
             afterBalance += transaction.getSum();
             System.out.println("balance before the tnua: " + beforeBalance);
             System.out.println("balance after the tnua: " + afterBalance);
@@ -378,12 +378,28 @@ public class PrintFuncs {
      */
     public static void ClientToLoan(Loan loan,Client client,double investment){
         //investing the money
+
         TransferMoneyBetweenAccounts(client.getMyAccount(),investment,loan.getLoanAccount());
-        //adding lender to loans lender list
-        addLenderToLoanList(client,loan,investment);
-        //adding lender to his Client -> clientAsLenderLoanList data member.
-        client.addLoanAsLender(loan);
-        //checks if loands status needs an update
+        //checks if client is already exits in loan->lendersList
+        //dummy lender to check if lender is already exists
+        Lenders currLender = new Lenders(client.getFullName(),0 );
+       //checks if client is already in loan's lendersList
+        if(loan.getLendersList().contains(currLender)) {
+         //getting ref to existing client's lender obj in loan lenders list
+          Lenders refToExistingLenderFromLoanLendersList = loan.getLendersList().get(loan.getLendersList().indexOf(currLender));
+         //updating deposit amount to new amount = exiting deposit + new investment
+          refToExistingLenderFromLoanLendersList.setDeposit(refToExistingLenderFromLoanLendersList.getDeposit()+investment);
+       }//adding lender to loans lender list
+        else {
+            addLenderToLoanList(client, loan, investment);
+        }
+        //checks if curr loan doesnt exits in client's clientAsLenderLoanList
+        if(!client.getClientAsLenderLoanList().contains(loan))
+        //adding loan to his Client -> clientAsLenderLoanList data member.
+        {
+            client.addLoanAsLender(loan);
+        }
+        //checks if loan status needs an update
         loan.UpdateLoanStatusIfNeeded();
     }
     /**

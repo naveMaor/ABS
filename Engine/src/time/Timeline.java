@@ -1,5 +1,7 @@
 package time;
 
+import java.util.Objects;
+
 public class Timeline {
 
     private static int currTime = 1;
@@ -24,6 +26,19 @@ public class Timeline {
     }
     public static void promoteStaticCurrTime(){
         currTime++;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Timeline timeline = (Timeline) o;
+        return timeStamp == timeline.timeStamp;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(timeStamp);
     }
 
     public static void printStaticCurrTime(){

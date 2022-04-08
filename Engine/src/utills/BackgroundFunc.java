@@ -47,7 +47,7 @@ This func gets lenders list and return thus sum of their deposit
         //create a timestamp
         Timeline timeStamp = new Timeline(Timeline.getCurrTime());
         //update dest account
-        Transaction transaction = new Transaction(timeStamp,money);
+        Transaction transaction = new Transaction(timeStamp,money,"My Account");
         accDest.getTnuaList().add(transaction);
         accDest.setCurrBalance(accDest.getCurrBalance()+money);
     }
@@ -56,13 +56,29 @@ This func gets lenders list and return thus sum of their deposit
     {
         //create a timestamp
         Timeline timeStamp = new Timeline(Timeline.getCurrTime());
+
         //update source account
         accSource.setCurrBalance(accSource.getCurrBalance()-money);
-        Transaction transactionMinus = new Transaction(timeStamp,(-money));
-        accSource.getTnuaList().add(transactionMinus);
+        Transaction transactionMinus = new Transaction(timeStamp,(-money),String.valueOf(accDest.getID()));
+       // checking if there is the same transaction in the currAccount
+        if(accSource.getTnuaList().contains(transactionMinus)){
+            Transaction existingTransaction = accSource.getTnuaList().get(accSource.getTnuaList().lastIndexOf(transactionMinus));
+           //if so adding to already existingTransaction the new amount
+            existingTransaction.setSum(existingTransaction.getSum()+(-money));
+        }
+        else {
+            accSource.getTnuaList().add(transactionMinus);
+        }
         //update dest account
-        Transaction transactionPlus = new Transaction(timeStamp,money);
-        accDest.getTnuaList().add(transactionPlus);//SHAI: CHECK IF SUPPOSE TO BE AccDest ??
+        Transaction transactionPlus = new Transaction(timeStamp,money,String.valueOf(accSource.getID()));
+        if(accDest.getTnuaList().contains(transactionPlus)){
+            Transaction existingTransaction = accDest.getTnuaList().get(accDest.getTnuaList().lastIndexOf(transactionPlus));
+            //if so adding to already existingTransaction the new amount
+            existingTransaction.setSum(existingTransaction.getSum()+(money));
+        }
+        else {
+            accDest.getTnuaList().add(transactionPlus);//SHAI: CHECK IF SUPPOSE TO BE AccDest ??
+        }
         accDest.setCurrBalance(accDest.getCurrBalance()+money);
 
     }

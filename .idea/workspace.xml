@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="func7 in finished with nikol&#10;setloanAccount added">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="trying to solve duplicating issues inside func 6">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/Money/Deviation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/Deviation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/customes/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/customes/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/customes/Lenders.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Lenders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/time/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/time/Timeline.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +253,14 @@
       <option name="presentableId" value="LOCAL‎00022" />
       <updated>1649424829483</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="uniforms and debugging to_from">
+      <created>1649444147827</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1649444147827</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,7 +290,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="shin chain" />
     <MESSAGE value="get set update" />
     <MESSAGE value="getters and setters" />
     <MESSAGE value="made 2 test obj for load , getters &amp; setters for classes" />
@@ -306,20 +313,17 @@
     <MESSAGE value="deleted LoanCategory.&#10;created new kind of map of the loans that has a key for category and a list of Loans as a value." />
     <MESSAGE value="CheckAndprintInvalidFile func. &#10;&#10;buildDataFromDescriptor func." />
     <MESSAGE value="func 7 completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="func 7 completed" />
+    <MESSAGE value="uniforms and debugging to_from" />
+    <MESSAGE value="trying to solve duplicating issues inside func 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="trying to solve duplicating issues inside func 6" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java</url>
-          <line>150</line>
-          <option name="timeStamp" value="45" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
-          <line>131</line>
-          <option name="timeStamp" value="47" />
+          <url>file://$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="60" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -342,11 +346,14 @@
         <watch expression="Database.getClientMap(&quot;Shosh&quot;)" language="JAVA" />
         <watch expression="client.myAccount" />
         <watch expression="loan" />
+        <watch expression="accSource.getTnuaList()" language="JAVA" />
+        <watch expression="Database.getClientMap()" language="JAVA" custom="data.Database" />
+        <watch expression="shai" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ABS$Program.ic" NAME="Program Coverage Results" MODIFIED="1649234267226" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/ABS$Program.ic" NAME="Program Coverage Results" MODIFIED="1649456762311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Shai.*</FILTER>
     </SUITE>
   </component>

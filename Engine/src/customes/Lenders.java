@@ -1,5 +1,7 @@
 package customes;
 
+import java.util.Objects;
+
 public class Lenders {
 
     private String fullName;
@@ -27,6 +29,19 @@ public class Lenders {
 
     public void setDeposit(double deposit) {
         this.deposit = deposit;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lenders lenders = (Lenders) o;
+        return fullName.equals(lenders.fullName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fullName);
     }
 
     @Override
