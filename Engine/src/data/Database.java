@@ -2,18 +2,16 @@ package data;
 
 import loan.Loan;
 import customes.Client;
+import time.Timeline;
 import utills.BackgroundFunc;
 
 import java.util.*;
 
+import static data.File.XmlFile.*;
+
 public class Database {
     private static Map <String, List<Loan>> loanMapByCategory = new HashMap<>();
-    //private static Map<Integer, Loan> loanMap = new HashMap<>();
-
     private static Map<String, Client> clientMap =new HashMap<>();
-    public static Map<String, Client> getClientMap() {
-        return clientMap;
-    }
 
 
     public static List<Loan> getLoanList() {
@@ -36,10 +34,8 @@ public class Database {
                 newLoanlist.add(newLoanNode);
                 loanMapByCategory.put(category,newLoanlist);
             }
-            //loanMap.put(newLoanNode.getLoanID(), newLoanNode);
-    }
-    public static void addNewClient(Client client) {
-        clientMap.put(client.getFullName(), client);
+            Client LoanBorrower = clientMap.get(newLoanNode.getBorrowerName());
+            LoanBorrower.addLoanAsBorrower(newLoanNode);
     }
     public static List<Client> getClientsList() {
         return new ArrayList<>(clientMap.values());
@@ -53,7 +49,9 @@ public class Database {
         BackgroundFunc.orderLoanList(result);
         return result;
     }
-
+    public static Map<String, Client> getClientMap() {
+        return clientMap;
+    }
     public static void addCategory (String category){
         if (!loanMapByCategory.containsKey(category))
         {
@@ -68,4 +66,12 @@ public class Database {
         }
         return result;
     }
+
+    public static void clearAll(){
+        loanMapByCategory.clear();
+        clientMap.clear();
+        Timeline.resetTime();
+        //resetFileData();
+    }
+
 }

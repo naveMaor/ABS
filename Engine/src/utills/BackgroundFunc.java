@@ -4,7 +4,10 @@ import customes.Account;
 import customes.Client;
 import customes.Lenders;
 import data.Database;
-import data.xml.*;
+import data.schema.generated.AbsCustomer;
+import data.schema.generated.AbsDescriptor;
+import data.schema.generated.AbsLoan;
+//
 import loan.Loan;
 import Money.operations.Transaction;
 import time.Timeline;

@@ -4,7 +4,7 @@ import customes.Account;
 import customes.Client;
 import customes.Lenders;
 import data.Database;
-import data.xml.AbsDescriptor;
+import data.schema.generated.AbsDescriptor;
 import loan.Loan;
 import loan.enums.eLoanFilters;
 import loan.enums.eLoanStatus;
@@ -106,25 +106,28 @@ public class PrintFuncs {
         List<Loan> borrowLoanList = client.getClientAsBorrowLoanList();
 
         if(!lenderLoanList.isEmpty()) {
-            System.out.println("this are the Loans that " + name + "is a lender:");
+            System.out.println("those are the Loans that " + name + " is a lender:");
             for (Loan loan:lenderLoanList)
             {
                 printLoanInfo(loan);
+                System.out.println("********************************");
             }
         }
         else{
-            System.out.println("there are no Loans that" + name + "is a lender");
+            System.out.println("there are no Loans that " + name + " is a lender");
         }
         if(!borrowLoanList.isEmpty()) {
-            System.out.println("this are the Loans that " + name + "is a borrower:");
+            System.out.println("those are the Loans that " + name + " is a borrower:");
             for (Loan loan:borrowLoanList)
             {
                 printLoanInfo(loan);
+                System.out.println("********************************");
             }
         }
         else{
-            System.out.println("there are no Loans that" + name + "is a borrower");
+            System.out.println("there are no Loans that " + name + " is a borrower");
         }
+        System.out.println("________________________________");
     }
     public static void PrintStatusConnectedLoans(Loan loan) {
         eLoanStatus status=loan.getStatus();
@@ -373,7 +376,7 @@ public class PrintFuncs {
         //adding lender to loans lender list
         addLenderToLoanList(client,loan,investment);
         //adding lender to his Client -> clientAsLenderLoanList data member.
-        client.getClientAsLenderLoanList().add(loan);
+        client.addLoanAsLender(loan);
         //checks if loands status needs an update
         loan.UpdateLoanStatusIfNeeded();
     }
@@ -396,9 +399,9 @@ public class PrintFuncs {
     }
     //todo: add excepetion
     //func1 helpers
-    public static boolean CheckAndprintInvalidFile(AbsDescriptor descriptor){
+    public static boolean CheckAndPrintInvalidFile(AbsDescriptor descriptor) throws Exception {
         boolean isValid =true;
-        String s = null;
+        String s = new String();
 
         if(!checkValidCategories(descriptor)){
             s+= "\nthere is loan category that does not exist";
@@ -419,7 +422,7 @@ public class PrintFuncs {
 
         if(!isValid){
             s="File not valid!\n" +s;
-            System.out.println(s);
+            throw new Exception(s);
         }
         return isValid;
     }

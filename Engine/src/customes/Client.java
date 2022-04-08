@@ -17,9 +17,6 @@ public class Client {
         return clientAsLenderLoanList;
     }
 
-    public void setClientAsLenderLoanList(List<Loan> clientAsLenderLoanList) {
-        this.clientAsLenderLoanList = clientAsLenderLoanList;
-    }
 // ctors
     public Client(String fullName, Account myAccount) {
         this.fullName = fullName;
@@ -51,9 +48,6 @@ public class Client {
 
 
 
-    public void setMyAccount(Account myAccount) {
-        this.myAccount = myAccount;
-    }
 
     public void addLoanAsLender(Loan loan) {
         //TODO: check if needed to be added in specific location

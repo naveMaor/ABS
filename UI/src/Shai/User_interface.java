@@ -2,6 +2,7 @@ package Shai;
 
 import customes.Client;
 import data.Database;
+import data.File.XmlFile;
 import loan.Loan;
 import loan.enums.eLoanStatus;
 import time.Timeline;
@@ -10,6 +11,7 @@ import utills.BackgroundFunc;
 import java.util.ArrayList;
 
 import static Shai.PrintFuncs.*;
+import static data.File.XmlFile.resetFileData;
 
 
 public class User_interface {
@@ -56,7 +58,7 @@ public class User_interface {
              */
     }
 
-    public void func3(){
+    public static void func3(){
         for(Client client:Database.getClientsList()){
             PrintFuncs.printAccountInfo(client.getMyAccount());
             PrintFuncs.printConnectedLoans(client);
@@ -169,11 +171,17 @@ public class User_interface {
         BackgroundFunc.filterAndHandleLoansListAfterPromote();
     }
 
-    public void func1(){
-        if(CheckAndprintInvalidFile(descriptor)){
-            Database.buildDataFromDescriptor(descriptor);
+    public static void func1(){
+        XmlFile.getDetailsForFile();
+        try {
+            if(CheckAndPrintInvalidFile(XmlFile.getInputObject())){
+                Database.clearAll();
+                BackgroundFunc.buildDataFromDescriptor(XmlFile.getInputObject());
+                System.out.println("file loaded successfully");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
-
     }
 
 }

@@ -2,7 +2,7 @@ package time;
 
 public class Timeline {
 
-    private static int currTime = 0;
+    private static int currTime = 1;
     private int timeStamp;
 
     @Override
@@ -37,5 +37,8 @@ public class Timeline {
         else {
             System.out.println(--currTime);
         }
+    }
+    public static void resetTime(){
+        currTime =1;
     }
 }

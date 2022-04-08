@@ -68,13 +68,13 @@ public class Program {
         //set remaining Loan fields:
 
         //creating clients for test
-        Client idan = new Client("Idan",new Account(204684914, 5000));
-        Client shai = new Client("Shai",new Account(204684914, 5000));
-        Client nave = new Client("Nave",new Account(204684914, 5000));
+        //Client idan = new Client("Idan",new Account(204684914, 5000));
+        //Client shai = new Client("Shai",new Account(204684914, 5000));
+        //Client nave = new Client("Nave",new Account(204684914, 5000));
         // adding new test clients to map
-        Database.addClientToClientMap(idan);
-        Database.addClientToClientMap(shai);
-        Database.addClientToClientMap(nave);
+        //Database.addClientToClientMap(idan);
+        //Database.addClientToClientMap(shai);
+        //Database.addClientToClientMap(nave);
         // User_interface.func4();
         // User_interface.func5();
     //testing func payLoanDividendsToLenders
@@ -82,7 +82,11 @@ public class Program {
         //System.out.println(idan.getMyAccount().toString()+"\n"+shai.getMyAccount().toString()+"\n"+nave.getMyAccount().toString());
       //  test1.setLoanAccount(new Account(204684914,0));
       //  test2.setLoanAccount((new Account(204684915,0)));
-        User_interface.func6();
+        User_interface.func1();
+        //System.out.println("\n now using func2:");
+        //User_interface.func2AllLoansData();
+        //System.out.println("\n now using func3:");
+        //User_interface.func3();
     }
 
 }

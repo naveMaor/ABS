@@ -1,6 +1,6 @@
 package data;
 
-import data.xml.AbsDescriptor;
+import data.schema.generated.AbsDescriptor;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -9,7 +9,7 @@ import java.io.InputStream;
 
 public class SchemaBasedJAXB {
 
-    private final static String JAXB_XML_PACKAGE_NAME = "data.xml";
+    private final static String JAXB_XML_PACKAGE_NAME = "data.schema.generated";
 
 
     //todo: should be private??

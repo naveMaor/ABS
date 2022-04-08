@@ -6,7 +6,7 @@
 //
 
 
-package data.xml;
+package data.schema.generated;
 
 import java.util.ArrayList;
 import java.util.List;

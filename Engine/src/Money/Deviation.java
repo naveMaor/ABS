@@ -6,14 +6,20 @@ public class Deviation {
     //double sumOfDeviation=0;
     int numberOfYazNotPayed=0;
 
-/*    public double getSumOfDeviation() {
-        return sumOfDeviation;
-    }*/
+
     public int getNumberOfYazNotPayed() {
         return numberOfYazNotPayed;
     }
     public final double getSumOfDeviation(){
         return interestDeviation+fundDeviation;
+    }
+
+    public double getInterestDeviation() {
+        return interestDeviation;
+    }
+
+    public double getFundDeviation() {
+        return fundDeviation;
     }
 
     public void incrementTheNumberOfYazNotPayed(){this.numberOfYazNotPayed++;}

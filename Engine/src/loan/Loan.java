@@ -4,6 +4,7 @@ import customes.Account;
 import customes.Client;
 import customes.Lenders;
 import data.Database;
+import loan.enums.eDeviationPortion;
 import loan.enums.eLoanStatus;
 import Money.operations.Payment;
 import Money.operations.Transaction;
@@ -35,6 +36,7 @@ public class Loan {
     private double interestPercentagePerTimeUnit;//
 
     private int intristPerPayment;
+    private double fundPerPayment;
 
     //Original Loan info:
     private double originalInterest;//ribit mekorit
@@ -77,10 +79,11 @@ public class Loan {
         Timeline newPaymentFrequency = new Timeline(paymentFrequency);
         this.paymentFrequency = newPaymentFrequency;
         this.intristPerPayment = intristPerPayment;
+        this.fundPerPayment = this.loanOriginalDepth/(this.originalLoanTimeFrame.getTimeStamp()/this.paymentFrequency.getTimeStamp());
         this.status = eLoanStatus.NEW;
         this.loanID = Objects.hash(this.loanCategory, this.originalLoanTimeFrame, startLoanYaz);
         this.interestPercentagePerTimeUnit = (100*this.originalInterest)/this.loanOriginalDepth;
-        this.originalInterest = intristPerPayment*(this.originalLoanTimeFrame.getTimeStamp()/this.paymentFrequency.getTimeStamp());
+        this.originalInterest = this.intristPerPayment*(this.originalLoanTimeFrame.getTimeStamp()/this.paymentFrequency.getTimeStamp());
         this.totalLoanCostInterestPlusOriginalDepth = this.originalInterest + this.loanOriginalDepth;
         this.totalRemainingLoan = this.totalLoanCostInterestPlusOriginalDepth;
         this.loanAccount = new Account();
@@ -180,8 +183,8 @@ public class Loan {
 
     @Override
     public String toString() {
-        return "Loan: " +
-                "status; " + status +
+        return
+                "status " + status +
                 ", Loan ID:" + loanID +
                 ", borrower's Name: " + borrowerName + '\'' +
                 ", loan Category: " + loanCategory +
@@ -214,32 +217,35 @@ public class Loan {
             return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTimeStamp());
     }
 
-    public double InterestPerYaz() {
-        return (originalInterest / originalLoanTimeFrame.getTimeStamp());
-    }
+    public double nextExpectedPaymentAmount(eDeviationPortion DeviationPortion) {
 
-    /**
-     * this func sums up the total amount of money that all the lenders invested
-     *
-     * @return
-     */
-    public double calculateLendersTotalAmount() {
-        double result = 0;
-        for (Lenders lenders : lendersList) {
-            result += lenders.getDeposit();
+        switch (DeviationPortion)
+        {
+            case INTEREST:{
+                if(deviation.getInterestDeviation()>0)
+                    return deviation.getInterestDeviation();
+                else
+                    return (intristPerPayment);
+            }
+            case FUND:{
+                if(deviation.getFundDeviation()>0)
+                    return deviation.getFundDeviation();
+                else
+                    return (fundPerPayment);
+            }
+            case TOTAL:{
+                if(deviation.getSumOfDeviation()>0)
+                {
+                    return deviation.getSumOfDeviation();
+                }
+                else
+                    return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTimeStamp());
+            }
         }
-        return result;
+
+        return -1000000000000.0;
     }
 
-    public double calculateCurrInterest(double nextExpectedPaymentAmount, int numberOfYazNotPayed){
-        double coefficientOfMultiplicationInterest = this.interestPercentagePerTimeUnit/100;
-        double interest = nextExpectedPaymentAmount*coefficientOfMultiplicationInterest;
-        return (interest + interest*numberOfYazNotPayed);
-    }
-    public double calculateCurrFund(double nextExpectedPaymentAmount, int numberOfYazNotPayed,double interest){
-        double fund =nextExpectedPaymentAmount-interest;
-        return (fund+fund*numberOfYazNotPayed);
-    }
 
 
 
@@ -255,7 +261,6 @@ public class Loan {
             setStatus(eLoanStatus.ACTIVE);
             activateLoan();
         }
-
     }
 
     /**
@@ -283,9 +288,9 @@ public class Loan {
         Client borrowerAsClient = Database.getClientMap().get(borrowerName);
         Account borrowerAccount = borrowerAsClient.getMyAccount();
         Timeline currTimeStamp = new Timeline(Timeline.getCurrTime());
-        Double nextExpectedPaymentAmount = nextExpectedPaymentAmount();
-        Double nextExpectedInterest = calculateCurrInterest(nextExpectedPaymentAmount,deviation.getNumberOfYazNotPayed());
-        Double nextExpectedFund = calculateCurrFund(nextExpectedPaymentAmount,deviation.getNumberOfYazNotPayed(),nextExpectedInterest);
+        Double nextExpectedPaymentAmount = nextExpectedPaymentAmount(eDeviationPortion.TOTAL);
+        Double nextExpectedInterest = nextExpectedPaymentAmount(eDeviationPortion.INTEREST);
+        Double nextExpectedFund = nextExpectedPaymentAmount(eDeviationPortion.FUND);
 
         //if the borrower have the money for paying this loan at the time of the yaz
         if(borrowerAccount.getCurrBalance()>=nextExpectedPaymentAmount){
@@ -317,7 +322,7 @@ public class Loan {
             Payment BorrowPayment = new Payment(currTimeStamp,false,nextExpectedFund,nextExpectedInterest);
             paymentsList.add(BorrowPayment);
             //enlarge the deviation
-            deviation.increaseDeviationBy(nextExpectedInterest,nextExpectedFund);
+            deviation.increaseDeviationBy(intristPerPayment,fundPerPayment);
         }
     }
 
