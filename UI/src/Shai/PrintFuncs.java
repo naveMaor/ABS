@@ -81,23 +81,28 @@ public class PrintFuncs {
         }
     }
     //func3 helpers
-    public static void printAccountInfo(Account account) {
+    public static void printAccountInfo(Client client) {
+        Account account = client.getMyAccount();
         List<Transaction> transactionList = account.getTnuaList();
+        if(!transactionList.isEmpty()){
+            System.out.println("Transactions:");
+        }
         double beforeBalance=account.getCurrBalance();
         double afterBalance=account.getCurrBalance();;
         for (Transaction transaction : transactionList) {
             System.out.println("yaz of tnua: " + transaction.getTimeOfMovement() + "yazes");
             if (transaction.getSum() > 0) {
-                System.out.println("schum tnua: +" + transaction.getTimeOfMovement());
+                System.out.println("schum tnua: +" + transaction.getSum());
             }
             else {
-                System.out.println("schum tnua: " + transaction.getTimeOfMovement());
+                System.out.println("schum tnua: " + transaction.getSum());
             }
 
             afterBalance += transaction.getSum();
             System.out.println("balance before the tnua: " + beforeBalance);
             System.out.println("balance after the tnua: " + afterBalance);
             beforeBalance=afterBalance;
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@");
         }
     }
     public static void printConnectedLoans(Client client) {

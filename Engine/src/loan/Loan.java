@@ -81,7 +81,7 @@ public class Loan {
         this.intristPerPayment = intristPerPayment;
         this.fundPerPayment = this.loanOriginalDepth/(this.originalLoanTimeFrame.getTimeStamp()/this.paymentFrequency.getTimeStamp());
         this.status = eLoanStatus.NEW;
-        this.loanID = Objects.hash(this.loanCategory, this.originalLoanTimeFrame, startLoanYaz);
+        this.loanID = Objects.hash(this.loanCategory, this.originalLoanTimeFrame, startLoanYaz) & 0xfffffff;
         this.interestPercentagePerTimeUnit = (100*this.originalInterest)/this.loanOriginalDepth;
         this.originalInterest = this.intristPerPayment*(this.originalLoanTimeFrame.getTimeStamp()/this.paymentFrequency.getTimeStamp());
         this.totalLoanCostInterestPlusOriginalDepth = this.originalInterest + this.loanOriginalDepth;
@@ -100,7 +100,7 @@ public class Loan {
 
     //getter and setters:
     public void generateLoanID() {
-        this.loanID = Objects.hash(loanCategory, originalLoanTimeFrame, startLoanYaz);
+        this.loanID = Objects.hash(loanCategory, originalLoanTimeFrame, startLoanYaz) & 0xfffffff;
     }
     public int getLoanID() {
         return loanID;
@@ -184,14 +184,14 @@ public class Loan {
     @Override
     public String toString() {
         return
-                "status " + status +
-                ", Loan ID:" + loanID +
-                ", borrower's Name: " + borrowerName + '\'' +
-                ", loan Category: " + loanCategory +
-                ", Requested Time Frame For Loan: " + originalLoanTimeFrame +
-                ", Frequency of loan repayment requested: " + paymentFrequency +
-                ", Loan interest: " + interestPercentagePerTimeUnit +
-                ", Requested loan: " + loanOriginalDepth;
+                "Loan ID:" + loanID + "\n" +
+                        "status: " + status + "\n" +
+                "borrower's Name: " + borrowerName + "\n" +
+                "loan Category: " + loanCategory + "\n" +
+                "Requested Time Frame For Loan: " + originalLoanTimeFrame + "\n" +
+                "Frequency of loan repayment requested: " + paymentFrequency + "\n" +
+                "Loan interest: " + interestPercentagePerTimeUnit + "\n" +
+                "Requested loan: " + loanOriginalDepth + "\n" + "****************";
     }
 
     /**

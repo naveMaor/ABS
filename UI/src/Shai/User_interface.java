@@ -60,7 +60,8 @@ public class User_interface {
 
     public static void func3(){
         for(Client client:Database.getClientsList()){
-            PrintFuncs.printAccountInfo(client.getMyAccount());
+            System.out.println("Presenting " + client.getFullName() + ":");
+            PrintFuncs.printAccountInfo(client);
             PrintFuncs.printConnectedLoans(client);
         }
     }
@@ -81,7 +82,7 @@ public class User_interface {
 
         //making the wire
         BackgroundFunc.AccountTransaction(deposit,wantedClient.getMyAccount());
-        System.out.println("Wire of: "+deposit+" to "+clientFullName+"'s account, has been confirmed.\n have a lovely day!");
+        System.out.println("Wire of: "+deposit+" to "+clientFullName+"'s account, has been confirmed.\n ");
     }
 
     public static void func5(){
@@ -93,7 +94,7 @@ public class User_interface {
 
         //making the wire
         BackgroundFunc.AccountTransaction(withdrawal,wantedClient.getMyAccount());
-        System.out.println("Withdraw of: "+withdrawal+" from "+clientFullName+"'s account, has been confirmed.\n have a lovely day!");
+        System.out.println("Withdraw of: "+withdrawal+" from "+clientFullName+"'s account, has been confirmed.\n ");
         System.out.println(wantedClient.getMyAccount().getTnuaList().toString()+wantedClient.getMyAccount().getCurrBalance());
     }
 
@@ -165,7 +166,7 @@ public class User_interface {
         return amountOfMoney;
     }
 
-    public void func7(){
+    public static void func7(){
         Timeline.promoteStaticCurrTime();
         PrintFuncs.printYazAfterPromote();
         BackgroundFunc.filterAndHandleLoansListAfterPromote();

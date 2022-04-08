@@ -24,7 +24,7 @@ public class Client {
     }
     public Client(String fullName, int balance){
         this.fullName = fullName;
-        Account newAccount= new Account(Objects.hash(fullName),balance);
+        Account newAccount= new Account(Objects.hash(fullName) & 0xfffffff ,balance);
         this.myAccount = newAccount;
     }
 

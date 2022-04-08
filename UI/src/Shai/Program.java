@@ -8,7 +8,7 @@ import time.Timeline;
 
 public class Program {
     public static void main (String[] args){
-
+        int choice=0;
         //1ST TEST OBJ
        // Loan test1 = new Loan("DEFICIT", eLoanStatus.NEW,"Shai",new Timeline(10),new Timeline(1),new Timeline(1),10,1000);
         //Loan test1 = new Loan(eLoanCategory.DEFICIT, eLoanStatus.PENDING,"Shai Shillo",new Timeline(10),new Timeline(1),new Timeline(1),10,100000);
@@ -82,11 +82,10 @@ public class Program {
         //System.out.println(idan.getMyAccount().toString()+"\n"+shai.getMyAccount().toString()+"\n"+nave.getMyAccount().toString());
       //  test1.setLoanAccount(new Account(204684914,0));
       //  test2.setLoanAccount((new Account(204684915,0)));
-        User_interface.func1();
-        //System.out.println("\n now using func2:");
-        //User_interface.func2AllLoansData();
-        //System.out.println("\n now using func3:");
-        //User_interface.func3();
+        Menu.welcome();
+        while (choice!=8){
+            choice = Menu.printMenu();
+        }
     }
 
 }
