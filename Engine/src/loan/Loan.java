@@ -35,7 +35,7 @@ public class Loan {
     private Timeline endLoanYaz;
     private double interestPercentagePerTimeUnit;//
 
-    private int intristPerPayment;
+   // private int intristPerPayment;
     private double fundPerPayment;
 
     //Original Loan info:
@@ -78,15 +78,16 @@ public class Loan {
         this.originalLoanTimeFrame =newOriginalLoanTimeFrame;
         Timeline newPaymentFrequency = new Timeline(paymentFrequency);
         this.paymentFrequency = newPaymentFrequency;
-        this.intristPerPayment = intristPerPayment;
+       // this.intristPerPayment = intristPerPayment;
         this.fundPerPayment = this.loanOriginalDepth/(this.originalLoanTimeFrame.getTimeStamp()/this.paymentFrequency.getTimeStamp());
         this.status = eLoanStatus.NEW;
         this.loanID = Objects.hash(this.loanCategory, this.originalLoanTimeFrame, startLoanYaz) & 0xfffffff;
-        this.interestPercentagePerTimeUnit = (100*this.originalInterest)/this.loanOriginalDepth;
-        this.originalInterest = this.intristPerPayment*(this.originalLoanTimeFrame.getTimeStamp()/this.paymentFrequency.getTimeStamp());
+        this.interestPercentagePerTimeUnit = intristPerPayment;  //(100*this.originalInterest)/this.loanOriginalDepth;
+        this.originalInterest = (interestPercentagePerTimeUnit/100)*loanOriginalDepth;//NEWLY EDITED
         this.totalLoanCostInterestPlusOriginalDepth = this.originalInterest + this.loanOriginalDepth;
         this.totalRemainingLoan = this.totalLoanCostInterestPlusOriginalDepth;
         this.loanAccount = new Account();
+        this.deviation= new Deviation();
     }
 
 
@@ -171,12 +172,8 @@ public class Loan {
     public Account getLoanAccount() {
         return loanAccount;
     }
-    public int getIntristPerPayment() {
-        return intristPerPayment;
-    }
-    public void setIntristPerPayment(int intristPerPayment) {
-        this.intristPerPayment = intristPerPayment;
-    }
+
+
     public void setLoanAccount(Account loanAccount) {
         this.loanAccount = loanAccount;
     }
@@ -191,7 +188,7 @@ public class Loan {
                 "Requested Time Frame For Loan: " + originalLoanTimeFrame + "\n" +
                 "Frequency of loan repayment requested: " + paymentFrequency + "\n" +
                 "Loan interest: " + interestPercentagePerTimeUnit + "\n" +
-                "Requested loan: " + loanOriginalDepth + "\n" + "****************";
+                "Requested loan: " + loanOriginalDepth + "\n" + "****************\n";
     }
 
     /**
@@ -208,14 +205,7 @@ public class Loan {
      *
      * @return
      */
-    public double nextExpectedPaymentAmount() {
-        if(deviation.getSumOfDeviation()>0)
-        {
-            return deviation.getSumOfDeviation();
-        }
-        else
-            return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTimeStamp());
-    }
+
 
     public double nextExpectedPaymentAmount(eDeviationPortion DeviationPortion) {
 
@@ -355,4 +345,25 @@ public class Loan {
 
     }
 }
+    public void uniformsNeededBlocksInLenderList(){
+        int listSize=this.lendersList.size();
+        //checks if their at least two blocks to compare in list
+        if(listSize>=2){
+
+            int index= listSize-1;//last block
+            while(this.lendersList.get(index).getFullName()==this.lendersList.get(index-1).getFullName())//compares if two last blocks have the same name
+            {
+                //updates index-1 block deposit to be the unified sum of investment
+                this.lendersList.get(index-1).setDeposit( this.lendersList.get(index-1).getDeposit()+ this.lendersList.get(index).getDeposit());
+                //removing unneeded block after updating prev block to new sum of inves
+                this.lendersList.remove(index);
+                //updating index to check pre compare
+                index -= 1;
+            }
+        }
+    }
+
+
+
+
 }

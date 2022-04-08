@@ -10,6 +10,7 @@ import data.schema.generated.AbsLoan;
 //
 import loan.Loan;
 import Money.operations.Transaction;
+import loan.enums.eDeviationPortion;
 import time.Timeline;
 
 import java.util.ArrayList;
@@ -124,8 +125,8 @@ This func gets lenders list and return thus sum of their deposit
                     return sComp;
                 }
 
-                 Double x3 = ((Loan) o1).nextExpectedPaymentAmount();
-                 Double x4 = ((Loan) o2).nextExpectedPaymentAmount();
+                 Double x3 = ((Loan) o1).nextExpectedPaymentAmount(eDeviationPortion.TOTAL);
+                 Double x4 = ((Loan) o2).nextExpectedPaymentAmount(eDeviationPortion.TOTAL);
                 return x3.compareTo(x4);
             }});
 }

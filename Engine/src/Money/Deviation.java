@@ -30,6 +30,10 @@ public class Deviation {
         incrementTheNumberOfYazNotPayed();
     }
 
+    public Deviation() {
+     this.resetDeviation();
+    }
+
     public void resetDeviation(){
         numberOfYazNotPayed=0;
         interestDeviation=0;

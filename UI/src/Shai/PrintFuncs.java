@@ -6,6 +6,7 @@ import customes.Lenders;
 import data.Database;
 import data.schema.generated.AbsDescriptor;
 import loan.Loan;
+import loan.enums.eDeviationPortion;
 import loan.enums.eLoanFilters;
 import loan.enums.eLoanStatus;
 import Money.operations.Payment;
@@ -147,7 +148,7 @@ public class PrintFuncs {
             case ACTIVE:
             {
                 System.out.println("next payment is in " + loan.nextYazToPay() + "yazes");
-                System.out.println("borrower will pay in the next payment: " + loan.nextExpectedPaymentAmount());
+                System.out.println("borrower will pay in the next payment: " + loan.nextExpectedPaymentAmount(eDeviationPortion.TOTAL));
                 break;
             }
             case RISK:

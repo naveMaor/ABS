@@ -9,6 +9,9 @@ public class Lenders {
         return fullName;
     }
 
+
+
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
@@ -22,7 +25,7 @@ public class Lenders {
         this.deposit = deposit;
     }
 
-    public void setDeposit(int deposit) {
+    public void setDeposit(double deposit) {
         this.deposit = deposit;
     }
 

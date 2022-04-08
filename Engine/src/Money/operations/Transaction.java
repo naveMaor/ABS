@@ -6,11 +6,12 @@ public class Transaction {
 
     private Timeline timeOfMovement;// time of the movemonet was occured
     private double sum;// schum tnua
+    private String to_from;
 
-
-    public Transaction(Timeline timeOfMovement, double sum) {
+    public Transaction(Timeline timeOfMovement, double sum, String to_from) {
         this.timeOfMovement = timeOfMovement;
         this.sum = sum;
+        this.to_from=to_from;
     }
 
     @Override

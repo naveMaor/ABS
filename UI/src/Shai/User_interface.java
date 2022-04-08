@@ -9,6 +9,7 @@ import time.Timeline;
 import utills.BackgroundFunc;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static Shai.PrintFuncs.*;
 import static data.File.XmlFile.resetFileData;
@@ -59,7 +60,9 @@ public class User_interface {
     }
 
     public static void func3(){
-        for(Client client:Database.getClientsList()){
+
+       List<Client> printList =Database.getClientsList();
+        for(Client client:printList ){
             System.out.println("Presenting " + client.getFullName() + ":");
             PrintFuncs.printAccountInfo(client);
             PrintFuncs.printConnectedLoans(client);

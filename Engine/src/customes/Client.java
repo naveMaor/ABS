@@ -58,4 +58,19 @@ public class Client {
         //TODO: check if needed to be added in specific location
         this.clientAsBorrowLoanList.add(loan);
     }
+    public void uniformsClientAsLenderLoanListBlock(){
+        int listSize=this.getClientAsLenderLoanList().size();
+        //checks if their at least two blocks to compare in list
+        if(listSize>=2){
+            int index= listSize-1;//last block
+            while(this.getClientAsLenderLoanList().get(index).getLoanID()==this.getClientAsLenderLoanList().get(index-1).getLoanID())//compares if two last blocks have the same name
+            {
+                //removing unneeded block after updating prev block to new sum of investment
+                this.getClientAsLenderLoanList().remove(index);
+                //updating index to check pre compare
+                index -= 1;
+            }
+        }
+    }
+
 }
