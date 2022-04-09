@@ -150,7 +150,7 @@ This func gets lenders list and return thus sum of their deposit
     public static void filterAndHandleLoansListAfterPromote(){
         List<Loan> sortedLoanList = Database.getSortedLoanList();
         for (Loan loan:sortedLoanList){
-            if((Timeline.getCurrTime()%loan.nextYazToPay() == 0)&&((loan.getStatus()== ACTIVE)|| (loan.getStatus()== RISK))){
+            if((loan.nextYazToPay() == 0)&&((loan.getStatus()== ACTIVE)|| (loan.getStatus()== RISK))){
                 loan.handleLoanAfterTimePromote();
             }
         }

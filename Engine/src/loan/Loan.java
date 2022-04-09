@@ -205,10 +205,6 @@ public class Loan {
         int startLoanYaz = this.startLoanYaz.getTimeStamp();
         int paymentFrequency = this.paymentFrequency.getTimeStamp();
 
-        int result = (currTime-startLoanYaz) % paymentFrequency;
-        if (result ==0)
-            return paymentFrequency;
-        else
             return ((currTime-startLoanYaz) % paymentFrequency );
     }
 

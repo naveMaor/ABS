@@ -46,7 +46,10 @@ public class PrintFuncs {
         double currInterestDepth =currLoan.calculateCurrInterestDepth();
         int index = 1;
         System.out.println("\n This Loan started at: " + startLoanYaz.getTimeStamp()+" Yaz");
-        System.out.println("next payment is in: " + currLoan.nextYazToPay() +" Yazes\n");
+        if (currLoan.nextYazToPay() ==0)
+            System.out.println("next payment is in: " + currLoan.getPaymentFrequency() +" Yazes\n");
+        else
+            System.out.println("next payment is in: " + currLoan.nextYazToPay() +" Yazes\n");
         if (!paymentsList.isEmpty()){
             System.out.println("Here are all payments that have been made:");
             for(Payment pay:paymentsList)

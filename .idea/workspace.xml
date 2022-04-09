@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="fixing user interface">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="func 7 done debbuging for now">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/Money/operations/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/operations/Payment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/time/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/time/Timeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/time/Timeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/time/Timeline.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +263,19 @@
       <option name="presentableId" value="LOCAL‎00025" />
       <updated>1649503652070</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL‎00026" summary="func 7 done debbuging for now">
+      <created>1649506434187</created>
+      <option name="number" value="LOCAL‎00026" />
+      <option name="presentableId" value="LOCAL‎00026" />
+      <updated>1649506434187</updated>
+    </task>
+    <task id="LOCAL‎00027" summary="func 7 done debbuging for now">
+      <created>1649506715329</created>
+      <option name="number" value="LOCAL‎00027" />
+      <option name="presentableId" value="LOCAL‎00027" />
+      <updated>1649506715329</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +305,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="made 2 test obj for load , getters &amp; setters for classes" />
     <MESSAGE value="changed print funcs from engine to UI" />
     <MESSAGE value="FUNC 6 almost finished" />
     <MESSAGE value="FUNC 6 almost finished 2" />
@@ -325,7 +329,8 @@
     <MESSAGE value="trying to solve duplicating issues inside func 6" />
     <MESSAGE value=" solved !!! duplicating issues inside func 6" />
     <MESSAGE value="fixing user interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing user interface" />
+    <MESSAGE value="func 7 done debbuging for now" />
+    <option name="LAST_COMMIT_MESSAGE" value="func 7 done debbuging for now" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
