@@ -19,9 +19,10 @@ import java.util.Objects;
 public class Loan {
 
     //Identification data members:
+
     private String loanCategory;//
     private eLoanStatus status;//
-    private int loanID;//shem mezha
+    private String loanID;//shem mezha
     private String borrowerName;// mi shlekah et haalvaa
 
     //List data members
@@ -70,7 +71,7 @@ public class Loan {
     }
 */
 
-    public Loan(String borrowerName, String loanCategory,double loanOriginalDepth,int originalLoanTimeFrame,int paymentFrequency, int intristPerPayment){
+    public Loan(String LoanId,String borrowerName, String loanCategory,double loanOriginalDepth,int originalLoanTimeFrame,int paymentFrequency, int intristPerPayment){
         this.borrowerName =borrowerName;
         this.loanCategory =loanCategory;
         this.loanOriginalDepth =loanOriginalDepth;
@@ -80,7 +81,8 @@ public class Loan {
         this.paymentFrequency = newPaymentFrequency;
         this.fundPerPayment = this.loanOriginalDepth/(this.originalLoanTimeFrame.getTimeStamp()/this.paymentFrequency.getTimeStamp());
         this.status = eLoanStatus.NEW;
-        this.loanID = Objects.hash(this.loanCategory, this.originalLoanTimeFrame, startLoanYaz) & 0xfffffff;
+        this.loanID = LoanId;
+        //this.loanID = Objects.hash(this.loanCategory, this.originalLoanTimeFrame, startLoanYaz) & 0xfffffff;
         this.interestPercentagePerTimeUnit = intristPerPayment;  //(100*this.originalInterest)/this.loanOriginalDepth;
         this.originalInterest = calculateInterest();
         this.totalLoanCostInterestPlusOriginalDepth = this.originalInterest + this.loanOriginalDepth;
@@ -100,10 +102,10 @@ public class Loan {
 
 
     //getter and setters:
-    public void generateLoanID() {
+/*    public void generateLoanID() {
         this.loanID = Objects.hash(loanCategory, originalLoanTimeFrame, startLoanYaz) & 0xfffffff;
-    }
-    public int getLoanID() {
+    }*/
+    public String getLoanID() {
         return loanID;
     }
     public String getBorrowerName() {

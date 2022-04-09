@@ -12,7 +12,6 @@ public class SchemaBasedJAXB {
     private final static String JAXB_XML_PACKAGE_NAME = "data.schema.generated";
 
 
-    //todo: should be private??
     public static AbsDescriptor deserializeFrom(InputStream in) throws JAXBException {
         JAXBContext jc = JAXBContext.newInstance(JAXB_XML_PACKAGE_NAME);
         Unmarshaller u = jc.createUnmarshaller();

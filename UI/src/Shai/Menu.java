@@ -28,7 +28,7 @@ public class Menu {
     }
 
     public static int handleMenuChoice() throws Exception {
-        int choice = PrintFuncs.readIntFromUser(1,8);
+        int choice = PrintFuncs.readIntFromUser(1,8,true);
 
         if (choice==1){
             User_interface.func1();

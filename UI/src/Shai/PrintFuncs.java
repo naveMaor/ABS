@@ -22,8 +22,8 @@ import static utills.BackgroundFunc.*;
 public class PrintFuncs {
 
 
-    //NIKOL: WTF????
-
+    private final static String BETWEEN = "Please enter an Integer number between: ";
+    private final static String ZERO_OR_ONE = "please enter 1 or 0 only";
 
     // func2 helpers:
     public static void printLenderList(List<Lenders> lendersList) {
@@ -277,7 +277,7 @@ public class PrintFuncs {
 
         System.out.println("How much would you like to to deposit into "+full_name+"'s account ?");
         System.out.println("(please enter a positive integer number)");
-        int deposit = readIntFromUser(1,Integer.MAX_VALUE);
+        int deposit = readIntFromUser(1,Integer.MAX_VALUE,true);
         return deposit;
     }
     public static Client ChooseClientFromDatabase () {
@@ -285,7 +285,7 @@ public class PrintFuncs {
         List<Client> clientsList = Database.getClientsList();
         int clientListSize =clientsList.size();
         System.out.println("Please enter wanted client index for deposit\n(index must be an integer number between 1 - "+clientListSize+" )");
-        int userClientIndexChoice = PrintFuncs.readIntFromUser(1,clientListSize);
+        int userClientIndexChoice = PrintFuncs.readIntFromUser(1,clientListSize,true);
         //getting client
         Client wantedClient =clientsList.get(userClientIndexChoice-1);
         return wantedClient;
@@ -296,7 +296,7 @@ public class PrintFuncs {
         //asking user and getting wanted deposit amount // S
         System.out.println("How much would you like to withdraw from "+full_name+"'s account ?");
         System.out.println("(please enter a positive integer number)");
-        int withdraw = -(readIntFromUser(0,(int)Database.getClientMap().get(full_name).getMyAccount().getCurrBalance()));
+        int withdraw = -(readIntFromUser(0,(int)Database.getClientMap().get(full_name).getMyAccount().getCurrBalance(),true));
         return withdraw;
     }
 
@@ -315,7 +315,7 @@ public class PrintFuncs {
             v.add(client);
             ++i;
         }
-        i =readIntFromUser(1,Database.getClientMap().size());
+        i =readIntFromUser(1,Database.getClientMap().size(),true);
 
         return v.get(i-1);//todo might be i instead of i-1 becasue array starts from 0?
     }
@@ -334,30 +334,34 @@ public class PrintFuncs {
      * @return ArrayList <Loan>
      */
     //TODO ADD OPTION FOR CHOOSING NO CATEGORY AT ALL in loanToInvest!!!!
-    public static ArrayList<Loan> loanToInvest (Client client) {
-        ArrayList<Loan> result = new ArrayList<>();
-        ArrayList<String> loanCategoryUserList = new ArrayList<>();
-        double balance = client.getMyAccount().getCurrBalance(), minYazTimeFrame = 0;
-        ArrayList<Integer> loanFilters;
+    public static List<Loan> loanToInvest (Client client) {
+        List<Loan> result = new ArrayList<>();
+        List<String> loanCategoryUserList = new ArrayList<>();
+        double balance = client.getMyAccount().getCurrBalance();
+        List<Integer> loanFilters;
         Double minInterestPerYaz = Double.valueOf(0);
+        int minYazTimeFrame = 0;
         //part 2 in word document
 
         loanFilters = getLoanFilters();
         if (loanFilters.get(eLoanFilters.LOAN_CATEGORY.ordinal()) == 1) {
             loanCategoryUserList = chooseCategoryToInvest();
         }
+        else
+            loanCategoryUserList = Database.getAllCategories();
         if (loanFilters.get(eLoanFilters.MINIMUM_INTEREST_PER_YAZ.ordinal()) == 1) {
-            System.out.println("Please choose the minimum interest per yaz ");
+            System.out.println("Please choose the minimum interest percentage per yaz ");
             minInterestPerYaz = readDoubleFromUser(0, Double.MAX_VALUE);
         }
         if (loanFilters.get(eLoanFilters.MINIMUM_YAZ_TIME_FRAME.ordinal()) == 1) {
             System.out.println("Please choose the minimum yaz time frame ");
-            minYazTimeFrame = readIntFromUser(0, Integer.MAX_VALUE);
+            minYazTimeFrame = readIntFromUser(0, Integer.MAX_VALUE,true);
         }
         //part 3 in word document:
         for (Loan loan : Database.getLoanList()) {
             if (loan.getStatus() == eLoanStatus.NEW || loan.getStatus() == eLoanStatus.PENDING)//if the loan is new or pending
-                if (client.getFullName() != loan.getBorrowerName())//If the client's name is not the borrower
+            //todo: notice here!!
+                if (!(client.getFullName().equalsIgnoreCase(loan.getBorrowerName()) ))//If the client's name is not the borrower
                         if (minInterestPerYaz <= loan.getInterestPercentagePerTimeUnit())
                             if (minYazTimeFrame <= loan.getOriginalLoanTimeFrame().getTimeStamp())
                                 if (checkCategoryList(loanCategoryUserList, loan.getLoanCategory()))
@@ -369,11 +373,11 @@ public class PrintFuncs {
      * this func gets client and ASK THE USER WHAT LOANS IT WILL BE PARTICIPATE and returns list of the filtered loans that the user chose
      * @param client
      */
-    public static ArrayList<Loan> ChooseLoans(Client client) {
+    public static List<Loan> ChooseLoans(Client client) {
         int  index = 1;;
-        ArrayList<Integer> chosenLoansNumb = new ArrayList<>();
-        ArrayList<Loan> Loanslist = loanToInvest(client);
-        ArrayList<Loan> result ;
+        List<Integer> chosenLoansNumb = new ArrayList<>();
+        List<Loan> Loanslist = loanToInvest(client);
+        List<Loan> result ;
         for (Loan loan : Loanslist) {
             System.out.println(index+". ");
             printLoanInfo(loan);
@@ -403,12 +407,12 @@ public class PrintFuncs {
     public static ArrayList<Integer> getLoanFilters (){
         Scanner sc = new Scanner(System.in);
         ArrayList<Integer> result = new ArrayList<>();
-        System.out.println("Would you like to filter by Loan category? press 0 or 1");
-        result.add(readIntFromUser(0,1));
-        System.out.println("Thank you, would you like to filter by minimum interest per yaz? press 0 or 1");
-        result.add(readIntFromUser(0,1));
-        System.out.println("Thank you, would you like to filter by minimum yaz time frame? press 0 or 1");
-        result.add(readIntFromUser(0,1));
+        System.out.println("Would you like to filter by Loan category? ");
+        result.add(readIntFromUser(0,1,false));
+        System.out.println("Thank you, would you like to filter by minimum interest per yaz? ");
+        result.add(readIntFromUser(0,1,false));
+        System.out.println("Thank you, would you like to filter by minimum yaz time frame? ");
+        result.add(readIntFromUser(0,1,false));
         System.out.println("Thank you");
         return result;
     }
@@ -418,8 +422,7 @@ public class PrintFuncs {
         List <String> allCategoryList = Database.getAllCategories();
         do {
             System.out.println("Please select from the following list of options, the desired categories for investment:\n" +
-                    "(Your answer must be returned in the above format: \"Desired category number\", \"Desired category number\", etc.)\n" +
-                    "press 0 for choosing all categories");
+                    "(Your answer must be returned in the above format: \"Desired category number\", \"Desired category number\", etc.)\n" );
             int index=1;
             for (String category : allCategoryList) {
                 System.out.println(index+". "+category);
@@ -428,13 +431,6 @@ public class PrintFuncs {
             Scanner br = new Scanner(System.in);
             String lines = br.nextLine();
             String[] userInputs = lines.trim().split(",");
-
-            if (lines.equals("0"))
-            {
-                valid =true;
-                userSelectedCategories.addAll(allCategoryList);
-            }
-            else{
                 for (String userInput : userInputs) {
                     try {
                         userSelectedCategories.add(allCategoryList.get(Integer.parseInt(userInput) - 1));
@@ -445,7 +441,7 @@ public class PrintFuncs {
                         valid = false;
                     }
                 }
-            }
+
 
         }while(!valid);
 
@@ -511,7 +507,7 @@ public class PrintFuncs {
             isValid = false;
         }
         if(!checkValidCustomersList(descriptor)){
-            s+="\nthere is two customers with the same name";
+            s+="\nthere are two customers with the same name";
             isValid =false;
         }
         if(!checkValidLoanOwner(descriptor)){
@@ -532,14 +528,16 @@ public class PrintFuncs {
 
 
     //general
-    public static int readIntFromUser(int min, int max){
+    public static int readIntFromUser(int min, int max, boolean zero_or_realNumber){
         Scanner sc = new Scanner(System.in);
         int number;
         do {
-            System.out.println("Please enter an Integer number between: " + min + " - " + max);
-
+            if(zero_or_realNumber)
+                System.out.println("Please enter an Integer number between: " + min + " - " + max);
+            else
+                System.out.println("Please enter 0 for NO or 1 for YES");
             while (!sc.hasNextInt()) {
-                System.out.println("Input is not valid, please enter a valid number!");
+                System.out.println("Input is not valid, please enter a valid Input!");
                 sc.next(); // this is important!
             }
             number = sc.nextInt();

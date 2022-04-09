@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="Payment be negative">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="transaction tostring fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/Money/operations/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/operations/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/data/SchemaBasedJAXB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/SchemaBasedJAXB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +297,13 @@
       <option name="presentableId" value="LOCAL‎00029" />
       <updated>1649508370218</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL‎00030" summary="transaction tostring fixed">
+      <created>1649509443726</created>
+      <option name="number" value="LOCAL‎00030" />
+      <option name="presentableId" value="LOCAL‎00030" />
+      <updated>1649509443726</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +333,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="FUNC 6 almost finished 2" />
     <MESSAGE value="backround func TransferMoneyBetweenAccounts was created and account data member was added to Loan&#10;shai lost to azlanut" />
     <MESSAGE value="package orginazing" />
     <MESSAGE value="working on fun4 in main/program - for testing&#10;added a few notes about issues to check&#10;sorted getter and setters in Client class&#10;created a few getters and ctor in client and account class&#10;created in BackgroundFunc class DepositMonetToAccount method.&#10;&#10;have a great day =)" />
@@ -341,7 +357,8 @@
     <MESSAGE value="func 7 done debbuging for now" />
     <MESSAGE value="nextYazToPay() can get to 0" />
     <MESSAGE value="Payment be negative" />
-    <option name="LAST_COMMIT_MESSAGE" value="Payment be negative" />
+    <MESSAGE value="transaction tostring fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="transaction tostring fixed" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

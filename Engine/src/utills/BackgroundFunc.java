@@ -89,7 +89,7 @@ This func gets lenders list and return thus sum of their deposit
      * @param numbersArrayList
      * @return
      */
-    public static ArrayList<Loan> getResultedArray(ArrayList<Loan> loanArrayList, ArrayList<Integer> numbersArrayList){
+    public static ArrayList<Loan> getResultedArray(List<Loan> loanArrayList, List<Integer> numbersArrayList){
         ArrayList<Loan> result = new ArrayList<>();
         for (Integer integer:numbersArrayList)
         {
@@ -101,8 +101,14 @@ This func gets lenders list and return thus sum of their deposit
     //NIKOL: this should probably be part of one of the classes.
     //NIKOL: what are you doing here? why do you need a list where all the values are the same?
     //SHAI: in what context this function is used? check if a certain category is in sent Arraylist ?
-    public static boolean checkCategoryList(ArrayList<String> loanCategoryArrayList, String category) {
-        return loanCategoryArrayList.contains(category);
+    public static boolean checkCategoryList(List<String> loanCategoryArrayList, String category) {
+        boolean result=false;
+        for(String s:loanCategoryArrayList){
+            if(s.equalsIgnoreCase(category)){
+                result=true;
+            }
+        }
+        return result;
     }
     public static void addLenderToLoanList(Client client, Loan loan, double amountOfMoney) {
         Lenders lender = new Lenders(client.getFullName(),amountOfMoney);
@@ -166,7 +172,7 @@ This func gets lenders list and return thus sum of their deposit
 
         for (AbsLoan absLoan:absLoanList){
             for(String s:absCategoriesList){
-                if(absLoan.getAbsCategory().equals(s)) {
+                if(absLoan.getAbsCategory().equalsIgnoreCase(s)) {
                     isCategoryExist=true;
                 }
             }
@@ -188,7 +194,7 @@ This func gets lenders list and return thus sum of their deposit
         for (AbsLoan absLoan:absLoanList){
             for(AbsCustomer absCustomer:absCustomerList){
                 String customerName = absCustomer.getName();
-                if(absLoan.getAbsOwner().equals(customerName))
+                if(absLoan.getAbsOwner().equalsIgnoreCase(customerName))
                 {
                     isCustomerExist=true;
                 }
@@ -214,24 +220,30 @@ This func gets lenders list and return thus sum of their deposit
 
         for (AbsLoan absLoan:absLoanList){
             absTotalYazTime=absLoan.getAbsTotalYazTime();
-            absPaysEveryYaz = absLoan.getAbsTotalYazTime();
-            if(absTotalYazTime%absPaysEveryYaz !=0)
+            absPaysEveryYaz = absLoan.getAbsPaysEveryYaz();
+            if((absTotalYazTime%absPaysEveryYaz) !=0)
                 return false;
         }
         return true;
     }
 
     /**
-     *  check if there is two customers with the same name
+     *  check if there is two customers with the same name and if there are it will return false
      * @param descriptor
      * @return
      */
     public static boolean checkValidCustomersList(AbsDescriptor descriptor){
         List<AbsCustomer> absCustomerList = descriptor.getAbsCustomers().getAbsCustomer();
-        for (AbsCustomer absCustomer:absCustomerList){
-            if(absCustomerList.contains(absCustomer.getName()) )
+        List<String> customersName = new ArrayList<>();
+        for (AbsCustomer absCustomer:absCustomerList) {
+            if(customersName.contains(absCustomer.getName().toLowerCase()))
                 return false;
+            customersName.add(absCustomer.getName().toLowerCase());
         }
+/*        for (String customersName:customersName){
+            if(customersName.contains(absCustomer.getName()) )
+                return false;
+        }*/
         return true;
     }
 
@@ -254,7 +266,7 @@ This func gets lenders list and return thus sum of their deposit
     }
     public static void buildLoansData(List<AbsLoan> absLoanList){
        for (AbsLoan absLoan:absLoanList){
-           Loan newLoan = new Loan(absLoan.getAbsOwner(),absLoan.getAbsCategory(),absLoan.getAbsCapital(),absLoan.getAbsTotalYazTime(),absLoan.getAbsPaysEveryYaz(),absLoan.getAbsIntristPerPayment());
+           Loan newLoan = new Loan(absLoan.getId(),absLoan.getAbsOwner(),absLoan.getAbsCategory(),absLoan.getAbsCapital(),absLoan.getAbsTotalYazTime(),absLoan.getAbsPaysEveryYaz(),absLoan.getAbsIntristPerPayment());
            Database.addLoanToLoanMap(newLoan);
        }
     }

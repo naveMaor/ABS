@@ -8,11 +8,9 @@ import loan.enums.eLoanStatus;
 import time.Timeline;
 import utills.BackgroundFunc;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static Shai.PrintFuncs.*;
-import static data.File.XmlFile.resetFileData;
 
 
 public class User_interface {
@@ -116,7 +114,7 @@ public class User_interface {
         //getting wanted investor
         Client client = customersMenu();
         //creating wanted loans to invest list by investor wanted parameters
-        ArrayList<Loan> loanslistToInvest = ChooseLoans(client);
+        List<Loan> loanslistToInvest = ChooseLoans(client);
 
         //getting wanted overall investment for current yaz from client
         double wantedInvestment = getWantedInvestment(client);
@@ -156,7 +154,7 @@ public class User_interface {
         //System.out.println("remaining money left from original sum of investment is: "+remainingInvestment);
         System.out.println("you can choose to re-filter to continue investing");
     }
-    static double getMinInvestment(ArrayList<Loan> loanslistToInvest){
+    static double getMinInvestment(List<Loan> loanslistToInvest){
        //initialize  minimal with first loan details
         double minimalInvest = (loanslistToInvest.get(0).getLoanOriginalDepth()-loanslistToInvest.get(0).getLoanAccount().getCurrBalance());
         double leftForInvestment;
