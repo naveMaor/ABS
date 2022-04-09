@@ -295,7 +295,7 @@ public class Loan {
                 paymentsList.add(BorrowPayment);
                 //add the transaction stamp to the borrower transaction list
             //TO DO: check if you made a diff from -/+ nextExpecetedPaymentAmount
-                Transaction transaction = new Transaction(currTimeStamp,nextExpectedPaymentAmount,String.valueOf(this.loanID));
+                Transaction transaction = new Transaction(currTimeStamp,-nextExpectedPaymentAmount,String.valueOf(this.loanID));
                 borrowerAccount.addTnuaToAccount(transaction);
                 //update loan money info
                 loanAccount.setCurrBalance(loanAccount.getCurrBalance()+nextExpectedPaymentAmount);
