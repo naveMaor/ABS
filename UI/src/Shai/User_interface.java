@@ -19,11 +19,14 @@ public class User_interface {
 
 
     public static void func2AllLoansData() {
+        int index = 1;
         for (Loan loan : Database.getLoanList()) {
             System.out.println("\n------------------------\n");
-            System.out.println(loan.toString());//showing loan
+            System.out.println(index + ". ");
+            printLoanInfo2(loan);
+            //System.out.println(loan.toString());//showing loan
             PrintFuncs.printLenderList(loan.getLendersList());//showing lenders list PENDING
-            switch (loan.getStatus()) {
+/*            switch (loan.getStatus()) {
                 case ACTIVE: {
                     PrintFuncs.printACTIVEstatus(loan);
                 }
@@ -40,7 +43,8 @@ public class User_interface {
                 default:
                     break;
 
-            }
+            }*/
+            index ++;
         }
         /*
                         itr.toString();
@@ -59,6 +63,7 @@ public class User_interface {
             }
 
              */
+        System.out.println("\n------------------------\n");
     }
 
     public static void func3(){

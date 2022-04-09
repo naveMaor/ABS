@@ -29,13 +29,13 @@ public class Loan {
     private List<Payment> paymentsList = new ArrayList<>();// borrower paying every yaz list
 
     //Time settings data members:
-    private Timeline originalLoanTimeFrame;// misgeret zman halvaa
-    private Timeline startLoanYaz;
-    private Timeline paymentFrequency;
-    private Timeline endLoanYaz;
-    private double interestPercentagePerTimeUnit;//
+    private Timeline originalLoanTimeFrame = null;// misgeret zman halvaa
+    private Timeline startLoanYaz = new Timeline();
+    private Timeline paymentFrequency = new Timeline();
+    private Timeline endLoanYaz = new Timeline();
+    private double interestPercentagePerTimeUnit ;//
 
-   // private int intristPerPayment;
+   private double intristPerPayment;
     private double fundPerPayment;
 
     //Original Loan info:
@@ -78,15 +78,15 @@ public class Loan {
         this.originalLoanTimeFrame =newOriginalLoanTimeFrame;
         Timeline newPaymentFrequency = new Timeline(paymentFrequency);
         this.paymentFrequency = newPaymentFrequency;
-       // this.intristPerPayment = intristPerPayment;
         this.fundPerPayment = this.loanOriginalDepth/(this.originalLoanTimeFrame.getTimeStamp()/this.paymentFrequency.getTimeStamp());
         this.status = eLoanStatus.NEW;
         this.loanID = Objects.hash(this.loanCategory, this.originalLoanTimeFrame, startLoanYaz) & 0xfffffff;
         this.interestPercentagePerTimeUnit = intristPerPayment;  //(100*this.originalInterest)/this.loanOriginalDepth;
-        this.originalInterest = (interestPercentagePerTimeUnit/100)*loanOriginalDepth;//NEWLY EDITED
+        this.originalInterest = calculateInterest();
         this.totalLoanCostInterestPlusOriginalDepth = this.originalInterest + this.loanOriginalDepth;
         this.totalRemainingLoan = this.totalLoanCostInterestPlusOriginalDepth;
         this.loanAccount = new Account(Objects.hash(this.loanID) & 0xfffffff,0);
+        this.intristPerPayment = calculateInristPerPayment();
         this.deviation= new Deviation();
     }
 
@@ -133,8 +133,8 @@ public class Loan {
     public double getOriginalInterest() {
         return originalInterest;
     }
-    public void calculateInterest() {
-        this.originalInterest = this.loanOriginalDepth * (this.interestPercentagePerTimeUnit / 100.0);
+    public double calculateInterest() {
+        return this.loanOriginalDepth * (this.interestPercentagePerTimeUnit / 100.0);
     }
     public double getLoanOriginalDepth() {
         return loanOriginalDepth;
@@ -173,10 +173,14 @@ public class Loan {
         return loanAccount;
     }
 
-
-    public void setLoanAccount(Account loanAccount) {
-        this.loanAccount = loanAccount;
+    public double getIntristPerPayment() {
+        return intristPerPayment;
     }
+
+    public double calculateInristPerPayment(){
+        return this.originalInterest/(originalLoanTimeFrame.getTimeStamp()/paymentFrequency.getTimeStamp());
+    }
+
 
     @Override
     public String toString() {
@@ -187,8 +191,8 @@ public class Loan {
                 "loan Category: " + loanCategory + "\n" +
                 "Requested Time Frame For Loan: " + originalLoanTimeFrame + "\n" +
                 "Frequency of loan repayment requested: " + paymentFrequency + "\n" +
-                "Loan interest: " + interestPercentagePerTimeUnit + "\n" +
-                "Requested loan: " + loanOriginalDepth + "\n" + "****************\n";
+                "Loan interest Percentage: " + interestPercentagePerTimeUnit + " %"+ "\n" +
+                "Requested loan amount: " + loanOriginalDepth + "\n" + "\n";
     }
 
     /**
@@ -197,7 +201,11 @@ public class Loan {
      * @return
      */
     public int nextYazToPay() {
-        return ((Timeline.getCurrTime() - startLoanYaz.getTimeStamp()) % paymentFrequency.getTimeStamp()+Timeline.getCurrTime()+paymentFrequency.getTimeStamp());
+        int currTime = Timeline.getCurrTime();
+        int startLoanYaz = this.startLoanYaz.getTimeStamp();
+        int paymentFrequency = this.paymentFrequency.getTimeStamp();
+
+        return ((currTime-startLoanYaz) % paymentFrequency );
     }
 
     /**
@@ -241,7 +249,6 @@ public class Loan {
 
     /**
      * update the status of the loan from new or from pending or from activate. if changed to activate it starts up the loan
-     * todo:add option for changing in risk and finished status
      */
     public void UpdateLoanStatusIfNeeded() {
         if ((!lendersList.isEmpty()) && (status == eLoanStatus.NEW)) {
@@ -281,7 +288,7 @@ public class Loan {
         Double nextExpectedPaymentAmount = nextExpectedPaymentAmount(eDeviationPortion.TOTAL);
         Double nextExpectedInterest = nextExpectedPaymentAmount(eDeviationPortion.INTEREST);
         Double nextExpectedFund = nextExpectedPaymentAmount(eDeviationPortion.FUND);
-        double intristPerPayment = this.originalInterest/this.originalLoanTimeFrame.getTimeStamp(); //TO ASK NAVE
+        double intristPerPayment = this.intristPerPayment; //TO ASK NAVE
         //if the borrower have the money for paying this loan at the time of the yaz
         if(borrowerAccount.getCurrBalance()>=nextExpectedPaymentAmount){
                 //add new payment to the loan payment list
@@ -326,7 +333,7 @@ public class Loan {
     public void payLoanDividendsToLenders(){
         double amountToPayLender;
         //need to docu this variable -//DOCU calc the multiplier for getting the  amount of interest Slender should be payed
-        double coefficientOfMultiplicationInterest = this.interestPercentagePerTimeUnit/100;
+        double coefficientOfMultiplicationInterest = this.interestPercentagePerTimeUnit/100.0;
         for(Lenders itr: this.lendersList){
             //calc amount of money specific lender suppose to get after loan is in "FINISHED" status
             amountToPayLender = itr.getDeposit() + itr.getDeposit()*coefficientOfMultiplicationInterest;
@@ -345,7 +352,9 @@ public class Loan {
             accToPay.setCurrBalance(updatedLenderBalance);
 
     }
-}//MAYBE TO DELETE NOT YET
+}
+
+
     public void uniformsNeededBlocksInLenderList(){
         int listSize=this.lendersList.size();
         //checks if their at least two blocks to compare in list
@@ -362,7 +371,7 @@ public class Loan {
                 index -= 1;
             }
         }
-    }
+    }//MAYBE TO DELETE NOT YET
 
 
 

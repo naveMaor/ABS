@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment=" solved !!! duplicating issues inside func 6">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="func 7 completed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/Money/operations/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/operations/Payment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/time/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/time/Timeline.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Lenders.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Lenders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/time/Timeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/time/Timeline.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -322,20 +323,6 @@
     <option name="LAST_COMMIT_MESSAGE" value=" solved !!! duplicating issues inside func 6" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Engine/src/loan/Loan.java</url>
-          <line>199</line>
-          <option name="timeStamp" value="64" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="nave.Loan" memberName="paymentsList" />
@@ -362,7 +349,7 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ABS$Program.ic" NAME="Program Coverage Results" MODIFIED="1649456762311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/ABS$Program.ic" NAME="Program Coverage Results" MODIFIED="1648887012688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Shai.*</FILTER>
     </SUITE>
   </component>

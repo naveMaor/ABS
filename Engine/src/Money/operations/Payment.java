@@ -58,13 +58,19 @@ public class Payment {
 
     @Override
     public String toString() {
+        String result = "payment made at: " + paymentYaz + "Yaz\n";
+        result += "Fund Portion: " + fundPortion + "\n";
+        result += "interest Portion: " + interestPortion + "\n";
+        result += "total payment: " + fundPlusInterest + "\n";
         String payed = isPayed ? "" : ", Not Payed!";
-        return "{" +
+        result += payed;
+        return result;
+/*        return "{" +
+                ", payment made at: " + paymentYaz + "Yaz"+
                 "Fund Portion: " + fundPortion +
                 ", interest Portion: " + interestPortion +
-                ", payment Yaz: " + paymentYaz +
                 ", total payment: " + fundPlusInterest +
                  payed +
-                '}';
+                '}';*/
     }
 }

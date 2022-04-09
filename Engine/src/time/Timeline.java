@@ -7,6 +7,9 @@ public class Timeline {
     private static int currTime = 1;
     private int timeStamp;
 
+    public Timeline() {
+    }
+
     @Override
     public String toString() {
         return String.valueOf(timeStamp);
