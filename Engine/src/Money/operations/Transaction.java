@@ -10,8 +10,10 @@ public class Transaction {
     private double sum;// schum tnua
     private String to_from;
     private  char sign;
+    private double balanceBefore;
+    private double balanceAfter;
 
-    public Transaction(Timeline timeOfMovement, double sum, String to_from) {
+    public Transaction(Timeline timeOfMovement, double sum, String to_from, double balanceBefore,double balanceAfter) {
         this.timeOfMovement = timeOfMovement;
         this.sum = sum;
         this.to_from=to_from;
@@ -19,6 +21,12 @@ public class Transaction {
             this.sign ='+';
         else
             this.sign ='-';
+        this.balanceBefore= balanceBefore;
+        this.balanceAfter=balanceAfter;
+    }
+
+    public void setBalanceAfter(double balanceAfter) {
+        this.balanceAfter = balanceAfter;
     }
 
     @Override
@@ -56,6 +64,18 @@ public class Transaction {
 
     public Timeline getTimeOfMovement() {
         return timeOfMovement;
+    }
+
+    public void setBalanceBefore(double balanceBefore) {
+        this.balanceBefore = balanceBefore;
+    }
+
+    public double getBalanceBefore() {
+        return balanceBefore;
+    }
+
+    public double getBalanceAfter() {
+        return balanceAfter;
     }
 
     public void setTimeOfMovement(Timeline timeOfMovement) {

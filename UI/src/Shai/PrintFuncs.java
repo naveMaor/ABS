@@ -51,7 +51,7 @@ public class PrintFuncs {
         else
             System.out.println("next payment is in: " + currLoan.nextYazToPay() +" Yazes\n");
         if (!paymentsList.isEmpty()){
-            System.out.println("Here are all payments that have been made:");
+            System.out.println("Here are all payments that "+currLoan.getBorrowerName() +  "has made:");
             for(Payment pay:paymentsList)
             {
                 System.out.println(index +". " +pay.toString());
@@ -65,7 +65,7 @@ public class PrintFuncs {
         System.out.println("remaining interest: " + currInterestDepth);
     }
     public static void printRISKstatus(Loan currLoan){
-
+/*
         List<Payment> paymentsList = currLoan.getPaymentsList();
         int sumNotPayed = 0;
         int numNotPayed=0;
@@ -77,9 +77,9 @@ public class PrintFuncs {
                 ++numNotPayed;
             }
 
-        }
-        System.out.println("num of delayed payments: " + numNotPayed);
-        System.out.println("sum of deviation: " + sumNotPayed);
+        }*/
+        System.out.println("num of delayed payments: " + currLoan.getDeviation().getNumberOfYazNotPayed());
+        System.out.println("sum of deviation: " + currLoan.getDeviation().getSumOfDeviation());
     }
     public static void printFINISHEDstatus(Loan currLoan){
         Timeline startLoanYaz = currLoan.getStartLoanYaz();
@@ -98,28 +98,34 @@ public class PrintFuncs {
         int index = 1;
         Account account = client.getMyAccount();
         List<Transaction> transactionList = account.getTnuaList();
-        System.out.println("Account Balnce: " + account.getCurrBalance());
-        if(!transactionList.isEmpty()){
+        System.out.println("Account Balance: " + account.getCurrBalance());
+        if(!transactionList.isEmpty()) {
             System.out.println("Transactions:");
-        }
-        double beforeBalance=account.getCurrBalance();
-        double afterBalance=account.getCurrBalance();;
-        for (Transaction transaction : transactionList) {
-            System.out.println(index +".");
-            System.out.println("yaz of tnua: " + transaction.getTimeOfMovement() + "yazes");
-            if (transaction.getSum() > 0) {
-                System.out.println("schum tnua: +" + transaction.getSum());
+
+/*        double beforeBalance=account.getCurrBalance();
+        double afterBalance=account.getCurrBalance();*/
+
+            double lastBalance = transactionList.get(0).getBalanceBefore();
+
+            for (Transaction transaction : transactionList) {
+                System.out.println(index + ".");
+                System.out.println("yaz of tnua: " + transaction.getTimeOfMovement() + "yazes");
+                if (transaction.getSum() > 0) {
+                    System.out.println("schum tnua: +" + transaction.getSum());
+                } else {
+                    System.out.println("schum tnua: " + transaction.getSum());
+                }
+                //System.out.println("Transaction to_from:"+transaction.getTo_from());
+                //afterBalance += transaction.getSum();
+                transaction.setBalanceBefore(lastBalance);
+                transaction.setBalanceAfter(lastBalance + transaction.getSum());
+                lastBalance = transaction.getBalanceAfter();
+                System.out.println("balance before the tnua: " + transaction.getBalanceBefore());
+                System.out.println("balance after the tnua: " + transaction.getBalanceAfter());
+                //beforeBalance=afterBalance;
+                System.out.println("@@@@@@@@@@@@@@@@@@@@@");
+                index++;
             }
-            else {
-                System.out.println("schum tnua: " + transaction.getSum());
-            }
-            //System.out.println("Transaction to_from:"+transaction.getTo_from());
-            afterBalance += transaction.getSum();
-            System.out.println("balance before the tnua: " + beforeBalance);
-            System.out.println("balance after the tnua: " + afterBalance);
-            beforeBalance=afterBalance;
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@");
-            index++;
         }
     }
     public static void printConnectedLoans(Client client) {
@@ -172,7 +178,14 @@ public class PrintFuncs {
             }
             case ACTIVE:
             {
-                System.out.println("next payment is in " + loan.nextYazToPay() + " yazes");
+                System.out.print("next payment is in " );
+                if (loan.nextYazToPay()==0){
+                    System.out.println(loan.getPaymentFrequency() + " yazes");
+                }
+                else {
+                    System.out.println(loan.nextYazToPay() + " yazes");
+                }
+                //System.out.println("next payment is in " + loan.nextYazToPay() + " yazes");
                 System.out.println("borrower will pay in the next payment: " + loan.nextExpectedPaymentAmount(eDeviationPortion.TOTAL));
                 break;
             }
@@ -284,7 +297,7 @@ public class PrintFuncs {
         //asking user to choose a client from database ,and getting input value of wanted client index
         List<Client> clientsList = Database.getClientsList();
         int clientListSize =clientsList.size();
-        System.out.println("Please enter wanted client index for deposit\n(index must be an integer number between 1 - "+clientListSize+" )");
+        System.out.println("Please enter wanted client index for deposit");
         int userClientIndexChoice = PrintFuncs.readIntFromUser(1,clientListSize,true);
         //getting client
         Client wantedClient =clientsList.get(userClientIndexChoice-1);
@@ -351,7 +364,7 @@ public class PrintFuncs {
             loanCategoryUserList = Database.getAllCategories();
         if (loanFilters.get(eLoanFilters.MINIMUM_INTEREST_PER_YAZ.ordinal()) == 1) {
             System.out.println("Please choose the minimum interest percentage per yaz ");
-            minInterestPerYaz = readDoubleFromUser(0, Double.MAX_VALUE);
+            minInterestPerYaz = readDoubleFromUser(0, Integer.MAX_VALUE);
         }
         if (loanFilters.get(eLoanFilters.MINIMUM_YAZ_TIME_FRAME.ordinal()) == 1) {
             System.out.println("Please choose the minimum yaz time frame ");
@@ -377,7 +390,12 @@ public class PrintFuncs {
         int  index = 1;;
         List<Integer> chosenLoansNumb = new ArrayList<>();
         List<Loan> Loanslist = loanToInvest(client);
-        List<Loan> result ;
+        List<Loan> result = new ArrayList<>();
+        if (Loanslist.isEmpty()){
+            System.out.println("There are no loans to show!");
+            return result;
+        }
+
         for (Loan loan : Loanslist) {
             System.out.println(index+". ");
             printLoanInfo(loan);
@@ -388,14 +406,25 @@ public class PrintFuncs {
         do {
             System.out.println("please choose loans that the client would like to invest in: \n" +
                     "\"(Your answer must be returned in the above format: \"Desired loan number\", \"Desired loan number\", etc.)\"");
+            System.out.println("if you don't like to invest in any of those, press 0");
             Scanner br = new Scanner(System.in);
             String lines = br.nextLine();
             String[] userInputs = lines.trim().split(",");
             for (String userInput : userInputs) {
                 try {
-                    chosenLoansNumb.add(Integer.parseInt(userInput)-1);
+                    if(Integer.parseInt(userInput)==0){
+                        return result;
+                    }
+                    if(Integer.parseInt(userInput)>Loanslist.size() || Integer.parseInt(userInput)<1) {
+                        System.out.println("Please enter only valid inputs: (inputs must be numbers only!)");
+                        valid = false;
+                    }
+                    else{
+                        chosenLoansNumb.add(Integer.parseInt(userInput)-1);
+                        valid =true;
+                    }
                 } catch (NumberFormatException exception) {
-                    System.out.println("Please enter only vaild inputs: (inputs must be numbers only!)");
+                    System.out.println("Please enter only valid inputs: (inputs must be numbers only!)");
                     chosenLoansNumb.clear();
                     valid=false;
                 }
@@ -432,9 +461,16 @@ public class PrintFuncs {
             String lines = br.nextLine();
             String[] userInputs = lines.trim().split(",");
                 for (String userInput : userInputs) {
+
                     try {
+                        if(Integer.parseInt(userInput)>allCategoryList.size() || Integer.parseInt(userInput)<1) {
+                        System.out.println("Please enter only valid inputs: (inputs must be numbers only!)");
+                        valid = false;
+                    }
+                    else{
                         userSelectedCategories.add(allCategoryList.get(Integer.parseInt(userInput) - 1));
-                        //todo: valid ==== true
+                        valid =true;
+                    }
                     } catch (NumberFormatException exception) {
                         System.out.println("Please enter only valid inputs: (inputs must be numbers only!)");
                         userSelectedCategories.clear();

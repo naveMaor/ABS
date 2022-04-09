@@ -35,6 +35,7 @@ public class XmlFile {
                 }
             }catch (Exception exception){
                 System.out.println("ERROR: Something went wrong with this action:" + exception.getMessage());
+                System.out.println("please type path again:");
             }
         }
     }

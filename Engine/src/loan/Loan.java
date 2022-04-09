@@ -183,12 +183,15 @@ public class Loan {
         return this.originalInterest/(originalLoanTimeFrame.getTimeStamp()/paymentFrequency.getTimeStamp());
     }
 
+    public Deviation getDeviation() {
+        return deviation;
+    }
 
     @Override
     public String toString() {
         return
                 "Loan ID:" + loanID + "\n" +
-                        "status: " + status + "\n" +
+                "status: " + status + "\n" +
                 "borrower's Name: " + borrowerName + "\n" +
                 "loan Category: " + loanCategory + "\n" +
                 "Requested Time Frame For Loan: " + originalLoanTimeFrame + "\n" +
@@ -296,12 +299,12 @@ public class Loan {
                 Payment BorrowPayment = new Payment(currTimeStamp,true,nextExpectedFund,nextExpectedInterest);
                 paymentsList.add(BorrowPayment);
                 //add the transaction stamp to the borrower transaction list
-            //TO DO: check if you made a diff from -/+ nextExpecetedPaymentAmount
-                Transaction transaction = new Transaction(currTimeStamp,-nextExpectedPaymentAmount,String.valueOf(this.loanID));
+                Transaction transaction = new Transaction(currTimeStamp,-nextExpectedPaymentAmount,String.valueOf(this.loanID),borrowerAccount.getCurrBalance(),borrowerAccount.getCurrBalance()-nextExpectedPaymentAmount);
                 borrowerAccount.addTnuaToAccount(transaction);
                 //update loan money info
                 loanAccount.setCurrBalance(loanAccount.getCurrBalance()+nextExpectedPaymentAmount);
-                //
+                borrowerAccount.setCurrBalance(borrowerAccount.getCurrBalance()-nextExpectedPaymentAmount);
+
                 updateDynamicDataMembersAfterYazPromotion(nextExpectedInterest,nextExpectedFund);
                 deviation.resetDeviation();
                 //update loan status
@@ -344,12 +347,13 @@ public class Loan {
         Account accToPay = Database.getClientMap().get(lendersNameToPay).getMyAccount();
         //getting current timeStamp for transaction.
         Timeline currTimeStamp = new Timeline(Timeline.getCurrTime());
-        //creating a transaction
-        Transaction lenderPaymentTransAction = new Transaction(currTimeStamp,amountToPayLender,String.valueOf(this.loanID));
+            //updating lenders balance
+            double updatedLenderBalance = accToPay.getCurrBalance()+amountToPayLender;
+            //creating a transaction
+        Transaction lenderPaymentTransAction = new Transaction(currTimeStamp,amountToPayLender,String.valueOf(this.loanID),accToPay.getCurrBalance(),updatedLenderBalance);
         //adding transaction to lenders account transactioList
             accToPay.getTnuaList().add(lenderPaymentTransAction);
-        //updating lenders balance
-            double updatedLenderBalance = accToPay.getCurrBalance()+amountToPayLender;
+
             accToPay.setCurrBalance(updatedLenderBalance);
 
     }

@@ -1,5 +1,6 @@
 package Shai;
 
+import Money.operations.Transaction;
 import customes.Client;
 import data.Database;
 import data.File.XmlFile;
@@ -91,6 +92,7 @@ public class User_interface {
         //making the wire
         BackgroundFunc.AccountTransaction(deposit,wantedClient.getMyAccount());
         System.out.println("Wire of: "+deposit+" to "+clientFullName+"'s account, has been confirmed.\n ");
+        System.out.println(clientFullName+"'s new account balance is: "+ wantedClient.getMyAccount().getCurrBalance());
     }
 
     public static void func5(){
@@ -103,7 +105,13 @@ public class User_interface {
         //making the wire
         BackgroundFunc.AccountTransaction(withdrawal,wantedClient.getMyAccount());
         System.out.println("Withdraw of: "+withdrawal+" from "+clientFullName+"'s account, has been confirmed.\n ");
-        System.out.println(wantedClient.getMyAccount().getTnuaList().toString()+wantedClient.getMyAccount().getCurrBalance());
+        int index =1;
+        for (Transaction transaction:wantedClient.getMyAccount().getTnuaList()){
+            System.out.println(index + ". time transaction made:" + transaction.getTimeOfMovement());
+            System.out.println("transaction amount: " + transaction.getSum());
+            index++;
+        }
+        System.out.println(wantedClient.getFullName() + "'s current balance: " +wantedClient.getMyAccount().getCurrBalance());
     }
 
     public static void func6() {
@@ -115,7 +123,9 @@ public class User_interface {
         Client client = customersMenu();
         //creating wanted loans to invest list by investor wanted parameters
         List<Loan> loanslistToInvest = ChooseLoans(client);
-
+        if(loanslistToInvest.isEmpty()){
+            return;
+        }
         //getting wanted overall investment for current yaz from client
         double wantedInvestment = getWantedInvestment(client);
        // investing according to agreed risk management methodology
@@ -178,7 +188,6 @@ public class User_interface {
         Timeline.promoteStaticCurrTime();
         PrintFuncs.printYazAfterPromote();
         BackgroundFunc.filterAndHandleLoansListAfterPromote();
-        System.out.println("func 7 finished!");
     }
 
     public static void func1(){

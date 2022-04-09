@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="transaction tostring fixed">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="File loading fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/data/SchemaBasedJAXB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/SchemaBasedJAXB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/data/File/XmlFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/File/XmlFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/Shai/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" afterDir="false" />
@@ -303,7 +302,13 @@
       <option name="presentableId" value="LOCAL‎00030" />
       <updated>1649509443726</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL‎00031" summary="File loading fixed">
+      <created>1649521158492</created>
+      <option name="number" value="LOCAL‎00031" />
+      <option name="presentableId" value="LOCAL‎00031" />
+      <updated>1649521158492</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +338,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="backround func TransferMoneyBetweenAccounts was created and account data member was added to Loan&#10;shai lost to azlanut" />
     <MESSAGE value="package orginazing" />
     <MESSAGE value="working on fun4 in main/program - for testing&#10;added a few notes about issues to check&#10;sorted getter and setters in Client class&#10;created a few getters and ctor in client and account class&#10;created in BackgroundFunc class DepositMonetToAccount method.&#10;&#10;have a great day =)" />
     <MESSAGE value="minor fix -fixing sout output of user choice in func 5" />
@@ -358,9 +362,29 @@
     <MESSAGE value="nextYazToPay() can get to 0" />
     <MESSAGE value="Payment be negative" />
     <MESSAGE value="transaction tostring fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="transaction tostring fixed" />
+    <MESSAGE value="File loading fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="File loading fixed" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <condition expression="currTime&gt;=10" language="JAVA" />
+          <url>file://$PROJECT_DIR$/Engine/src/time/Timeline.java</url>
+          <line>29</line>
+          <properties class="time.Timeline" method="promoteStaticCurrTime">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="nave.Loan" memberName="paymentsList" />
@@ -371,6 +395,7 @@
         <watch expression="this" language="JAVA" />
         <watch expression="loan.loanAccount" />
         <watch expression="this.lendersList.get(1)" />
+        <watch expression="Database.getClientMap()" language="JAVA" custom="data.Database,java.util.HashMap" />
       </configuration>
     </watches-manager>
   </component>
