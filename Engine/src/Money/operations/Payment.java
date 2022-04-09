@@ -62,7 +62,7 @@ public class Payment {
         result += "Fund Portion: " + fundPortion + "\n";
         result += "interest Portion: " + interestPortion + "\n";
         result += "total payment: " + fundPlusInterest + "\n";
-        String payed = isPayed ? "" : ", Not Payed!";
+        String payed = isPayed ? "" : "Not Payed!";
         result += payed;
         return result;
 /*        return "{" +

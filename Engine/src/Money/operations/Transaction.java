@@ -42,11 +42,15 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "Transaction{" +
+        String result = "time transaction made:" + timeOfMovement + "\n";
+        result += "transaction amount: " + sum + "\n";
+
+        return result;
+/*        return "Transaction{" +
                 "timeOfMovement=" + timeOfMovement +
                 ", sum=" + sum +
                 ", to_from='" + to_from + '\'' +
-                '}';
+                '}';*/
     }
 
 

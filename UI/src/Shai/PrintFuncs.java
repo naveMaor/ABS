@@ -79,7 +79,7 @@ public class PrintFuncs {
 
         }
         System.out.println("num of delayed payments: " + numNotPayed);
-        System.out.println("sum of delayed: " + sumNotPayed);
+        System.out.println("sum of deviation: " + sumNotPayed);
     }
     public static void printFINISHEDstatus(Loan currLoan){
         Timeline startLoanYaz = currLoan.getStartLoanYaz();
