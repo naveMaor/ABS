@@ -25,7 +25,7 @@ public class User_interface {
             System.out.println(index + ". ");
             printLoanInfo2(loan);
             //System.out.println(loan.toString());//showing loan
-            PrintFuncs.printLenderList(loan.getLendersList());//showing lenders list PENDING
+            //PrintFuncs.printLenderList(loan.getLendersList());//showing lenders list PENDING
 /*            switch (loan.getStatus()) {
                 case ACTIVE: {
                     PrintFuncs.printACTIVEstatus(loan);
@@ -153,7 +153,7 @@ public class User_interface {
 
     static void printEmptyListNotification(double remainingInvestment){
         System.out.println("Invested in all chosen loans the maximum optional investment.\n there are no loans left to invest from selected loans");
-        System.out.println("remaining money left from original sum of investment is: "+remainingInvestment);
+        //System.out.println("remaining money left from original sum of investment is: "+remainingInvestment);
         System.out.println("you can choose to re-filter to continue investing");
     }
     static double getMinInvestment(ArrayList<Loan> loanslistToInvest){
@@ -180,6 +180,7 @@ public class User_interface {
         Timeline.promoteStaticCurrTime();
         PrintFuncs.printYazAfterPromote();
         BackgroundFunc.filterAndHandleLoansListAfterPromote();
+        System.out.println("func 7 finished!");
     }
 
     public static void func1(){

@@ -58,7 +58,7 @@ public class Payment {
 
     @Override
     public String toString() {
-        String result = "payment made at: " + paymentYaz + "Yaz\n";
+        String result = "payment made at: " + paymentYaz + " Yaz\n";
         result += "Fund Portion: " + fundPortion + "\n";
         result += "interest Portion: " + interestPortion + "\n";
         result += "total payment: " + fundPlusInterest + "\n";

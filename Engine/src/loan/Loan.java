@@ -205,7 +205,11 @@ public class Loan {
         int startLoanYaz = this.startLoanYaz.getTimeStamp();
         int paymentFrequency = this.paymentFrequency.getTimeStamp();
 
-        return ((currTime-startLoanYaz) % paymentFrequency );
+        int result = (currTime-startLoanYaz) % paymentFrequency;
+        if (result ==0)
+            return paymentFrequency;
+        else
+            return ((currTime-startLoanYaz) % paymentFrequency );
     }
 
     /**
@@ -216,14 +220,14 @@ public class Loan {
 
 
     public double nextExpectedPaymentAmount(eDeviationPortion DeviationPortion) {
-        double intristPerPayment = this.originalInterest/this.originalLoanTimeFrame.getTimeStamp();
+        //double intristPerPayment = this.originalInterest/this.originalLoanTimeFrame.getTimeStamp();
         switch (DeviationPortion)
         {
             case INTEREST:{
                 if(deviation.getInterestDeviation()>0)
                     return deviation.getInterestDeviation();
                 else
-                    return (intristPerPayment);
+                    return (this.intristPerPayment);
             }
             case FUND:{
                 if(deviation.getFundDeviation()>0)
@@ -237,7 +241,7 @@ public class Loan {
                     return deviation.getSumOfDeviation();
                 }
                 else
-                    return (totalLoanCostInterestPlusOriginalDepth / originalLoanTimeFrame.getTimeStamp());
+                    return (totalLoanCostInterestPlusOriginalDepth / (originalLoanTimeFrame.getTimeStamp()/paymentFrequency.getTimeStamp()));
             }
         }
 
@@ -288,7 +292,6 @@ public class Loan {
         Double nextExpectedPaymentAmount = nextExpectedPaymentAmount(eDeviationPortion.TOTAL);
         Double nextExpectedInterest = nextExpectedPaymentAmount(eDeviationPortion.INTEREST);
         Double nextExpectedFund = nextExpectedPaymentAmount(eDeviationPortion.FUND);
-        double intristPerPayment = this.intristPerPayment; //TO ASK NAVE
         //if the borrower have the money for paying this loan at the time of the yaz
         if(borrowerAccount.getCurrBalance()>=nextExpectedPaymentAmount){
                 //add new payment to the loan payment list

@@ -45,13 +45,17 @@ public class PrintFuncs {
         double currFundDepth = currLoan.calculateFundDepth();
         double currInterestDepth =currLoan.calculateCurrInterestDepth();
         int index = 1;
-        System.out.println("This Loan turned started at: " + startLoanYaz.getTimeStamp());
-        System.out.println("next payment is in: " + currLoan.nextYazToPay() +" Yazes");
-        for(Payment pay:paymentsList)
-        {
-            System.out.println(index +pay.toString());
-            index ++;
+        System.out.println("\n This Loan started at: " + startLoanYaz.getTimeStamp()+" Yaz");
+        System.out.println("next payment is in: " + currLoan.nextYazToPay() +" Yazes\n");
+        if (!paymentsList.isEmpty()){
+            System.out.println("Here are all payments that have been made:");
+            for(Payment pay:paymentsList)
+            {
+                System.out.println(index +". " +pay.toString());
+                index ++;
+            }
         }
+
         System.out.println("total payed fund: " + payedFund);
         System.out.println("remaining fund: " + currFundDepth);
         System.out.println("total payed interest: " + payedInterest);
@@ -80,7 +84,7 @@ public class PrintFuncs {
         List<Payment> paymentsList = currLoan.getPaymentsList();
 
         System.out.println("start loan yaz: "+startLoanYaz);
-        System.out.println("end loan yaz" + endLoanYaz);
+        System.out.println("end loan yaz: " + endLoanYaz);
         for(Payment pay:paymentsList)
         {
             System.out.println(pay.toString());
@@ -177,7 +181,7 @@ public class PrintFuncs {
             case FINISHED:
             {
                 System.out.println("start loan yaz: "+loan.getStartLoanYaz());
-                System.out.println("end loan yaz" + loan.getEndLoanYaz());
+                System.out.println("end loan yaz: " + loan.getEndLoanYaz());
                 break;
             }
             default:
@@ -224,7 +228,7 @@ public class PrintFuncs {
             case FINISHED:
             {
                 System.out.println("start loan yaz: "+loan.getStartLoanYaz());
-                System.out.println("end loan yaz" + loan.getEndLoanYaz());
+                System.out.println("end loan yaz: " + loan.getEndLoanYaz());
                 break;
             }
             default:

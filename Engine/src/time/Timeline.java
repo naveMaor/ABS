@@ -48,12 +48,12 @@ public class Timeline {
         System.out.println(currTime);
     }
     public static void printPreviousCurrTime(){
-        if (currTime==0)
+        if (currTime==1)
         {
             System.out.println(currTime);
         }
         else {
-            System.out.println(--currTime);
+            System.out.println(currTime-1);
         }
     }
     public static void resetTime(){
