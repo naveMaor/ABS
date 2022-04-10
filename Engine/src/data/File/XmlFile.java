@@ -4,13 +4,10 @@ import data.SchemaBasedJAXB;
 import data.schema.generated.AbsDescriptor;
 
 import javax.xml.bind.JAXBException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Scanner;
 
-public class XmlFile {
+public class XmlFile implements Serializable {
     private static InputStream inputStream = null;
     private static AbsDescriptor inputObject;
 

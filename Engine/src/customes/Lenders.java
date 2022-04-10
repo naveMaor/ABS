@@ -1,8 +1,9 @@
 package customes;
 
-import java.util.Objects;
 
-public class Lenders {
+import java.io.Serializable;
+import java.util.Objects;
+public class Lenders implements Serializable {
 
     private String fullName;
     private double deposit;

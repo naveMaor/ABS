@@ -1,6 +1,9 @@
 package Money;
 
-public class Deviation {
+
+import java.io.Serializable;
+
+public class Deviation implements Serializable {
     double interestDeviation=0;
     double fundDeviation=0;
     //double sumOfDeviation=0;

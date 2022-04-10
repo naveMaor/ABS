@@ -1,8 +1,9 @@
 package time;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Timeline {
+public class Timeline implements Serializable {
 
     private static int currTime = 1;
     private int timeStamp;
@@ -29,6 +30,10 @@ public class Timeline {
     }
     public static void promoteStaticCurrTime(){
         currTime++;
+    }
+
+    public static void setCurrTime(int currTime) {
+        Timeline.currTime = currTime;
     }
 
     @Override

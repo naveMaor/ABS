@@ -6,7 +6,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.InputStream;
-
 public class SchemaBasedJAXB {
 
     private final static String JAXB_XML_PACKAGE_NAME = "data.schema.generated";

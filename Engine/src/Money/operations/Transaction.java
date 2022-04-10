@@ -2,9 +2,9 @@ package Money.operations;
 
 import time.Timeline;
 
+import java.io.Serializable;
 import java.util.Objects;
-
-public class Transaction {
+public class Transaction implements Serializable {
 
     private Timeline timeOfMovement;// time of the movemonet was occured
     private double sum;// schum tnua

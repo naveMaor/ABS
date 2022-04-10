@@ -65,19 +65,6 @@ public class PrintFuncs {
         System.out.println("remaining interest: " + currInterestDepth);
     }
     public static void printRISKstatus(Loan currLoan){
-/*
-        List<Payment> paymentsList = currLoan.getPaymentsList();
-        int sumNotPayed = 0;
-        int numNotPayed=0;
-        for(Payment pays:paymentsList)
-        {
-            if(pays.isPayed() == false)
-            {
-                sumNotPayed+=pays.getFundPlusInterest();
-                ++numNotPayed;
-            }
-
-        }*/
         System.out.println("num of delayed payments: " + currLoan.getDeviation().getNumberOfYazNotPayed());
         System.out.println("sum of deviation: " + currLoan.getDeviation().getSumOfDeviation());
     }

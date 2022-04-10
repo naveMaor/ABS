@@ -276,4 +276,6 @@ This func gets lenders list and return thus sum of their deposit
            Database.addLoanToLoanMap(newLoan);
        }
     }
+
+
 }

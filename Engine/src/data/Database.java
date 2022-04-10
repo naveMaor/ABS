@@ -5,14 +5,25 @@ import customes.Client;
 import time.Timeline;
 import utills.BackgroundFunc;
 
+import java.io.Serializable;
 import java.util.*;
 
 import static data.File.XmlFile.*;
-
-public class Database {
+public class Database implements Serializable {
     private static Map <String, List<Loan>> loanMapByCategory = new HashMap<>();
     private static Map<String, Client> clientMap =new HashMap<>();
 
+    public static void setLoanMapByCategory(Map<String, List<Loan>> loanMapByCategory) {
+        Database.loanMapByCategory = loanMapByCategory;
+    }
+
+    public static void setClientMap(Map<String, Client> clientMap) {
+        Database.clientMap = clientMap;
+    }
+
+    public static Map<String, List<Loan>> getLoanMapByCategory() {
+        return loanMapByCategory;
+    }
 
     public static List<Loan> getLoanList() {
         List<Loan> result = new ArrayList<>();

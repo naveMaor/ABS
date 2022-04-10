@@ -12,11 +12,11 @@ import time.Timeline;
 import utills.BackgroundFunc;
 import Money.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-public class Loan {
+public class Loan implements Serializable {
 
     //Identification data members:
 

@@ -1,6 +1,7 @@
 package ui;
 
-import Shai.PrintFuncs;
+import data.File.DataToFileDataFromFile;
+import ui.PrintFuncs;
 
 public class Menu {
     private static boolean isLoadedFile = false;
@@ -17,7 +18,9 @@ public class Menu {
         System.out.println("5. withdraw money from account");
         System.out.println("6. place a certain loan to a client as lender");
         System.out.println("7. Promote timeline by one Yaz");
-        System.out.println("8. exit");
+        System.out.println("8. save current state as bin");
+        System.out.println("9. load last saved state from bin");
+        System.out.println("10. exit");
         try {
             choise =  handleMenuChoice();
         } catch (Exception e) {
@@ -28,16 +31,22 @@ public class Menu {
     }
 
     public static int handleMenuChoice() throws Exception {
-        int choice = PrintFuncs.readIntFromUser(1,8,true);
+        int choice = PrintFuncs.readIntFromUser(1,10,true);
 
         if (choice==1){
             User_interface.func1();
             isLoadedFile = true;
         }
-        else if (choice == 8)
+        else if (choice == 10)
         {
             System.out.println("Bye, have a nice day!");
             return choice;
+        }
+        if (choice==9){
+            DataToFileDataFromFile dataToFileDataFromFile = new DataToFileDataFromFile();
+            DataToFileDataFromFile.LoadDataFromFile(dataToFileDataFromFile);
+            System.out.println("data loaded successfully");
+            isLoadedFile = true;
         }
         else if (!isLoadedFile){
             throw new Exception("File must be loaded first please choose ONE first!");
@@ -67,6 +76,12 @@ public class Menu {
                 }
                 case 7:{
                     User_interface.func7();
+                    break;
+                }
+                case 8:{
+                    DataToFileDataFromFile dataToFileDataFromFile = new DataToFileDataFromFile();
+                    dataToFileDataFromFile.SaveDataToFile();
+                    System.out.println("data saved successfully");
                     break;
                 }
             }

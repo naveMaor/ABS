@@ -2,7 +2,9 @@ package Money.operations;
 
 import time.Timeline;
 
-public class Payment {
+import java.io.Serializable;
+
+public class Payment implements Serializable {
 
     private double fundPortion;
     private double interestPortion;
