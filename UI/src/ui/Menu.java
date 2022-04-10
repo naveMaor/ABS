@@ -43,10 +43,16 @@ public class Menu {
             return choice;
         }
         if (choice==9){
-            DataToFileDataFromFile dataToFileDataFromFile = new DataToFileDataFromFile();
-            DataToFileDataFromFile.LoadDataFromFile(dataToFileDataFromFile);
-            System.out.println("data loaded successfully");
-            isLoadedFile = true;
+            try {
+                DataToFileDataFromFile dataToFileDataFromFile = new DataToFileDataFromFile();
+                DataToFileDataFromFile.LoadDataFromFile(dataToFileDataFromFile);
+                System.out.println("data loaded successfully");
+                isLoadedFile = true;
+            }
+            catch( Exception e) {
+
+                System.out.println("Couldn't load date from file or file doesnt exist!");
+            }
         }
         else if (!isLoadedFile){
             throw new Exception("File must be loaded first please choose ONE first!");

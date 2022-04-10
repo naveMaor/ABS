@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Engine:jar" />
+      <artifact name="UI:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="File loading fixed">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="save data bonus added and working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/Money/operations/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/data/File/XmlFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/File/XmlFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/PrintFuncs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/Shai/User_interface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/src/ui/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/ui/Program.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Lenders.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Lenders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/data/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/data/Database.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Engine/time/Timeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/time/Timeline.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/PrintFuncs.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/Program.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UI/Shai/User_interface.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,9 +59,10 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/‏‏תיקיה חדשה/NewABS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.09643203" />
     <property name="project.structure.side.proportion" value="0.10471207" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -68,7 +74,20 @@
       <recent name="C:\Users\Nave\Desktop\ABS\Engine\src\xml" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Program (1)">
+    <configuration name="Program (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ui.Program" />
+      <module name="UI" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Program" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Shai.Program" />
       <module name="UI" />
@@ -84,6 +103,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Program (1)" />
         <item itemvalue="Application.Program" />
       </list>
     </recent_temporary>
@@ -308,7 +328,13 @@
       <option name="presentableId" value="LOCAL‎00031" />
       <updated>1649521158492</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL‎00032" summary="save data bonus added and working">
+      <created>1649616854734</created>
+      <option name="number" value="LOCAL‎00032" />
+      <option name="presentableId" value="LOCAL‎00032" />
+      <updated>1649616854734</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,9 +364,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="package orginazing" />
-    <MESSAGE value="working on fun4 in main/program - for testing&#10;added a few notes about issues to check&#10;sorted getter and setters in Client class&#10;created a few getters and ctor in client and account class&#10;created in BackgroundFunc class DepositMonetToAccount method.&#10;&#10;have a great day =)" />
-    <MESSAGE value="minor fix -fixing sout output of user choice in func 5" />
     <MESSAGE value="created in Loan Class - payLoanDividendsToLenders void method" />
     <MESSAGE value="testing&amp;fixing issue's with payLoanDividendsToLenders - can see test in Program class in line 89-90" />
     <MESSAGE value="updated func 6 (changed almost allof it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)" />
@@ -363,25 +386,28 @@
     <MESSAGE value="Payment be negative" />
     <MESSAGE value="transaction tostring fixed" />
     <MESSAGE value="File loading fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="File loading fixed" />
+    <MESSAGE value="I dont know, it is a commit after a long night" />
+    <MESSAGE value="I dont know, it is a commit after a long night with cahnging shay name to ui" />
+    <MESSAGE value="save data bonus added and working" />
+    <option name="LAST_COMMIT_MESSAGE" value="save data bonus added and working" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <condition expression="currTime&gt;=10" language="JAVA" />
-          <url>file://$PROJECT_DIR$/Engine/src/time/Timeline.java</url>
-          <line>29</line>
-          <properties class="time.Timeline" method="promoteStaticCurrTime">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
           <line>70</line>
           <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Engine/src/data/File/DataToFileDataFromFile.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Engine/src/data/File/DataToFileDataFromFile.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

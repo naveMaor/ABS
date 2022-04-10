@@ -10,7 +10,7 @@ public class Program {
     public static void main (String[] args){
         int choice=0;
         Menu.welcome();
-        while (choice!=8){
+        while (choice!=10){
             choice = Menu.printMenu();
         }
     }
