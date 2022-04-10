@@ -1,4 +1,4 @@
-package Shai;
+package ui;
 import customes.Account;
 import customes.Client;
 import data.Database;

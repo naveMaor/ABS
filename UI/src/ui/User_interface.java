@@ -1,4 +1,4 @@
-package Shai;
+package ui;
 
 import Money.operations.Transaction;
 import customes.Client;
@@ -11,7 +11,7 @@ import utills.BackgroundFunc;
 
 import java.util.List;
 
-import static Shai.PrintFuncs.*;
+import static ui.PrintFuncs.*;
 
 
 public class User_interface {

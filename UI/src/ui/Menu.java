@@ -1,4 +1,4 @@
-package Shai;
+package ui;
 
 import Shai.PrintFuncs;
 
