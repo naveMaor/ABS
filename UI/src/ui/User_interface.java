@@ -70,9 +70,7 @@ public class User_interface {
     }
 
     public static void func6() {
-        double amountOfMoneyPerLoan;
-        double minNeededInvestment;
-        double investment;
+        //double amountOfMoneyPerLoan,minNeededInvestment,investment;
         int loanListSize;
         //getting wanted investor
         Client client = customersMenu();
@@ -82,16 +80,16 @@ public class User_interface {
             return;
         }
         //getting wanted overall investment for current yaz from client
-        double wantedInvestment = getWantedInvestment(client);
-       // investing according to agreed risk management methodology
+        double wantedInvestment = PrintFuncs.getWantedInvestment(client);
+/*       // investing according to agreed risk management methodology
         do {
 
             //getting updated list size
             loanListSize = loanslistToInvest.size();
             //getting the amount of money wanted to invest equally for each loan from loan list
-            amountOfMoneyPerLoan = amountOfMoneyPerLoan(loanListSize, wantedInvestment);
+            amountOfMoneyPerLoan = BackgroundFunc.amountOfMoneyPerLoan(loanListSize, wantedInvestment);
             //getting minimal investment needed
-            minNeededInvestment = getMinInvestment(loanslistToInvest);
+            minNeededInvestment = BackgroundFunc.getMinInvestment(loanslistToInvest);
             //chosen way of payment
             investment = Math.min(amountOfMoneyPerLoan, minNeededInvestment);
             //reducing upcoming investments from wantedInvestment
@@ -101,7 +99,7 @@ public class User_interface {
 
             for (int index=0;index<loanslistToInvest.size();) {
                 Loan loan = loanslistToInvest.get(index);
-                ClientToLoan(loan, client, investment);
+                BackgroundFunc.ClientToLoan(loan, client, investment);
                 if(loan.getStatus() == eLoanStatus.ACTIVE)
                     loanslistToInvest.remove(index);
                 else //should move foward nothing was removed
@@ -109,17 +107,18 @@ public class User_interface {
             }
             loanListSize=loanslistToInvest.size();//NEWLY ADDED
             // as long as there is money left to invest , or list of optional investments is not empty
-        } while (wantedInvestment != 0 && loanListSize != 0);
-        if (loanListSize==0)
-            printEmptyListNotification(wantedInvestment);
+        } while (wantedInvestment != 0 && loanListSize != 0);*/
+        loanListSize = BackgroundFunc.investing_according_to_agreed_risk_management_methodology(loanslistToInvest,wantedInvestment,client);
+        if (loanListSize==0){
+            PrintFuncs.printEmptyListNotification(wantedInvestment);    }
     }
 
-    static void printEmptyListNotification(double remainingInvestment){
+/*    static void printEmptyListNotification(double remainingInvestment){
         System.out.println("Invested in all chosen loans the maximum optional investment.\n there are no loans left to invest from selected loans");
         //System.out.println("remaining money left from original sum of investment is: "+remainingInvestment);
         System.out.println("you can choose to re-filter to continue investing");
-    }
-    static double getMinInvestment(List<Loan> loanslistToInvest){
+    }*/
+/*    static double getMinInvestment(List<Loan> loanslistToInvest){
        //initialize  minimal with first loan details
         double minimalInvest = (loanslistToInvest.get(0).getLoanOriginalDepth()-loanslistToInvest.get(0).getLoanAccount().getCurrBalance());
         double leftForInvestment;
@@ -131,13 +130,13 @@ public class User_interface {
                minimalInvest = leftForInvestment;
        }
         return minimalInvest;
-    }
-    static double getWantedInvestment(Client client) {
-        double amountOfMoney = 0, balance = client.getMyAccount().getCurrBalance(),amountOfMoneyPerLoan;
+    }*/
+/*    static double getWantedInvestment(Client client) {
+        double amountOfMoney = 0, balance = client.getMyAccount().getCurrBalance();
         System.out.println("Please enter the amount you would like the client to invest,\n (must a number between 1 and " + balance+")");
         amountOfMoney = readDoubleFromUser(1, balance);
         return amountOfMoney;
-    }
+    }*/
 
     public static void func7(){
         Timeline.promoteStaticCurrTime();

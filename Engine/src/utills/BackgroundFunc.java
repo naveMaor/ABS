@@ -11,6 +11,7 @@ import data.schema.generated.AbsLoan;
 import loan.Loan;
 import Money.operations.Transaction;
 import loan.enums.eDeviationPortion;
+import loan.enums.eLoanStatus;
 import time.Timeline;
 
 import java.util.ArrayList;
@@ -285,4 +286,91 @@ This func gets lenders list and return thus sum of their deposit
     public static List<Transaction> getTransactionsFromClientName(String name){
         return Database.getClientByname(name).getMyAccount().getTnuaList();
     }
-}
+
+    public static double getMinInvestment(List<Loan> loanslistToInvest){
+        //initialize  minimal with first loan details
+        double minimalInvest = (loanslistToInvest.get(0).getLoanOriginalDepth()-loanslistToInvest.get(0).getLoanAccount().getCurrBalance());
+        double leftForInvestment;
+        for (Loan loan : loanslistToInvest) {
+            //checks how much money is needed for loan to become active
+            leftForInvestment = loan.getLoanOriginalDepth() - loan.getLoanAccount().getCurrBalance();
+            //getting minimal
+            if (leftForInvestment < minimalInvest)
+                minimalInvest = leftForInvestment;
+        }
+        return minimalInvest;
+    }
+    /**
+     *  func's gets amountofmoney to invest and wanted loans to invest in , and return the amount of money to invest in each loan so the money will be splitted equaliy
+     * @param amountOfLoansToInvest
+     * @param amountOfMoney
+     * @return
+     */
+    public static double amountOfMoneyPerLoan(int amountOfLoansToInvest,double amountOfMoney) {
+        return (amountOfMoney/amountOfLoansToInvest);
+    }
+    /**
+     * this function gets a loan and a client AS LENDER and connects the loan to the client
+     * @param loan
+     * @param client
+     */
+    public static void ClientToLoan(Loan loan,Client client,double investment){
+        //investing the money
+
+        TransferMoneyBetweenAccounts(client.getMyAccount(),investment,loan.getLoanAccount());
+        //checks if client is already exits in loan->lendersList
+        //dummy lender to check if lender is already exists
+        Lenders currLender = new Lenders(client.getFullName(),0 );
+        //checks if client is already in loan's lendersList
+        if(loan.getLendersList().contains(currLender)) {
+            //getting ref to existing client's lender obj in loan lenders list
+            Lenders refToExistingLenderFromLoanLendersList = loan.getLendersList().get(loan.getLendersList().indexOf(currLender));
+            //updating deposit amount to new amount = exiting deposit + new investment
+            refToExistingLenderFromLoanLendersList.setDeposit(refToExistingLenderFromLoanLendersList.getDeposit()+investment);
+        }//adding lender to loans lender list
+        else {
+            addLenderToLoanList(client, loan, investment);
+        }
+        //checks if curr loan doesnt exits in client's clientAsLenderLoanList
+        if(!client.getClientAsLenderLoanList().contains(loan))
+        //adding loan to his Client -> clientAsLenderLoanList data member.
+        {
+            client.addLoanAsLender(loan);
+        }
+        //checks if loan status needs an update
+        loan.UpdateLoanStatusIfNeeded();
+    }
+
+    public static int investing_according_to_agreed_risk_management_methodology(List<Loan> loanslistToInvest,double wantedInvestment,Client client){
+        double amountOfMoneyPerLoan,minNeededInvestment,investment;
+        int loanListSize;
+        do {
+
+            //getting updated list size
+            loanListSize = loanslistToInvest.size();
+            //getting the amount of money wanted to invest equally for each loan from loan list
+            amountOfMoneyPerLoan = BackgroundFunc.amountOfMoneyPerLoan(loanListSize, wantedInvestment);
+            //getting minimal investment needed
+            minNeededInvestment = BackgroundFunc.getMinInvestment(loanslistToInvest);
+            //chosen way of payment
+            investment = Math.min(amountOfMoneyPerLoan, minNeededInvestment);
+            //reducing upcoming investments from wantedInvestment
+            wantedInvestment -= investment * loanListSize;
+            //TO DO: MAYBE TAKE LINES 111-119 TO A FUNC
+            //initializing index for removal
+
+            for (int index=0;index<loanslistToInvest.size();) {
+                Loan loan = loanslistToInvest.get(index);
+                BackgroundFunc.ClientToLoan(loan, client, investment);
+                if(loan.getStatus() == eLoanStatus.ACTIVE)
+                    loanslistToInvest.remove(index);
+                else //should move foward nothing was removed
+                    ++index;
+            }
+            loanListSize=loanslistToInvest.size();//NEWLY ADDED
+            // as long as there is money left to invest , or list of optional investments is not empty
+        } while (wantedInvestment != 0 && loanListSize != 0);
+
+  return loanListSize;
+}}
+

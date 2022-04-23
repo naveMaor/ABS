@@ -479,11 +479,8 @@ public class PrintFuncs {
         return userSelectedCategories;
 
     }
-    /**
-     * this function gets a loan and a client AS LENDER and connects the loan to the client
-     * @param loan
-     * @param client
-     */
+
+/*
     public static void ClientToLoan(Loan loan,Client client,double investment){
         //investing the money
 
@@ -509,15 +506,20 @@ public class PrintFuncs {
         }
         //checks if loan status needs an update
         loan.UpdateLoanStatusIfNeeded();
-    }
-    /**
-     *  func's gets amountofmoney to invest and wanted loans to invest in , and return the amount of money to invest in each loan so the money will be splitted equaliy
-     * @param amountOfLoansToInvest
-     * @param amountOfMoney
-     * @return
-     */
-    public static double amountOfMoneyPerLoan(int amountOfLoansToInvest,double amountOfMoney) {
+    }*/
+/*   public static double amountOfMoneyPerLoan(int amountOfLoansToInvest,double amountOfMoney) {
         return (amountOfMoney/amountOfLoansToInvest);
+    }*/
+    public static void printEmptyListNotification(double remainingInvestment){
+        System.out.println("Invested in all chosen loans the maximum optional investment.\n there are no loans left to invest from selected loans");
+        //System.out.println("remaining money left from original sum of investment is: "+remainingInvestment);
+        System.out.println("you can choose to re-filter to continue investing");
+    }
+    public static double getWantedInvestment(Client client) {
+        double amountOfMoney = 0, balance = client.getMyAccount().getCurrBalance();
+        System.out.println("Please enter the amount you would like the client to invest,\n (must a number between 1 and " + balance+")");
+        amountOfMoney = readDoubleFromUser(1, balance);
+        return amountOfMoney;
     }
 
     //func7 helpers
