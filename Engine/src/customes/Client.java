@@ -14,14 +14,7 @@ public class Client implements Serializable {
     private List<Loan> clientAsBorrowLoanList = new ArrayList<>();//
 
 
-    public List<LoanObj> getClientAsLenderLoanList() {
-        List<LoanObj> result = new ArrayList<>();
-        for(Loan loanToCopy:clientAsLenderLoanList){
-            result.add(new LoanObj(loanToCopy));
-        }
-        return result;
-        //return clientAsLenderLoanList;
-    }
+
 
 // ctors
     public Client(String fullName, Account myAccount) {
@@ -45,7 +38,23 @@ public class Client implements Serializable {
     public String getFullName() {
         return fullName;
     }
-    public List<LoanObj> getClientAsBorrowLoanList() {
+
+    public List<Loan> getClientAsBorrowLoanList() {
+        return clientAsBorrowLoanList;
+    }
+
+    public Account getMyAccount() {
+        return myAccount;
+    }
+    public List<LoanObj> getClientAsLenderLoanObjList() {
+        List<LoanObj> result = new ArrayList<>();
+        for(Loan loanToCopy:clientAsLenderLoanList){
+            result.add(new LoanObj(loanToCopy));
+        }
+        return result;
+        //return clientAsLenderLoanList;
+    }
+    public List<LoanObj> getClientAsBorrowLoanObjList() {
         List<LoanObj> result = new ArrayList<>();
         for(Loan loanToCopy:clientAsBorrowLoanList){
             result.add(new LoanObj(loanToCopy));
@@ -53,8 +62,9 @@ public class Client implements Serializable {
         return result;
         //return clientAsBorrowLoanList;
     }
-    public Account getMyAccount() {
-        return myAccount;
+
+    public List<Loan> getClientAsLenderLoanList() {
+        return clientAsLenderLoanList;
     }
 
 
@@ -70,19 +80,19 @@ public class Client implements Serializable {
         this.clientAsBorrowLoanList.add(loan);
     }
     //MAYBE TO DELETE NOT YET
-    public void uniformsClientAsLenderLoanListBlock(){
-        int listSize=this.getClientAsLenderLoanList().size();
+/*    public void uniformsClientAsLenderLoanListBlock(){
+        int listSize=this.getClientAsLenderLoanObjList().size();
         //checks if their at least two blocks to compare in list
         if(listSize>=2){
             int index= listSize-1;//last block
-            while(this.getClientAsLenderLoanList().get(index).getLoanID()==this.getClientAsLenderLoanList().get(index-1).getLoanID())//compares if two last blocks have the same name
+            while(this.getClientAsLenderLoanObjList().get(index).getLoanID()==this.getClientAsLenderLoanObjList().get(index-1).getLoanID())//compares if two last blocks have the same name
             {
                 //removing unneeded block after updating prev block to new sum of investment
-                this.getClientAsLenderLoanList().remove(index);
+                this.getClientAsLenderLoanObjList().remove(index);
                 //updating index to check pre compare
                 index -= 1;
             }
         }
-    }
+    }*/
 
 }

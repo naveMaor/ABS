@@ -1,5 +1,6 @@
 package data;
 
+import ClientDTO.ClientObj;
 import loan.Loan;
 import customes.Client;
 import loanDTO.LoanObj;
@@ -60,6 +61,13 @@ public class Database implements Serializable {
     public static List<Client> getClientsList() {
         return new ArrayList<>(clientMap.values());
     }
+    public static List<ClientObj> getClientsObjList() {
+        List<ClientObj> result = new ArrayList<>();
+        for (Client clientToCopy: clientMap.values()) {
+                result.add(new ClientObj(clientToCopy));
+            }
+        return result;
+    }
 //TO ASK: NOT SUPPOSE TO BE ADD TO MAP ? ADD TO DATABASE ?
     public static void addClientToClientMap(Client newClientNode){
         clientMap.put(newClientNode.getFullName(), newClientNode);
@@ -79,12 +87,17 @@ public class Database implements Serializable {
         }
     }
 
+
     public static List<String> getAllCategories() {
         List<String> result = new ArrayList<>();
         for (String category:loanMapByCategory.keySet()) {
             result.add(category);
         }
         return result;
+    }
+
+    public static Client getClientByname(String name){
+        return clientMap.get(name);
     }
 
     public static void clearAll(){

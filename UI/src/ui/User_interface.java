@@ -1,5 +1,6 @@
 package ui;
 
+import ClientDTO.ClientObj;
 import Money.operations.Transaction;
 import customes.Client;
 import data.Database;
@@ -31,8 +32,8 @@ public class User_interface {
 
     public static void func3(){
 
-       List<Client> printList =Database.getClientsList();
-        for(Client client:printList ){
+       List<ClientObj> printList =Database.getClientsObjList();
+        for(ClientObj client:printList ){
             System.out.println("Presenting " + client.getFullName() + ":");
             PrintFuncs.printAccountInfo(client);
             PrintFuncs.printConnectedLoans(client);
@@ -45,37 +46,27 @@ public class User_interface {
      * func 4 is in charge of depositing money to a selected account from
      * a list of existing customers in the database
      */
-    public static void func4()
-    {
+    public static void func4() {
         //printing to UI all clients in database, letting user choose wanted client and getting the wanted deposit amount
         printAllClientsFromDatabase();
-        Client wantedClient = ChooseClientFromDatabase();
-       String clientFullName =wantedClient.getFullName();
+        String clientFullName = ChooseClientFromDatabase();
         int deposit =  getDepositAmount(clientFullName);
 
         //making the wire
-        BackgroundFunc.AccountTransaction(deposit,wantedClient.getMyAccount());
+        BackgroundFunc.AccountTransaction(deposit,clientFullName);
         System.out.println("Wire of: "+deposit+" to "+clientFullName+"'s account, has been confirmed.\n ");
-        System.out.println(clientFullName+"'s new account balance is: "+ wantedClient.getMyAccount().getCurrBalance());
+        System.out.println(clientFullName+"'s new account balance is: "+ BackgroundFunc.getBalanceFromClientName(clientFullName));
     }
 
     public static void func5(){
         //printing to UI all clients in database, letting user choose wanted client and getting the wanted withdraw amount
         printAllClientsFromDatabase();
-        Client wantedClient = ChooseClientFromDatabase();
-        String clientFullName =wantedClient.getFullName();
+        String clientFullName =ChooseClientFromDatabase();
         int withdrawal =  PrintFuncs.getWithdrawalAmount(clientFullName);
-
         //making the wire
-        BackgroundFunc.AccountTransaction(withdrawal,wantedClient.getMyAccount());
+        BackgroundFunc.AccountTransaction(withdrawal,clientFullName);
         System.out.println("Withdraw of: "+withdrawal+" from "+clientFullName+"'s account, has been confirmed.\n ");
-        int index =1;
-        for (Transaction transaction:wantedClient.getMyAccount().getTnuaList()){
-            System.out.println(index + ". time transaction made:" + transaction.getTimeOfMovement());
-            System.out.println("transaction amount: " + transaction.getSum());
-            index++;
-        }
-        System.out.println(wantedClient.getFullName() + "'s current balance: " +wantedClient.getMyAccount().getCurrBalance());
+        System.out.println(clientFullName + "'s current balance: " +BackgroundFunc.getBalanceFromClientName(clientFullName));
     }
 
     public static void func6() {

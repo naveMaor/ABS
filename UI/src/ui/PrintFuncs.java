@@ -1,5 +1,6 @@
 package ui;
 
+import ClientDTO.ClientObj;
 import customes.Account;
 import customes.Client;
 import customes.Lenders;
@@ -13,6 +14,7 @@ import Money.operations.Payment;
 import Money.operations.Transaction;
 import loanDTO.LoanObj;
 import time.Timeline;
+import utills.BackgroundFunc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +84,7 @@ public class PrintFuncs {
         }
     }
     //func3 helpers
-    public static void printAccountInfo(Client client) {
+    public static void printAccountInfo(ClientObj client) {
         int index = 1;
         Account account = client.getMyAccount();
         List<Transaction> transactionList = account.getTnuaList();
@@ -116,10 +118,10 @@ public class PrintFuncs {
             }
         }
     }
-    public static void printConnectedLoans(Client client) {
+    public static void printConnectedLoans(ClientObj client) {
         String name = client.getFullName();
-        List<LoanObj> lenderLoanList = client.getClientAsLenderLoanList();
-        List<LoanObj> borrowLoanList = client.getClientAsBorrowLoanList();
+        List<LoanObj> lenderLoanList = client.getClientAsLenderLoanObjList();
+        List<LoanObj> borrowLoanList = client.getClientAsBorrowLoanObjList();
 
         int index =1;
 
@@ -281,15 +283,14 @@ public class PrintFuncs {
         int deposit = readIntFromUser(1,Integer.MAX_VALUE,true);
         return deposit;
     }
-    public static Client ChooseClientFromDatabase () {
+    public static String ChooseClientFromDatabase () {
         //asking user to choose a client from database ,and getting input value of wanted client index
-        List<Client> clientsList = Database.getClientsList();
+        List<ClientObj> clientsList = Database.getClientsObjList();
         int clientListSize =clientsList.size();
         System.out.println("Please enter wanted client index for deposit");
         int userClientIndexChoice = PrintFuncs.readIntFromUser(1,clientListSize,true);
         //getting client
-        Client wantedClient =clientsList.get(userClientIndexChoice-1);
-        return wantedClient;
+        return clientsList.get(userClientIndexChoice-1).getFullName();
     }
 
     //func5 helpers
@@ -300,7 +301,14 @@ public class PrintFuncs {
         int withdraw = -(readIntFromUser(0,(int)Database.getClientMap().get(full_name).getMyAccount().getCurrBalance(),true));
         return withdraw;
     }
-
+    public static void printTransactionsFromClientName(String clientFullName){
+        int index =1;
+        for (Transaction transaction: BackgroundFunc.getTransactionsFromClientName(clientFullName)){
+            System.out.println(index + ". time transaction made:" + transaction.getTimeOfMovement());
+            System.out.println("transaction amount: " + transaction.getSum());
+            index++;
+        }
+    }
 
     //func6 helpers
     /**

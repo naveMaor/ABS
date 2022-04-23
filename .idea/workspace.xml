@@ -7,19 +7,17 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="project working">
-      <change afterPath="$PROJECT_DIR$/dto/src/ClientDTO/ClientObj.java" afterDir="false" />
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="added LoanObj and fixed func2 accordinly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/customes/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/customes/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/data/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/ui/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/ui/PrintFuncs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/ui/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/ui/User_interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto/dto.iml" beforeDir="false" afterPath="$PROJECT_DIR$/dto/dto.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dto/src/loanDTO/LoanObj.java" beforeDir="false" afterPath="$PROJECT_DIR$/dto/src/loanDTO/LoanObj.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dto/src/ClientDTO/ClientObj.java" beforeDir="false" afterPath="$PROJECT_DIR$/dto/src/ClientDTO/ClientObj.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/data/Database.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/data/Database.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/dto/loanDTO/LoanObj.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/dto/loanDTO/LoanObj.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +47,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="26nVmCFpoqxMJx0QxkZ8Sa64cWa" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -135,7 +133,7 @@
       <workItem from="1649617813197" duration="816000" />
       <workItem from="1650373032255" duration="223000" />
       <workItem from="1650516904255" duration="257000" />
-      <workItem from="1650704585658" duration="6400000" />
+      <workItem from="1650704585658" duration="10704000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -353,7 +351,13 @@
       <option name="presentableId" value="LOCAL‎00034" />
       <updated>1650705086962</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL‎00035" summary="added LoanObj and fixed func2 accordinly">
+      <created>1650711809858</created>
+      <option name="number" value="LOCAL‎00035" />
+      <option name="presentableId" value="LOCAL‎00035" />
+      <updated>1650711809858</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -383,7 +387,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="testing&amp;fixing issue's with payLoanDividendsToLenders - can see test in Program class in line 89-90" />
     <MESSAGE value="updated func 6 (changed almost allof it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)" />
     <MESSAGE value="updated func 6 (changed almost all of it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)&#10;created new helper for func 6 : getMinInvestment, printEmptyListNotification and getWantedInvestment&#10;&#10;IMPORTANT: major changes in func6 &amp; ClientToLoan" />
     <MESSAGE value="func7 in finished" />
@@ -408,7 +411,8 @@
     <MESSAGE value="I dont know, it is a commit after a long night with cahnging shay name to ui" />
     <MESSAGE value="save data bonus added and working" />
     <MESSAGE value="project working" />
-    <option name="LAST_COMMIT_MESSAGE" value="project working" />
+    <MESSAGE value="added LoanObj and fixed func2 accordinly" />
+    <option name="LAST_COMMIT_MESSAGE" value="added LoanObj and fixed func2 accordinly" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

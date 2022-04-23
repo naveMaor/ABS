@@ -40,10 +40,11 @@ This func gets lenders list and return thus sum of their deposit
     /**
      * func creates a transaction as needed (withdraw/deposit) , updates account's balance & transactions list
      * @param money
-     * @param accDest
+     * @param accDestName
      */
-    public static void AccountTransaction(double money, Account accDest)
+    public static void AccountTransaction(double money, String accDestName)
     {
+        Account accDest = Database.getClientByname(accDestName).getMyAccount();
         double balanceAfter= accDest.getCurrBalance()+money;
         //create a timestamp
         Timeline timeStamp = new Timeline(Timeline.getCurrTime());
@@ -277,5 +278,11 @@ This func gets lenders list and return thus sum of their deposit
        }
     }
 
+    public static double getBalanceFromClientName(String name){
+        return Database.getClientByname(name).getMyAccount().getCurrBalance();
+    }
 
+    public static List<Transaction> getTransactionsFromClientName(String name){
+        return Database.getClientByname(name).getMyAccount().getTnuaList();
+    }
 }
