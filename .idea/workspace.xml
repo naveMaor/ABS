@@ -7,13 +7,11 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="added ClientObj and fixed funcs accordinly">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="created BackgroundFunc.investing_according_to_agreed_risk_management_methodology">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/ui/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/ui/PrintFuncs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/ui/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/ui/User_interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +42,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="26nVmCFpoqxMJx0QxkZ8Sa64cWa" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -130,7 +128,7 @@
       <workItem from="1649617813197" duration="816000" />
       <workItem from="1650373032255" duration="223000" />
       <workItem from="1650516904255" duration="257000" />
-      <workItem from="1650704585658" duration="13499000" />
+      <workItem from="1650704585658" duration="15015000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -360,7 +358,13 @@
       <option name="presentableId" value="LOCAL‎00036" />
       <updated>1650716241832</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL‎00037" summary="created BackgroundFunc.investing_according_to_agreed_risk_management_methodology">
+      <created>1650719060597</created>
+      <option name="number" value="LOCAL‎00037" />
+      <option name="presentableId" value="LOCAL‎00037" />
+      <updated>1650719060597</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -390,7 +394,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated func 6 (changed almost all of it) so it will work with the new logic of minimal invest&#10;changed clientToLoan to work with new logic &#10;(took out most of it into the do while loop inside func 6)&#10;created new helper for func 6 : getMinInvestment, printEmptyListNotification and getWantedInvestment&#10;&#10;IMPORTANT: major changes in func6 &amp; ClientToLoan" />
     <MESSAGE value="func7 in finished" />
     <MESSAGE value="func7 in finished with nikol" />
     <MESSAGE value="func7 in finished with nikol&#10;setloanAccount" />
@@ -415,7 +418,8 @@
     <MESSAGE value="project working" />
     <MESSAGE value="added LoanObj and fixed func2 accordinly" />
     <MESSAGE value="added ClientObj and fixed funcs accordinly" />
-    <option name="LAST_COMMIT_MESSAGE" value="added ClientObj and fixed funcs accordinly" />
+    <MESSAGE value="created BackgroundFunc.investing_according_to_agreed_risk_management_methodology" />
+    <option name="LAST_COMMIT_MESSAGE" value="created BackgroundFunc.investing_according_to_agreed_risk_management_methodology" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

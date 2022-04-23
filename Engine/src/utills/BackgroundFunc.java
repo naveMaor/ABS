@@ -341,7 +341,8 @@ This func gets lenders list and return thus sum of their deposit
         loan.UpdateLoanStatusIfNeeded();
     }
 
-    public static int investing_according_to_agreed_risk_management_methodology(List<Loan> loanslistToInvest,double wantedInvestment,Client client){
+    public static int investing_according_to_agreed_risk_management_methodology(List<Loan> loanslistToInvest,double wantedInvestment,String clientName){
+        Client client = Database.getClientByname(clientName);
         double amountOfMoneyPerLoan,minNeededInvestment,investment;
         int loanListSize;
         do {

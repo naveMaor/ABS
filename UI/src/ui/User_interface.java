@@ -31,7 +31,6 @@ public class User_interface {
     }
 
     public static void func3(){
-
        List<ClientObj> printList =Database.getClientsObjList();
         for(ClientObj client:printList ){
             System.out.println("Presenting " + client.getFullName() + ":");
@@ -73,14 +72,14 @@ public class User_interface {
         //double amountOfMoneyPerLoan,minNeededInvestment,investment;
         int loanListSize;
         //getting wanted investor
-        Client client = customersMenu();
+        String clientName = customersMenu();
         //creating wanted loans to invest list by investor wanted parameters
-        List<Loan> loanslistToInvest = ChooseLoans(client);
+        List<Loan> loanslistToInvest = ChooseLoans(clientName);
         if(loanslistToInvest.isEmpty()){
             return;
         }
         //getting wanted overall investment for current yaz from client
-        double wantedInvestment = PrintFuncs.getWantedInvestment(client);
+        double wantedInvestment = PrintFuncs.getWantedInvestment(clientName);
 /*       // investing according to agreed risk management methodology
         do {
 
@@ -108,7 +107,7 @@ public class User_interface {
             loanListSize=loanslistToInvest.size();//NEWLY ADDED
             // as long as there is money left to invest , or list of optional investments is not empty
         } while (wantedInvestment != 0 && loanListSize != 0);*/
-        loanListSize = BackgroundFunc.investing_according_to_agreed_risk_management_methodology(loanslistToInvest,wantedInvestment,client);
+        loanListSize = BackgroundFunc.investing_according_to_agreed_risk_management_methodology(loanslistToInvest,wantedInvestment,clientName);
         if (loanListSize==0){
             PrintFuncs.printEmptyListNotification(wantedInvestment);    }
     }

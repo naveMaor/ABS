@@ -315,24 +315,25 @@ public class PrintFuncs {
      * THIS FUNC PRINTS ALL THE CLIENTS IN THE SYSTEM AND ASK THE USER TO CHOOSE ONE, IT RETURNS THE CLIENT USER CHOSE
      * @return
      */
-    public static Client printAndChooseClientsInTheSystem(){
-        ArrayList<Client> v = new ArrayList<>();
+    public static String printAndChooseClientsInTheSystem(){
+        List<ClientObj> v = Database.getClientsObjList();
         int i=1;
-        for(Client client: Database.getClientMap().values()) {
+        for(ClientObj client: v) {
             System.out.println(i + ". " + client.getFullName());
             System.out.println("current balance: " + client.getMyAccount().getCurrBalance());
-            v.add(client);
+            //v.add(client);
             ++i;
         }
         i =readIntFromUser(1,Database.getClientMap().size(),true);
 
-        return v.get(i-1);//todo might be i instead of i-1 becasue array starts from 0?
+        return v.get(i-1).getFullName();//todo might be i instead of i-1 becasue array starts from 0?
     }
+
     /**
      * THIS FUNC INITIALLIZE THE CLIENT MENU
      * @return
      */
-    public static Client customersMenu(){
+        public static String customersMenu(){
         Scanner sc = new Scanner(System.in);
         System.out.println("please choose a customer to invest with");
         return printAndChooseClientsInTheSystem();
@@ -379,9 +380,10 @@ public class PrintFuncs {
     }
     /**
      * this func gets client and ASK THE USER WHAT LOANS IT WILL BE PARTICIPATE and returns list of the filtered loans that the user chose
-     * @param client
+     * @param clientName
      */
-    public static List<Loan> ChooseLoans(Client client) {
+    public static List<Loan> ChooseLoans(String clientName) {
+        Client client = Database.getClientByname(clientName);
         int  index = 1;;
         List<Integer> chosenLoansNumb = new ArrayList<>();
         List<Loan> Loanslist = loanToInvest(client);
@@ -515,7 +517,8 @@ public class PrintFuncs {
         //System.out.println("remaining money left from original sum of investment is: "+remainingInvestment);
         System.out.println("you can choose to re-filter to continue investing");
     }
-    public static double getWantedInvestment(Client client) {
+    public static double getWantedInvestment(String clientName) {
+        Client client = Database.getClientByname(clientName);
         double amountOfMoney = 0, balance = client.getMyAccount().getCurrBalance();
         System.out.println("Please enter the amount you would like the client to invest,\n (must a number between 1 and " + balance+")");
         amountOfMoney = readDoubleFromUser(1, balance);
