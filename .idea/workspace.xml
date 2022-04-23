@@ -9,7 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="save data bonus added and working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/ui/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/ui/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Account.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/customes/Lenders.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/customes/Lenders.class" afterDir="false" />
@@ -129,6 +128,10 @@
       <workItem from="1649083815680" duration="8572000" />
       <workItem from="1649232272968" duration="1433000" />
       <workItem from="1649331662894" duration="40875000" />
+      <workItem from="1649617813197" duration="816000" />
+      <workItem from="1650373032255" duration="223000" />
+      <workItem from="1650516904255" duration="257000" />
+      <workItem from="1650704585658" duration="420000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -334,7 +337,13 @@
       <option name="presentableId" value="LOCAL‎00032" />
       <updated>1649616854734</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL‎00033" summary="save data bonus added and working">
+      <created>1649617998630</created>
+      <option name="number" value="LOCAL‎00033" />
+      <option name="presentableId" value="LOCAL‎00033" />
+      <updated>1649617998630</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,16 +407,6 @@
           <url>file://$PROJECT_DIR$/UI/src/Shai/User_interface.java</url>
           <line>70</line>
           <option name="timeStamp" value="73" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Engine/src/data/File/DataToFileDataFromFile.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="77" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Engine/src/data/File/DataToFileDataFromFile.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="78" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
