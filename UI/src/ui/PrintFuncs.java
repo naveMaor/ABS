@@ -11,6 +11,7 @@ import loan.enums.eLoanFilters;
 import loan.enums.eLoanStatus;
 import Money.operations.Payment;
 import Money.operations.Transaction;
+import loanDTO.LoanObj;
 import time.Timeline;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class PrintFuncs {
             index++;
         }
     }
-    public static void printACTIVEstatus(Loan currLoan) {
+    public static void printACTIVEstatus(LoanObj currLoan) {
         Timeline startLoanYaz = currLoan.getStartLoanYaz();
         List<Payment> paymentsList = currLoan.getPaymentsList();
         double payedFund =currLoan.getPayedFund();
@@ -64,7 +65,7 @@ public class PrintFuncs {
         System.out.println("total payed interest: " + payedInterest);
         System.out.println("remaining interest: " + currInterestDepth);
     }
-    public static void printRISKstatus(Loan currLoan){
+    public static void printRISKstatus(LoanObj currLoan){
         System.out.println("num of delayed payments: " + currLoan.getDeviation().getNumberOfYazNotPayed());
         System.out.println("sum of deviation: " + currLoan.getDeviation().getSumOfDeviation());
     }
@@ -117,14 +118,14 @@ public class PrintFuncs {
     }
     public static void printConnectedLoans(Client client) {
         String name = client.getFullName();
-        List<Loan> lenderLoanList = client.getClientAsLenderLoanList();
-        List<Loan> borrowLoanList = client.getClientAsBorrowLoanList();
+        List<LoanObj> lenderLoanList = client.getClientAsLenderLoanList();
+        List<LoanObj> borrowLoanList = client.getClientAsBorrowLoanList();
 
         int index =1;
 
         if(!lenderLoanList.isEmpty()) {
             System.out.println("those are the Loans that " + name + " is a lender:");
-            for (Loan loan:lenderLoanList)
+            for (LoanObj loan:lenderLoanList)
             {
                 System.out.println(index + ". ");
                 printLoanInfo(loan);
@@ -139,7 +140,7 @@ public class PrintFuncs {
         index = 1;
         if(!borrowLoanList.isEmpty()) {
             System.out.println("those are the Loans that " + name + " is a borrower:");
-            for (Loan loan:borrowLoanList)
+            for (LoanObj loan:borrowLoanList)
             {
                 System.out.println(index + ". ");
                 printLoanInfo(loan);
@@ -153,7 +154,7 @@ public class PrintFuncs {
         }
         System.out.println("________________________________");
     }
-    public static void PrintStatusConnectedLoans(Loan loan) {
+    public static void PrintStatusConnectedLoans(LoanObj loan) {
         eLoanStatus status=loan.getStatus();
         switch (status)
         {
@@ -192,7 +193,7 @@ public class PrintFuncs {
         }
     }
 
-    public static void printLoanInfo2(Loan loan){
+    public static void printLoanInfo2(LoanObj loan){
         System.out.println("Loan Id: " + loan.getLoanID());
         System.out.println("Loan owner: " + loan.getBorrowerName());
         System.out.println("Loan category: " + loan.getLoanCategory());
@@ -206,7 +207,7 @@ public class PrintFuncs {
         PrintStatusConnectedLoans2(loan);
     }
 
-    public static void PrintStatusConnectedLoans2(Loan loan) {
+    public static void PrintStatusConnectedLoans2(LoanObj loan) {
         eLoanStatus status=loan.getStatus();
         switch (status)
         {
@@ -240,7 +241,7 @@ public class PrintFuncs {
     }
 
 
-    public static void printLoanInfo(Loan loan){
+    public static void printLoanInfo(LoanObj loan){
         System.out.println("Loan Id: " + loan.getLoanID());
         System.out.println("Loan owner: " + loan.getBorrowerName());
         System.out.println("Loan category: " + loan.getLoanCategory());
@@ -333,7 +334,6 @@ public class PrintFuncs {
      * @param client
      * @return ArrayList <Loan>
      */
-    //TODO ADD OPTION FOR CHOOSING NO CATEGORY AT ALL in loanToInvest!!!!
     public static List<Loan> loanToInvest (Client client) {
         List<Loan> result = new ArrayList<>();
         List<String> loanCategoryUserList = new ArrayList<>();
@@ -385,7 +385,7 @@ public class PrintFuncs {
 
         for (Loan loan : Loanslist) {
             System.out.println(index+". ");
-            printLoanInfo(loan);
+            printLoanInfo(new LoanObj(loan));
             //System.out.println(index + ". " + loan.toString());
             ++index;
         }
@@ -519,7 +519,6 @@ public class PrintFuncs {
         System.out.println("Yaz now: " );
         Timeline.printStaticCurrTime();
     }
-    //todo: add excepetion
     //func1 helpers
     public static boolean CheckAndPrintInvalidFile(AbsDescriptor descriptor) throws Exception {
         boolean isValid =true;

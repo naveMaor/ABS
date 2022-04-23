@@ -6,6 +6,7 @@ import data.Database;
 import data.File.XmlFile;
 import loan.Loan;
 import loan.enums.eLoanStatus;
+import loanDTO.LoanObj;
 import time.Timeline;
 import utills.BackgroundFunc;
 
@@ -19,49 +20,12 @@ public class User_interface {
 
     public static void func2AllLoansData() {
         int index = 1;
-        for (Loan loan : Database.getLoanList()) {
+        for (LoanObj loan : Database.getLoanObjList()) {
             System.out.println("\n------------------------\n");
             System.out.println(index + ". ");
             printLoanInfo2(loan);
-            //System.out.println(loan.toString());//showing loan
-            //PrintFuncs.printLenderList(loan.getLendersList());//showing lenders list PENDING
-/*            switch (loan.getStatus()) {
-                case ACTIVE: {
-                    PrintFuncs.printACTIVEstatus(loan);
-                }
-                break;
-                case RISK: {
-                    PrintFuncs.printACTIVEstatus(loan);
-                    PrintFuncs.printRISKstatus(loan);
-                }
-                break;
-                case FINISHED: {
-                    PrintFuncs.printFINISHEDstatus(loan);
-                }
-                break;
-                default:
-                    break;
-
-            }*/
             index ++;
         }
-        /*
-                        itr.toString();
-            itr.printLenderList();
-
-            if (itr.getStatus() == LoanStatus.ACTIVE) {
-                itr.printACTIVEstatus();
-            }
-            else if (itr.getStatus() == LoanStatus.RISK)
-            {
-                itr.printRISKstatus();
-            }
-            else if (itr.getStatus() == LoanStatus.FINISHED)
-            {
-                itr.printFINISHEDstatus();
-            }
-
-             */
         System.out.println("\n------------------------\n");
     }
 

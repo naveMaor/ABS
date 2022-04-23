@@ -2,13 +2,13 @@ package data;
 
 import loan.Loan;
 import customes.Client;
+import loanDTO.LoanObj;
 import time.Timeline;
 import utills.BackgroundFunc;
 
 import java.io.Serializable;
 import java.util.*;
 
-import static data.File.XmlFile.*;
 public class Database implements Serializable {
     private static Map <String, List<Loan>> loanMapByCategory = new HashMap<>();
     private static Map<String, Client> clientMap =new HashMap<>();
@@ -25,13 +25,22 @@ public class Database implements Serializable {
         return loanMapByCategory;
     }
 
+    public static List<LoanObj> getLoanObjList() {
+        List<LoanObj> result = new ArrayList<>();
+        for (List<Loan> loanList: loanMapByCategory.values()) {
+            for(Loan newloan: loanList){
+                result.add(new LoanObj(newloan));
+            }
+            //result.addAll(loanList);
+        }
+        return result;
+    }
     public static List<Loan> getLoanList() {
         List<Loan> result = new ArrayList<>();
         for (List<Loan> loanList: loanMapByCategory.values()) {
             result.addAll(loanList);
         }
         return result;
-        //return new ArrayList<>(loanMap.values());
     }
     public static void addLoanToLoanMap(Loan newLoanNode){
             String category= newLoanNode.getLoanCategory();

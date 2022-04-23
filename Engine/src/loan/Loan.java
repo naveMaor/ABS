@@ -175,6 +175,14 @@ public class Loan implements Serializable {
         return loanAccount;
     }
 
+    public double getFundPerPayment() {
+        return fundPerPayment;
+    }
+
+    public double getTotalRemainingLoan() {
+        return totalRemainingLoan;
+    }
+
     public double getIntristPerPayment() {
         return intristPerPayment;
     }

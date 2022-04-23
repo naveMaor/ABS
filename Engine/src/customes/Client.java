@@ -1,6 +1,7 @@
 package customes;
 
 import loan.Loan;
+import loanDTO.LoanObj;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,8 +14,13 @@ public class Client implements Serializable {
     private List<Loan> clientAsBorrowLoanList = new ArrayList<>();//
 
 
-    public List<Loan> getClientAsLenderLoanList() {
-        return clientAsLenderLoanList;
+    public List<LoanObj> getClientAsLenderLoanList() {
+        List<LoanObj> result = new ArrayList<>();
+        for(Loan loanToCopy:clientAsLenderLoanList){
+            result.add(new LoanObj(loanToCopy));
+        }
+        return result;
+        //return clientAsLenderLoanList;
     }
 
 // ctors
@@ -39,8 +45,13 @@ public class Client implements Serializable {
     public String getFullName() {
         return fullName;
     }
-    public List<Loan> getClientAsBorrowLoanList() {
-        return clientAsBorrowLoanList;
+    public List<LoanObj> getClientAsBorrowLoanList() {
+        List<LoanObj> result = new ArrayList<>();
+        for(Loan loanToCopy:clientAsBorrowLoanList){
+            result.add(new LoanObj(loanToCopy));
+        }
+        return result;
+        //return clientAsBorrowLoanList;
     }
     public Account getMyAccount() {
         return myAccount;
