@@ -29,7 +29,7 @@ This func gets lenders list and return thus sum of their deposit
     //NIKOL: what is the purpose of this class?
     //Answer: this class is the engine class where all the background functions are.
     //NIKOL: than why is it called BackgroundFunc? The name of the class should be a noun
-    public  final static double calculateDeposit(List<Lenders> lendersList)
+    public static double calculateDeposit(List<Lenders> lendersList)
     {
         double sum=0;
         for (Lenders lenders:lendersList)

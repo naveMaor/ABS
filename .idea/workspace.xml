@@ -7,7 +7,12 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="created BackgroundFunc.investing_according_to_agreed_risk_management_methodology">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="added first JavaFX work">
+      <change afterPath="$PROJECT_DIR$/JavaFX/src/MainWindow/mainWindowController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaFX/src/MainWindow/mainWindowMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaFX/src/subcomponents/body/Admin/AdminMainBodyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaFX/src/subcomponents/header/MainHeaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/ui/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/ui/PrintFuncs.java" afterDir="false" />
@@ -42,7 +47,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="26nVmCFpoqxMJx0QxkZ8Sa64cWa" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -55,22 +60,49 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/‏‏תיקיה חדשה/NewABS" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/08. Java FX" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.09643203" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.09302324" />
     <property name="project.structure.side.proportion" value="0.10471207" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Onedrive\OneDrive - The Academic College of Tel-Aviv Jaffa - MTA\מטלות\שנה ב'\סמסטר ב'\NewABS\JavaFX\src\subcomponents\body\Admin" />
+      <recent name="C:\Onedrive\OneDrive - The Academic College of Tel-Aviv Jaffa - MTA\מטלות\שנה ב'\סמסטר ב'\NewABS\JavaFX\src\subcomponents\body\Customer" />
       <recent name="C:\Users\Nave\Desktop\ABS\Engine\src\data\File" />
       <recent name="C:\Users\Nave\Desktop\ABS\Engine\src\data\tmp" />
       <recent name="C:\Users\Nave\Desktop\ABS\Engine\src\data\xml" />
-      <recent name="C:\Users\Nave\Desktop\ABS\Engine\src\xml" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Program (1)">
+  <component name="RunManager" selected="Application.mainWindowMain">
+    <configuration name="AdminMainBodyMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="subcomponents.body.Admin.AdminMainBodyMain" />
+      <module name="JavaFX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="subcomponents.body.Admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainHeaderMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="subcomponents.header.MainHeaderMain" />
+      <module name="JavaFX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="subcomponents.header.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Program (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ui.Program" />
       <module name="UI" />
@@ -97,8 +129,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="mainWindowMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MainWindow.mainWindowMain" />
+      <module name="JavaFX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="MainWindow.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.mainWindowMain" />
+        <item itemvalue="Application.AdminMainBodyMain" />
+        <item itemvalue="Application.MainHeaderMain" />
         <item itemvalue="Application.Program (1)" />
         <item itemvalue="Application.Program" />
       </list>
@@ -128,7 +176,12 @@
       <workItem from="1649617813197" duration="816000" />
       <workItem from="1650373032255" duration="223000" />
       <workItem from="1650516904255" duration="257000" />
-      <workItem from="1650704585658" duration="15015000" />
+      <workItem from="1650704585658" duration="15090000" />
+      <workItem from="1650818824341" duration="2080000" />
+      <workItem from="1650983058500" duration="844000" />
+      <workItem from="1651157667014" duration="4000" />
+      <workItem from="1651770470116" duration="6310000" />
+      <workItem from="1651927104320" duration="14590000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -364,7 +417,13 @@
       <option name="presentableId" value="LOCAL‎00037" />
       <updated>1650719060597</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL‎00038" summary="fixed func6">
+      <created>1650751239094</created>
+      <option name="number" value="LOCAL‎00038" />
+      <option name="presentableId" value="LOCAL‎00038" />
+      <updated>1650751239094</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,8 +453,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="func7 in finished" />
-    <MESSAGE value="func7 in finished with nikol" />
     <MESSAGE value="func7 in finished with nikol&#10;setloanAccount" />
     <MESSAGE value="func7 in finished with nikol&#10;setloanAccount added" />
     <MESSAGE value="debuggeing func 6 , adding to client lender list is newly invested loan" />
@@ -419,7 +476,9 @@
     <MESSAGE value="added LoanObj and fixed func2 accordinly" />
     <MESSAGE value="added ClientObj and fixed funcs accordinly" />
     <MESSAGE value="created BackgroundFunc.investing_according_to_agreed_risk_management_methodology" />
-    <option name="LAST_COMMIT_MESSAGE" value="created BackgroundFunc.investing_according_to_agreed_risk_management_methodology" />
+    <MESSAGE value="fixed func6" />
+    <MESSAGE value="added first JavaFX work" />
+    <option name="LAST_COMMIT_MESSAGE" value="added first JavaFX work" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -429,6 +488,10 @@
           <line>70</line>
           <option name="timeStamp" value="73" />
         </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassNotFoundException" package="java.lang" />
+          <option name="timeStamp" value="76" />
+        </breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
@@ -444,6 +507,10 @@
         <watch expression="Database.getClientMap()" language="JAVA" custom="data.Database,java.util.HashMap" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ABS$Program.ic" NAME="Program Coverage Results" MODIFIED="1648887012688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

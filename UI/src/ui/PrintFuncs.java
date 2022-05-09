@@ -361,6 +361,7 @@ public class PrintFuncs {
         if (loanFilters.get(eLoanFilters.MINIMUM_INTEREST_PER_YAZ.ordinal()) == 1) {
             System.out.println("Please choose the minimum interest percentage per yaz ");
             minInterestPerYaz = readDoubleFromUser(0, Integer.MAX_VALUE);
+            //todo: ask the metargel what do you expect
         }
         if (loanFilters.get(eLoanFilters.MINIMUM_YAZ_TIME_FRAME.ordinal()) == 1) {
             System.out.println("Please choose the minimum yaz time frame ");

@@ -17,7 +17,18 @@ import static ui.PrintFuncs.*;
 
 
 public class User_interface {
-
+    public static void func1(){
+        XmlFile.getDetailsForFile();
+        try {
+            if(CheckAndPrintInvalidFile(XmlFile.getInputObject())){
+                Database.clearAll();
+                BackgroundFunc.buildDataFromDescriptor(XmlFile.getInputObject());
+                System.out.println("file loaded successfully");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public static void func2AllLoansData() {
         int index = 1;
@@ -38,8 +49,6 @@ public class User_interface {
             PrintFuncs.printConnectedLoans(client);
         }
     }
-
-
 
     /**
      * func 4 is in charge of depositing money to a selected account from
@@ -143,18 +152,6 @@ public class User_interface {
         BackgroundFunc.filterAndHandleLoansListAfterPromote();
     }
 
-    public static void func1(){
-        XmlFile.getDetailsForFile();
-        try {
-            if(CheckAndPrintInvalidFile(XmlFile.getInputObject())){
-                Database.clearAll();
-                BackgroundFunc.buildDataFromDescriptor(XmlFile.getInputObject());
-                System.out.println("file loaded successfully");
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
 }
 
