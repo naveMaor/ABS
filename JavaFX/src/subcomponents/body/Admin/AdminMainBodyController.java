@@ -11,7 +11,7 @@ public class AdminMainBodyController {
 
     @FXML
     void CustomersInformationButtonListener(ActionEvent event) {
-
+        mainController.ChangeToCustomerCompenent();
     }
 
     @FXML
