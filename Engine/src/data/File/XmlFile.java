@@ -27,7 +27,7 @@ public class XmlFile implements Serializable {
                     System.out.println("ERROR: Please provide file path without quotation marks");
                 }else{
                     fileNameCheck(filePath);
-                    inputObject = createInputObject(filePath);
+                    inputObject = createInputObjectFromPath(filePath);
                     inputValidation = true;
                 }
             }catch (Exception exception){
@@ -42,7 +42,7 @@ public class XmlFile implements Serializable {
         if (fileName.substring(stringLen - 4, stringLen).compareTo(fileFormat) != 0)
             throw new Exception("Incorrect file format, Please insert an XML file only");
     }
-    public static AbsDescriptor createInputObject(String pathName) throws Exception {
+    public static AbsDescriptor createInputObjectFromPath(String pathName) throws Exception {
         try {
             inputStream = new FileInputStream(new File(pathName));
             AbsDescriptor descriptor = SchemaBasedJAXB.deserializeFrom(inputStream);
@@ -61,5 +61,20 @@ public class XmlFile implements Serializable {
     public static void resetFileData(){
         inputStream = null;
         inputObject = null;
+    }
+
+    public static void createInputObjectFromFile(File selectedFile) throws Exception {
+        try {
+            inputStream = new FileInputStream(selectedFile);
+            AbsDescriptor descriptor = SchemaBasedJAXB.deserializeFrom(inputStream);
+            inputObject= descriptor;
+        }
+        catch ( FileNotFoundException e) {
+            throw new Exception("Invalid path name, file doesn't exist.");
+        } catch (JAXBException j){
+
+            throw new Exception("Couldn't read file");
+        }
+        //isCopySucceeded = true;
     }
 }

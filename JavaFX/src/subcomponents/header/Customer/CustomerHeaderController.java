@@ -15,12 +15,12 @@ public class CustomerHeaderController {
 
     @FXML
     void InformationButtonActionListener(ActionEvent event) {
-
+        CustomerMainWindowController.ChangeToInformationCompenent();
     }
 
     @FXML
     void PatmentButtonActionListener(ActionEvent event) {
-
+        CustomerMainWindowController.ChangeToPaymentCompenent();
     }
 
     @FXML

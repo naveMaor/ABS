@@ -22,7 +22,7 @@ public class User_interface {
         try {
             if(CheckAndPrintInvalidFile(XmlFile.getInputObject())){
                 Database.clearAll();
-                BackgroundFunc.buildDataFromDescriptor(XmlFile.getInputObject());
+                BackgroundFunc.buildDataFromDescriptor();
                 System.out.println("file loaded successfully");
             }
         } catch (Exception e) {

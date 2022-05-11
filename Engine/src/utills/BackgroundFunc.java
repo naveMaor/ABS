@@ -4,6 +4,7 @@ import customes.Account;
 import customes.Client;
 import customes.Lenders;
 import data.Database;
+import data.File.XmlFile;
 import data.schema.generated.AbsCustomer;
 import data.schema.generated.AbsDescriptor;
 import data.schema.generated.AbsLoan;
@@ -255,7 +256,9 @@ This func gets lenders list and return thus sum of their deposit
         return true;
     }
 
-    public static void buildDataFromDescriptor(AbsDescriptor descriptor){
+    public static void buildDataFromDescriptor(){
+        Database.clearAll();
+        AbsDescriptor descriptor = XmlFile.getInputObject();
         buildCustomersData(descriptor.getAbsCustomers().getAbsCustomer());
         buildCategoriesData(descriptor.getAbsCategories().getAbsCategory());
         buildLoansData(descriptor.getAbsLoans().getAbsLoan());
