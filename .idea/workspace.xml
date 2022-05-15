@@ -7,17 +7,15 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="File loaded method with properties.&#10;and current Yaz Properties">
+    <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="commit fxml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/time/Timeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/time/Timeline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaFX/src/MainWindow/mainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaFX/src/MainWindow/mainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaFX/src/MainWindow/mainWindowMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaFX/src/MainWindow/mainWindowMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaFX/src/subcomponents/body/Admin/AdminMainBodyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaFX/src/subcomponents/body/Admin/AdminMainBodyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaFX/src/subcomponents/header/MainHeader.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/JavaFX/src/subcomponents/header/MainHeader.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaFX/src/subcomponents/header/MainHeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaFX/src/subcomponents/header/MainHeaderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/time/Timeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/time/Timeline.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaFX/subcomponents/header/MainHeader.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaFX/subcomponents/header/MainHeader.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,6 +185,7 @@
       <workItem from="1652364013437" duration="71000" />
       <workItem from="1652448421481" duration="598000" />
       <workItem from="1652527309219" duration="1000" />
+      <workItem from="1652614404590" duration="2694000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -446,7 +445,13 @@
       <option name="presentableId" value="LOCAL‎00041" />
       <updated>1652259881102</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL‎00042" summary="commit fxml">
+      <created>1652614572401</created>
+      <option name="number" value="LOCAL‎00042" />
+      <option name="presentableId" value="LOCAL‎00042" />
+      <updated>1652614572401</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,7 +481,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="trying testim" />
     <MESSAGE value="deleted LoanCategory.&#10;created new kind of map of the loans that has a key for category and a list of Loans as a value." />
     <MESSAGE value="CheckAndprintInvalidFile func. &#10;&#10;buildDataFromDescriptor func." />
     <MESSAGE value="func 7 completed" />
@@ -501,7 +505,8 @@
     <MESSAGE value="header and body Sub components work together" />
     <MESSAGE value="Customer Menu Built" />
     <MESSAGE value="File loaded method with properties.&#10;and current Yaz Properties" />
-    <option name="LAST_COMMIT_MESSAGE" value="File loaded method with properties.&#10;and current Yaz Properties" />
+    <MESSAGE value="commit fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit fxml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

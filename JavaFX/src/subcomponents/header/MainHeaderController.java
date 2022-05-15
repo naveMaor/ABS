@@ -28,11 +28,6 @@ public class MainHeaderController {
     @FXML
     private ComboBox<String> ViewByComboBox;
 
-    @FXML
-    private Button openFileButtonId;
-
-    @FXML
-    private Button promoteYazButtonId;
 
     @FXML
     void ViewByComboBoxListener(ActionEvent event) {
@@ -47,16 +42,7 @@ public class MainHeaderController {
         }
     }
 
-    @FXML
-    void openFileButtonListener(ActionEvent event) {
-        mainController.openFileButtonAction();
-    }
-    @FXML
-    void promoteYazButtonListener(ActionEvent event) {
-        Timeline.promoteStaticCurrTime();
-        BackgroundFunc.filterAndHandleLoansListAfterPromote();
 
-    }
 
     public void setMainController(mainWindowController mainController) {
         this.mainController = mainController;
@@ -70,7 +56,7 @@ public class MainHeaderController {
     public void bindProperties(SimpleBooleanProperty isFileSelected, SimpleStringProperty selectedFileProperty, SimpleIntegerProperty currentYazProperty){
         NameCurrentYaz.disableProperty().bind(isFileSelected.not());
         ViewByComboBox.disableProperty().bind(isFileSelected.not());
-        promoteYazButtonId.disableProperty().bind(isFileSelected.not());
+        //promoteYazButtonId.disableProperty().bind(isFileSelected.not());
         NameFilePath.textProperty().bind(selectedFileProperty);
         NameCurrentYaz.textProperty().bind(Bindings.concat("Current Yaz: ", currentYazProperty));
         //todo add isFileSelected bolean!!

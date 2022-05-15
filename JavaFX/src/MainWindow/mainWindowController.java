@@ -57,7 +57,7 @@ public class mainWindowController {
 
 
 
-        currentYazProperty.bind(Timeline.getObservableCurrTime());
+        currentYazProperty.bind(Timeline.getCurrTimePropery());
     }
 
     @FXML public void initialize() {

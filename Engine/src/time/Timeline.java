@@ -1,6 +1,8 @@
 package time;
 
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
 
 import java.io.Serializable;
@@ -9,6 +11,7 @@ import java.util.Objects;
 public class Timeline implements Serializable {
 
     private static int currTime = 1;
+    private static SimpleIntegerProperty currTimePropery = new SimpleIntegerProperty(currTime);
     private int timeStamp;
 
     public Timeline() {
@@ -39,12 +42,17 @@ public class Timeline implements Serializable {
         return obsInt;
     }
 
+    public static IntegerProperty getCurrTimePropery() {
+        return currTimePropery;
+    }
 
-
-
+    public static SimpleIntegerProperty currTimeProperyProperty() {
+        return currTimePropery;
+    }
 
     public static void promoteStaticCurrTime(){
         currTime++;
+        currTimePropery.set(currTime);
     }
 
     public static void setCurrTime(int currTime) {

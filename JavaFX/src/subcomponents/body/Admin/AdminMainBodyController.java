@@ -6,6 +6,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import time.Timeline;
+import utills.BackgroundFunc;
 
 public class AdminMainBodyController {
 
@@ -30,12 +32,13 @@ public class AdminMainBodyController {
 
     @FXML
     void IncreaseYazButtonListener(ActionEvent event) {
-
+        Timeline.promoteStaticCurrTime();
+        BackgroundFunc.filterAndHandleLoansListAfterPromote();
     }
 
     @FXML
     void LoadFileButtonListener(ActionEvent event) {
-
+        mainController.openFileButtonAction();
     }
 
     @FXML
@@ -51,7 +54,7 @@ public class AdminMainBodyController {
     public void bindProperties(SimpleBooleanProperty isFileSelected, SimpleStringProperty selectedFileProperty){
         CustomersInformationButtonId.disableProperty().bind(isFileSelected.not());
         IncreaseYazButtonId.disableProperty().bind(isFileSelected.not());
-        LoadFileButtonId.disableProperty().bind(isFileSelected.not());
+        //LoadFileButtonId.disableProperty().bind(isFileSelected.not());
         LoansButtonId.disableProperty().bind(isFileSelected.not());
     }
 }
