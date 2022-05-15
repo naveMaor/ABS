@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import data.Database;
 import data.File.XmlFile;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -23,6 +24,7 @@ import subcomponents.app.subsCustomerMainWindowController;
 import subcomponents.body.Admin.AdminMainBodyController;
 import subcomponents.body.Customer.Information.CustomerInformationBodyController;
 import subcomponents.header.MainHeaderController;
+import time.Timeline;
 import utills.BackgroundFunc;
 
 public class mainWindowController {
@@ -39,13 +41,23 @@ public class mainWindowController {
 
     private Stage primaryStage;
     private SimpleBooleanProperty isFileSelected;
+    private SimpleBooleanProperty isAdminWindow;
     private SimpleStringProperty selectedFileProperty;
     private SimpleIntegerProperty currentYazProperty;
 
     public mainWindowController() {
+        isAdminWindow = new SimpleBooleanProperty(true);
         isFileSelected = new SimpleBooleanProperty(false);
         selectedFileProperty = new SimpleStringProperty();
-        currentYazProperty = new SimpleIntegerProperty(0);
+
+
+
+        currentYazProperty = new SimpleIntegerProperty(Timeline.getCurrTime());
+
+
+
+
+        currentYazProperty.bind(Timeline.getObservableCurrTime());
     }
 
     @FXML public void initialize() {
@@ -59,6 +71,7 @@ public class mainWindowController {
         }
         mainHeaderController.initializeComboBox();
         mainHeaderController.bindProperties(isFileSelected,selectedFileProperty,currentYazProperty);
+        adminMainBodyController.bindProperties(isFileSelected,selectedFileProperty);
     }
 
     //todo:do we really need it?!?

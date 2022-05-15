@@ -1,5 +1,8 @@
 package time;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -28,6 +31,18 @@ public class Timeline implements Serializable {
     public static int getCurrTime() {
         return currTime;
     }
+
+
+
+    public static ObservableValue<? extends Number> getObservableCurrTime() {
+        ObservableValue<Integer> obsInt = new ReadOnlyObjectWrapper<>(currTime);
+        return obsInt;
+    }
+
+
+
+
+
     public static void promoteStaticCurrTime(){
         currTime++;
     }

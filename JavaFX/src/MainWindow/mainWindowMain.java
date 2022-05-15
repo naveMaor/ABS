@@ -25,9 +25,8 @@ public class mainWindowMain extends Application {
                 )
         );
 
-        ScrollPane root = (ScrollPane) loader.load();
-        mainWindowController controller =
-                loader.<mainWindowController>getController();
+        ScrollPane root = loader.load();
+        mainWindowController controller =loader.getController();
         controller.setPrimaryStage(primaryStage);
 
         //todo: connect engine instance to controller
