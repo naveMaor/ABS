@@ -9,7 +9,7 @@ import loan.enums.eLoanStatus;
 import Money.operations.Payment;
 import Money.operations.Transaction;
 import time.Timeline;
-import utills.BackgroundFunc;
+import utills.Engine;
 import Money.*;
 
 import java.io.Serializable;
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 public class Loan implements Serializable {
+    Engine engine = Engine.getInstance();
 
     //Identification data members:
 
@@ -278,8 +279,8 @@ public class Loan implements Serializable {
      */
     public void activateLoan() {
 
-        Client borrower = BackgroundFunc.returnClientByName(this.getBorrowerName());
-        BackgroundFunc.TransferMoneyBetweenAccounts(loanAccount,loanOriginalDepth,borrower.getMyAccount());
+        Client borrower = engine.returnClientByName(this.getBorrowerName());
+        engine.TransferMoneyBetweenAccounts(loanAccount,loanOriginalDepth,borrower.getMyAccount());
         loanAccount.setCurrBalance(0);
         Timeline startingLoanTimeStamp = new Timeline (Timeline.getCurrTime());
         startLoanYaz=startingLoanTimeStamp;

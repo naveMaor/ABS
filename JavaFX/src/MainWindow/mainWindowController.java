@@ -2,32 +2,24 @@
 package MainWindow;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-import data.Database;
 import data.File.XmlFile;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import subcomponents.app.subsCustomerMainWindowController;
 import subcomponents.body.Admin.AdminMainBodyController;
-import subcomponents.body.Customer.Information.CustomerInformationBodyController;
 import subcomponents.header.MainHeaderController;
 import time.Timeline;
-import utills.BackgroundFunc;
+import utills.Engine;
 
 public class mainWindowController {
+    Engine engine = Engine.getInstance();
 
 
 
@@ -111,7 +103,7 @@ public class mainWindowController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        BackgroundFunc.buildDataFromDescriptor();
+        engine.buildDataFromDescriptor();
         String absolutePath = selectedFile.getAbsolutePath();
         selectedFileProperty.set(absolutePath);
         isFileSelected.set(true);

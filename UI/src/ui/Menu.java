@@ -4,13 +4,14 @@ import data.File.DataToFileDataFromFile;
 import ui.PrintFuncs;
 
 public class Menu {
+    User_interface user_interface;
     private static boolean isLoadedFile = false;
-    private static int choise =0;
+    private int choise =0;
 
-    public static void welcome(){
+    public void welcome(){
         System.out.println("Please choose from the menu below");
     }
-    public static int printMenu(){
+    public int printMenu(){
         System.out.println("1. Load new Xml file");
         System.out.println("2. Present the information on existing loans and their status");
         System.out.println("3. Display information about all customers");
@@ -30,11 +31,11 @@ public class Menu {
         return choise;
     }
 
-    public static int handleMenuChoice() throws Exception {
+    public int handleMenuChoice() throws Exception {
         int choice = PrintFuncs.readIntFromUser(1,10,true);
 
         if (choice==1){
-            User_interface.func1();
+            user_interface.func1();
             isLoadedFile = true;
         }
         else if (choice == 10)
@@ -61,27 +62,27 @@ public class Menu {
         {
             switch (choice){
                 case 2:{
-                    User_interface.func2AllLoansData();
+                    user_interface.func2AllLoansData();
                     break;
                 }
                 case 3:{
-                    User_interface.func3();
+                    user_interface.func3();
                     break;
                 }
                 case 4:{
-                    User_interface.func4();
+                    user_interface.func4();
                     break;
                 }
                 case 5:{
-                    User_interface.func5();
+                    user_interface.func5();
                     break;
                 }
                 case 6:{
-                    User_interface.func6();
+                    user_interface.func6();
                     break;
                 }
                 case 7:{
-                    User_interface.func7();
+                    user_interface.func7();
                     break;
                 }
                 case 8:{

@@ -1,15 +1,12 @@
 package ui;
 
 import ClientDTO.ClientObj;
-import Money.operations.Transaction;
-import customes.Client;
 import data.Database;
 import data.File.XmlFile;
 import loan.Loan;
-import loan.enums.eLoanStatus;
 import loanDTO.LoanObj;
 import time.Timeline;
-import utills.BackgroundFunc;
+import utills.Engine;
 
 import java.util.List;
 
@@ -17,12 +14,14 @@ import static ui.PrintFuncs.*;
 
 
 public class User_interface {
-    public static void func1(){
+    Engine engine = Engine.getInstance();
+    PrintFuncs printFuncs;
+    public void func1(){
         XmlFile.getDetailsForFile();
         try {
-            if(CheckAndPrintInvalidFile(XmlFile.getInputObject())){
+            if(printFuncs.CheckAndPrintInvalidFile(XmlFile.getInputObject())){
                 Database.clearAll();
-                BackgroundFunc.buildDataFromDescriptor();
+                engine.buildDataFromDescriptor();
                 System.out.println("file loaded successfully");
             }
         } catch (Exception e) {
@@ -30,23 +29,23 @@ public class User_interface {
         }
     }
 
-    public static void func2AllLoansData() {
+    public void func2AllLoansData() {
         int index = 1;
         for (LoanObj loan : Database.getLoanObjList()) {
             System.out.println("\n------------------------\n");
             System.out.println(index + ". ");
-            printLoanInfo2(loan);
+            printFuncs.printLoanInfo2(loan);
             index ++;
         }
         System.out.println("\n------------------------\n");
     }
 
-    public static void func3(){
+    public void func3(){
        List<ClientObj> printList =Database.getClientsObjList();
         for(ClientObj client:printList ){
             System.out.println("Presenting " + client.getFullName() + ":");
-            PrintFuncs.printAccountInfo(client);
-            PrintFuncs.printConnectedLoans(client);
+            printFuncs.printAccountInfo(client);
+            printFuncs.printConnectedLoans(client);
         }
     }
 
@@ -54,41 +53,41 @@ public class User_interface {
      * func 4 is in charge of depositing money to a selected account from
      * a list of existing customers in the database
      */
-    public static void func4() {
+    public void func4() {
         //printing to UI all clients in database, letting user choose wanted client and getting the wanted deposit amount
         printAllClientsFromDatabase();
         String clientFullName = ChooseClientFromDatabase();
         int deposit =  getDepositAmount(clientFullName);
 
         //making the wire
-        BackgroundFunc.AccountTransaction(deposit,clientFullName);
+        engine.AccountTransaction(deposit,clientFullName);
         System.out.println("Wire of: "+deposit+" to "+clientFullName+"'s account, has been confirmed.\n ");
-        System.out.println(clientFullName+"'s new account balance is: "+ BackgroundFunc.getBalanceFromClientName(clientFullName));
+        System.out.println(clientFullName+"'s new account balance is: "+ engine.getBalanceFromClientName(clientFullName));
     }
 
-    public static void func5(){
+    public void func5(){
         //printing to UI all clients in database, letting user choose wanted client and getting the wanted withdraw amount
         printAllClientsFromDatabase();
         String clientFullName =ChooseClientFromDatabase();
-        int withdrawal =  PrintFuncs.getWithdrawalAmount(clientFullName);
+        int withdrawal =  printFuncs.getWithdrawalAmount(clientFullName);
         //making the wire
-        BackgroundFunc.AccountTransaction(withdrawal,clientFullName);
+        engine.AccountTransaction(withdrawal,clientFullName);
         System.out.println("Withdraw of: "+withdrawal+" from "+clientFullName+"'s account, has been confirmed.\n ");
-        System.out.println(clientFullName + "'s current balance: " +BackgroundFunc.getBalanceFromClientName(clientFullName));
+        System.out.println(clientFullName + "'s current balance: " + engine.getBalanceFromClientName(clientFullName));
     }
 
-    public static void func6() {
+    public void func6() {
         //double amountOfMoneyPerLoan,minNeededInvestment,investment;
         int loanListSize;
         //getting wanted investor
         String clientName = customersMenu();
         //creating wanted loans to invest list by investor wanted parameters
-        List<Loan> loanslistToInvest = ChooseLoans(clientName);
+        List<Loan> loanslistToInvest = printFuncs.ChooseLoans(clientName);
         if(loanslistToInvest.isEmpty()){
             return;
         }
         //getting wanted overall investment for current yaz from client
-        double wantedInvestment = PrintFuncs.getWantedInvestment(clientName);
+        double wantedInvestment = printFuncs.getWantedInvestment(clientName);
 /*       // investing according to agreed risk management methodology
         do {
 
@@ -116,9 +115,9 @@ public class User_interface {
             loanListSize=loanslistToInvest.size();//NEWLY ADDED
             // as long as there is money left to invest , or list of optional investments is not empty
         } while (wantedInvestment != 0 && loanListSize != 0);*/
-        loanListSize = BackgroundFunc.investing_according_to_agreed_risk_management_methodology(loanslistToInvest,wantedInvestment,clientName);
+        loanListSize = engine.investing_according_to_agreed_risk_management_methodology(loanslistToInvest,wantedInvestment,clientName);
         if (loanListSize==0){
-            PrintFuncs.printEmptyListNotification(wantedInvestment);    }
+            printFuncs.printEmptyListNotification(wantedInvestment);    }
     }
 
 /*    static void printEmptyListNotification(double remainingInvestment){
@@ -146,10 +145,10 @@ public class User_interface {
         return amountOfMoney;
     }*/
 
-    public static void func7(){
+    public void func7(){
         Timeline.promoteStaticCurrTime();
-        PrintFuncs.printYazAfterPromote();
-        BackgroundFunc.filterAndHandleLoansListAfterPromote();
+        printFuncs.printYazAfterPromote();
+        engine.filterAndHandleLoansListAfterPromote();
     }
 
 

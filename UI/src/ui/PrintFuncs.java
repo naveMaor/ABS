@@ -14,16 +14,17 @@ import Money.operations.Payment;
 import Money.operations.Transaction;
 import loanDTO.LoanObj;
 import time.Timeline;
-import utills.BackgroundFunc;
+import utills.Engine;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static utills.BackgroundFunc.*;
+import static utills.Engine.*;
 
 public class PrintFuncs {
 
+    Engine engine = Engine.getInstance();
 
     private final static String BETWEEN = "Please enter an Integer number between: ";
     private final static String ZERO_OR_ONE = "please enter 1 or 0 only";
@@ -118,7 +119,7 @@ public class PrintFuncs {
             }
         }
     }
-    public static void printConnectedLoans(ClientObj client) {
+    public void printConnectedLoans(ClientObj client) {
         String name = client.getFullName();
         List<LoanObj> lenderLoanList = client.getClientAsLenderLoanObjList();
         List<LoanObj> borrowLoanList = client.getClientAsBorrowLoanObjList();
@@ -156,13 +157,13 @@ public class PrintFuncs {
         }
         System.out.println("________________________________");
     }
-    public static void PrintStatusConnectedLoans(LoanObj loan) {
+    public void PrintStatusConnectedLoans(LoanObj loan) {
         eLoanStatus status=loan.getStatus();
         switch (status)
         {
             case PENDING:
             {
-                double missingMoney = loan.getLoanOriginalDepth() - calculateDeposit(loan.getLendersList());
+                double missingMoney = loan.getLoanOriginalDepth() - engine.calculateDeposit(loan.getLendersList());
                 System.out.println(missingMoney + " is missing in order to turn this loan active");
                 break;
             }
@@ -195,7 +196,7 @@ public class PrintFuncs {
         }
     }
 
-    public static void printLoanInfo2(LoanObj loan){
+    public void printLoanInfo2(LoanObj loan){
         System.out.println("Loan Id: " + loan.getLoanID());
         System.out.println("Loan owner: " + loan.getBorrowerName());
         System.out.println("Loan category: " + loan.getLoanCategory());
@@ -209,14 +210,14 @@ public class PrintFuncs {
         PrintStatusConnectedLoans2(loan);
     }
 
-    public static void PrintStatusConnectedLoans2(LoanObj loan) {
+    public void PrintStatusConnectedLoans2(LoanObj loan) {
         eLoanStatus status=loan.getStatus();
         switch (status)
         {
             case PENDING:
             {
-                double missingMoney = loan.getLoanOriginalDepth() - calculateDeposit(loan.getLendersList());
-                System.out.println("Total deposit: " + calculateDeposit(loan.getLendersList()));
+                double missingMoney = loan.getLoanOriginalDepth() - engine.calculateDeposit(loan.getLendersList());
+                System.out.println("Total deposit: " + engine.calculateDeposit(loan.getLendersList()));
                 System.out.println(missingMoney + " is missing in order to turn this loan active");
                 break;
             }
@@ -243,7 +244,7 @@ public class PrintFuncs {
     }
 
 
-    public static void printLoanInfo(LoanObj loan){
+    public void printLoanInfo(LoanObj loan){
         System.out.println("Loan Id: " + loan.getLoanID());
         System.out.println("Loan owner: " + loan.getBorrowerName());
         System.out.println("Loan category: " + loan.getLoanCategory());
@@ -294,16 +295,16 @@ public class PrintFuncs {
     }
 
     //func5 helpers
-    public  static int getWithdrawalAmount(String full_name){
+    public int getWithdrawalAmount(String full_name){
         //asking user and getting wanted deposit amount // S
         System.out.println("How much would you like to withdraw from "+full_name+"'s account ?");
         System.out.println("(please enter a positive integer number)");
         int withdraw = -(readIntFromUser(0,(int)Database.getClientMap().get(full_name).getMyAccount().getCurrBalance(),true));
         return withdraw;
     }
-    public static void printTransactionsFromClientName(String clientFullName){
+    public void printTransactionsFromClientName(String clientFullName){
         int index =1;
-        for (Transaction transaction: BackgroundFunc.getTransactionsFromClientName(clientFullName)){
+        for (Transaction transaction: engine.getTransactionsFromClientName(clientFullName)){
             System.out.println(index + ". time transaction made:" + transaction.getTimeOfMovement());
             System.out.println("transaction amount: " + transaction.getSum());
             index++;
@@ -343,7 +344,7 @@ public class PrintFuncs {
      * @param client
      * @return ArrayList <Loan>
      */
-    public static List<Loan> loanToInvest (Client client) {
+    public List<Loan> loanToInvest(Client client) {
         List<Loan> result = new ArrayList<>();
         List<String> loanCategoryUserList = new ArrayList<>();
         double balance = client.getMyAccount().getCurrBalance();
@@ -374,7 +375,7 @@ public class PrintFuncs {
                 if (!(client.getFullName().equalsIgnoreCase(loan.getBorrowerName()) ))//If the client's name is not the borrower
                         if (minInterestPerYaz <= loan.getInterestPercentagePerTimeUnit())
                             if (minYazTimeFrame <= loan.getOriginalLoanTimeFrame().getTimeStamp())
-                                if (checkCategoryList(loanCategoryUserList, loan.getLoanCategory()))
+                                if (engine.checkCategoryList(loanCategoryUserList, loan.getLoanCategory()))
                                     result.add(loan);
         }
         return result;
@@ -383,7 +384,7 @@ public class PrintFuncs {
      * this func gets client and ASK THE USER WHAT LOANS IT WILL BE PARTICIPATE and returns list of the filtered loans that the user chose
      * @param clientName
      */
-    public static List<Loan> ChooseLoans(String clientName) {
+    public List<Loan> ChooseLoans(String clientName) {
         Client client = Database.getClientByname(clientName);
         int  index = 1;;
         List<Integer> chosenLoansNumb = new ArrayList<>();
@@ -428,7 +429,7 @@ public class PrintFuncs {
                 }
             }
         }while(!valid);
-        result = getResultedArray(Loanslist,chosenLoansNumb);// RETURNS new array that is the user's chosen loans.
+        result = engine.getResultedArray(Loanslist,chosenLoansNumb);// RETURNS new array that is the user's chosen loans.
         return result;
     }
     public static ArrayList<Integer> getLoanFilters (){
@@ -534,23 +535,23 @@ public class PrintFuncs {
         Timeline.printStaticCurrTime();
     }
     //func1 helpers
-    public static boolean CheckAndPrintInvalidFile(AbsDescriptor descriptor) throws Exception {
+    public boolean CheckAndPrintInvalidFile(AbsDescriptor descriptor) throws Exception {
         boolean isValid =true;
         String s = new String();
 
-        if(!checkValidCategories(descriptor)){
+        if(!engine.checkValidCategories(descriptor)){
             s+= "\nthere is loan category that does not exist";
             isValid = false;
         }
-        if(!checkValidCustomersList(descriptor)){
+        if(!engine.checkValidCustomersList(descriptor)){
             s+="\nthere are two customers with the same name";
             isValid =false;
         }
-        if(!checkValidLoanOwner(descriptor)){
+        if(!engine.checkValidLoanOwner(descriptor)){
             s+="\nthere is a loan with a loan owner name that does not exist";
             isValid = false;
         }
-        if(!checkValidPaymentFrequency(descriptor)){
+        if(!engine.checkValidPaymentFrequency(descriptor)){
             s+="\npayment frequency is not fully divided by the total time of the loan";
             isValid = false;
         }

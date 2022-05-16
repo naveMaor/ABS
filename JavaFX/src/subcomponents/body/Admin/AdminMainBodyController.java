@@ -7,9 +7,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import time.Timeline;
-import utills.BackgroundFunc;
+import utills.Engine;
 
 public class AdminMainBodyController {
+    Engine engine = Engine.getInstance();
 
     private mainWindowController mainController;
 
@@ -33,7 +34,7 @@ public class AdminMainBodyController {
     @FXML
     void IncreaseYazButtonListener(ActionEvent event) {
         Timeline.promoteStaticCurrTime();
-        BackgroundFunc.filterAndHandleLoansListAfterPromote();
+        engine.filterAndHandleLoansListAfterPromote();
     }
 
     @FXML

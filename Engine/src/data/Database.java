@@ -5,17 +5,31 @@ import loan.Loan;
 import customes.Client;
 import loanDTO.LoanObj;
 import time.Timeline;
-import utills.BackgroundFunc;
+import utills.Engine;
 
 import java.io.Serializable;
 import java.util.*;
 
 public class Database implements Serializable {
-    private static Map <String, List<Loan>> loanMapByCategory = new HashMap<>();
-    private static Map<String, Client> clientMap =new HashMap<>();
+    Engine engine = Engine.getInstance();
 
-    public static void setLoanMapByCategory(Map<String, List<Loan>> loanMapByCategory) {
-        Database.loanMapByCategory = loanMapByCategory;
+    private static Database single_instance = null;
+    public static Database Database()
+    {
+        // To ensure only one instance is created
+        if (single_instance == null) {
+            single_instance = new Database();
+        }
+        return single_instance;
+    }
+
+
+    //todo: check if need to stay static
+    private Map <String, List<Loan>> loanMapByCategory = new HashMap<>();
+    private Map<String, Client> clientMap =new HashMap<>();
+
+    public void setLoanMapByCategory(Map<String, List<Loan>> loanMapByCategory) {
+        loanMapByCategory = loanMapByCategory;
     }
 
     public static void setClientMap(Map<String, Client> clientMap) {
@@ -72,9 +86,9 @@ public class Database implements Serializable {
     public static void addClientToClientMap(Client newClientNode){
         clientMap.put(newClientNode.getFullName(), newClientNode);
     }
-    public static List<Loan> getSortedLoanList(){
+    public List<Loan> getSortedLoanList(){
         List <Loan> result = getLoanList();
-        BackgroundFunc.orderLoanList(result);
+        engine.orderLoanList(result);
         return result;
     }
     public static Map<String, Client> getClientMap() {

@@ -8,12 +8,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
-import time.Timeline;
-import utills.BackgroundFunc;
 
 public class MainHeaderController {
 
