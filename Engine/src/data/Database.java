@@ -3,6 +3,7 @@ package data;
 import ClientDTO.ClientObj;
 import loan.Loan;
 import customes.Client;
+import loan.enums.eDeviationPortion;
 import loanDTO.LoanObj;
 import time.Timeline;
 import utills.Engine;
@@ -11,7 +12,6 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Database implements Serializable {
-    Engine engine = Engine.getInstance();
 
     private static Database single_instance = null;
     public static Database Database()
@@ -32,15 +32,15 @@ public class Database implements Serializable {
         loanMapByCategory = loanMapByCategory;
     }
 
-    public static void setClientMap(Map<String, Client> clientMap) {
-        Database.clientMap = clientMap;
+    public void setClientMap(Map<String, Client> clientMap) {
+        clientMap = clientMap;
     }
 
-    public static Map<String, List<Loan>> getLoanMapByCategory() {
+    public Map<String, List<Loan>> getLoanMapByCategory() {
         return loanMapByCategory;
     }
 
-    public static List<LoanObj> getLoanObjList() {
+    public List<LoanObj> getLoanObjList() {
         List<LoanObj> result = new ArrayList<>();
         for (List<Loan> loanList: loanMapByCategory.values()) {
             for(Loan newloan: loanList){
@@ -50,14 +50,14 @@ public class Database implements Serializable {
         }
         return result;
     }
-    public static List<Loan> getLoanList() {
+    public List<Loan> getLoanList() {
         List<Loan> result = new ArrayList<>();
         for (List<Loan> loanList: loanMapByCategory.values()) {
             result.addAll(loanList);
         }
         return result;
     }
-    public static void addLoanToLoanMap(Loan newLoanNode){
+    public void addLoanToLoanMap(Loan newLoanNode){
             String category= newLoanNode.getLoanCategory();
             if(loanMapByCategory.containsKey(category))
             {
@@ -72,10 +72,10 @@ public class Database implements Serializable {
             Client LoanBorrower = clientMap.get(newLoanNode.getBorrowerName());
             LoanBorrower.addLoanAsBorrower(newLoanNode);
     }
-    public static List<Client> getClientsList() {
+    public List<Client> getClientsList() {
         return new ArrayList<>(clientMap.values());
     }
-    public static List<ClientObj> getClientsObjList() {
+    public List<ClientObj> getClientsObjList() {
         List<ClientObj> result = new ArrayList<>();
         for (Client clientToCopy: clientMap.values()) {
                 result.add(new ClientObj(clientToCopy));
@@ -83,18 +83,18 @@ public class Database implements Serializable {
         return result;
     }
 //TO ASK: NOT SUPPOSE TO BE ADD TO MAP ? ADD TO DATABASE ?
-    public static void addClientToClientMap(Client newClientNode){
+    public void addClientToClientMap(Client newClientNode){
         clientMap.put(newClientNode.getFullName(), newClientNode);
     }
     public List<Loan> getSortedLoanList(){
         List <Loan> result = getLoanList();
-        engine.orderLoanList(result);
+        orderLoanList(result);
         return result;
     }
-    public static Map<String, Client> getClientMap() {
+    public Map<String, Client> getClientMap() {
         return clientMap;
     }
-    public static void addCategory (String category){
+    public void addCategory (String category){
         if (!loanMapByCategory.containsKey(category))
         {
             loanMapByCategory.put(category,new ArrayList<Loan>());
@@ -102,7 +102,7 @@ public class Database implements Serializable {
     }
 
 
-    public static List<String> getAllCategories() {
+    public List<String> getAllCategories() {
         List<String> result = new ArrayList<>();
         for (String category:loanMapByCategory.keySet()) {
             result.add(category);
@@ -110,15 +110,40 @@ public class Database implements Serializable {
         return result;
     }
 
-    public static Client getClientByname(String name){
+    public Client getClientByname(String name){
         return clientMap.get(name);
     }
 
-    public static void clearAll(){
+    public void clearAll(){
         loanMapByCategory.clear();
         clientMap.clear();
         Timeline.resetTime();
         //resetFileData();
+    }
+
+    /**
+     * this fun get loan list and order it by two parameters:
+     * getStartLoanYaz and then nextExpectedPaymentAmount
+     * @param LoanList
+     */
+    public void orderLoanList(List<Loan> LoanList) {
+
+        Collections.sort(LoanList, new Comparator() {
+
+            public int compare(Object o1, Object o2) {
+
+                Integer x1 = ((Loan) o1).getStartLoanYaz().getTimeStamp();
+                Integer x2 = ((Loan) o2).getStartLoanYaz().getTimeStamp();
+                int sComp = x1.compareTo(x2);
+
+                if (sComp != 0) {
+                    return sComp;
+                }
+
+                Double x3 = ((Loan) o1).nextExpectedPaymentAmount(eDeviationPortion.TOTAL);
+                Double x4 = ((Loan) o2).nextExpectedPaymentAmount(eDeviationPortion.TOTAL);
+                return x3.compareTo(x4);
+            }});
     }
 
 }

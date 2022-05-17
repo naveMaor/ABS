@@ -4,6 +4,7 @@ import customes.Client;
 import data.Database;
 import loan.Loan;
 import time.Timeline;
+import utills.Engine;
 
 import java.io.*;
 import java.nio.file.Path;
@@ -18,6 +19,7 @@ public class DataToFileDataFromFile implements Serializable{
     private Map<String, List<Loan>> loanMapByCategory;
     private Map<String, Client> clientMap;
     private int currTime;
+    Engine engine = Engine.getInstance();
 
     public void SaveDataToFile() throws IOException {
 
@@ -30,8 +32,8 @@ public class DataToFileDataFromFile implements Serializable{
             fileOutputStream = new FileOutputStream(f);
             out = new ObjectOutputStream(fileOutputStream);
 
-            this.loanMapByCategory = Database.getLoanMapByCategory();
-            this.clientMap = Database.getClientMap();
+            this.loanMapByCategory = engine.getDatabase().getLoanMapByCategory();
+            this.clientMap = engine.getDatabase().getClientMap();
             this.currTime = Timeline.getCurrTime();
             out.writeObject(this);
             out.close();
@@ -46,7 +48,7 @@ public class DataToFileDataFromFile implements Serializable{
         }
     }
 
-    public static void LoadDataFromFile(DataToFileDataFromFile dataToFileDataFromFile) throws IOException, ClassNotFoundException {
+    public void LoadDataFromFile(DataToFileDataFromFile dataToFileDataFromFile) throws IOException, ClassNotFoundException {
 
         Path currentRelativePath = Paths.get("");
         File f = new File(currentRelativePath.toAbsolutePath().toString(), "ABS-data.bin");
@@ -57,8 +59,8 @@ public class DataToFileDataFromFile implements Serializable{
         dataToFileDataFromFile = (DataToFileDataFromFile)obj;
         in.close();
         fileInputStream.close();
-        Database.setClientMap(dataToFileDataFromFile.clientMap);
-        Database.setLoanMapByCategory(dataToFileDataFromFile.loanMapByCategory);
+        engine.getDatabase().setClientMap(dataToFileDataFromFile.clientMap);
+        engine.getDatabase().setLoanMapByCategory(dataToFileDataFromFile.loanMapByCategory);
         Timeline.setCurrTime(dataToFileDataFromFile.currTime);
     }
 

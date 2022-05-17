@@ -296,7 +296,7 @@ public class Loan implements Serializable {
      * this func checks if the borrower can pay the next Expected Payment Amount and update the loan accordinly
      */
     public void handleLoanAfterTimePromote(){
-        Client borrowerAsClient = Database.getClientMap().get(borrowerName);
+        Client borrowerAsClient = engine.getDatabase().getClientMap().get(borrowerName);
         Account borrowerAccount = borrowerAsClient.getMyAccount();
         Timeline currTimeStamp = new Timeline(Timeline.getCurrTime());
         Double nextExpectedPaymentAmount = nextExpectedPaymentAmount(eDeviationPortion.TOTAL);
@@ -353,7 +353,7 @@ public class Loan implements Serializable {
             //getting curr lender to pay name
         String lendersNameToPay = itr.getFullName();
         //getting clients account
-        Account accToPay = Database.getClientMap().get(lendersNameToPay).getMyAccount();
+        Account accToPay = engine.getDatabase().getClientMap().get(lendersNameToPay).getMyAccount();
         //getting current timeStamp for transaction.
         Timeline currTimeStamp = new Timeline(Timeline.getCurrTime());
             //updating lenders balance

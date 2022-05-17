@@ -16,11 +16,12 @@ import static ui.PrintFuncs.*;
 public class User_interface {
     Engine engine = Engine.getInstance();
     PrintFuncs printFuncs;
+    Database database = Database.Database();
     public void func1(){
         XmlFile.getDetailsForFile();
         try {
             if(printFuncs.CheckAndPrintInvalidFile(XmlFile.getInputObject())){
-                Database.clearAll();
+                engine.getDatabase().clearAll();
                 engine.buildDataFromDescriptor();
                 System.out.println("file loaded successfully");
             }
@@ -31,7 +32,7 @@ public class User_interface {
 
     public void func2AllLoansData() {
         int index = 1;
-        for (LoanObj loan : Database.getLoanObjList()) {
+        for (LoanObj loan : database.getLoanObjList()) {
             System.out.println("\n------------------------\n");
             System.out.println(index + ". ");
             printFuncs.printLoanInfo2(loan);
@@ -41,7 +42,7 @@ public class User_interface {
     }
 
     public void func3(){
-       List<ClientObj> printList =Database.getClientsObjList();
+       List<ClientObj> printList =engine.getDatabase().getClientsObjList();
         for(ClientObj client:printList ){
             System.out.println("Presenting " + client.getFullName() + ":");
             printFuncs.printAccountInfo(client);

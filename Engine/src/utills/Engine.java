@@ -27,6 +27,11 @@ public class Engine {
 /*
 This func gets lenders list and return thus sum of their deposit
  */
+    Database database = Database.Database();
+
+    public Database getDatabase() {
+        return database;
+    }
 
     private static Engine single_instance = null;
     private Engine() {
@@ -55,7 +60,7 @@ This func gets lenders list and return thus sum of their deposit
      */
     public void AccountTransaction(double money, String accDestName)
     {
-        Account accDest = Database.getClientByname(accDestName).getMyAccount();
+        Account accDest = database.getClientByname(accDestName).getMyAccount();
         double balanceAfter= accDest.getCurrBalance()+money;
         //create a timestamp
         Timeline timeStamp = new Timeline(Timeline.getCurrTime());
@@ -134,7 +139,7 @@ This func gets lenders list and return thus sum of their deposit
 
     }
     public Client returnClientByName(String name) throws IllegalArgumentException{
-        Client client= Database.getClientMap().get(name);
+        Client client= database.getClientMap().get(name);
         if (client == null)
         {
             throw new IllegalArgumentException();
@@ -146,11 +151,11 @@ This func gets lenders list and return thus sum of their deposit
 
     }
 
-    /**
+/*    *//**
      * this fun get loan list and order it by two parameters:
      * getStartLoanYaz and then nextExpectedPaymentAmount
      * @param LoanList
-     */
+     *//*
     public void orderLoanList(List<Loan> LoanList) {
 
         Collections.sort(LoanList, new Comparator() {
@@ -169,10 +174,10 @@ This func gets lenders list and return thus sum of their deposit
                  Double x4 = ((Loan) o2).nextExpectedPaymentAmount(eDeviationPortion.TOTAL);
                 return x3.compareTo(x4);
             }});
-}
+}*/
 
     public void filterAndHandleLoansListAfterPromote(){
-        List<Loan> sortedLoanList = Database.getSortedLoanList();
+        List<Loan> sortedLoanList = database.getSortedLoanList();
         for (Loan loan:sortedLoanList){
             if((loan.nextYazToPay() == 0)&&((loan.getStatus()== ACTIVE)|| (loan.getStatus()== RISK))){
                 loan.handleLoanAfterTimePromote();
@@ -266,7 +271,7 @@ This func gets lenders list and return thus sum of their deposit
     }
 
     public void buildDataFromDescriptor(){
-        Database.clearAll();
+        database.clearAll();
         AbsDescriptor descriptor = XmlFile.getInputObject();
         buildCustomersData(descriptor.getAbsCustomers().getAbsCustomer());
         buildCategoriesData(descriptor.getAbsCategories().getAbsCategory());
@@ -276,27 +281,27 @@ This func gets lenders list and return thus sum of their deposit
     public void buildCustomersData(List<AbsCustomer> absCustomerList){
         for (AbsCustomer absCustomer:absCustomerList){
             Client newClient = new Client(absCustomer.getName(),absCustomer.getAbsBalance());
-            Database.addClientToClientMap(newClient);
+            database.addClientToClientMap(newClient);
         }
     }
-    public static void buildCategoriesData(List<String> absCategories){
+    public void buildCategoriesData(List<String> absCategories){
         for (String categoryName:absCategories){
-            Database.addCategory(categoryName);
+            database.addCategory(categoryName);
         }
     }
     public void buildLoansData(List<AbsLoan> absLoanList){
        for (AbsLoan absLoan:absLoanList){
            Loan newLoan = new Loan(absLoan.getId(),absLoan.getAbsOwner(),absLoan.getAbsCategory(),absLoan.getAbsCapital(),absLoan.getAbsTotalYazTime(),absLoan.getAbsPaysEveryYaz(),absLoan.getAbsIntristPerPayment());
-           Database.addLoanToLoanMap(newLoan);
+           database.addLoanToLoanMap(newLoan);
        }
     }
 
     public double getBalanceFromClientName(String name){
-        return Database.getClientByname(name).getMyAccount().getCurrBalance();
+        return database.getClientByname(name).getMyAccount().getCurrBalance();
     }
 
     public List<Transaction> getTransactionsFromClientName(String name){
-        return Database.getClientByname(name).getMyAccount().getTnuaList();
+        return database.getClientByname(name).getMyAccount().getTnuaList();
     }
 
     public double getMinInvestment(List<Loan> loanslistToInvest){
@@ -354,7 +359,7 @@ This func gets lenders list and return thus sum of their deposit
     }
 
     public int investing_according_to_agreed_risk_management_methodology(List<Loan> loanslistToInvest,double wantedInvestment,String clientName){
-        Client client = Database.getClientByname(clientName);
+        Client client = database.getClientByname(clientName);
         double amountOfMoneyPerLoan,minNeededInvestment,investment;
         int loanListSize;
         do {

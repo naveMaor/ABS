@@ -264,10 +264,10 @@ public class PrintFuncs {
     /**
      * prints all clients in database to UI with index attached
      */
-    public static void printAllClientsFromDatabase() {
+    public void printAllClientsFromDatabase() {
         //creating index i , and printing all existing clients in database
         int i = 1;
-        for (Client client : Database.getClientMap().values()) {
+        for (Client client : engine.getDatabase().getClientMap().values()) {
             System.out.println(i + ". " + client.getFullName());
             i++;
         }
@@ -284,9 +284,9 @@ public class PrintFuncs {
         int deposit = readIntFromUser(1,Integer.MAX_VALUE,true);
         return deposit;
     }
-    public static String ChooseClientFromDatabase () {
+    public String ChooseClientFromDatabase () {
         //asking user to choose a client from database ,and getting input value of wanted client index
-        List<ClientObj> clientsList = Database.getClientsObjList();
+        List<ClientObj> clientsList = engine.getDatabase().getClientsObjList();
         int clientListSize =clientsList.size();
         System.out.println("Please enter wanted client index for deposit");
         int userClientIndexChoice = PrintFuncs.readIntFromUser(1,clientListSize,true);
@@ -299,7 +299,7 @@ public class PrintFuncs {
         //asking user and getting wanted deposit amount // S
         System.out.println("How much would you like to withdraw from "+full_name+"'s account ?");
         System.out.println("(please enter a positive integer number)");
-        int withdraw = -(readIntFromUser(0,(int)Database.getClientMap().get(full_name).getMyAccount().getCurrBalance(),true));
+        int withdraw = -(readIntFromUser(0,(int)engine.getDatabase().getClientMap().get(full_name).getMyAccount().getCurrBalance(),true));
         return withdraw;
     }
     public void printTransactionsFromClientName(String clientFullName){
@@ -316,8 +316,8 @@ public class PrintFuncs {
      * THIS FUNC PRINTS ALL THE CLIENTS IN THE SYSTEM AND ASK THE USER TO CHOOSE ONE, IT RETURNS THE CLIENT USER CHOSE
      * @return
      */
-    public static String printAndChooseClientsInTheSystem(){
-        List<ClientObj> v = Database.getClientsObjList();
+    public String printAndChooseClientsInTheSystem(){
+        List<ClientObj> v = engine.getDatabase().getClientsObjList();
         int i=1;
         for(ClientObj client: v) {
             System.out.println(i + ". " + client.getFullName());
@@ -325,7 +325,7 @@ public class PrintFuncs {
             //v.add(client);
             ++i;
         }
-        i =readIntFromUser(1,Database.getClientMap().size(),true);
+        i =readIntFromUser(1,engine.getDatabase().getClientMap().size(),true);
 
         return v.get(i-1).getFullName();//todo might be i instead of i-1 becasue array starts from 0?
     }
@@ -334,7 +334,7 @@ public class PrintFuncs {
      * THIS FUNC INITIALLIZE THE CLIENT MENU
      * @return
      */
-        public static String customersMenu(){
+    public  String customersMenu(){
         Scanner sc = new Scanner(System.in);
         System.out.println("please choose a customer to invest with");
         return printAndChooseClientsInTheSystem();
@@ -358,7 +358,7 @@ public class PrintFuncs {
             loanCategoryUserList = chooseCategoryToInvest();
         }
         else
-            loanCategoryUserList = Database.getAllCategories();
+            loanCategoryUserList = engine.getDatabase().getAllCategories();
         if (loanFilters.get(eLoanFilters.MINIMUM_INTEREST_PER_YAZ.ordinal()) == 1) {
             System.out.println("Please choose the minimum interest percentage per yaz ");
             minInterestPerYaz = readDoubleFromUser(0, Integer.MAX_VALUE);
@@ -369,7 +369,7 @@ public class PrintFuncs {
             minYazTimeFrame = readIntFromUser(0, Integer.MAX_VALUE,true);
         }
         //part 3 in word document:
-        for (Loan loan : Database.getLoanList()) {
+        for (Loan loan : engine.getDatabase().getLoanList()) {
             if (loan.getStatus() == eLoanStatus.NEW || loan.getStatus() == eLoanStatus.PENDING)//if the loan is new or pending
             //todo: notice here!!
                 if (!(client.getFullName().equalsIgnoreCase(loan.getBorrowerName()) ))//If the client's name is not the borrower
@@ -385,7 +385,7 @@ public class PrintFuncs {
      * @param clientName
      */
     public List<Loan> ChooseLoans(String clientName) {
-        Client client = Database.getClientByname(clientName);
+        Client client = engine.getDatabase().getClientByname(clientName);
         int  index = 1;;
         List<Integer> chosenLoansNumb = new ArrayList<>();
         List<Loan> Loanslist = loanToInvest(client);
@@ -444,10 +444,10 @@ public class PrintFuncs {
         System.out.println("Thank you");
         return result;
     }
-    public static ArrayList<String> chooseCategoryToInvest() {
+    public ArrayList<String> chooseCategoryToInvest() {
         boolean valid = true;
         ArrayList<String> userSelectedCategories = new ArrayList<>();
-        List <String> allCategoryList = Database.getAllCategories();
+        List <String> allCategoryList = engine.getDatabase().getAllCategories();
         do {
             System.out.println("Please select from the following list of options, the desired categories for investment:\n" +
                     "(Your answer must be returned in the above format: \"Desired category number\", \"Desired category number\", etc.)\n" );
@@ -519,8 +519,8 @@ public class PrintFuncs {
         //System.out.println("remaining money left from original sum of investment is: "+remainingInvestment);
         System.out.println("you can choose to re-filter to continue investing");
     }
-    public static double getWantedInvestment(String clientName) {
-        Client client = Database.getClientByname(clientName);
+    public double getWantedInvestment(String clientName) {
+        Client client = engine.getDatabase().getClientByname(clientName);
         double amountOfMoney = 0, balance = client.getMyAccount().getCurrBalance();
         System.out.println("Please enter the amount you would like the client to invest,\n (must a number between 1 and " + balance+")");
         amountOfMoney = readDoubleFromUser(1, balance);

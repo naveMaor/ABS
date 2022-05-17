@@ -8,21 +8,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36281ae4-775e-402f-b000-51850fa65b43" name="Changes" comment="engine is now not static">
+      <change afterPath="$PROJECT_DIR$/JavaFX/src/subcomponents/body/Customer/main/CustomerMainBodyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaFX/src/subcomponents/body/Customer/main/CustomerMainBodyMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/data/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/data/File/DataToFileDataFromFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/data/File/DataToFileDataFromFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Engine/src/loan/Loan.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/loan/Loan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Engine/src/utills/BackgroundFunc.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Engine/src/utills/Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/Engine/src/utills/Engine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaFX/src/MainWindow/mainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaFX/src/MainWindow/mainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaFX/src/subcomponents/body/Admin/AdminMainBodyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaFX/src/subcomponents/body/Admin/AdminMainBodyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaFX/src/subcomponents/header/MainHeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/JavaFX/src/subcomponents/header/MainHeaderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/ui/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/ui/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/ui/PrintFuncs.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/ui/PrintFuncs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/src/ui/Program.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/ui/Program.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UI/src/ui/User_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/UI/src/ui/User_interface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/data/Database.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Engine/loan/Loan.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Engine/utills/BackgroundFunc.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +61,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/08. Java FX" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../Java" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.09302324" />
@@ -88,6 +84,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="subcomponents.body.Admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerMainBodyMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="subcomponents.body.Customer.main.CustomerMainBodyMain" />
+      <module name="JavaFX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="subcomponents.body.Customer.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -121,19 +130,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SubsCustomerMainWindowMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="subcomponents.app.SubsCustomerMainWindowMain" />
-      <module name="JavaFX" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="subcomponents.app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="mainWindowMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="MainWindow.mainWindowMain" />
       <module name="JavaFX" />
@@ -150,10 +146,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.mainWindowMain" />
+        <item itemvalue="Application.CustomerMainBodyMain" />
+        <item itemvalue="Application.AdminMainBodyMain" />
         <item itemvalue="Application.Program (1)" />
         <item itemvalue="Application.MainHeaderMain" />
-        <item itemvalue="Application.SubsCustomerMainWindowMain" />
-        <item itemvalue="Application.AdminMainBodyMain" />
       </list>
     </recent_temporary>
   </component>
@@ -192,7 +188,8 @@
       <workItem from="1652364013437" duration="71000" />
       <workItem from="1652448421481" duration="598000" />
       <workItem from="1652527309219" duration="1000" />
-      <workItem from="1652614404590" duration="7650000" />
+      <workItem from="1652614404590" duration="15181000" />
+      <workItem from="1652778323202" duration="320000" />
     </task>
     <task id="LOCAL-00001" summary="shin chain">
       <created>1648197399188</created>
@@ -464,7 +461,13 @@
       <option name="presentableId" value="LOCAL‎00043" />
       <updated>1652617130622</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL‎00044" summary="engine is now not static">
+      <created>1652692070266</created>
+      <option name="number" value="LOCAL‎00044" />
+      <option name="presentableId" value="LOCAL‎00044" />
+      <updated>1652692070266</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -41,14 +41,7 @@ public class mainWindowController {
         isAdminWindow = new SimpleBooleanProperty(true);
         isFileSelected = new SimpleBooleanProperty(false);
         selectedFileProperty = new SimpleStringProperty();
-
-
-
         currentYazProperty = new SimpleIntegerProperty(Timeline.getCurrTime());
-
-
-
-
         currentYazProperty.bind(Timeline.getCurrTimePropery());
     }
 
